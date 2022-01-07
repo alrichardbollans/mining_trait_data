@@ -5,7 +5,7 @@ from typing import List
 import wikipediaapi
 
 
-def get_language_page_text(lang, pagename):
+def get_all_page_text(lang, pagename):
     response = requests.get('https://' + lang + '.wikipedia.org/w/api.php',
                             params={
                                 'action': 'parse',
@@ -45,11 +45,10 @@ def search_for_common_names(species_list: List[str], output_csv: str) -> pd.Data
         for page in pagenames[lan]:
             source = lan + ": " + page
 
-            page_texts[source] = get_language_page_text(lan, page)
+            page_texts[source] = get_all_page_text(lan, page)
 
-    out_dict = {'Accepted_Name': [], 'Has_Common_Name': [], 'Snippet': [], 'Source': []}
+    out_dict = {'Accepted_Name': [], 'Snippet': [], 'Source': []}
     for sp in species_list:
-        out_dict['Accepted_Name'].append(sp)
 
         try:
             hits = []
@@ -61,43 +60,42 @@ def search_for_common_names(species_list: List[str], output_csv: str) -> pd.Data
                     snippet = page_texts[source][i - 1:i + len(sp) + 1]
                     snippets.append(snippet)
             if len(hits) > 0:
-                out_dict['Has_Common_Name'].append(1)
-            else:
-                out_dict['Has_Common_Name'].append(0)
+                out_dict['Source'].append(str(hits))
+                out_dict['Snippet'].append(str(snippets))
+                out_dict['Accepted_Name'].append(sp)
 
-            out_dict['Source'].append(str(hits))
-            out_dict['Snippet'].append(str(snippets))
         except TypeError:
-            hits = []
-            snippets = []
-            out_dict['Has_Common_Name'].append(0)
-            out_dict['Source'].append(str(hits))
-            out_dict['Snippet'].append(str(snippets))
+            pass
 
     df = pd.DataFrame(out_dict)
     df.to_csv(output_csv)
     return df
 
 
-def check_page_exists(species: str, languages_to_check: List[str]) -> bool:
-    for lan in languages_to_check:
-        wiki_wiki = wikipediaapi.Wikipedia(lan)
+def check_page_exists(species: str, lan: str) -> bool:
+    wiki_wiki = wikipediaapi.Wikipedia(lan)
 
-        page_py = wiki_wiki.page(species)
-        if page_py.exists():
-            return True
-    return False
+    page_py = wiki_wiki.page(species)
+    if page_py.exists():
+        return True
+    else:
+        return False
 
 
 def make_wiki_hit_df(species_list: List[str], output_csv: str) -> pd.DataFrame:
-    out_dict = {'Accepted_Name': [], 'Wikipedia_Hit': []}
+    out_dict = {'Accepted_Name': [], 'Language': []}
     languages_to_check = ['es', 'en', 'fr', 'it', 'pt']
+
     for sp in species_list:
-        out_dict['Accepted_Name'].append(sp)
-        if check_page_exists(sp,languages_to_check):
-            out_dict['Wikipedia_Hit'].append(1)
-        else:
-            out_dict['Wikipedia_Hit'].append(0)
+        language_hits = []
+        for lan in languages_to_check:
+
+            if check_page_exists(sp, lan):
+                language_hits.append(lan)
+
+        if len(language_hits) > 0:
+            out_dict['Language'].append(str(language_hits))
+            out_dict['Accepted_Name'].append(sp)
 
     df = pd.DataFrame(out_dict)
     df.to_csv(output_csv)
