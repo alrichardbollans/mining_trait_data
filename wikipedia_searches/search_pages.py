@@ -1,0 +1,104 @@
+import string
+import pandas as pd
+import requests
+from typing import List
+import wikipediaapi
+
+
+def get_language_page_text(lang, pagename):
+    response = requests.get('https://' + lang + '.wikipedia.org/w/api.php',
+                            params={
+                                'action': 'parse',
+                                'format': 'json',
+                                'page': pagename
+                            }).json()
+    try:
+        # TODO: better catch this error, i.e. if response contains error
+        text = next(iter(response['parse']['text'].values()))
+    except KeyError:
+        text = ""
+
+    return text
+
+
+def search_for_common_names(species_list: List[str], output_csv: str) -> pd.DataFrame:
+    # TODO: also look for synonyms
+    # Swedish list is split across the alphabet
+    swedish_root_page = 'Lista_över_växter'
+    swedish_alphabet = list(string.ascii_uppercase) + ['Å', 'Ä', 'Ö']
+    swedish_titles = [swedish_root_page + '/' + a for a in swedish_alphabet]
+
+    # Languages and associated pages of common plant name lists
+    pagenames = {'en': ['List_of_plants_by_common_name'],
+                 'als': ['Alemannische_Pflanzennamen_(Botanische_Namen)',
+                         'Alemannische_Pflanzennamen_(nach_Systematik)',
+                         'Alemannische_Pflanzennamen_(Deutsche_Namen)',
+                         'Alemannische_Pflanzennamen_(nach_Dialekten)'],
+                 'lb': ['Lëscht_vu_lëtzebuergesche_Planzennimm'],
+                 'sv': swedish_titles,
+                 'te': ['పుష్పాల_జాబితా'],
+                 'chr': ['ᏗᎦᎪᏗ_ᏚᎾᏙᎥ_ᏙᎪᏪᎸ']
+
+                 }
+    page_texts = {}
+    for lan in pagenames:
+        for page in pagenames[lan]:
+            source = lan + ": " + page
+
+            page_texts[source] = get_language_page_text(lan, page)
+
+    out_dict = {'Accepted_Name': [], 'Has_Common_Name': [], 'Snippet': [], 'Source': []}
+    for sp in species_list:
+        out_dict['Accepted_Name'].append(sp)
+
+        try:
+            hits = []
+            snippets = []
+            for source in page_texts:
+                if sp in page_texts[source]:
+                    hits.append(source)
+                    i = page_texts[source].index(sp)
+                    snippet = page_texts[source][i - 1:i + len(sp) + 1]
+                    snippets.append(snippet)
+            if len(hits) > 0:
+                out_dict['Has_Common_Name'].append(1)
+            else:
+                out_dict['Has_Common_Name'].append(0)
+
+            out_dict['Source'].append(str(hits))
+            out_dict['Snippet'].append(str(snippets))
+        except TypeError:
+            hits = []
+            snippets = []
+            out_dict['Has_Common_Name'].append(0)
+            out_dict['Source'].append(str(hits))
+            out_dict['Snippet'].append(str(snippets))
+
+    df = pd.DataFrame(out_dict)
+    df.to_csv(output_csv)
+    return df
+
+
+def check_page_exists(species: str, languages_to_check: List[str]) -> bool:
+    for lan in languages_to_check:
+        wiki_wiki = wikipediaapi.Wikipedia(lan)
+
+        page_py = wiki_wiki.page(species)
+        if page_py.exists():
+            return True
+    return False
+
+
+def make_wiki_hit_df(species_list: List[str], output_csv: str) -> pd.DataFrame:
+    out_dict = {'Accepted_Name': [], 'Wikipedia_Hit': []}
+    languages_to_check = ['es', 'en', 'fr', 'it', 'pt']
+    for sp in species_list:
+        out_dict['Accepted_Name'].append(sp)
+        if check_page_exists(sp,languages_to_check):
+            out_dict['Wikipedia_Hit'].append(1)
+        else:
+            out_dict['Wikipedia_Hit'].append(0)
+
+    df = pd.DataFrame(out_dict)
+    df.to_csv(output_csv)
+    return df
