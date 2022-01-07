@@ -2,4 +2,5 @@
 
 ## Installation
 
-`pip install -e mining_trait_data`
+Run:
+`pip install git+https://github.com/alrichardbollans/mining_trait_data.git#egg=mining_trait_data`
