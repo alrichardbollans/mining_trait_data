@@ -1,9 +1,9 @@
 # Hide data
-*.csv
-*.csv#
-*.xlsx
-*.docx
-*.png
+#*.csv
+#*.csv#
+#*.xlsx
+#*.docx
+#*.png
 
 ### Pycharm
 .idea/
