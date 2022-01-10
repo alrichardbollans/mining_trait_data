@@ -1,5 +1,7 @@
 # Python packages for gathering trait data
 
+Still under construction. Some datasets are not yet included until publishing rights have been clarified.
+
 ## Installation
 
 Run:
