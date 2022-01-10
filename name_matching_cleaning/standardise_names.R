@@ -18,6 +18,8 @@ library(kewr)      # request kew data
 library(tibble)    # get data into nice tables
 #library(progress)  # make nice progress bars
 
+
+
 source(here("name_matching_cleaning/helper_functions.R"))
 library(optparse)
 
@@ -50,6 +52,8 @@ out_file <- opt$out
 species_csv <- opt$input # Input csv
 col_name <- opt$colname # Column name for plant names in dataset (will default to 'Name')
 col_name
+#species_csv = "~/Dropbox/Kew Work/mining_trait_data/common_names/inputs/USDA Plants Database_cleaned.csv"
+#col_name = "Scientific.Name.with.Author"
 # load species names to query
 spp_df = read.csv(species_csv, header=T,sep=",")
 species_csv
@@ -113,7 +117,11 @@ unresolved_matched_multiples <-
     filter(!((submitted %in% names(match_resolutions))|ipni_id %in% match_resolutions))
 
 'unresolved multiples matches'
+'Note subspecies often create unresolved matches and are resolved to the accepted species'
 unresolved_matched_multiples
+unresolved_matched_multiples_file = paste("name_matching_cleaning/matching data/unresolved_multiple_matches/",basename(species_csv),sep="")
+unresolved_matched_multiples %>%
+    write_csv(here(unresolved_matched_multiples_file))
 
 # manually fix a couple matches
 match_correction <- read_json(here("name_matching_cleaning/matching data/manual_match_correction.json"))
@@ -130,6 +138,10 @@ matched_names <-
 
 nested = matched_names %>%
   nest_by(submitted, match_id=ipni_id)
+
+nested_file = paste("name_matching_cleaning/matching data/nested_",basename(species_csv),sep="")
+nested %>%
+    write_csv(here(nested_file))
 #   'nested'
 # nested
 # get accepted name info for each match
@@ -162,7 +174,7 @@ if (nrow(unmatched_data)>0) {
 ### NOTE: couple of issues with samples (Antirhea putaminosa (F. Muell.) F. Muell.) and (Aspidosperma gomezianum A. DC.)
 # They have a match_id different to accepted_id
 if(! all(accepted_names$accepted_id == accepted_names$match_id)){
-    warning("Some accepted and match ids differ --- check csv output.n", call.=FALSE)
+    warning("Some accepted and match ids differ --- check csv output", call.=FALSE)
 
 }
 
