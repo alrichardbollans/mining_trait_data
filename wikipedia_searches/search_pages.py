@@ -47,7 +47,7 @@ def search_for_common_names(species_list: List[str], output_csv: str) -> pd.Data
 
             page_texts[source] = get_all_page_text(lan, page)
 
-    out_dict = {'Accepted_Name': [], 'Wiki_Snippet': [], 'Source': []}
+    out_dict = {'Name': [], 'Wiki_Snippet': [], 'Source': []}
     for sp in species_list:
 
         try:
@@ -62,7 +62,7 @@ def search_for_common_names(species_list: List[str], output_csv: str) -> pd.Data
             if len(hits) > 0:
                 out_dict['Source'].append("Wiki:"+str(hits))
                 out_dict['Wiki_Snippet'].append(str(snippets))
-                out_dict['Accepted_Name'].append(sp)
+                out_dict['Name'].append(sp)
 
         except TypeError:
             pass
