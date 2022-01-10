@@ -2,6 +2,8 @@
 
 Still under construction. Some datasets are not yet included until publishing rights have been clarified.
 
+Note: Currently feature extraction is focussed on species in Apocynaceae and Rubiaceae.
+
 ## Installation
 
 Run:

@@ -15,11 +15,12 @@ temp_outputs_path = resource_filename(__name__, 'temp_outputs')
 
 wiki_common_names_temp_output_csv = os.path.join(temp_outputs_path, 'wiki_common_name_hits.csv')
 powo_common_names_temp_output_csv = os.path.join(temp_outputs_path, 'powo_common_name_hits.csv')
-initial_USDA_csv = os.path.join(temp_outputs_path, 'USDA Plants Database.csv')
+initial_USDA_csv = os.path.join(inputs_path, 'USDA Plants Database.csv')
 cleaned_USDA_csv = os.path.join(inputs_path, 'USDA Plants Database_cleaned.csv')
 ppa_africa_csv = os.path.join(inputs_path, 'PPAfrica-botswana-commonnames', 'vernacularname.txt')
 species_profile_csv = os.path.join(inputs_path, 'SpeciesProfileVernacular', 'vernacular.tab')
 
+families_of_interest = ['Apocynaceae', 'Rubiaceae']
 
 def clean_usda_names():
     def first_cleaning(given_name: str) -> str:
@@ -30,10 +31,13 @@ def clean_usda_names():
         out = given_name.replace('×', '')
         return out
 
-    # Download from url https://plants.usda.gov/csvdownload?plantLst=plantCompleteList
+    # Copied from https://plants.usda.gov/csvdownload?plantLst=plantCompleteList
     usda_df = pd.read_csv(initial_USDA_csv)
     usda_df['Scientific Name with Author'] = usda_df['Scientific Name with Author'].apply(first_cleaning)
     usda_df['Scientific Name with Author'] = usda_df['Scientific Name with Author'].apply(second_cleaning)
+    usda_df = usda_df.dropna(subset=['Common Name'])
+    usda_df = usda_df[usda_df['Family'].str.contains('|'.join(families_of_interest))]
+
 
     usda_df.to_csv(cleaned_USDA_csv)
 
@@ -46,8 +50,8 @@ def get_UDSA_info() -> pd.DataFrame:
     # usda_df = pd.read_csv(usda_csv, sep='\t')
     usda_df = pd.read_csv(cleaned_USDA_csv)
     # Drop rows with NaN common names
-    usda_df = usda_df.rename(columns={'Scientific Name': 'Accepted_Name', 'Common Name': 'USDA_Snippet'})
-    usda_df = usda_df.dropna(subset=['USDA_Snippet'])
+    # usda_df = usda_df.rename(columns={'Scientific Name': 'Name', 'Common Name': 'USDA_Snippet'})
+    usda_df = usda_df.dropna(subset=['Common Name'])
     usda_df = usda_df.dropna(subset=['Accepted_Name'])
     usda_df = usda_df[usda_df['Rank'] == 'SPECIES']
     usda_df['Source'] = 'USDA Plants Database'
@@ -124,7 +128,7 @@ def standardise_names():
 
     # R imports col names with spaces as full stops
     # This need batching
-    batch_standardise_names('Scientific.Name.with.Author', cleaned_USDA_csv)
+    standardise_names_in_column('Scientific.Name.with.Author', cleaned_USDA_csv)
 
 
 def compile_all_hits(output_csv: str) -> pd.DataFrame:
@@ -160,7 +164,7 @@ def compile_all_hits(output_csv: str) -> pd.DataFrame:
     return merged
 
 
-# TODO: get IDs from accepted names and merge on IDs. Use full IDs!
+# TODO: get IDs from accepted names and merge on IDs
 
 def main():
     # species_data = pd.read_csv("../temp_outputs/clean.csv")
@@ -178,6 +182,7 @@ def main():
     # compile_all_hits('outputs/list_of_plants_with_common_names.csv')
     # get_common_names_from_powo_files()
     standardise_names()
+    # clean_usda_names()
 
 
 if __name__ == '__main__':
