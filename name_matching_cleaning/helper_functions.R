@@ -13,7 +13,7 @@ check_id <- function(name, id) {
 
 #' Utility to get accepted name information for an IPNI ID.
 get_accepted_info <- function(ipni_id) {
-  
+
   # empty table to return if nothing comes back
   info <- tibble(
     status=NA_character_,
@@ -31,7 +31,7 @@ get_accepted_info <- function(ipni_id) {
   
   # get WCVP entry for ID
   r <- kewr::lookup_wcvp(ipni_id)
-  
+  print(ipni_id)
   info$status <- r$status
   
   # extract info about accepted name
@@ -46,7 +46,11 @@ get_accepted_info <- function(ipni_id) {
     info$accepted_authors <- r$accepted$authors
     info$accepted_rank <- r$accepted$rank
   }
-  
+
+  if (! "accepted_rank" %in% colnames(info)) {
+        return(list(info))
+  }
+
   # handle infraspecifics by getting the parent name
   if (info$accepted_rank %in% c("Variety", "Subspecies")) {
     r <- kewr::lookup_wcvp(info$accepted_id)
