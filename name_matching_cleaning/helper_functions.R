@@ -31,7 +31,6 @@ get_accepted_info <- function(ipni_id) {
   
   # get WCVP entry for ID
   r <- kewr::lookup_wcvp(ipni_id)
-  print(ipni_id)
   info$status <- r$status
   
   # extract info about accepted name
