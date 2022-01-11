@@ -20,9 +20,11 @@ cleaned_USDA_csv = os.path.join(inputs_path, 'USDA Plants Database_cleaned.csv')
 ppa_africa_csv = os.path.join(inputs_path, 'PPAfrica-botswana-commonnames', 'vernacularname.txt')
 species_profile_csv = os.path.join(inputs_path, 'SpeciesProfileVernacular', 'vernacular.tab')
 
-families_of_interest = ['Apocynaceae', 'Rubiaceae']
 
-def clean_usda_names():
+def clean_usda_names(families_of_interest=None):
+    if families_of_interest is None:
+        families_of_interest = ['Apocynaceae', 'Rubiaceae']
+
     def first_cleaning(given_name: str) -> str:
         out = given_name.replace(' ×', ' ')
         return out
