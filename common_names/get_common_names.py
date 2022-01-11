@@ -2,13 +2,15 @@ import os.path
 import urllib.request
 from urllib.error import HTTPError
 
+import numpy as np
 import pandas as pd
 from typing import List
 
 import wikipedia_searches
 from pkg_resources import resource_filename
 
-from name_matching_cleaning import standardise_names_in_column, batch_standardise_names
+from name_matching_cleaning import standardise_names_in_column, batch_standardise_names, clean_ids, \
+    get_accepted_name_info_from_IDS
 
 inputs_path = resource_filename(__name__, 'inputs')
 temp_outputs_path = resource_filename(__name__, 'temp_outputs')
@@ -19,6 +21,7 @@ initial_USDA_csv = os.path.join(inputs_path, 'USDA Plants Database.csv')
 cleaned_USDA_csv = os.path.join(inputs_path, 'USDA Plants Database_cleaned.csv')
 ppa_africa_csv = os.path.join(inputs_path, 'PPAfrica-botswana-commonnames', 'vernacularname.txt')
 species_profile_csv = os.path.join(inputs_path, 'SpeciesProfileVernacular', 'vernacular.tab')
+spp_ppa_common_names_temp_output_csv = os.path.join(temp_outputs_path, 'spp_ppa_common_names.csv')
 
 
 def clean_usda_names(families_of_interest=None):
@@ -40,7 +43,6 @@ def clean_usda_names(families_of_interest=None):
     usda_df = usda_df.dropna(subset=['Common Name'])
     usda_df = usda_df[usda_df['Family'].str.contains('|'.join(families_of_interest))]
 
-
     usda_df.to_csv(cleaned_USDA_csv)
 
 
@@ -52,37 +54,38 @@ def get_UDSA_info() -> pd.DataFrame:
     # usda_df = pd.read_csv(usda_csv, sep='\t')
     usda_df = pd.read_csv(cleaned_USDA_csv)
     # Drop rows with NaN common names
-    # usda_df = usda_df.rename(columns={'Scientific Name': 'Name', 'Common Name': 'USDA_Snippet'})
-    usda_df = usda_df.dropna(subset=['Common Name'])
+    usda_df = usda_df.rename(columns={'Common.Name': 'USDA_Snippet'})
+    usda_df = usda_df.dropna(subset=['USDA_Snippet'])
     usda_df = usda_df.dropna(subset=['Accepted_Name'])
-    usda_df = usda_df[usda_df['Rank'] == 'SPECIES']
+    usda_df = usda_df[usda_df['Accepted_Rank'] == 'Species']
     usda_df['Source'] = 'USDA Plants Database'
 
-    usda_df.drop(columns=['Symbol', 'Synonym Symbol'], inplace=True)
+    usda_df.drop(columns=['Symbol', 'Synonym.Symbol', 'X'], inplace=True)
 
     return usda_df
 
 
-def get_common_names_spp_ppa() -> pd.DataFrame:
+def prepare_common_names_spp_ppa() -> pd.DataFrame:
     species_profile = pd.read_csv(species_profile_csv, sep='\t', header=None)
 
     species_profile['Source'] = 'SpeciesProfileVernacular'
     species_profile['SPP_Snippet'] = species_profile[1] + ":" + species_profile[2]
-    species_profile['ID'] = species_profile[0]
+    species_profile['ID'] = species_profile[0].apply(clean_ids)
     species_profile.drop(columns=[0, 1, 2, 3], inplace=True)
 
     ppa_africa = pd.read_csv(ppa_africa_csv, sep='\t', header=None)
-
     ppa_africa['Source'] = 'PPAfrica-botswana-commonnames'
     ppa_africa['PPA_Snippet'] = ppa_africa[3] + ":" + ppa_africa[2]
-    ppa_africa['ID'] = ppa_africa[0]
+    ppa_africa['ID'] = ppa_africa[0].apply(clean_ids)
     ppa_africa.drop(columns=[0, 1, 2, 3, 4], inplace=True)
 
-    species_profile.to_csv('temp_outputs/spprofile_common_names.csv')
-
     merged = pd.merge(ppa_africa, species_profile, on="ID", how="outer")
+    merged.to_csv(spp_ppa_common_names_temp_output_csv)
+    get_accepted_name_info_from_IDS('ID', spp_ppa_common_names_temp_output_csv)
 
-    return merged
+    with_accepted_info = pd.read_csv(spp_ppa_common_names_temp_output_csv)
+
+    return with_accepted_info
 
 
 def get_powo_common_names(species_names: List[str], species_ids: List[str]) -> pd.DataFrame:
@@ -125,36 +128,38 @@ def get_wiki_common_names(species_names: List[str]):
 
 
 def standardise_names():
-    # standardise_names_in_column('Name', wiki_common_names_temp_output_csv)
-    # standardise_names_in_column('Name', powo_common_names_temp_output_csv)
+    standardise_names_in_column('Name', wiki_common_names_temp_output_csv)
+    standardise_names_in_column('Name', powo_common_names_temp_output_csv)
 
     # R imports col names with spaces as full stops
-    # This need batching
-    standardise_names_in_column('Scientific.Name.with.Author', cleaned_USDA_csv)
+    # standardise_names_in_column('Scientific.Name.with.Author', cleaned_USDA_csv)
+    # prepare_common_names_spp_ppa()
 
 
 def compile_all_hits(output_csv: str) -> pd.DataFrame:
     usda_hits = get_UDSA_info()
-    spp_ppa_df = get_common_names_spp_ppa()
+    spp_ppa_df = pd.read_csv(spp_ppa_common_names_temp_output_csv)
     powo_hits = pd.read_csv(powo_common_names_temp_output_csv)
     wiki_hits = pd.read_csv(wiki_common_names_temp_output_csv)
 
     all_dfs = [usda_hits, powo_hits, wiki_hits, spp_ppa_df]
+
+    cols_to_keep = ['Accepted_ID', 'Accepted_Name', 'Snippet', 'POWO_Snippet', 'PPA_Snippet', 'SPP_Snippet',
+                    'USDA_Snippet', 'Wiki_Snippet', 'Source', "Source_x", "Source_y"]
+
     for df in all_dfs:
         cols_to_drop = [c for c in df.columns if
-                        c not in ['ID', 'Accepted_Name', 'Snippet', 'POWO_Snippet', 'PPA_Snippet', 'SPP_Snippet',
-                                  'USDA_Snippet', 'Wiki_Snippet', 'Source']]
+                        c not in cols_to_keep]
         df.drop(columns=cols_to_drop, inplace=True)
 
     merged_usda_powo = pd.merge(usda_hits, powo_hits, on="Accepted_Name", how="outer")
     merged = pd.merge(merged_usda_powo, wiki_hits, on="Accepted_Name", how="outer")
-
-    merged = pd.concat([merged, spp_ppa_df])
+    merged.rename(columns={"Accepted_ID_x": "Accepted_ID_1", "Accepted_ID_y": "Accepted_ID_2"}, inplace=True)
+    merged = pd.merge(merged, spp_ppa_df, on="Accepted_Name", how="outer")
     merged.set_index('Accepted_Name', inplace=True)
-    merged.rename(columns={}, inplace=True)
 
     # Merge Sources:
-    sources_cols = ['Source_y', 'Source_x', 'Source']
+    sources_cols = [c for c in merged.columns.tolist() if 'Source' in c]
     for col in sources_cols:
         merged[col] = merged[col].astype('string')
         merged[col] = merged[col].fillna('')
@@ -162,11 +167,30 @@ def compile_all_hits(output_csv: str) -> pd.DataFrame:
     merged['Sources'] = merged[sources_cols].agg(':'.join, axis=1)
     merged.drop(columns=sources_cols, inplace=True)
 
-    merged.to_csv(output_csv)
-    return merged
+    # Merge Accepted IDs
+    merged['Accepted_ID'] = np.where(merged['Accepted_ID_x'].isnull(),
+                                     np.where(merged['Accepted_ID_y'].isnull(),
+                                              np.where(merged['Accepted_ID_1'].isnull(),
+                                                       np.where(merged['Accepted_ID_2'].isnull(), np.nan,
+                                                                merged['Accepted_ID_2']
 
+                                                                ), merged['Accepted_ID_1']
 
-# TODO: get IDs from accepted names and merge on IDs
+                                                       ), merged['Accepted_ID_y']
+
+                                              ), merged['Accepted_ID_x']
+
+                                     )
+    acc_id_cols = ['Accepted_ID_x', 'Accepted_ID_y', 'Accepted_ID_1', 'Accepted_ID_2']
+    merged.drop(columns=acc_id_cols, inplace=True)
+
+    # Reorder
+    start_cols = ['Accepted_Name', 'Accepted_ID']
+    out_df = merged[[c for c in merged if c in start_cols]
+                    + [c for c in merged if c not in start_cols]]
+    out_df.to_csv(output_csv)
+    return out_df
+
 
 def main():
     # species_data = pd.read_csv("../temp_outputs/clean.csv")
@@ -180,10 +204,10 @@ def main():
     # get_powo_pages(species_list, species_data['Accepted_ID'].values, )
 
     # get_UDSA_info('temp_outputs/USDA_common_name_hits.csv')
-
-    # compile_all_hits('outputs/list_of_plants_with_common_names.csv')
+    # standardise_names()
+    compile_all_hits('outputs/list_of_plants_with_common_names.csv')
     # get_common_names_from_powo_files()
-    standardise_names()
+    #
     # clean_usda_names()
 
 

@@ -58,11 +58,7 @@ dir.create(temp_output_folder)
 # load species names to query
 spp_df = read.csv(species_csv, header=T,sep=",")
 species_csv
-if ("Accepted_Name" %in% colnames(spp_df)) {
-  #spp_df <- spp_df %>%
-  #select(-Accepted_Name)
-  stop("Accepted Name Column already exists", call.=FALSE)
-}
+
 
 spp = spp_df[[col_name]]
 spp = as.character(spp)

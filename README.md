@@ -2,6 +2,8 @@
 
 Still under construction. Some datasets are not yet included until publishing rights have been clarified.
 
+Analysis is focussed at species level.
+
 ## Installation
 
 Run:

@@ -33,3 +33,14 @@ def batch_standardise_names(column_to_standardise: str, input_file: str, output_
         batch.to_csv(batch_file)
         print(batch)
         standardise_names_in_column(column_to_standardise, batch_file, batch_file)
+
+def get_accepted_name_info_from_IDS(column_to_standardise: str, input_file: str, output_file=None):
+    if output_file is None:
+        output_file = input_file
+    print(path_here)
+    print(input_file)
+    r_script = os.path.join(path_here, 'standardise_ids.R')
+    command = f'Rscript "{r_script}" --input "{input_file}" --out "{output_file}" --colname "{column_to_standardise}"'
+
+    subprocess.call(command, shell=True)
+
