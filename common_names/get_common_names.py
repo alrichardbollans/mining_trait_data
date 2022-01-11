@@ -9,11 +9,14 @@ from typing import List
 import wikipedia_searches
 from pkg_resources import resource_filename
 
-from name_matching_cleaning import standardise_names_in_column, batch_standardise_names, clean_ids, \
-    get_accepted_name_info_from_IDS
+from name_matching_cleaning import standardise_names_in_column, clean_ids, get_accepted_name_info_from_IDS
 
 inputs_path = resource_filename(__name__, 'inputs')
+output_path = resource_filename(__name__, 'outputs')
 temp_outputs_path = resource_filename(__name__, 'temp_outputs')
+
+input_species_csv = os.path.join(inputs_path, 'clean.csv')
+output_common_names_csv = os.path.join(output_path, 'list_of_plants_with_common_names.csv')
 
 wiki_common_names_temp_output_csv = os.path.join(temp_outputs_path, 'wiki_common_name_hits.csv')
 powo_common_names_temp_output_csv = os.path.join(temp_outputs_path, 'powo_common_name_hits.csv')
@@ -46,12 +49,7 @@ def clean_usda_names(families_of_interest=None):
     usda_df.to_csv(cleaned_USDA_csv)
 
 
-def get_UDSA_info() -> pd.DataFrame:
-    # First add accepted names using KNMS (http://namematch.science.kew.org/csv)
-    # Get expanded, data has a header, POWO
-    # Need to clean the downloaded version first. Use 'USDA Plants Database_cleaned.csv' See clean_usda_names
-    # usda_csv = os.path.join(inputs_path, 'USDA Plants Database_matched_1641569303504.csv')
-    # usda_df = pd.read_csv(usda_csv, sep='\t')
+def read_USDA_csv() -> pd.DataFrame:
     usda_df = pd.read_csv(cleaned_USDA_csv)
     # Drop rows with NaN common names
     usda_df = usda_df.rename(columns={'Common.Name': 'USDA_Snippet'})
@@ -132,12 +130,12 @@ def standardise_names():
     standardise_names_in_column('Name', powo_common_names_temp_output_csv)
 
     # R imports col names with spaces as full stops
-    # standardise_names_in_column('Scientific.Name.with.Author', cleaned_USDA_csv)
-    # prepare_common_names_spp_ppa()
+    standardise_names_in_column('Scientific.Name.with.Author', cleaned_USDA_csv)
+    prepare_common_names_spp_ppa()
 
 
 def compile_all_hits(output_csv: str) -> pd.DataFrame:
-    usda_hits = get_UDSA_info()
+    usda_hits = read_USDA_csv()
     spp_ppa_df = pd.read_csv(spp_ppa_common_names_temp_output_csv)
     powo_hits = pd.read_csv(powo_common_names_temp_output_csv)
     wiki_hits = pd.read_csv(wiki_common_names_temp_output_csv)
@@ -193,22 +191,18 @@ def compile_all_hits(output_csv: str) -> pd.DataFrame:
 
 
 def main():
-    # species_data = pd.read_csv("../temp_outputs/clean.csv")
-    # species_data.set_index('Accepted_Name', inplace=True)
-    # clean_usda_names()
+    species_data = pd.read_csv(input_species_csv)
+    species_data.set_index('Accepted_Name', inplace=True)
+    species_list = species_data.index
 
-    # species_list = species_data.index
-    #
-    # wikipedia_searches.search_for_common_names(species_list, 'temp_outputs/wiki_common_name_hits.csv')
+    # Get lists
+    get_wiki_common_names(species_list)
+    get_powo_common_names(species_list, species_data['Accepted_ID'].values)
+    clean_usda_names()
 
-    # get_powo_pages(species_list, species_data['Accepted_ID'].values, )
+    standardise_names()
 
-    # get_UDSA_info('temp_outputs/USDA_common_name_hits.csv')
-    # standardise_names()
-    compile_all_hits('outputs/list_of_plants_with_common_names.csv')
-    # get_common_names_from_powo_files()
-    #
-    # clean_usda_names()
+    compile_all_hits(output_common_names_csv)
 
 
 if __name__ == '__main__':
