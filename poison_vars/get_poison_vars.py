@@ -51,38 +51,13 @@ def prepare_littox_poisons() -> pd.DataFrame:
 
 
 def get_powo_poisons():
-    # search_powo('poison,poisonous,toxic,deadly', powo_search_temp_output_csv)
+    search_powo('poison,poisonous,toxic,deadly', powo_search_temp_output_csv)
     clean_powo_output(powo_search_temp_output_csv, powo_search_temp_output_cleaned_csv)
 
 
-# def compile_hits():
-#     powo_hits = pd.read_csv(powo_search_temp_output_cleaned_csv)
-#     littox_hits = pd.read_csv(littox_temp_output_accepted_csv)
-#
-#     all_dfs = [powo_hits, littox_hits]
-#
-#     cols_to_keep = ['ID', 'family', 'name', 'rank', 'powo_snippet', 'Source', "Source_x", "Source_y"]
-#
-#     for df in all_dfs:
-#         cols_to_drop = [c for c in df.columns if
-#                         c not in cols_to_keep]
-#         df.drop(columns=cols_to_drop, inplace=True)
-#
-#     all_poisons = pd.merge(powo_hits, littox_hits, on='ID')
-#     # Merge Sources:
-#     sources_cols = [c for c in all_poisons.columns.tolist() if 'Source' in c]
-#     for col in sources_cols:
-#         all_poisons[col] = all_poisons[col].astype('string')
-#         all_poisons[col] = all_poisons[col].fillna('')
-#     all_poisons['Sources'] = all_poisons[sources_cols].agg(':'.join, axis=1)
-#     all_poisons.drop(columns=sources_cols, inplace=True)
-#
-#     all_poisons.to_csv(output_poison_csv)
-
-
 def main():
-    # get_powo_poisons()
-    # prepare_littox_poisons()
+    get_powo_poisons()
+    prepare_littox_poisons()
     powo_hits = pd.read_csv(powo_search_temp_output_cleaned_csv)
     littox_hits = pd.read_csv(littox_temp_output_accepted_csv)
     compile_hits([powo_hits, littox_hits], output_poison_csv)
