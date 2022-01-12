@@ -46,22 +46,23 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str):
         df.drop(columns=cols_to_drop, inplace=True)
 
     merged_dfs = all_dfs[0]
-    for i in all_dfs[1:]:
-        merged_dfs = pd.merge(merged_dfs, i, on='Accepted_ID', how='outer')
+    if len(all_dfs)>1:
+        for i in all_dfs[1:]:
+            merged_dfs = pd.merge(merged_dfs, i, on='Accepted_ID', how='outer')
 
-    acc_cols = [c for c in merged_dfs.columns.tolist() if 'Accepted_Name' in c]
-    merged_dfs = merge_columns(merged_dfs, 'Accepted_Name', acc_cols)
+        acc_cols = [c for c in merged_dfs.columns.tolist() if 'Accepted_Name' in c]
+        merged_dfs = merge_columns(merged_dfs, 'Accepted_Name', acc_cols)
 
-    rank_cols = [c for c in merged_dfs.columns.tolist() if 'Rank' in c]
-    merged_dfs = merge_columns(merged_dfs, 'Rank', rank_cols)
+        rank_cols = [c for c in merged_dfs.columns.tolist() if 'Rank' in c]
+        merged_dfs = merge_columns(merged_dfs, 'Rank', rank_cols)
 
-    new_sources_cols = [c for c in merged_dfs.columns.tolist() if 'Source' in c]
-    # Merge Sources:
-    for col in new_sources_cols:
-        merged_dfs[col] = merged_dfs[col].astype('string')
-        merged_dfs[col] = merged_dfs[col].fillna('')
-    merged_dfs['Sources'] = merged_dfs[new_sources_cols].agg(':'.join, axis=1)
-    merged_dfs.drop(columns=new_sources_cols, inplace=True)
+        new_sources_cols = [c for c in merged_dfs.columns.tolist() if 'Source' in c]
+        # Merge Sources:
+        for col in new_sources_cols:
+            merged_dfs[col] = merged_dfs[col].astype('string')
+            merged_dfs[col] = merged_dfs[col].fillna('')
+        merged_dfs['Sources'] = merged_dfs[new_sources_cols].agg(':'.join, axis=1)
+        merged_dfs.drop(columns=new_sources_cols, inplace=True)
 
     start_cols = ['Accepted_Name', 'Accepted_ID']
     out_dfs = merged_dfs[[c for c in merged_dfs if c in start_cols]
