@@ -9,7 +9,7 @@ from typing import List
 import wikipedia_searches
 from pkg_resources import resource_filename
 
-from name_matching_cleaning import standardise_names_in_column, clean_ids, get_accepted_name_info_from_IDS
+from name_matching_cleaning import standardise_names_in_column, clean_ids, get_accepted_name_info_from_IDS, compile_hits
 
 ### Inputs
 inputs_path = resource_filename(__name__, 'inputs')
@@ -127,72 +127,17 @@ def get_wiki_common_names(species_names: List[str]):
 
 
 def standardise_names():
-    standardise_names_in_column('Name', wiki_common_names_temp_output_csv,wiki_common_names_temp_output_accepted_csv)
-    standardise_names_in_column('Name', powo_common_names_temp_output_csv,powo_common_names_temp_output_accepted_csv)
+    standardise_names_in_column('Name', wiki_common_names_temp_output_csv, wiki_common_names_temp_output_accepted_csv)
+    standardise_names_in_column('Name', powo_common_names_temp_output_csv, powo_common_names_temp_output_accepted_csv)
 
     # R imports col names with spaces as full stops
     prepare_usda_common_names()
     prepare_common_names_spp_ppa()
 
 
-def compile_all_hits(output_csv: str) -> pd.DataFrame:
-    usda_hits = pd.read_csv(cleaned_USDA_accepted_csv)
-    spp_ppa_df = pd.read_csv(spp_ppa_common_names_temp_output_accepted_csv)
-    powo_hits = pd.read_csv(powo_common_names_temp_output_accepted_csv)
-    wiki_hits = pd.read_csv(wiki_common_names_temp_output_accepted_csv)
-
-    all_dfs = [usda_hits, powo_hits, wiki_hits, spp_ppa_df]
-
-    cols_to_keep = ['Accepted_ID', 'Accepted_Name', 'Snippet', 'POWO_Snippet', 'PPA_Snippet', 'SPP_Snippet',
-                    'USDA_Snippet', 'Wiki_Snippet', 'Source', "Source_x", "Source_y"]
-
-    for df in all_dfs:
-        cols_to_drop = [c for c in df.columns if
-                        c not in cols_to_keep]
-        df.drop(columns=cols_to_drop, inplace=True)
-
-    merged_usda_powo = pd.merge(usda_hits, powo_hits, on="Accepted_Name", how="outer")
-    merged = pd.merge(merged_usda_powo, wiki_hits, on="Accepted_Name", how="outer")
-    merged.rename(columns={"Accepted_ID_x": "Accepted_ID_1", "Accepted_ID_y": "Accepted_ID_2"}, inplace=True)
-    merged = pd.merge(merged, spp_ppa_df, on="Accepted_Name", how="outer")
-    merged.set_index('Accepted_Name', inplace=True)
-
-    # Merge Sources:
-    sources_cols = [c for c in merged.columns.tolist() if 'Source' in c]
-    for col in sources_cols:
-        merged[col] = merged[col].astype('string')
-        merged[col] = merged[col].fillna('')
-
-    merged['Sources'] = merged[sources_cols].agg(':'.join, axis=1)
-    merged.drop(columns=sources_cols, inplace=True)
-
-    # Merge Accepted IDs
-    merged['Accepted_ID'] = np.where(merged['Accepted_ID_x'].isnull(),
-                                     np.where(merged['Accepted_ID_y'].isnull(),
-                                              np.where(merged['Accepted_ID_1'].isnull(),
-                                                       np.where(merged['Accepted_ID_2'].isnull(), np.nan,
-                                                                merged['Accepted_ID_2']
-
-                                                                ), merged['Accepted_ID_1']
-
-                                                       ), merged['Accepted_ID_y']
-
-                                              ), merged['Accepted_ID_x']
-
-                                     )
-    acc_id_cols = ['Accepted_ID_x', 'Accepted_ID_y', 'Accepted_ID_1', 'Accepted_ID_2']
-    merged.drop(columns=acc_id_cols, inplace=True)
-
-    # Reorder
-    start_cols = ['Accepted_Name', 'Accepted_ID']
-    out_df = merged[[c for c in merged if c in start_cols]
-                    + [c for c in merged if c not in start_cols]]
-    out_df.to_csv(output_csv)
-    return out_df
-
 
 def main():
-    # TODO: Note powo, wikipedia and USDA data is specific to our study
+    # # TODO: Note powo, wikipedia and USDA data is specific to our study
     species_data = pd.read_csv(input_species_csv)
     species_data.set_index('Accepted_Name', inplace=True)
     species_list = species_data.index
@@ -206,7 +151,13 @@ def main():
     standardise_names()
     print('Finished standardising names')
 
-    compile_all_hits(output_common_names_csv)
+    usda_hits = pd.read_csv(cleaned_USDA_accepted_csv)
+    spp_ppa_df = pd.read_csv(spp_ppa_common_names_temp_output_accepted_csv)
+    powo_hits = pd.read_csv(powo_common_names_temp_output_accepted_csv)
+    wiki_hits = pd.read_csv(wiki_common_names_temp_output_accepted_csv)
+
+    all_dfs = [usda_hits, powo_hits, wiki_hits, spp_ppa_df]
+    compile_hits(all_dfs,output_common_names_csv)
 
 
 if __name__ == '__main__':
