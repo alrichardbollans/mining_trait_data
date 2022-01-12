@@ -25,11 +25,11 @@ library(optparse)
 
 option_list = list(
     make_option(c("-o", "--out"), type="character",default=NULL,
-              help="output file name, defaults to input if not given", metavar="character"),
+              help="output file", metavar="character"),
     make_option(c("-i", "--input"), type="list", default=NULL,
-              help="input file name", metavar="character"),
+              help="input file", metavar="character"),
     make_option(c("-c", "--colname"), type="list", default='ID',
-              help="name of Name column", metavar="character")
+              help="name of ID column", metavar="character")
 );
 
 opt_parser = OptionParser(option_list=option_list);
@@ -37,19 +37,16 @@ opt = parse_args(opt_parser);
 
 
 
-# Takes an input csv with a 'Name' column and outputs a csv with an additional accepted name column
-
-# test if there is at least one argument: if not, return an error
+# Takes an input csv with a 'Name' column and outputs a csv with an additional accepted info columns
 if (is.null(opt$input)) {
   stop("Needs input file", call.=FALSE)
 }
 if (is.null(opt$out)) {
-  out_file <- opt$input
-} else {
-out_file <- opt$out
+  stop("Needs output file", call.=FALSE)
 }
 # remotes::install_github("barnabywalker/kewr")
 species_csv <- opt$input # Input csv
+out_file <- opt$out
 col_name <- opt$colname # Column name for IDs in dataset (will default to 'ID')
 
 temp_output_folder <- file.path(dirname(species_csv), 'name matching temp outputs')

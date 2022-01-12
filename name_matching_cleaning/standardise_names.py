@@ -6,7 +6,7 @@ import pandas as pd
 path_here = os.path.dirname(os.path.abspath(__file__))
 
 
-def standardise_names_in_column(column_to_standardise: str, input_file: str, output_file=None):
+def standardise_names_in_column(column_to_standardise: str, input_file: str, output_file: str):
     if output_file is None:
         output_file = input_file
     print(path_here)
@@ -25,7 +25,6 @@ def batch_standardise_names(column_to_standardise: str, input_file: str, output_
     # TODO: Needs finishing
 
     for i in range(0, len(batches)):
-
         print(i)
         filename = str(i) + ".csv"
         batch_file = os.path.join(matching_data_dir, filename)
@@ -34,7 +33,8 @@ def batch_standardise_names(column_to_standardise: str, input_file: str, output_
         print(batch)
         standardise_names_in_column(column_to_standardise, batch_file, batch_file)
 
-def get_accepted_name_info_from_IDS(column_to_standardise: str, input_file: str, output_file=None):
+
+def get_accepted_name_info_from_IDS(column_to_standardise: str, input_file: str, output_file: str):
     if output_file is None:
         output_file = input_file
     print(path_here)
@@ -43,4 +43,3 @@ def get_accepted_name_info_from_IDS(column_to_standardise: str, input_file: str,
     command = f'Rscript "{r_script}" --input "{input_file}" --out "{output_file}" --colname "{column_to_standardise}"'
 
     subprocess.call(command, shell=True)
-
