@@ -41,19 +41,9 @@ def prepare_usda_common_names(families_of_interest=None):
     if families_of_interest is None:
         families_of_interest = ['Apocynaceae', 'Rubiaceae']
 
-    def first_cleaning(given_name: str) -> str:
-        out = given_name.replace(' ×', ' ')
-        return out
-
-    def second_cleaning(given_name: str) -> str:
-        out = given_name.replace('×', '')
-        return out
-
     # Copied from https://plants.usda.gov/csvdownload?plantLst=plantCompleteList
     usda_df = pd.read_csv(initial_USDA_csv)
-    usda_df.drop(columns=['Symbol', 'Synonym Symbol', 'X'], inplace=True)
-    usda_df['Scientific Name with Author'] = usda_df['Scientific Name with Author'].apply(first_cleaning)
-    usda_df['Scientific Name with Author'] = usda_df['Scientific Name with Author'].apply(second_cleaning)
+    usda_df.drop(columns=['Symbol', 'Synonym Symbol'], inplace=True)
     usda_df = usda_df.rename(columns={'Common Name': 'USDA_Snippet'})
     usda_df = usda_df.dropna(subset=['USDA_Snippet'])
     usda_df = usda_df[usda_df['Family'].str.contains('|'.join(families_of_interest))]
