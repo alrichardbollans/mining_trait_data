@@ -162,7 +162,7 @@ def compile_all_hits(output_csv: str) -> pd.DataFrame:
     for col in sources_cols:
         merged[col] = merged[col].astype('string')
         merged[col] = merged[col].fillna('')
-    merged.to_csv(output_csv)
+
     merged['Sources'] = merged[sources_cols].agg(':'.join, axis=1)
     merged.drop(columns=sources_cols, inplace=True)
 
