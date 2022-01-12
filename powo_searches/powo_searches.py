@@ -8,7 +8,7 @@ from name_matching_cleaning import clean_ids
 path_here = os.path.dirname(os.path.abspath(__file__))
 
 
-def search_powo(search_terms: str, output_file: str):
+def search_powo(search_terms: str, temp_output_file: str, clean_output_file: str):
     '''
 
     :param search_terms: string of terms e.g. 'poison,poisonous,toxic,deadly'
@@ -16,9 +16,11 @@ def search_powo(search_terms: str, output_file: str):
     :return:
     '''
     r_script = os.path.join(path_here, 'powo_search.R')
-    command = f'Rscript "{r_script}" --out "{output_file}" --searchterms "{search_terms}"'
+    command = f'Rscript "{r_script}" --out "{temp_output_file}" --searchterms "{search_terms}"'
 
     subprocess.call(command, shell=True)
+
+    clean_powo_output(temp_output_file, clean_output_file)
 
 
 def clean_powo_output(powo_search_output_csv: str, output_csv: str):
