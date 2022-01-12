@@ -51,6 +51,7 @@ def prepare_usda_common_names(families_of_interest=None):
 
     # Copied from https://plants.usda.gov/csvdownload?plantLst=plantCompleteList
     usda_df = pd.read_csv(initial_USDA_csv)
+    usda_df.drop(columns=['Symbol', 'Synonym Symbol', 'X'], inplace=True)
     usda_df['Scientific Name with Author'] = usda_df['Scientific Name with Author'].apply(first_cleaning)
     usda_df['Scientific Name with Author'] = usda_df['Scientific Name with Author'].apply(second_cleaning)
     usda_df = usda_df.rename(columns={'Common Name': 'USDA_Snippet'})
@@ -58,14 +59,14 @@ def prepare_usda_common_names(families_of_interest=None):
     usda_df = usda_df[usda_df['Family'].str.contains('|'.join(families_of_interest))]
     usda_df.to_csv(cleaned_USDA_csv)
 
-    standardise_names_in_column('Scientific Name with Author', cleaned_USDA_csv, cleaned_USDA_accepted_csv)
+    standardise_names_in_column('Scientific.Name.with.Author', cleaned_USDA_csv, cleaned_USDA_accepted_csv)
 
     accepted_usda_df = pd.read_csv(cleaned_USDA_accepted_csv)
     accepted_usda_df = accepted_usda_df.dropna(subset=['Accepted_Name'])
     accepted_usda_df = accepted_usda_df[accepted_usda_df['Accepted_Rank'] == 'Species']
     accepted_usda_df['Source'] = 'USDA Plants Database'
 
-    accepted_usda_df.drop(columns=['Symbol', 'Synonym.Symbol', 'X'], inplace=True)
+    accepted_usda_df.drop(columns=['X'], inplace=True)
 
     accepted_usda_df.to_csv(cleaned_USDA_accepted_csv)
 
@@ -208,9 +209,12 @@ def main():
 
     # Get lists
     get_wiki_common_names(species_list)
+    print('Finished getting wiki names')
     get_powo_common_names(species_list, species_data['Accepted_ID'].values)
+    print('Finished getting powo names')
 
     standardise_names()
+    print('Finished standardising names')
 
     compile_all_hits(output_common_names_csv)
 
