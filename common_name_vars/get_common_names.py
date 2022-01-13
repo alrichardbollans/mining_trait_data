@@ -113,7 +113,7 @@ def get_powo_common_names(species_names: List[str], species_ids: List[str]) -> p
                 snippet = mystr[i - 1:i + len(common_name_section) + 1]
                 out_dict['Name'].append(name)
                 out_dict['POWO_Snippet'].append(snippet)
-                out_dict['Source'].append('POWO pages:' + str(id))
+                out_dict['Source'].append('POWO pages(' + str(id) +')')
         except HTTPError:
             print(f'Couldnt find id: {species_ids[i]}')
     df = pd.DataFrame(out_dict)
@@ -135,9 +135,8 @@ def standardise_names():
     prepare_common_names_spp_ppa()
 
 
-
 def main():
-    # # TODO: Note powo, wikipedia and USDA data is specific to our study
+    # # # TODO: Note powo, wikipedia and USDA data is specific to our study
     species_data = pd.read_csv(input_species_csv)
     species_data.set_index('Accepted_Name', inplace=True)
     species_list = species_data.index
@@ -157,7 +156,7 @@ def main():
     wiki_hits = pd.read_csv(wiki_common_names_temp_output_accepted_csv)
 
     all_dfs = [usda_hits, powo_hits, wiki_hits, spp_ppa_df]
-    compile_hits(all_dfs,output_common_names_csv)
+    compile_hits(all_dfs, output_common_names_csv)
 
 
 if __name__ == '__main__':

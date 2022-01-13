@@ -4,7 +4,7 @@ import pandas as pd
 from pkg_resources import resource_filename
 
 from name_matching_cleaning import clean_ids, compile_hits
-from powo_searches import search_powo, clean_powo_output
+from powo_searches import search_powo
 
 ### Inputs
 
@@ -18,7 +18,7 @@ littox2_csv = os.path.join(inputs_path, 'littox_matched_2.csv')
 temp_outputs_path = resource_filename(__name__, 'temp_outputs')
 littox_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'littox_accepted.csv')
 powo_search_temp_output_csv = os.path.join(temp_outputs_path, 'powo_poisons.csv')
-powo_search_temp_output_cleaned_csv = os.path.join(temp_outputs_path, 'powo_poisons_accepted.csv')
+powo_search_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'powo_poisons_accepted.csv')
 
 ### Outputs
 output_path = resource_filename(__name__, 'outputs')
@@ -51,14 +51,13 @@ def prepare_littox_poisons() -> pd.DataFrame:
 
 
 def get_powo_poisons():
-    search_powo('poison,poisonous,toxic,deadly', powo_search_temp_output_csv)
-    clean_powo_output(powo_search_temp_output_csv, powo_search_temp_output_cleaned_csv)
+    search_powo('poison,poisonous,toxic,deadly', powo_search_temp_output_csv, powo_search_temp_output_accepted_csv, )
 
 
 def main():
     get_powo_poisons()
     prepare_littox_poisons()
-    powo_hits = pd.read_csv(powo_search_temp_output_cleaned_csv)
+    powo_hits = pd.read_csv(powo_search_temp_output_accepted_csv)
     littox_hits = pd.read_csv(littox_temp_output_accepted_csv)
     compile_hits([powo_hits, littox_hits], output_poison_csv)
 

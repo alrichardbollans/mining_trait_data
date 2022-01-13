@@ -3,16 +3,18 @@ import subprocess
 
 import pandas as pd
 
-from name_matching_cleaning import clean_ids
+from name_matching_cleaning import col_names, standardise_names_in_column, filter_out_ranks
 
 path_here = os.path.dirname(os.path.abspath(__file__))
 
 
-def search_powo(search_terms: str, temp_output_file: str, clean_output_file: str):
+def search_powo(search_terms: str, temp_output_file: str, accepted_output_file: str):
+    # Would be better to search for all and then find accepted names
     '''
 
+    :param accepted_output_file:
+    :param temp_output_file:
     :param search_terms: string of terms e.g. 'poison,poisonous,toxic,deadly'
-    :param output_file:
     :return:
     '''
     r_script = os.path.join(path_here, 'powo_search.R')
@@ -20,15 +22,12 @@ def search_powo(search_terms: str, temp_output_file: str, clean_output_file: str
 
     subprocess.call(command, shell=True)
 
-    clean_powo_output(temp_output_file, clean_output_file)
-
-
-def clean_powo_output(powo_search_output_csv: str, output_csv: str):
-    powo_poisons = pd.read_csv(powo_search_output_csv)
-    powo_poisons['fqId'] = powo_poisons['fqId'].apply(clean_ids)
+    powo_poisons = pd.read_csv(temp_output_file)
     powo_poisons.rename(
-        columns={'snippet': 'powo_Snippet', 'name': 'Accepted_Name', 'fqId': 'Accepted_ID', 'url': 'Source',
-                 'rank': 'Rank', 'family': 'Family'},
+        columns={'snippet': 'powo_Snippet',
+                 'url': col_names['single_source'], 'family': 'Family'},
         inplace=True)
-    powo_poisons['Source'] = 'POWO: ' + powo_poisons['Source'].astype(str)
-    powo_poisons.to_csv(output_csv)
+    powo_poisons['Source'] = 'POWO pages(' + powo_poisons['Source'].astype(str) + ')'
+
+    powo_poisons.to_csv(temp_output_file)
+    standardise_names_in_column('name', temp_output_file, accepted_output_file)

@@ -12,7 +12,7 @@ option_list = list(
     make_option(c("-o", "--out"), type="character", default="powo_search_out.csv",
               help="output file name [default= %default]", metavar="character"),
     make_option(c("-s", "--searchterms"), type="list", default=NULL,
-              help="list of searchterms to search for. Pass as e.g. \'poisonous,poison\'", metavar="character"),
+              help="list of searchterms to search for. Pass as e.g. \'poisonous,poison\'", metavar="character")
 );
 
 opt_parser = OptionParser(option_list=option_list);

@@ -24,7 +24,7 @@ get_accepted_info <- function(ipni_id) {
     accepted_species=NA_character_,
     accepted_species_id=NA_character_
   )
-  print(ipni_id)
+  
   # lookup_wcvp breaks when taxon is family.
   #family_ids = c('30000032-2','319342-2', '30032120-2')
   if (is.na(ipni_id) || ipni_id == ""){

@@ -4,7 +4,7 @@ import pandas as pd
 from pkg_resources import resource_filename
 
 from name_matching_cleaning import compile_hits
-from powo_searches import search_powo, clean_powo_output
+from powo_searches import search_powo
 
 ### Inputs
 

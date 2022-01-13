@@ -60,7 +60,7 @@ def search_for_common_names(species_list: List[str], output_csv: str) -> pd.Data
                     snippet = page_texts[source][i - 1:i + len(sp) + 1]
                     snippets.append(snippet)
             if len(hits) > 0:
-                out_dict['Source'].append("Wiki:"+str(hits))
+                out_dict['Source'].append("Wiki ("+str(hits)+")")
                 out_dict['Wiki_Snippet'].append(str(snippets))
                 out_dict['Name'].append(sp)
 
