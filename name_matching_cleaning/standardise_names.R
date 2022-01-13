@@ -3,6 +3,7 @@
 # Credit to https://github.com/barnabywalker/latin_america_antimalarials_analysis/blob/main/analysis/01_prepare_names.R
 
 # This script takes an input file of plant data and finds accepted names and ids for the given plants.
+# Takes an input csv with a 'Name' column and outputs a csv with an additional accepted info columns
 
 # libraries ----
 library(here)      # handle file paths
@@ -11,14 +12,9 @@ library(readr)     # read text files
 library(jsonlite)  # handle json format
 library(tidyr)     # reshape data
 library(purrr)     # map functions
-#library(ape)       # handle phylogenies
-#library(rgbif)     # get higher taxonomy from GBIF backbone
 library(stringr)   # handle string data
 library(kewr)      # request kew data
 library(tibble)    # get data into nice tables
-#library(progress)  # make nice progress bars
-
-
 
 source(here("name_matching_cleaning/helper_functions.R"))
 library(optparse)
@@ -35,9 +31,6 @@ option_list = list(
 opt_parser = OptionParser(option_list=option_list);
 opt = parse_args(opt_parser);
 
-
-
-# Takes an input csv with a 'Name' column and outputs a csv with an additional accepted info columns
 if (is.null(opt$input)) {
   stop("Needs input file", call.=FALSE)
 }
@@ -56,29 +49,28 @@ dir.create(temp_output_folder)
 spp_df = read.csv(species_csv, header=T,sep=",")
 species_csv
 
-
 spp = spp_df[[col_name]]
 spp = as.character(spp)
 
-#clean names
+
 full_matches <- kewr::match_knms(spp)
 full_matches = kewr::tidy(full_matches)
 # 'full_matches'
 # full_matches
 
 # show the taxa with no matches
-unmatched <- filter(full_matches, ! matched)
+unmatched <- dplyr::filter(full_matches, ! matched)
 # These are names initially not given any matching by match_knms function
 # 'unmatched'
 # unmatched
 
 # resolve unmatched names using a manual matching file
-missing_names <- read_json(here("name_matching_cleaning/matching data/name_match_missing.json"))
+missing_names <- jsonlite::read_json(here("name_matching_cleaning/matching data/name_match_missing.json"))
 
 # Uses missing_names via check_id function (from helper functions)
 matched_names <-
  full_matches %>%
- mutate(ipni_id=map2_chr(submitted, ipni_id, check_id))
+ mutate(ipni_id=purrr::map2_chr(submitted, ipni_id, check_id))
 
 # show the taxa with multiple matches
 multiple_matches <-
@@ -91,7 +83,7 @@ multiple_matches
 
 # resolve multiple matches with a manual matching file
 # Some multiple matches need resolving to unaccepted ids first here and then correcting in mannual match correction later.
-match_resolutions <- read_json(here("name_matching_cleaning/matching data/name_match_multiples.json"))
+match_resolutions <- jsonlite::read_json(here("name_matching_cleaning/matching data/name_match_multiples.json"))
 
 
 matched_names <-
@@ -124,7 +116,7 @@ unresolved_matched_multiples %>%
     write_csv(here(unresolved_matched_multiples_file))
 
 # manually fix a couple matches
-match_correction <- read_json(here("name_matching_cleaning/matching data/manual_match_correction.json"))
+match_correction <- jsonlite::read_json(here("name_matching_cleaning/matching data/manual_match_correction.json"))
 
 matched_names <-
   matched_names %>%
@@ -163,12 +155,6 @@ if (nrow(unmatched_data)>0) {
   warning("Not all names matched --- check temp outputs", call.=FALSE)
 }
 
-### NOTE: couple of issues with samples (Antirhea putaminosa (F. Muell.) F. Muell.) and (Aspidosperma gomezianum A. DC.)
-# They have a match_id different to accepted_id
-if(! all(accepted_names$accepted_id == accepted_names$match_id)){
-    warning("Some accepted and match ids differ --- check temp outputs", call.=FALSE)
-
-}
 
 # First reorder accepted_names to match input dataframe
 ordered_idx <- match(spp_df[[col_name]],accepted_names$submitted)

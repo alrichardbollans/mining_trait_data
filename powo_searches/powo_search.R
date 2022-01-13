@@ -13,10 +13,6 @@ option_list = list(
               help="output file name [default= %default]", metavar="character"),
     make_option(c("-s", "--searchterms"), type="list", default=NULL,
               help="list of searchterms to search for. Pass as e.g. \'poisonous,poison\'", metavar="character"),
-    make_option(c("-k", "--keywords"), type="list", default=NULL,
-              help="list of keywords to use, not yet implemented.", metavar="character"),
-    make_option(c("-f", "--filters"), type="list", default=NULL,
-              help="list of filters to use, not yet implemented.", metavar="character")
 );
 
 opt_parser = OptionParser(option_list=option_list);
@@ -82,13 +78,6 @@ for(st in searchterms){
   query <- list('distribution'=st)
   new <- search_query(query,new)
 }
-
-
-#get_keywords("powo")
-
-#r <- kewr::search_powo(list("characteristic"="poisonous"))
-#get_filters("powo")
-# use keywords to search POWO when we know exactly what part of the species description we want to query
 
 if(! nrow(new)== 0){
 

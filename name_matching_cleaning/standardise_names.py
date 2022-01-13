@@ -7,8 +7,6 @@ path_here = os.path.dirname(os.path.abspath(__file__))
 
 
 def standardise_names_in_column(column_to_standardise: str, input_file: str, output_file: str):
-    if output_file is None:
-        output_file = input_file
     if " " in column_to_standardise:
         print('This will likely raise an error. R imports spaces as ".". Suggest changing spaces to full stops.')
     print(path_here)
@@ -37,8 +35,6 @@ def batch_standardise_names(column_to_standardise: str, input_file: str, output_
 
 
 def get_accepted_name_info_from_IDS(column_to_standardise: str, input_file: str, output_file: str):
-    if output_file is None:
-        output_file = input_file
     print(path_here)
     print(input_file)
     r_script = os.path.join(path_here, 'standardise_ids.R')

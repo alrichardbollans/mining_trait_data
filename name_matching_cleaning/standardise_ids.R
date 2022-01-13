@@ -11,14 +11,9 @@ library(readr)     # read text files
 library(jsonlite)  # handle json format
 library(tidyr)     # reshape data
 library(purrr)     # map functions
-#library(ape)       # handle phylogenies
-#library(rgbif)     # get higher taxonomy from GBIF backbone
 library(stringr)   # handle string data
 library(kewr)      # request kew data
 library(tibble)    # get data into nice tables
-#library(progress)  # make nice progress bars
-
-
 
 source(here("name_matching_cleaning/helper_functions.R"))
 library(optparse)
@@ -34,8 +29,6 @@ option_list = list(
 
 opt_parser = OptionParser(option_list=option_list);
 opt = parse_args(opt_parser);
-
-
 
 # Takes an input csv with a 'Name' column and outputs a csv with an additional accepted info columns
 if (is.null(opt$input)) {
@@ -55,8 +48,6 @@ dir.create(temp_output_folder)
 # load species names to query
 spp_df = read.csv(species_csv, header=T,sep=",")
 species_csv
-
-print(colnames(spp_df))
 
 nested = spp_df %>%
   nest_by(!!sym(col_name))
