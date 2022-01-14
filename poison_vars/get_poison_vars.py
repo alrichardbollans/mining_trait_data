@@ -40,11 +40,9 @@ def prepare_littox_poisons() -> pd.DataFrame:
     littox_db1 = littox_db1.dropna(subset=['id'])
     littox_db2 = littox_db2.dropna(subset=['id'])
 
-    littox_db1 = littox_db1[littox_db1['Rank'] == 'SPECIES']
-    littox_db2 = littox_db2[littox_db2['Rank'] == 'SPECIES']
-
     merged = pd.merge(littox_db1, littox_db2, how="inner")
     merged['Source'] = 'Littox'
+    # Note these IDs aren't actually accepted
     merged.rename(columns={'id': 'Accepted_ID', 'Scientific Name': 'Accepted_Name'}, inplace=True)
     merged.to_csv(littox_temp_output_accepted_csv)
     return merged
