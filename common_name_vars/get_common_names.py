@@ -13,7 +13,8 @@ from name_matching_cleaning import standardise_names_in_column, clean_ids, get_a
 
 ### Inputs
 inputs_path = resource_filename(__name__, 'inputs')
-input_species_csv = os.path.join(inputs_path, 'clean.csv')
+inputs_species_path = resource_filename(__name__, '../inputs')
+input_species_csv = os.path.join(inputs_species_path, 'standardised_order.csv')
 initial_USDA_csv = os.path.join(inputs_path, 'USDA Plants Database.csv')
 ppa_africa_csv = os.path.join(inputs_path, 'PPAfrica-botswana-commonnames', 'vernacularname.txt')
 species_profile_csv = os.path.join(inputs_path, 'SpeciesProfileVernacular', 'vernacular.tab')
