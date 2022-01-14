@@ -16,7 +16,7 @@ library(stringr)   # handle string data
 library(kewr)      # request kew data
 library(tibble)    # get data into nice tables
 
-source(here("name_matching_cleaning/helper_functions.R"))
+
 library(optparse)
 
 option_list = list(
@@ -25,7 +25,9 @@ option_list = list(
     make_option(c("-i", "--input"), type="list", default=NULL,
               help="input file name", metavar="character"),
     make_option(c("-c", "--colname"), type="list", default='Name',
-              help="name of Name column", metavar="character")
+              help="name of Name column", metavar="character"),
+    make_option(c("-p", "--packagepath"), type="character",
+              help="Path to current package/script", metavar="character")
 );
 
 opt_parser = OptionParser(option_list=option_list);
@@ -41,6 +43,11 @@ if (is.null(opt$out)) {
 species_csv <- opt$input # Input csv
 out_file <- opt$out
 col_name <- opt$colname # Column name for plant names in dataset (will default to 'Name')
+path_here <- opt$packagepath
+
+print(path_here)
+
+source(file.path(path_here,"helper_functions.R"))
 
 temp_output_folder <- file.path(dirname(species_csv), 'name matching temp outputs')
 dir.create(temp_output_folder)
@@ -65,7 +72,7 @@ unmatched <- dplyr::filter(full_matches, ! matched)
 # unmatched
 
 # resolve unmatched names using a manual matching file
-missing_names <- jsonlite::read_json(here("name_matching_cleaning/matching data/name_match_missing.json"))
+missing_names <- jsonlite::read_json(file.path(path_here,"matching data/name_match_missing.json"))
 
 # Uses missing_names via check_id function (from helper functions)
 matched_names <-
@@ -83,7 +90,7 @@ multiple_matches
 
 # resolve multiple matches with a manual matching file
 # Some multiple matches need resolving to unaccepted ids first here and then correcting in mannual match correction later.
-match_resolutions <- jsonlite::read_json(here("name_matching_cleaning/matching data/name_match_multiples.json"))
+match_resolutions <- jsonlite::read_json(file.path(path_here,"matching data/name_match_multiples.json"))
 
 
 matched_names <-
@@ -116,7 +123,7 @@ unresolved_matched_multiples %>%
     write_csv(here(unresolved_matched_multiples_file))
 
 # manually fix a couple matches
-match_correction <- jsonlite::read_json(here("name_matching_cleaning/matching data/manual_match_correction.json"))
+match_correction <- jsonlite::read_json(file.path(path_here,"matching data/manual_match_correction.json"))
 
 matched_names <-
   matched_names %>%

@@ -5,6 +5,7 @@ import pandas as pd
 
 path_here = os.path.dirname(os.path.abspath(__file__))
 
+# TODO: Resolve all instances of multiple matches
 
 def standardise_names_in_column(column_to_standardise: str, input_file: str, output_file: str):
     if " " in column_to_standardise:
@@ -12,7 +13,7 @@ def standardise_names_in_column(column_to_standardise: str, input_file: str, out
     print(path_here)
     print(input_file)
     r_script = os.path.join(path_here, 'standardise_names.R')
-    command = f'Rscript "{r_script}" --input "{input_file}" --out "{output_file}" --colname "{column_to_standardise}"'
+    command = f'Rscript "{r_script}" --input "{input_file}" --out "{output_file}" --colname "{column_to_standardise}" --packagepath "{path_here}"'
 
     subprocess.call(command, shell=True)
 
