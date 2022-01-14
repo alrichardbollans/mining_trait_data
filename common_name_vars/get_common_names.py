@@ -137,7 +137,8 @@ def standardise_names():
 
 
 def main():
-    # # # TODO: Note powo, wikipedia and USDA data is specific to our study
+    # TODO: Note powo, wikipedia and USDA data is specific to our study
+    # TODO: Maybe worth using accepted species as well as accepted name
     species_data = pd.read_csv(input_species_csv)
     species_data.set_index('Accepted_Name', inplace=True)
     species_list = species_data.index

@@ -1,10 +1,10 @@
 ,Accepted_ID,Accepted_Name,Accepted_Species,USDA_Snippet,POWO_Snippet,Wiki_Snippet,PPA_Snippet,SPP_Snippet,Accepted_Rank,Sources
-0,76369-1,Adenium obesum,Adenium obesum,desert-rose,,"['""Adenium obesum""']",,,Species,USDA Plants Database::Wiki:['en: List_of_plants_by_common_name']::
+0,76369-1,Adenium obesum,Adenium obesum,desert-rose,,"['""Adenium obesum""']",,,Species,USDA Plants Database::Wiki (['en: List_of_plants_by_common_name'])::
 1,911695-1,Aidia racemosa,Aidia racemosa,racemose aidia,,,,,Species,USDA Plants Database::::
 2,76468-1,Allamanda blanchetii,Allamanda blanchetii,purple allamanda,,,,,Species,USDA Plants Database::::
 3,76625-1,Alyxia bracteolosa,Alyxia bracteolosa,bracteolate alyxia,,,,,Species,USDA Plants Database::::
 4,319065-2,Allamanda cathartica,Allamanda cathartica,golden trumpet," <section id=""vernacular-names"" class=""c-article-section"">
-","['""Allamanda cathartica""']",,Golden trumpet vine:en,Species,USDA Plants Database:POWO pages:319065-2:Wiki:['sv: Lista_över_växter/A']::SpeciesProfileVernacular
+","['""Allamanda cathartica""']",,Golden trumpet vine:en,Species,USDA Plants Database:POWO pages(319065-2):Wiki (['sv: Lista_över_växter/A'])::SpeciesProfileVernacular
 5,76556-1,Alstonia macrophylla,Alstonia macrophylla,deviltree,,,,,Species,USDA Plants Database::::
 6,76487-1,Allamanda schottii,Allamanda schottii,bush allamanda,,,,,Species,USDA Plants Database::::
 7,76804-1,Alyxia stellata,Alyxia stellata,Maile,,,,,Species,USDA Plants Database::::
@@ -43,28 +43,28 @@
 40,77691-1,Carissa carandas,Carissa carandas,karanda,,,,,Species,USDA Plants Database::::
 41,47910-2,Casasia clusiifolia,Casasia clusiifolia,sevenyear apple,,,,,Species,USDA Plants Database::::
 42,77756-1,Carissa spinarum,Carissa spinarum,Egyptian carissa," <section id=""vernacular-names"" class=""c-article-section"">
-",,Num-num:en,,Species,USDA Plants Database:POWO pages:77756-1::PPAfrica-botswana-commonnames:
+",,Num-num:en,,Species,USDA Plants Database:POWO pages(77756-1)::PPAfrica-botswana-commonnames:
 43,77727-1,Carissa macrocarpa,Carissa macrocarpa,amatungulu,,,,,Species,USDA Plants Database::::
 44,50018-2,Catesbaea melanocarpa,Catesbaea melanocarpa,tropical lilythorn,,,,,Species,USDA Plants Database::::
 45,745893-1,Catesbaea parviflora,Catesbaea parviflora,smallflower lilythorn,,,,,Species,USDA Plants Database::::
 46,77880-1,Catharanthus roseus,Catharanthus roseus,Madagascar periwinkle," <section id=""vernacular-names"" class=""c-article-section"">
-","['""Catharanthus roseus""']",,Madagascar periwinkle:en,Species,USDA Plants Database:POWO pages:77880-1:Wiki:['sv: Lista_över_växter/R']::SpeciesProfileVernacular
+","['""Catharanthus roseus""']",,Madagascar periwinkle:en,Species,USDA Plants Database:POWO pages(77880-1):Wiki (['sv: Lista_över_växter/R'])::SpeciesProfileVernacular
 47,77893-1,Cerbera floribunda,Cerbera floribunda,kameduangel,,,,,Species,USDA Plants Database::::
 48,77906-1,Cerbera manghas,Cerbera manghas,sea-mango,,,,,Species,USDA Plants Database::::
 49,319140-2,Cephalanthus occidentalis,Cephalanthus occidentalis,common buttonbush,,,,,Species,USDA Plants Database::::
 50,746233-1,Cephalanthus salicifolius,Cephalanthus salicifolius,Mexican buttonbush,,,,,Species,USDA Plants Database::::
 51,56535-2,Chiococca alba,Chiococca alba,West Indian milkberry," <section id=""vernacular-names"" class=""c-article-section"">
-",,,,Species,USDA Plants Database:POWO pages:56535-2:::
+",,,,Species,USDA Plants Database:POWO pages(56535-2):::
 52,56535-2,Chiococca alba,Chiococca alba,pineland milkberry," <section id=""vernacular-names"" class=""c-article-section"">
-",,,,Species,USDA Plants Database:POWO pages:56535-2:::
+",,,,Species,USDA Plants Database:POWO pages(56535-2):::
 53,77148159-1,Wandersong seminervis,Wandersong seminervis,puntaj jayuya,,,,,Species,USDA Plants Database::::
 54,56650-2,Chione venosa,Chione venosa,fatpork,,,,,Species,USDA Plants Database::::
 55,746718-1,Cinchona calisaya,Cinchona calisaya,quinine,,,,,Species,USDA Plants Database::::
 56,58723-2,Cinchona officinalis,Cinchona officinalis,quinine,,,,,Species,USDA Plants Database::::
 57,746872-1,Cinchona pubescens,Cinchona pubescens,quinine," <section id=""vernacular-names"" class=""c-article-section"">
-",,,,Species,USDA Plants Database:POWO pages:746872-1:::
+",,,,Species,USDA Plants Database:POWO pages(746872-1):::
 58,747038-1,Coffea arabica,Coffea arabica,Arabian coffee," <section id=""vernacular-names"" class=""c-article-section"">
-","['>Coffea arabica<', '>Coffea arabica<', '>Coffea arabica<', '""Coffea arabica""']",,Arabica coffee:en,Species,"USDA Plants Database:POWO pages:747038-1:Wiki:['als: Alemannische_Pflanzennamen_(Botanische_Namen)', 'als: Alemannische_Pflanzennamen_(nach_Systematik)', 'als: Alemannische_Pflanzennamen_(Deutsche_Namen)', 'sv: Lista_över_växter/K']::SpeciesProfileVernacular"
+","['>Coffea arabica<', '>Coffea arabica<', '>Coffea arabica<', '""Coffea arabica""']",,Arabica coffee:en,Species,"USDA Plants Database:POWO pages(747038-1):Wiki (['als: Alemannische_Pflanzennamen_(Botanische_Namen)', 'als: Alemannische_Pflanzennamen_(nach_Systematik)', 'als: Alemannische_Pflanzennamen_(Deutsche_Namen)', 'sv: Lista_över_växter/K'])::SpeciesProfileVernacular"
 59,747048-1,Coffea benghalensis,Coffea benghalensis,bengal coffee,,,,,Species,USDA Plants Database::::
 60,747068-1,Coffea canephora,Coffea canephora,robusta coffee,,,,,Species,USDA Plants Database::::
 61,747081-1,Coffea congensis,Coffea congensis,congo coffee,,,,,Species,USDA Plants Database::::
@@ -125,7 +125,7 @@
 116,77176969-1,Galium stebbinsii,Galium stebbinsii,Yolla Bolly bedstraw,,,,,Species,USDA Plants Database::::
 117,749501-1,Galium andrewsii,Galium andrewsii,phloxleaf bedstraw,,,,,Species,USDA Plants Database::::
 118,30007294-2,Galium aparine,Galium aparine,stickywilly," <section id=""vernacular-names"" class=""c-article-section"">
-","['>Galium aparine<', '>Galium aparine<', '>Galium aparine<', '""Galium aparine""']",,Cleavers:en,Species,"USDA Plants Database:POWO pages:30007294-2:Wiki:['als: Alemannische_Pflanzennamen_(Botanische_Namen)', 'als: Alemannische_Pflanzennamen_(nach_Systematik)', 'als: Alemannische_Pflanzennamen_(Deutsche_Namen)', 'sv: Lista_över_växter/S']::SpeciesProfileVernacular"
+","['>Galium aparine<', '>Galium aparine<', '>Galium aparine<', '""Galium aparine""']",,Cleavers:en,Species,"USDA Plants Database:POWO pages(30007294-2):Wiki (['als: Alemannische_Pflanzennamen_(Botanische_Namen)', 'als: Alemannische_Pflanzennamen_(nach_Systematik)', 'als: Alemannische_Pflanzennamen_(Deutsche_Namen)', 'sv: Lista_över_växter/S'])::SpeciesProfileVernacular"
 119,106941-2,Galium argense,Galium argense,Argus bedstraw,,,,,Species,USDA Plants Database::::
 120,749542-1,Galium arkansanum,Galium arkansanum,Arkansas bedstraw,,,,,Species,USDA Plants Database::::
 121,749540-1,Galium aristatum,Galium aristatum,awned bedstraw,,,,,Species,USDA Plants Database::::
@@ -171,7 +171,7 @@
 161,751121-1,Gardenia mannii,Gardenia mannii,Oahu gardenia,,,,,Species,USDA Plants Database::::
 162,750229-1,Galium mexicanum,Galium mexicanum,Mexican bedstraw,,,,,Species,USDA Plants Database::::
 163,750235-1,Galium microphyllum,Galium microphyllum,bracted bedstraw,,,,,Species,USDA Plants Database::::
-164,750253-1,Galium mollugo,Galium mollugo,false baby's breath,,"['""Galium mollugo ']",,,Species,USDA Plants Database::Wiki:['sv: Lista_över_växter/B']::
+164,750253-1,Galium mollugo,Galium mollugo,false baby's breath,,"['""Galium mollugo ']",,,Species,USDA Plants Database::Wiki (['sv: Lista_över_växter/B'])::
 165,750276-1,Galium multiflorum,Galium multiflorum,shrubby bedstraw,,,,,Species,USDA Plants Database::::
 166,107116-2,Galium munzii,Galium munzii,Munz's bedstraw,,,,,Species,USDA Plants Database::::
 167,750280-1,Galium murale,Galium murale,yellow wall bedstraw,,,,,Species,USDA Plants Database::::
@@ -207,7 +207,7 @@
 197,750789-1,Galium uliginosum,Galium uliginosum,fen bedstraw,,,,,Species,USDA Plants Database::::
 198,750796-1,Galium uncinulatum,Galium uncinulatum,bristly bedstraw,,,,,Species,USDA Plants Database::::
 199,750800-1,Galium uniflorum,Galium uniflorum,oneflower bedstraw,,,,,Species,USDA Plants Database::::
-200,750829-1,Galium verum,Galium verum,Yellow Spring bedstraw,,"['""Galium verum ', '""Galium verum""']",,,Species,"USDA Plants Database::Wiki:['lb: Lëscht_vu_lëtzebuergesche_Planzennimm', 'sv: Lista_över_växter/G']::"
+200,750829-1,Galium verum,Galium verum,Yellow Spring bedstraw,,"['""Galium verum ', '""Galium verum""']",,,Species,"USDA Plants Database::Wiki (['lb: Lëscht_vu_lëtzebuergesche_Planzennimm', 'sv: Lista_över_växter/G'])::"
 201,77177145-1,Galium verrucosum,Galium verrucosum,warty bedstraw,,,,,Species,USDA Plants Database::::
 202,750836-1,Galium virgatum,Galium virgatum,southwestern bedstraw,,,,,Species,USDA Plants Database::::
 203,751323-1,Gardenia volkensii,Gardenia volkensii,common gardenia,,,,,Species,USDA Plants Database::::
@@ -227,7 +227,7 @@
 217,117176-2,Hamelia axillaris,Hamelia axillaris,balsamillo,,,,,Species,USDA Plants Database::::
 218,117868-2,Haplophyton crooksii,Haplophyton crooksii,cockroachplant,,,,,Species,USDA Plants Database::::
 219,752194-1,Hamelia patens,Hamelia patens,scarletbush," <section id=""vernacular-names"" class=""c-article-section"">
-",,,,Species,USDA Plants Database:POWO pages:752194-1:::
+",,,,Species,USDA Plants Database:POWO pages(752194-1):::
 220,328991-2,Hancornia speciosa,Hancornia speciosa,mangabeira,,,,,Species,USDA Plants Database::::
 221,754613-1,Kadua acuminata,Kadua acuminata,au,,,,,Species,USDA Plants Database::::
 222,752243-1,Hedyotis aimiriikensis,Hedyotis aimiriikensis,Aimeliik starviolet,,,,,Species,USDA Plants Database::::
@@ -290,7 +290,7 @@
 279,753469-1,Hydnophytum longiflorum,Hydnophytum longiflorum,longflowered ant plant,,,,,Species,USDA Plants Database::::
 280,753678-1,Ixora acuminata,Ixora acuminata,bola de nieve,,,,,Species,USDA Plants Database::::
 281,753825-1,Ixora casei,Ixora casei,everblooming ixora,,,,,Species,USDA Plants Database::::
-282,753844-1,Ixora coccinea,Ixora coccinea,scarlet jungleflame,,"['""Ixora coccinea""']",,,Species,USDA Plants Database::Wiki:['sv: Lista_över_växter/E']::
+282,753844-1,Ixora coccinea,Ixora coccinea,scarlet jungleflame,,"['""Ixora coccinea""']",,,Species,USDA Plants Database::Wiki (['sv: Lista_över_växter/E'])::
 283,753950-1,Ixora ferrea,Ixora ferrea,palo de hierro,,,,,Species,USDA Plants Database::::
 284,754326-1,Ixora pavetta,Ixora pavetta,torch tree,,,,,Species,USDA Plants Database::::
 285,754516-1,Ixora thwaitesii,Ixora thwaitesii,white jungleflame,,,,,Species,USDA Plants Database::::
@@ -325,7 +325,7 @@
 314,756880-1,Mycetia cauliflora,Mycetia cauliflora,mycetia,,,,,Species,USDA Plants Database::::
 315,914296-1,Neolamarckia cadamba,Neolamarckia cadamba,kadam,,,,,Species,USDA Plants Database::::
 316,80460-1,Nerium oleander,Nerium oleander,oleander," <section id=""vernacular-names"" class=""c-article-section"">
-",['>Nerium oleander<'],,Oleander:en,Species,USDA Plants Database:POWO pages:80460-1:Wiki:['sv: Lista_över_växter/N']::SpeciesProfileVernacular
+",['>Nerium oleander<'],,Oleander:en,Species,USDA Plants Database:POWO pages(80460-1):Wiki (['sv: Lista_över_växter/N'])::SpeciesProfileVernacular
 317,80534-1,Ochrosia oppositifolia,Ochrosia oppositifolia,neisosperma,,,,,Species,USDA Plants Database::::
 318,767136-1,Stenostomum resinosum,Stenostomum resinosum,aquilon,,,,,Species,USDA Plants Database::::
 319,80497-1,Ochrosia compta,Ochrosia compta,holei,,,,,Species,USDA Plants Database::::
@@ -357,7 +357,7 @@
 345,81171-1,Plumeria alba,Plumeria alba,nosegaytree,,,,,Species,USDA Plants Database::::
 346,81256-1,Plumeria obtusa,Plumeria obtusa,Singapore graveyard flower,,,,,Species,USDA Plants Database::::
 347,81256-1,Plumeria obtusa,Plumeria obtusa,Singapore graveyard flower,,,,,Species,USDA Plants Database::::
-348,81275-1,Plumeria rubra,Plumeria rubra,templetree,,"['""Plumeria rubra""']",,,Species,USDA Plants Database::Wiki:['sv: Lista_över_växter/F']::
+348,81275-1,Plumeria rubra,Plumeria rubra,templetree,,"['""Plumeria rubra""']",,,Species,USDA Plants Database::Wiki (['sv: Lista_över_växter/F'])::
 349,88585-2,Echites agglutinatus,Echites agglutinatus,babeiro,,,,,Species,USDA Plants Database::::
 350,77115595-1,Palicourea brachiata,Palicourea brachiata,palo de cachimbo,,,,,Species,USDA Plants Database::::
 351,212816-2,Psychotria glabrata,Psychotria glabrata,Browne's wild coffee,,,,,Species,USDA Plants Database::::
@@ -458,7 +458,7 @@
 446,82013-1,Tabernaemontana aurantiaca,Tabernaemontana aurantiaca,orange milkwood,,,,,Species,USDA Plants Database::::
 447,82055-1,Tabernaemontana citrifolia,Tabernaemontana citrifolia,milkwood,,,,,Species,USDA Plants Database::::
 448,82097-1,Tabernaemontana divaricata,Tabernaemontana divaricata,pinwheelflower,,,,,Species,USDA Plants Database::::
-449,47927-2,Cascabela thevetia,Cascabela thevetia,luckynut,,"['""Cascabela thevetia""']",,,Species,USDA Plants Database::Wiki:['sv: Lista_över_växter/T']::
+449,47927-2,Cascabela thevetia,Cascabela thevetia,luckynut,,"['""Cascabela thevetia""']",,,Species,USDA Plants Database::Wiki (['sv: Lista_över_växter/T'])::
 450,47928-2,Cascabela thevetioides,Cascabela thevetioides,thevetia,,,,,Species,USDA Plants Database::::
 451,767737-1,Timonius corymbosus,Timonius corymbosus,flat-topped timonius,,,,,Species,USDA Plants Database::::
 452,767780-1,Timonius korrensis,Timonius korrensis,Koror timonius,,,,,Species,USDA Plants Database::::
@@ -475,29 +475,29 @@
 463,769766-1,Vangueria madagascariensis,Vangueria madagascariensis,voa vanga,,,,,Species,USDA Plants Database::::
 464,82691-1,Vinca herbacea,Vinca herbacea,herbaceous periwinkle,,,,,Species,USDA Plants Database::::
 465,82697-1,Vinca major,Vinca major,bigleaf periwinkle,,,,,Species,USDA Plants Database::::
-466,82701-1,Vinca minor,Vinca minor,common periwinkle,,"['""Vinca minor ', '""Vinca minor""']",,,Species,"USDA Plants Database::Wiki:['lb: Lëscht_vu_lëtzebuergesche_Planzennimm', 'sv: Lista_över_växter/V']::"
+466,82701-1,Vinca minor,Vinca minor,common periwinkle,,"['""Vinca minor ', '""Vinca minor""']",,,Species,"USDA Plants Database::Wiki (['lb: Lëscht_vu_lëtzebuergesche_Planzennimm', 'sv: Lista_över_växter/V'])::"
 467,94213-1,Asclepias curassavica,Asclepias curassavica,," <section id=""vernacular-names"" class=""c-article-section"">
-","['""Asclepias curassavica""']",,,Species,:POWO pages:94213-1:Wiki:['sv: Lista_över_växter/R']::
+","['""Asclepias curassavica""']",,,Species,:POWO pages(94213-1):Wiki (['sv: Lista_över_växter/R'])::
 468,77433-1,Aspidosperma polyneuron,Aspidosperma polyneuron,," <section id=""vernacular-names"" class=""c-article-section"">
-",,,,Species,:POWO pages:77433-1:::
+",,,,Species,:POWO pages(77433-1):::
 469,1004515-2,Calotropis procera,Calotropis procera,," <section id=""vernacular-names"" class=""c-article-section"">
-","['""Calotropis procera""']",,,Species,:POWO pages:1004515-2:Wiki:['sv: Lista_över_växter/S']::
+","['""Calotropis procera""']",,,Species,:POWO pages(1004515-2):Wiki (['sv: Lista_över_växter/S'])::
 470,82327-1,Tabernaemontana sananho,Tabernaemontana sananho,," <section id=""vernacular-names"" class=""c-article-section"">
-",,,,Species,:POWO pages:82327-1:::
+",,,,Species,:POWO pages(82327-1):::
 471,743001-1,Alibertia edulis,Alibertia edulis,," <section id=""vernacular-names"" class=""c-article-section"">
-",,,,Species,:POWO pages:743001-1:::
+",,,,Species,:POWO pages(743001-1):::
 472,751291-1,Gardenia thunbergia,Gardenia thunbergia,," <section id=""vernacular-names"" class=""c-article-section"">
-",,,White gardenia:en,Species,:POWO pages:751291-1:::SpeciesProfileVernacular
+",,,White gardenia:en,Species,:POWO pages(751291-1):::SpeciesProfileVernacular
 473,30107991-2,Gonzalagunia panamensis,Gonzalagunia panamensis,," <section id=""vernacular-names"" class=""c-article-section"">
-",,,,Species,:POWO pages:30107991-2:::
+",,,,Species,:POWO pages(30107991-2):::
 474,753632-1,Isertia haenkeana,Isertia haenkeana,," <section id=""vernacular-names"" class=""c-article-section"">
-",,,,Species,:POWO pages:753632-1:::
+",,,,Species,:POWO pages(753632-1):::
 475,1215741-2,Ladenbergia macrocarpa,Ladenbergia macrocarpa,," <section id=""vernacular-names"" class=""c-article-section"">
-",,,,Species,:POWO pages:1215741-2:::
+",,,,Species,:POWO pages(1215741-2):::
 476,77115635-1,Palicourea tomentosa,Palicourea tomentosa,," <section id=""vernacular-names"" class=""c-article-section"">
-",,,,Species,:POWO pages:77115635-1:::
-477,97610-1,Gomphocarpus fruticosus,Gomphocarpus fruticosus,,,"['""Gomphocarpus fruticosus""']",,,Species,::Wiki:['sv: Lista_över_växter/B']::
-478,102810-1,Vincetoxicum hirundinaria,Vincetoxicum hirundinaria,,,"['""Vincetoxicum hirundinaria ', '""Vincetoxicum hirundinaria""']",,,Species,"::Wiki:['lb: Lëscht_vu_lëtzebuergesche_Planzennimm', 'sv: Lista_över_växter/T']::"
+",,,,Species,:POWO pages(77115635-1):::
+477,97610-1,Gomphocarpus fruticosus,Gomphocarpus fruticosus,,,"['""Gomphocarpus fruticosus""']",,,Species,::Wiki (['sv: Lista_över_växter/B'])::
+478,102810-1,Vincetoxicum hirundinaria,Vincetoxicum hirundinaria,,,"['""Vincetoxicum hirundinaria ', '""Vincetoxicum hirundinaria""']",,,Species,"::Wiki (['lb: Lëscht_vu_lëtzebuergesche_Planzennimm', 'sv: Lista_över_växter/T'])::"
 479,551326-1,Plicosepalus kalachariensis,Plicosepalus kalachariensis,,,,Acacia mistletoe:en,,Species,:::PPAfrica-botswana-commonnames:
 480,513010-1,Peltophorum africanum,Peltophorum africanum,,,,African Wattle:en,,Species,:::PPAfrica-botswana-commonnames:
 481,513010-1,Peltophorum africanum,Peltophorum africanum,,,,Weeping Wattle:en,,Species,:::PPAfrica-botswana-commonnames:
