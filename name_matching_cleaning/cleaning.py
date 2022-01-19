@@ -57,7 +57,17 @@ def merge_columns(df: pd.DataFrame, new_col: str, old_columns: List[str]):
 
 
 def merge_on_accepted_id(x: pd.DataFrame, y: pd.DataFrame) -> pd.DataFrame:
+
     merged_dfs = pd.merge(x, y, on=col_names['acc_id'], how='outer')
+
+    new_sources_cols = [c for c in merged_dfs.columns.tolist() if (col_names['single_source'] in c)]
+    # # Merge Sources:
+    for col in new_sources_cols:
+        merged_dfs[col] = merged_dfs[col].astype('string')
+        merged_dfs[col] = merged_dfs[col].fillna('')
+    merged_dfs[col_names['sources']] = merged_dfs[new_sources_cols].agg(':'.join, axis=1)
+    source_cols_to_drop = [c for c in new_sources_cols if c != col_names['sources']]
+    merged_dfs.drop(columns=source_cols_to_drop, inplace=True)
 
     acc_cols = [c for c in merged_dfs.columns.tolist() if col_names['acc_name'] in c]
     merged_dfs = merge_columns(merged_dfs, col_names['acc_name'], acc_cols)
@@ -67,6 +77,8 @@ def merge_on_accepted_id(x: pd.DataFrame, y: pd.DataFrame) -> pd.DataFrame:
 
     rank_cols = [c for c in merged_dfs.columns.tolist() if col_names['acc_rank'] in c]
     merged_dfs = merge_columns(merged_dfs, col_names['acc_rank'], rank_cols)
+
+
 
     return merged_dfs
 
@@ -89,21 +101,20 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str):
 
     # Do merges
     merged_dfs = all_dfs[0]
+    merged_dfs[col_names['sources']] = merged_dfs[col_names['single_source']]
+    merged_dfs.drop(columns=[col_names['single_source']], inplace=True)
+
     if len(all_dfs) > 1:
         for i in all_dfs[1:]:
+
             merged_dfs = merge_on_accepted_id(merged_dfs, i)
 
-    new_sources_cols = [c for c in merged_dfs.columns.tolist() if (col_names['single_source'] in c)]
-    # Merge Sources:
-    for col in new_sources_cols:
-        merged_dfs[col] = merged_dfs[col].astype('string')
-        merged_dfs[col] = merged_dfs[col].fillna('')
-    merged_dfs[col_names['sources']] = merged_dfs[new_sources_cols].agg(':'.join, axis=1)
-    source_cols_to_drop = [c for c in new_sources_cols if c != col_names['sources']]
-    merged_dfs.drop(columns=source_cols_to_drop, inplace=True)
 
-    start_cols = [col_names['acc_name'], col_names['acc_id'], col_names['acc_species']]
+
+    start_cols = [col_names['acc_name'], col_names['acc_id'], col_names['acc_species'],col_names['acc_rank']]
     out_dfs = merged_dfs[[c for c in merged_dfs if c in start_cols]
                          + [c for c in merged_dfs if c not in start_cols]]
+    out_dfs = out_dfs[[c for c in out_dfs if c != col_names['sources']]
+                         + [col_names['sources']]]
 
     out_dfs.to_csv(output_csv)
