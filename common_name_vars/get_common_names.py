@@ -2,7 +2,6 @@ import os.path
 import urllib.request
 from urllib.error import HTTPError
 
-import numpy as np
 import pandas as pd
 from typing import List
 
@@ -16,6 +15,7 @@ inputs_path = resource_filename(__name__, 'inputs')
 inputs_species_path = resource_filename(__name__, '../inputs')
 input_species_csv = os.path.join(inputs_species_path, 'standardised_order.csv')
 initial_USDA_csv = os.path.join(inputs_path, 'USDA Plants Database.csv')
+initial_MPNS_csv = os.path.join(inputs_path, 'MPNS V11 subset Apocynaceae + Rubiaceae.csv')
 ppa_africa_csv = os.path.join(inputs_path, 'PPAfrica-botswana-commonnames', 'vernacularname.txt')
 species_profile_csv = os.path.join(inputs_path, 'SpeciesProfileVernacular', 'vernacular.tab')
 
@@ -25,6 +25,7 @@ temp_outputs_path = resource_filename(__name__, 'temp_outputs')
 wiki_common_names_temp_output_csv = os.path.join(temp_outputs_path, 'wiki_common_name_hits.csv')
 powo_common_names_temp_output_csv = os.path.join(temp_outputs_path, 'powo_common_name_hits.csv')
 cleaned_USDA_csv = os.path.join(temp_outputs_path, 'USDA Plants Database_cleaned.csv')
+cleaned_MPNS_csv = os.path.join(temp_outputs_path, 'MPNS Database_cleaned.csv')
 spp_ppa_common_names_temp_output_csv = os.path.join(temp_outputs_path, 'spp_ppa_common_names.csv')
 
 # Standardised versions
@@ -32,7 +33,7 @@ spp_ppa_common_names_temp_output_accepted_csv = os.path.join(temp_outputs_path, 
 wiki_common_names_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'wiki_common_name_hits_accepted.csv')
 powo_common_names_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'powo_common_name_hits_accepted.csv')
 cleaned_USDA_accepted_csv = os.path.join(temp_outputs_path, 'USDA Plants Database_cleaned_accepted.csv')
-
+cleaned_MPNS_accepted_csv = os.path.join(temp_outputs_path, 'MPNS Data_cleaned_accepted.csv')
 ### Outputs
 output_path = resource_filename(__name__, 'outputs')
 output_common_names_csv = os.path.join(output_path, 'list_of_plants_with_common_names.csv')
@@ -42,7 +43,7 @@ def prepare_usda_common_names(families_of_interest=None):
     if families_of_interest is None:
         families_of_interest = ['Apocynaceae', 'Rubiaceae']
 
-    # Copied from https://plants.usda.gov/csvdownload?plantLst=plantCompleteList
+    # # Copied from https://plants.usda.gov/csvdownload?plantLst=plantCompleteList
     usda_df = pd.read_csv(initial_USDA_csv)
     usda_df.drop(columns=['Symbol', 'Synonym Symbol'], inplace=True)
     usda_df = usda_df.rename(columns={'Common Name': 'USDA_Snippet'})
@@ -54,10 +55,9 @@ def prepare_usda_common_names(families_of_interest=None):
 
     accepted_usda_df = pd.read_csv(cleaned_USDA_accepted_csv)
     accepted_usda_df = accepted_usda_df.dropna(subset=['Accepted_Name'])
-    accepted_usda_df = accepted_usda_df[accepted_usda_df['Accepted_Rank'] == 'Species']
     accepted_usda_df['Source'] = 'USDA Plants Database'
 
-    accepted_usda_df.drop(columns=['X'], inplace=True)
+    accepted_usda_df.drop(columns=['Unnamed: 0'], inplace=True)
 
     accepted_usda_df.to_csv(cleaned_USDA_accepted_csv)
 
@@ -88,6 +88,36 @@ def prepare_common_names_spp_ppa() -> pd.DataFrame:
 
     return with_accepted_info
 
+def prepare_MPNS_common_names(families_of_interest=None)->pd.DataFrame:
+    if families_of_interest is None:
+        families_of_interest = ['Apocynaceae', 'Rubiaceae']
+    # TODO: Note this is particular to Rubiaceae and Apocynaceae
+    # Requested from from MPNS
+    # mpns_df = pd.read_csv(initial_MPNS_csv,header=1)
+    # mpns_df.drop(columns=['authority', 'plant_id'], inplace=True)
+    #
+    # mpns_df = mpns_df.dropna(subset=['non_sci_name'])
+    # mpns_df = mpns_df[mpns_df['non_sci_name_type'] == 'common']
+    # mpns_df = mpns_df[mpns_df['family'].str.contains('|'.join(families_of_interest))]
+    #
+    #
+    # mpns_df['non_sci_name'] = mpns_df.groupby(['taxon_name'])['non_sci_name'].transform(lambda x: ':'.join(x))
+    # mpns_df = mpns_df.drop_duplicates()
+    # mpns_df.rename(columns={'non_sci_name': 'MPNS_Snippet'},inplace=True)
+    #
+    # mpns_df.to_csv(cleaned_MPNS_csv)
+    #
+    # standardise_names_in_column('taxon_name', cleaned_MPNS_csv, cleaned_MPNS_accepted_csv)
+
+    accepted_mpns_df = pd.read_csv(cleaned_MPNS_accepted_csv)
+    accepted_mpns_df = accepted_mpns_df.dropna(subset=['Accepted_Name'])
+    accepted_mpns_df['Source'] = 'MPNS'
+    print(accepted_mpns_df)
+    accepted_mpns_df.drop(columns=['Unnamed: 0'], inplace=True)
+
+    accepted_mpns_df.to_csv(cleaned_MPNS_accepted_csv)
+
+    return accepted_mpns_df
 
 def get_powo_common_names(species_names: List[str], species_ids: List[str]) -> pd.DataFrame:
     '''
@@ -131,33 +161,38 @@ def standardise_names():
     standardise_names_in_column('Name', wiki_common_names_temp_output_csv, wiki_common_names_temp_output_accepted_csv)
     standardise_names_in_column('Name', powo_common_names_temp_output_csv, powo_common_names_temp_output_accepted_csv)
 
-    # R imports col names with spaces as full stops
     prepare_usda_common_names()
     prepare_common_names_spp_ppa()
+    prepare_MPNS_common_names()
 
 
 def main():
     # TODO: Note powo, wikipedia and USDA data is specific to our study
     # TODO: Maybe worth using accepted species as well as accepted name
-    species_data = pd.read_csv(input_species_csv)
-    species_data.set_index('Accepted_Name', inplace=True)
-    species_list = species_data.index
+    # species_data = pd.read_csv(input_species_csv)
+    # species_data.set_index('Accepted_Name', inplace=True)
+    # species_list = species_data.index
+    #
+    # # Get lists
+    # get_wiki_common_names(species_list)
+    # print('Finished getting wiki names')
+    # get_powo_common_names(species_list, species_data['Accepted_ID'].values)
+    # print('Finished getting powo names')
+    #
+    # standardise_names()
+    # print('Finished standardising names')
+    #
 
-    # Get lists
-    get_wiki_common_names(species_list)
-    print('Finished getting wiki names')
-    get_powo_common_names(species_list, species_data['Accepted_ID'].values)
-    print('Finished getting powo names')
-
-    standardise_names()
-    print('Finished standardising names')
+    prepare_MPNS_common_names()
+    prepare_usda_common_names()
 
     usda_hits = pd.read_csv(cleaned_USDA_accepted_csv)
     spp_ppa_df = pd.read_csv(spp_ppa_common_names_temp_output_accepted_csv)
     powo_hits = pd.read_csv(powo_common_names_temp_output_accepted_csv)
     wiki_hits = pd.read_csv(wiki_common_names_temp_output_accepted_csv)
+    mpns_hits = pd.read_csv(cleaned_MPNS_accepted_csv)
 
-    all_dfs = [usda_hits, powo_hits, wiki_hits, spp_ppa_df]
+    all_dfs = [mpns_hits,usda_hits, powo_hits, wiki_hits, spp_ppa_df]
     compile_hits(all_dfs, output_common_names_csv)
 
 

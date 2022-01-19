@@ -18,8 +18,13 @@ Python requirements are given in requirements.txt
 Some methods make calls to RScript, so R is required along with a few R packages.
 
 ## Sources
-POWO (2022). "Plants of the World Online. Facilitated by the Royal Botanic Gardens, Kew. Published on the Internet; http://www.plantsoftheworldonline.org/
-Retrieved 10 January 2022."
+Plants of the World Online (2022). Facilitated by the Royal Botanic Gardens, Kew. 
+Published on the Internet; http://www.plantsoftheworldonline.org/
+Accessed 10/01/2022
+
+Royal Botanic Gardens, Kew (2022) Medicinal Plant Names Services, Version 11.
+www.kew.org/mpns 
+Accessed 18/01/22
 
 Kew Species Profiles
 http://creativecommons.org/licenses/by/3.0
@@ -35,3 +40,4 @@ Kattge, J, Boenisch, G, Diaz, S, et al. TRY plant trait database - enhanced cove
 
 Wikipedia, The Free Encyclopedia
 https://en.wikipedia.org/
+Accessed 19/01/22
