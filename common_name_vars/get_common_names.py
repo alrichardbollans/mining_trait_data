@@ -93,21 +93,21 @@ def prepare_MPNS_common_names(families_of_interest=None)->pd.DataFrame:
         families_of_interest = ['Apocynaceae', 'Rubiaceae']
     # TODO: Note this is particular to Rubiaceae and Apocynaceae
     # Requested from from MPNS
-    # mpns_df = pd.read_csv(initial_MPNS_csv,header=1)
-    # mpns_df.drop(columns=['authority', 'plant_id'], inplace=True)
-    #
-    # mpns_df = mpns_df.dropna(subset=['non_sci_name'])
-    # mpns_df = mpns_df[mpns_df['non_sci_name_type'] == 'common']
-    # mpns_df = mpns_df[mpns_df['family'].str.contains('|'.join(families_of_interest))]
-    #
-    #
-    # mpns_df['non_sci_name'] = mpns_df.groupby(['taxon_name'])['non_sci_name'].transform(lambda x: ':'.join(x))
-    # mpns_df = mpns_df.drop_duplicates()
-    # mpns_df.rename(columns={'non_sci_name': 'MPNS_Snippet'},inplace=True)
-    #
-    # mpns_df.to_csv(cleaned_MPNS_csv)
-    #
-    # standardise_names_in_column('taxon_name', cleaned_MPNS_csv, cleaned_MPNS_accepted_csv)
+    mpns_df = pd.read_csv(initial_MPNS_csv,header=1)
+    mpns_df.drop(columns=['authority', 'plant_id'], inplace=True)
+
+    mpns_df = mpns_df.dropna(subset=['non_sci_name'])
+    mpns_df = mpns_df[mpns_df['non_sci_name_type'] == 'common']
+    mpns_df = mpns_df[mpns_df['family'].str.contains('|'.join(families_of_interest))]
+
+
+    mpns_df['non_sci_name'] = mpns_df.groupby(['taxon_name'])['non_sci_name'].transform(lambda x: ':'.join(x))
+    mpns_df = mpns_df.drop_duplicates()
+    mpns_df.rename(columns={'non_sci_name': 'MPNS_Snippet'},inplace=True)
+
+    mpns_df.to_csv(cleaned_MPNS_csv)
+
+    standardise_names_in_column('taxon_name', cleaned_MPNS_csv, cleaned_MPNS_accepted_csv)
 
     accepted_mpns_df = pd.read_csv(cleaned_MPNS_accepted_csv)
     accepted_mpns_df = accepted_mpns_df.dropna(subset=['Accepted_Name'])
