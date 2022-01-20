@@ -22,6 +22,10 @@ Plants of the World Online (2022). Facilitated by the Royal Botanic Gardens, Kew
 Published on the Internet; http://www.plantsoftheworldonline.org/
 Accessed 10/01/2022
 
+The World Checklist of Vascular Plants, a continuously updated resource for exploring global plant diversity
+https://doi.org/10.1038/s41597-021-00997-6
+Accessed 20/01/22
+
 Royal Botanic Gardens, Kew (2022) Medicinal Plant Names Services, Version 11.
 www.kew.org/mpns 
 Accessed 18/01/22
