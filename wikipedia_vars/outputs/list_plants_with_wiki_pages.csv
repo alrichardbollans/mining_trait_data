@@ -1,331 +1,2249 @@
 ,Accepted_Name,Language
-0,Acokanthera schimperi,"['es', 'en', 'fr']"
-1,Adenium multiflorum,['en']
-2,Adenium obesum,"['es', 'en', 'fr', 'pt']"
-3,Alafia multiflora,['en']
-4,Alafia caudata,['en']
-5,Alafia barteri,['en']
-6,Allamanda cathartica,"['es', 'en', 'fr', 'pt']"
-7,Allamanda schottii,"['es', 'en', 'fr']"
-8,Alstonia venenata,['en']
-9,Alstonia angustifolia,"['en', 'fr']"
-10,Alstonia congensis,"['en', 'fr']"
-11,Alstonia boonei,"['es', 'en', 'fr']"
-12,Alstonia macrophylla,"['es', 'en', 'fr']"
-13,Alstonia rupestris,['en']
-14,Alstonia longifolia,['en']
-15,Alstonia scholaris,"['es', 'en', 'fr']"
-16,Alstonia angustiloba,['en']
-17,Alstonia pneumatophora,['en']
-18,Alstonia spectabilis,['es']
-19,Alyxia stellata,['en']
-20,Ambelania acida,['pt']
-21,Amphineurion marginatum,"['es', 'en']"
-22,Amsonia tabernaemontana,"['en', 'fr']"
-23,Anisopus mannii,['en']
-24,Asclepias curassavica,"['es', 'en', 'fr', 'pt']"
-25,Aspidosperma carapanauba,['pt']
-26,Aspidosperma cylindrocarpon,"['es', 'en', 'pt']"
-27,Aspidosperma desmanthum,['pt']
-28,Aspidosperma discolor,['en']
-29,Aspidosperma excelsum,['en']
-30,Aspidosperma tomentosum,['en']
-31,Aspidosperma macrocarpon,['en']
-32,Aspidosperma megalocarpon,"['es', 'en', 'fr']"
-33,Aspidosperma obscurinervium,['pt']
-34,Aspidosperma olivaceum,['en']
-35,Aspidosperma parvifolium,"['en', 'pt']"
-36,Aspidosperma polyneuron,"['es', 'en', 'fr', 'pt']"
-37,Aspidosperma pyrifolium,['pt']
-38,Aspidosperma quebracho-blanco,"['es', 'en', 'fr', 'it', 'pt']"
-39,Aspidosperma ramiflorum,"['en', 'pt']"
-40,Aspidosperma spruceanum,"['es', 'en', 'pt']"
-41,Aspidosperma subincanum,['en']
-42,Aspidosperma tomentosum,['en']
-43,Aspidosperma ulei,"['en', 'pt']"
-44,Baissea axillaris,['en']
-45,Callichilia barteri,['en']
-46,Calotropis procera,"['es', 'en', 'fr', 'pt']"
-47,Calotropis gigantea,"['es', 'en']"
-48,Caralluma fimbriata,"['es', 'en', 'pt']"
-49,Carissa macrocarpa,"['es', 'en', 'fr', 'pt']"
-50,Carissa spinarum,"['en', 'fr', 'pt']"
-51,Carissa carandas,"['es', 'en', 'fr']"
-52,Cascabela thevetia,"['es', 'en', 'fr']"
-53,Catharanthus pusillus,"['en', 'pt']"
-54,Catharanthus roseus,"['es', 'en', 'fr', 'it', 'pt']"
-55,Caudanthera edulis,['fr']
-56,Cerbera manghas,"['es', 'en', 'fr']"
-57,Cerbera odollam,"['es', 'en', 'fr']"
-58,Chonemorpha fragrans,"['es', 'en']"
-59,Craspidospermum verticillatum,"['es', 'en']"
-60,Crioceras dipladeniiflorus,['en']
-61,Cryptolepis cryptolepioides,['en']
-62,Cryptolepis sanguinolenta,"['es', 'en']"
-63,Cryptolepis buchananii,['en']
-64,Decalepis arayalpathra,['en']
-65,Decalepis hamiltonii,"['es', 'en']"
-66,Diplorhynchus condylocarpon,"['es', 'en']"
-67,Dyera costulata,"['es', 'en', 'fr']"
-68,Echites panduratus,['es']
-69,Echites umbellatus,['en']
-70,Eucorymbia alba,"['es', 'en']"
-71,Funtumia elastica,"['en', 'fr']"
-72,Funtumia africana,"['en', 'fr']"
-73,Geissospermum laeve,['pt']
-74,Geissospermum sericeum,['pt']
-75,Gomphocarpus fruticosus,"['es', 'en', 'fr', 'it', 'pt']"
-76,Gymnema sylvestre,"['es', 'en', 'fr', 'it']"
-77,Gymnema elegans,['en']
-78,Hancornia speciosa,"['es', 'en', 'pt']"
-79,Haplophyton crooksii,"['es', 'en']"
-80,Hemidesmus indicus,"['es', 'en', 'pt']"
-81,Himatanthus bracteatus,['en']
-82,Himatanthus obovatus,['en']
-83,Himatanthus revolutus,['en']
-84,Holarrhena floribunda,"['en', 'fr']"
-85,Holarrhena pubescens,"['en', 'fr']"
-86,Holarrhena mitis,['en']
-87,Hoodia gordonii,"['es', 'en', 'fr', 'it']"
-88,Hunteria zeylanica,['en']
-89,Hunteria umbellata,['en']
-90,Ichnocarpus,"['es', 'en', 'pt']"
-91,Ischnolepis natalensis,['en']
-92,Kopsia arborea,['en']
-93,Kopsia singapurensis,"['en', 'fr']"
-94,Kopsia profunda,['en']
-95,Kopsia dasyrachis,['en']
-96,Kopsia larutensis,['en']
-97,Kopsia pauciflora,['en']
-98,Kopsia tenuis,['en']
-99,Lacmellea panamensis,['en']
-100,Landolphia owariensis,"['es', 'en', 'fr']"
-101,Landolphia uniflora,['fr']
-102,Landolphia heudelotii,"['en', 'fr']"
-103,Landolphia dulcis,['en']
-104,Landolphia buchananii,['en']
-105,Landolphia lanceolata,['fr']
-106,Leptadenia pyrotechnica,"['en', 'fr']"
-107,Leptadenia lanceolata,['fr']
-108,Leptadenia madagascariensis,['en']
-109,Macoubea guianensis,['es']
-110,Malouetia tamaquarina,['fr']
-111,Mandevilla boliviensis,"['en', 'fr']"
-112,Marsdenia rostrata,['en']
-113,Marsdenia cundurango,['en']
-114,Melodinus axillaris,['en']
-115,Melodinus fusiformis,['en']
-116,Melodinus acutiflorus,['en']
-117,Microplumeria anomala,['en']
-118,Mondia whitei,['en']
-119,Monolluma quadrangula,['en']
-120,Nerium oleander,"['es', 'en', 'fr', 'it', 'pt']"
-121,Ochrosia moorei,['en']
-122,Ochrosia poweri,['en']
-123,Ochrosia borbonica,"['en', 'fr']"
-124,Ochrosia elliptica,"['en', 'fr']"
-125,Ochrosia oppositifolia,"['en', 'fr']"
-126,Ochrosia glomerata,['en']
-127,Oncinotis tenuiloba,['en']
-128,Pachypodium lamerei,"['es', 'en', 'fr', 'it']"
-129,Parahancornia fasciculata,"['es', 'en']"
-130,Parsonsia eucalyptophylla,['en']
-131,Parsonsia heterophylla,['en']
-132,Parsonsia alboflavescens,['en']
-133,Parsonsia straminea,['en']
-134,Pergularia daemia,"['es', 'en']"
-135,Picralima nitida,"['es', 'en', 'fr']"
-136,Pleiocarpa mutica,['en']
-137,Pleiocarpa pycnantha,['en']
-138,Pleioceras barteri,['en']
-139,Plumeria rubra,"['es', 'en', 'fr', 'it', 'pt']"
-140,Plumeria pudica,"['en', 'fr', 'pt']"
-141,Plumeria obtusa,"['es', 'en', 'fr', 'pt']"
-142,Plumeria alba,"['es', 'en', 'fr', 'it', 'pt']"
-143,Prestonia amazonica,['en']
-144,Pteralyxia laurifolia,['en']
-145,Rauvolfia verticillata,"['es', 'en']"
-146,Rauvolfia sumatrana,['en']
-147,Rauvolfia tetraphylla,"['es', 'en']"
-148,Rauvolfia sandwicensis,"['es', 'en']"
-149,Rauvolfia vomitoria,"['en', 'fr']"
-150,Rauvolfia caffra,"['es', 'en']"
-151,Rhazya stricta,['en']
-152,Saba comorensis,"['es', 'en', 'fr']"
-153,Secamone alpini,['en']
-154,Skytanthus acutus,['es']
-155,Stapelia hirsuta,"['en', 'fr']"
-156,Strophanthus hispidus,"['es', 'en', 'fr', 'it']"
-157,Strophanthus eminii,['en']
-158,Tabernaemontana alba,['en']
-159,Tabernaemontana alternifolia,['en']
-160,Tabernaemontana amygdalifolia,['en']
-161,Tabernaemontana angulata,['en']
-162,Tabernaemontana arborea,['en']
-163,Tabernaemontana bovina,['en']
-164,Tabernaemontana bufalina,['en']
-165,Tabernaemontana catharinensis,"['es', 'en', 'pt']"
-166,Tabernaemontana citrifolia,"['en', 'fr']"
-167,Tabernaemontana coriacea,['en']
-168,Tabernaemontana corymbosa,"['es', 'en', 'fr']"
-169,Tabernaemontana cymosa,['en']
-170,Tabernaemontana divaricata,['en']
-171,Tabernaemontana donnell-smithii,"['es', 'en']"
-172,Tabernaemontana elegans,['en']
-173,Tabernaemontana heterophylla,['en']
-174,Tabernaemontana hystrix,['en']
-175,Tabernaemontana laeta,"['en', 'pt']"
-176,,"['es', 'en', 'fr', 'it', 'pt']"
-177,Tabernaemontana linkii,['en']
-178,Tabernaemontana markgrafiana,['en']
-179,Tabernaemontana pachysiphon,['en']
-180,Tabernaemontana pandacaqui,['en']
-181,Tabernaemontana peduncularis,['en']
-182,Tabernaemontana rupicola,['en']
-183,Tabernaemontana salzmannii,['en']
-184,Tabernaemontana sananho,"['es', 'en']"
-185,Tabernaemontana sessilifolia,['en']
-186,Tabernaemontana siphilitica,['en']
-187,Tabernaemontana solanifolia,['en']
-188,Tabernaemontana stapfiana,['en']
-189,Tabernaemontana undulata,"['es', 'en']"
-190,Tabernanthe iboga,"['es', 'en', 'fr', 'it']"
-191,Trachelospermum jasminoides,"['es', 'en', 'fr', 'it', 'pt']"
-192,Vallesia glabra,"['es', 'en']"
-193,Vinca major,"['es', 'en', 'fr', 'it', 'pt']"
-194,Vinca minor,"['es', 'en', 'fr', 'it', 'pt']"
-195,Vinca herbacea,['en']
-196,Vincetoxicum auriculatum,['en']
-197,Vincetoxicum nigrum,"['es', 'en', 'fr', 'pt']"
-198,Vincetoxicum rossicum,['en']
-199,Vincetoxicum hirundinaria,"['es', 'en', 'fr', 'it', 'pt']"
-200,Voacanga africana,"['es', 'en', 'fr', 'it']"
-201,Voacanga thouarsii,['en']
-202,Voacanga grandifolia,['en']
-203,Voacanga foetida,['en']
-204,Wrightia dubia,['en']
-205,Wrightia antidysenterica,"['es', 'en']"
-206,Wrightia tinctoria,"['en', 'fr']"
-207,Wrightia pubescens,['en']
-208,Xysmalobium undulatum,['es']
-209,Adina cordifolia,"['es', 'en']"
-210,Adina trichotoma,['es']
-211,Alibertia edulis,"['es', 'en', 'pt']"
-212,Bertiera borbonica,['fr']
-213,Breonadia salicina,"['es', 'en']"
-214,Burchellia bubalina,"['es', 'en']"
-215,Calycophyllum candidissimum,"['es', 'en']"
-216,Calycophyllum multiflorum,['es']
-217,Calycophyllum spruceanum,"['es', 'en', 'fr', 'pt']"
-218,Canthium coromandelicum,"['es', 'en']"
-219,Carapichea ipecacuanha,"['es', 'en', 'fr', 'it']"
-220,Catunaregam spinosa,['en']
-221,Cephalanthus glabratus,"['es', 'en']"
-222,Cephalanthus salicifolius,['en']
-223,Cephalanthus occidentalis,"['es', 'en', 'fr']"
-224,Chassalia curviflora,['en']
-225,Chimarrhis cymosa,['fr']
-226,Chiococca alba,"['es', 'en', 'pt']"
-227,Cinchona calisaya,"['es', 'en', 'fr', 'it']"
-228,Cinchona pubescens,"['es', 'en', 'fr']"
-229,Cinchona officinalis,"['es', 'en', 'fr', 'pt']"
-230,Coffea benghalensis,['en']
-231,Coffea arabica,"['es', 'en', 'fr', 'it', 'pt']"
-232,Coffea canephora,"['es', 'en', 'fr', 'it', 'pt']"
-233,Coffea mauritiana,['fr']
-234,Corynanthe johimbe,"['es', 'en', 'it']"
-235,Crossopteryx febrifuga,"['en', 'fr', 'it']"
-236,Danais,"['es', 'en', 'fr', 'pt']"
-237,Emmenopterys henryi,"['en', 'fr']"
-238,Eumachia,"['es', 'en', 'fr', 'it']"
-239,Eumachia frutescens,['en']
-240,Exostema caribaeum,['es']
-241,Feretia apodanthera,['en']
-242,Galium aparine,"['es', 'en', 'fr', 'it', 'pt']"
-243,Galium mollugo,"['es', 'en', 'fr', 'pt']"
-244,Galium verum,"['es', 'en', 'fr', 'it', 'pt']"
-245,Gardenia urvillei,['fr']
-246,Gardenia thunbergia,"['es', 'en']"
-247,Genipa americana,"['es', 'en', 'fr', 'pt']"
-248,Guettarda speciosa,"['en', 'fr']"
-249,Guettarda uruguensis,['es']
-250,Guettarda calyptrata,['es']
-251,Hamelia patens,"['es', 'en']"
-252,,"['es', 'en', 'fr', 'it', 'pt']"
-253,Heinsia crinita,['en']
-254,Hillia triflora,['it']
-255,Hintonia latiflora,"['es', 'en']"
-256,Hydnophytum formicarum,['en']
-257,Ixora pavetta,['en']
-258,Ixora chinensis,"['es', 'en', 'pt']"
-259,Ixora coccinea,"['es', 'en']"
-260,Khasiaclunea oligocephala,['en']
-261,Macrocnemum roseum,['es']
-262,Manettia flexilis,['pt']
-263,Manettia coccinea,['pt']
-264,Manettia reclinata,['es']
-265,Massularia acuminata,['es']
-266,Meyna laxiflora,['en']
-267,Mitracarpus hirtus,['fr']
-268,Mitragyna diversifolia,"['es', 'en']"
-269,Mitragyna parvifolia,"['es', 'en']"
-270,Mitragyna inermis,"['es', 'fr']"
-271,Mitragyna speciosa,"['es', 'en', 'fr', 'it', 'pt']"
-272,Mitragyna stipulosa,['fr']
-273,Mitragyna tubulosa,['en']
-274,Mitragyna rubrostipulata,['it']
-275,Mitragyna ledermannii,"['en', 'fr']"
-276,Morinda chrysorhiza,['es']
-277,Morinda lucida,['en']
-278,Morinda morindoides,['en']
-279,Morinda citrifolia,"['es', 'en', 'fr', 'it', 'pt']"
-280,Morinda asteroscepa,['en']
-281,Mussaenda frondosa,"['es', 'en']"
-282,Mussaenda macrophylla,"['es', 'en']"
-283,Nauclea latifolia,['fr']
-284,Nauclea diderrichii,"['en', 'fr']"
-285,Nauclea orientalis,"['en', 'fr', 'it']"
-286,Neolamarckia cadamba,"['en', 'it']"
-287,Neonauclea sessilifolia,['en']
-288,Oldenlandia corymbosa,['en']
-289,Palicourea croceoides,['fr']
-290,Palicourea elata,['en']
-291,Palicourea rigida,['pt']
-292,Pavetta tomentosa,['es']
-293,Pavetta schumanniana,['en']
-294,Pentagonia macrophylla,['es']
-295,Pentas lanceolata,"['es', 'en', 'fr', 'pt']"
-296,Plocama calabrica,['it']
-297,Posoqueria latifolia,"['en', 'pt']"
-298,Prismatomeris fragrans,['en']
-299,Psychotria viridis,"['es', 'en', 'fr', 'it', 'pt']"
-300,Psychotria alba,['en']
-301,Psydrax dicoccos,['en']
-302,Randia aculeata,"['es', 'en', 'fr']"
-303,Remijia,"['es', 'en', 'pt']"
-304,Remijia ferruginea,['es']
-305,Rogiera amoena,['en']
-306,Rosenbergiodendron formosum,['en']
-307,Rothmannia longiflora,['es']
-308,Rubia cordifolia,"['es', 'en', 'fr', 'pt']"
-309,Rustia occidentalis,['en']
-310,Sabicea villosa,['en']
-311,Sabicea amazonensis,['en']
-312,Schumanniophyton problematicum,['en']
-313,Sinoadina racemosa,['es']
-314,Spermacoce verticillata,['en']
-315,Spermacoce ocymoides,['en']
-316,Spermacoce remota,['en']
-317,Spermacoce latifolia,['en']
-318,Spermacoce alata,['en']
-319,Tamilnadia uliginosa,['es']
-320,Tinadendron noumeanum,"['en', 'fr']"
-321,Tocoyena pittieri,['en']
-322,Uncaria guianensis,"['es', 'en', 'fr']"
-323,Uncaria tomentosa,"['es', 'en', 'fr', 'it', 'pt']"
-324,Uncaria rhynchophylla,"['es', 'en', 'fr']"
-325,Vangueria agrestis,['en']
-326,Vangueria madagascariensis,"['es', 'en', 'fr']"
-327,Warszewiczia coccinea,"['es', 'en']"
-328,Wendlandia heynei,['en']
-329,Wittmackanthus stanleyanus,"['es', 'en']"
+0,Acokanthera laevigata,['en']
+1,Acokanthera oblongifolia,"['es', 'en', 'fr']"
+2,Acokanthera oppositifolia,"['es', 'en', 'fr']"
+3,Acokanthera rotundata,['en']
+4,Acokanthera schimperi,"['es', 'en', 'fr']"
+5,Adenium boehmianum,"['es', 'en']"
+6,Adenium multiflorum,['en']
+7,Adenium obesum,"['es', 'en', 'fr', 'pt']"
+8,Adenium oleifolium,['en']
+9,Adenium swazicum,['en']
+10,Aganosma cymosa,['en']
+11,Alafia alba,['pt']
+12,Alafia barteri,['en']
+13,Alafia caudata,['en']
+14,Alafia landolphioides,['en']
+15,Alafia lucida,['en']
+16,Alafia multiflora,['en']
+17,Alafia orientalis,['en']
+18,Alafia parciflora,['fr']
+19,Alafia zambesiaca,['en']
+20,Allamanda angustifolia,"['es', 'en']"
+21,Allamanda blanchetii,"['en', 'fr', 'pt']"
+22,Allamanda cathartica,"['es', 'en', 'fr', 'pt']"
+23,Allamanda polyantha,['en']
+24,Allamanda puberula,['en']
+25,Allamanda schottii,"['es', 'en', 'fr']"
+26,Allomarkgrafia ecuatoriana,['en']
+27,Allomarkgrafia plumeriiflora,['es']
+28,Allowoodsonia whitmorei,"['es', 'en', 'pt']"
+29,Alstonia angustifolia,"['en', 'fr']"
+30,Alstonia angustiloba,['en']
+31,Alstonia annamensis,"['en', 'fr']"
+32,Alstonia beatricis,"['en', 'fr']"
+33,Alstonia boonei,"['es', 'en', 'fr']"
+34,Alstonia breviloba,"['en', 'fr']"
+35,Alstonia congensis,"['en', 'fr']"
+36,Alstonia constricta,"['es', 'en']"
+37,Alstonia costata,['es']
+38,Alstonia iwahigensis,['en']
+39,Alstonia longifolia,['en']
+40,Alstonia macrophylla,"['es', 'en', 'fr']"
+41,Alstonia penangiana,"['en', 'fr']"
+42,Alstonia pneumatophora,['en']
+43,Alstonia rubiginosa,"['en', 'fr']"
+44,Alstonia rupestris,['en']
+45,Alstonia scholaris,"['es', 'en', 'fr']"
+46,Alstonia spatulata,['en']
+47,Alstonia spectabilis,['es']
+48,Alstonia venenata,['en']
+49,Alyxia bracteolosa,['en']
+50,Alyxia buxifolia,"['es', 'en']"
+51,Alyxia gynopogon,['es']
+52,Alyxia menglungensis,['en']
+53,Alyxia ruscifolia,['en']
+54,Alyxia sinensis,['en']
+55,Alyxia spicata,['en']
+56,Alyxia squamulosa,['en']
+57,Alyxia stellata,['en']
+58,Alyxia tisserantii,['fr']
+59,Amalocalyx microlobus,"['es', 'en']"
+60,Ambelania acida,"['fr', 'pt']"
+61,Ampelamus laevis,['en']
+62,Amphineurion marginatum,"['es', 'en']"
+63,Amsonia ciliata,['en']
+64,Amsonia hubrichtii,['en']
+65,Amsonia kearneyana,['en']
+66,Amsonia orientalis,['en']
+67,Amsonia tabernaemontana,"['en', 'fr']"
+68,Amsonia tharpii,['en']
+69,Amsonia tomentosa,['en']
+70,Ancylobothrys capensis,['en']
+71,Ancylobothrys petersiana,['en']
+72,Ancylobothrys scandens,['fr']
+73,Anechites nerium,['es']
+74,Angadenia berteroi,['en']
+75,Anisopus mannii,['en']
+76,Apocynum androsaemifolium,"['es', 'en', 'fr']"
+77,Apocynum cannabinum,"['es', 'en', 'fr']"
+78,Apocynum × floribundum,['en']
+79,Apocynum venetum,"['en', 'fr', 'it']"
+80,Apteranthes burchardii,"['es', 'en']"
+81,Araujia angustifolia,['fr']
+82,Araujia sericifera,"['es', 'en', 'fr', 'it', 'pt']"
+83,Asclepias albicans,"['es', 'en', 'fr']"
+84,Asclepias amplexicaulis,"['es', 'en']"
+85,Asclepias angustifolia,"['es', 'en']"
+86,Asclepias asperula,"['es', 'en']"
+87,Asclepias californica,"['es', 'en']"
+88,Asclepias connivens,['en']
+89,Asclepias cordifolia,"['es', 'en']"
+90,Asclepias cryptoceras,"['es', 'en']"
+91,Asclepias curassavica,"['es', 'en', 'fr', 'pt']"
+92,Asclepias curtissii,['en']
+93,Asclepias elata,['es']
+94,Asclepias eriocarpa,"['es', 'en']"
+95,Asclepias erosa,"['es', 'en']"
+96,Asclepias exaltata,['en']
+97,Asclepias fascicularis,"['es', 'en']"
+98,Asclepias feayi,['en']
+99,Asclepias glaucescens,['es']
+100,Asclepias hirtella,['en']
+101,Asclepias humistrata,"['es', 'en']"
+102,Asclepias incarnata,"['es', 'en', 'fr', 'it']"
+103,Asclepias involucrata,['en']
+104,Asclepias kamerunensis,['fr']
+105,Asclepias lanceolata,"['en', 'fr']"
+106,Asclepias lanuginosa,['en']
+107,Asclepias linaria,"['es', 'en']"
+108,Asclepias longifolia,"['es', 'en']"
+109,Asclepias meadii,['en']
+110,Asclepias mexicana,"['es', 'en']"
+111,Asclepias nivea,['en']
+112,Asclepias nyctaginifolia,"['es', 'en']"
+113,Asclepias oenotheroides,['en']
+114,Asclepias pedicellata,['en']
+115,Asclepias perennis,['en']
+116,Asclepias purpurascens,"['es', 'en']"
+117,Asclepias quadrifolia,['en']
+118,Asclepias solanoana,['en']
+119,Asclepias speciosa,"['es', 'en']"
+120,Asclepias stenophylla,['en']
+121,Asclepias subulata,"['es', 'en']"
+122,Asclepias subverticillata,"['en', 'fr']"
+123,Asclepias sullivantii,"['es', 'en']"
+124,Asclepias syriaca,"['es', 'en', 'fr']"
+125,Asclepias texana,['en']
+126,Asclepias tomentosa,['en']
+127,Asclepias tuberosa,"['es', 'en', 'fr']"
+128,Asclepias uncialis,"['en', 'fr']"
+129,Asclepias variegata,['en']
+130,Asclepias verticillata,"['es', 'en']"
+131,Asclepias vestita,['en']
+132,Asclepias viridiflora,['en']
+133,Asclepias viridis,['en']
+134,Asclepias viridula,['en']
+135,Asclepias welshii,['en']
+136,Aspidosperma australe,"['en', 'pt']"
+137,Aspidosperma carapanauba,['pt']
+138,Aspidosperma cylindrocarpon,"['es', 'en', 'pt']"
+139,Aspidosperma darienense,['en']
+140,Aspidosperma desmanthum,['pt']
+141,Aspidosperma discolor,['en']
+142,Aspidosperma duckei,['en']
+143,Aspidosperma eteanum,['pt']
+144,Aspidosperma excelsum,['en']
+145,Aspidosperma leucocymosum,['pt']
+146,Aspidosperma limae,['pt']
+147,Aspidosperma macrocarpon,['en']
+148,Aspidosperma megalocarpon,"['es', 'en', 'fr']"
+149,Aspidosperma obscurinervium,['pt']
+150,Aspidosperma olivaceum,['en']
+151,Aspidosperma parvifolium,"['en', 'pt']"
+152,Aspidosperma polyneuron,"['es', 'en', 'fr', 'pt']"
+153,Aspidosperma pyricollum,['en']
+154,Aspidosperma pyrifolium,['pt']
+155,Aspidosperma quebracho-blanco,"['es', 'en', 'fr', 'it', 'pt']"
+156,Aspidosperma ramiflorum,"['en', 'pt']"
+157,Aspidosperma spruceanum,"['es', 'en', 'pt']"
+158,Aspidosperma steinbachii,['es']
+159,Aspidosperma subincanum,['en']
+160,Aspidosperma tomentosum,['en']
+161,Aspidosperma triternatum,"['es', 'en']"
+162,Aspidosperma ulei,"['en', 'pt']"
+163,Asterostemma repandum,['es']
+164,Australluma peschii,['en']
+165,Baharuia gracilis,"['es', 'en']"
+166,Baissea axillaris,['en']
+167,Baissea multiflora,['en']
+168,Baissea ochrantha,['fr']
+169,Baynesia lophophora,"['es', 'en']"
+170,Boucerosia frerei,['en']
+171,Callichilia barteri,['en']
+172,Callichilia monopodialis,"['en', 'fr']"
+173,Calocrater preussii,"['es', 'en']"
+174,Calotropis gigantea,"['es', 'en']"
+175,Calotropis procera,"['es', 'en', 'fr', 'pt']"
+176,Cameraria microphylla,"['es', 'en', 'it']"
+177,Campestigma purpurea,"['es', 'en']"
+178,Caralluma adscendens,"['en', 'fr']"
+179,Caralluma fimbriata,"['es', 'en', 'pt']"
+180,Carissa bispinosa,['en']
+181,Carissa carandas,"['es', 'en', 'fr']"
+182,Carissa macrocarpa,"['es', 'en', 'fr', 'pt']"
+183,Carissa spinarum,"['en', 'fr', 'pt']"
+184,Carissa tetramera,['en']
+185,Cascabela balsaensis,['fr']
+186,Cascabela gaumeri,"['es', 'fr']"
+187,Cascabela ovata,"['es', 'fr']"
+188,Cascabela pinifolia,['fr']
+189,Cascabela thevetia,"['es', 'en', 'fr']"
+190,Cascabela thevetioides,['fr']
+191,Catharanthus coriaceus,['en']
+192,Catharanthus lanceus,"['en', 'pt']"
+193,Catharanthus longifolius,['en']
+194,Catharanthus ovalis,"['en', 'pt']"
+195,Catharanthus pusillus,"['en', 'pt']"
+196,Catharanthus roseus,"['es', 'en', 'fr', 'it', 'pt']"
+197,Catharanthus scitulus,['en']
+198,Catharanthus trichophyllus,['en']
+199,Caudanthera edulis,['fr']
+200,Cerbera floribunda,['en']
+201,Cerbera inflata,['en']
+202,Cerbera manghas,"['es', 'en', 'fr']"
+203,Cerbera odollam,"['es', 'en', 'fr']"
+204,Cerberiopsis candelabra,"['en', 'fr']"
+205,Cerberiopsis neriifolia,['en']
+206,Cerberiopsis obtusifolia,['en']
+207,Ceropegia anjanerica,['en']
+208,Ceropegia aridicola,['en']
+209,Ceropegia candelabrum,['en']
+210,Ceropegia collaricorona,['es']
+211,Ceropegia decidua,['en']
+212,Ceropegia dichotoma,"['es', 'en', 'fr']"
+213,Ceropegia dinteri,['en']
+214,Ceropegia elegans,['en']
+215,Ceropegia evansii,['en']
+216,Ceropegia fusca,"['es', 'en', 'fr']"
+217,Ceropegia gardneri,['en']
+218,Ceropegia huberi,['en']
+219,Ceropegia jainii,['en']
+220,Ceropegia linearis,['en']
+221,Ceropegia neo-omissa,['fr']
+222,Ceropegia radicans,['en']
+223,Ceropegia rhynchantha,['en']
+224,Ceropegia sandersonii,"['en', 'fr']"
+225,Ceropegia stapeliiformis,['en']
+226,Ceropegia striata,['en']
+227,Ceropegia woodii,"['es', 'en', 'fr']"
+228,Chamaeclitandra henriquesiana,"['es', 'en']"
+229,Chilocarpus beccarianus,['en']
+230,Chilocarpus conspicuus,['en']
+231,Chonemorpha fragrans,"['es', 'en']"
+232,Cionura erecta,"['es', 'en']"
+233,Clitandra cymulosa,"['es', 'en']"
+234,Condylocarpon guyanense,['fr']
+235,Condylocarpon intermedium,['es']
+236,Conomitra linearis,"['es', 'en']"
+237,Cordylogyne globosa,['en']
+238,Couma guianensis,"['es', 'fr', 'pt']"
+239,Couma macrocarpa,"['es', 'en', 'pt']"
+240,Couma rigida,['pt']
+241,Couma utilis,"['es', 'en', 'pt']"
+242,Craspidospermum verticillatum,"['es', 'en']"
+243,Crioceras dipladeniiflorus,['en']
+244,Cryptolepis buchananii,['en']
+245,Cryptolepis cryptolepioides,['en']
+246,Cryptolepis oblongifolia,['en']
+247,Cryptolepis sanguinolenta,"['es', 'en']"
+248,Cryptolepis sinensis,['en']
+249,Cryptostegia grandiflora,"['en', 'fr']"
+250,Cryptostegia madagascariensis,['en']
+251,Cycladenia humilis,"['es', 'en']"
+252,Cycladenia humilis var. humilis,['es']
+253,Cyclocotyla congolensis,"['es', 'en']"
+254,Cylindropsis parvifolia,"['es', 'en']"
+255,Cynanchum acidum,['en']
+256,Cynanchum acutum,"['es', 'en', 'fr', 'pt']"
+257,Cynanchum acutum subsp. acutum,['pt']
+258,Cynanchum daltonii,['en']
+259,Cynanchum elegans,['en']
+260,Cynanchum ellipticum,['en']
+261,Cynanchum gracillimum,['en']
+262,Cynanchum guehoi,['en']
+263,Cynanchum hooperianum,['en']
+264,Cynanchum macrolobum,['en']
+265,Cynanchum pulchellum,['en']
+266,Cynanchum staubii,"['en', 'pt']"
+267,Cynanchum viminale,"['en', 'it']"
+268,Decalepis arayalpathra,['en']
+269,Decalepis hamiltonii,"['es', 'en']"
+270,Decalepis salicifolia,['en']
+271,Dewevrella cochliostema,"['es', 'en']"
+272,Dictyophleba setosa,['fr']
+273,Diplorhynchus condylocarpon,"['es', 'en']"
+274,Dischidanthus urceolatus,['en']
+275,Dischidia major,['en']
+276,Dischidia nummularia,['en']
+277,Dischidia oiantha,['en']
+278,Dischidia ovata,['en']
+279,Dischidia ruscifolia,['en']
+280,Dischidia tonkinensis,['en']
+281,Dischidia vidalii,['en']
+282,Dolichopetalum kwangsiense,"['es', 'en']"
+283,Dregea sinensis,"['en', 'fr']"
+284,Duvalia caespitosa,['en']
+285,Duvalia elegans,['en']
+286,Duvalia vestita,['en']
+287,Duvaliandra dioscoridis,"['es', 'en']"
+288,Dyera costulata,"['es', 'en', 'fr']"
+289,Dyera polyphylla,['en']
+290,Echites panduratus,['es']
+291,Echites umbellatus,['en']
+292,Echites woodsonianus,['es']
+293,Echites yucatanensis,['es']
+294,Ecua moluccensis,"['es', 'en']"
+295,Edithcolea grandis,"['es', 'en']"
+296,Elytropus chilensis,"['es', 'en']"
+297,Emicocarpus fissifolius,"['es', 'en']"
+298,Epigynum auritum,['en']
+299,Epistemma decurrens,['fr']
+300,Epistemma rupestre,['fr']
+301,Eucorymbia alba,"['es', 'en']"
+302,Fanninia caloglossa,"['es', 'en']"
+303,Farquharia elliptica,"['es', 'en']"
+304,Fockea edulis,"['es', 'en', 'pt']"
+305,Fockea multiflora,['en']
+306,Forsteronia myriantha,['es']
+307,Forsteronia pycnothyrsus,['en']
+308,Forsteronia spicata,['es']
+309,Forsteronia umbellata,['fr']
+310,Funastrum clausum,"['es', 'en']"
+311,Funastrum cynanchoides,"['en', 'fr']"
+312,Funastrum glaucum,['es']
+313,Funastrum hirtellum,['en']
+314,Funtumia africana,"['en', 'fr']"
+315,Funtumia elastica,"['en', 'fr']"
+316,Geissospermum laeve,['pt']
+317,Geissospermum sericeum,['pt']
+318,Gomphocarpus fruticosus,"['es', 'en', 'fr', 'it', 'pt']"
+319,Gomphocarpus physocarpus,"['es', 'en', 'fr', 'pt']"
+320,Gomphocarpus purpurascens,['en']
+321,Gomphocarpus tomentosus,['es']
+322,Goniostemma punctatum,['en']
+323,Gonolobus arizonicus,['en']
+324,Gonolobus barbatus,['en']
+325,Gonolobus campii,['en']
+326,Gonolobus saraguranus,['en']
+327,Gonolobus suberosus,['en']
+328,Gunnessia pepo,"['es', 'en']"
+329,Gymnanthera oblonga,['en']
+330,Gymnema elegans,['en']
+331,Gymnema sylvestre,"['es', 'en', 'fr', 'it']"
+332,Gyrostelma oxypetaloides,['en']
+333,Hancornia speciosa,"['es', 'en', 'pt']"
+334,Haplophyton crooksii,"['es', 'en']"
+335,Hemidesmus indicus,"['es', 'en', 'pt']"
+336,Hemipogon abietoides,['pt']
+337,Heynella lactea,"['es', 'en']"
+338,Himatanthus bracteatus,['en']
+339,Himatanthus obovatus,['en']
+340,Himatanthus revolutus,['en']
+341,Holarrhena floribunda,"['en', 'fr']"
+342,Holarrhena mitis,['en']
+343,Holarrhena pubescens,"['en', 'fr']"
+344,Hoodia alstonii,['en']
+345,Hoodia currorii,['en']
+346,Hoodia flava,['en']
+347,Hoodia gordonii,"['es', 'en', 'fr', 'it']"
+348,Hoodia juttae,['en']
+349,Hoodia officinalis,['en']
+350,Hoodia ruschii,['en']
+351,Hoodia triebneri,['en']
+352,Hoya aldrichii,"['en', 'fr']"
+353,Hoya archboldiana,['en']
+354,Hoya aurigueana,['en']
+355,Hoya australis,"['es', 'en']"
+356,Hoya bella,['en']
+357,Hoya benstoneana,['en']
+358,Hoya bicolensis,['en']
+359,Hoya bilobata,['en']
+360,Hoya carnosa,"['es', 'en', 'fr', 'it', 'pt']"
+361,Hoya cinnamomifolia,"['es', 'en']"
+362,Hoya coronaria,['en']
+363,Hoya curtisii,['en']
+364,Hoya cutis-porcelana,['en']
+365,Hoya gaoligongensis,['en']
+366,Hoya imbricata,['en']
+367,Hoya indaysarae,['en']
+368,Hoya kerrii,"['en', 'fr']"
+369,Hoya lanceolata,['en']
+370,Hoya linearis,['en']
+371,Hoya macgillivrayi,['en']
+372,Hoya macrophylla,['en']
+373,Hoya megalaster,"['en', 'pt']"
+374,Hoya meliflua,['en']
+375,Hoya multiflora,['en']
+376,Hoya obscura,['en']
+377,Hoya pandurata,['en']
+378,Hoya persicina,['en']
+379,Hoya polyneura,['en']
+380,Hoya pubicalyx,"['en', 'fr']"
+381,Hoya retusa,['en']
+382,Hoya serpens,['en']
+383,Hoya shepherdii,['en']
+384,Hoya siamica,['en']
+385,Hoya wayetii,['en']
+386,Huernia aspera,['es']
+387,Huernia boleana,['es']
+388,Huernia guttata,"['es', 'en']"
+389,Huernia hallii,['en']
+390,Huernia hislopii,['es']
+391,Huernia hystrix,['en']
+392,Huernia macrocarpa,"['es', 'en']"
+393,Huernia occulta,['fr']
+394,Huernia piersii,['es']
+395,Huernia pillansii,"['es', 'en']"
+396,Huernia plowesii,"['es', 'en']"
+397,Huernia quinta,['es']
+398,Huernia thuretii,"['es', 'en']"
+399,Huernia zebrina,"['es', 'en']"
+400,Hunteria camerunensis,['fr']
+401,Hunteria congolana,['en']
+402,Hunteria ghanensis,"['en', 'fr']"
+403,Hunteria umbellata,['en']
+404,Hunteria zeylanica,['en']
+405,Hypolobus infractus,"['es', 'en']"
+406,Ichnocarpus frutescens,"['es', 'en']"
+407,Ischnolepis graminifolia,['en']
+408,Ischnolepis natalensis,['en']
+409,Ixodonerium annamense,"['es', 'en']"
+410,Kerbera eichleri,['en']
+411,Kibatalia arborea,['en']
+412,Kibatalia borneensis,['en']
+413,Kibatalia elmeri,"['en', 'fr']"
+414,Kibatalia gitingensis,"['en', 'fr']"
+415,Kibatalia longifolia,"['en', 'fr']"
+416,Kibatalia macgregorii,['fr']
+417,Kibatalia maingayi,['en']
+418,Kibatalia merrilliana,"['en', 'fr']"
+419,Kibatalia puberula,"['en', 'fr']"
+420,Kibatalia stenopetala,"['en', 'fr']"
+421,Kibatalia villosa,['en']
+422,Kopsia arborea,['en']
+423,Kopsia dasyrachis,['en']
+424,Kopsia larutensis,['en']
+425,Kopsia pauciflora,['en']
+426,Kopsia profunda,['en']
+427,Kopsia rajangensis,['en']
+428,Kopsia singapurensis,"['en', 'fr']"
+429,Kopsia tenuis,['en']
+430,Lacmellea edulis,['en']
+431,Lacmellea oblongata,['en']
+432,Lacmellea panamensis,['en']
+433,Landolphia angustisepala,['en']
+434,Landolphia axillaris,['fr']
+435,Landolphia buchananii,['en']
+436,Landolphia dulcis,['en']
+437,Landolphia flavidiflora,['fr']
+438,Landolphia heudelotii,"['en', 'fr']"
+439,Landolphia kirkii,['en']
+440,Landolphia lanceolata,['fr']
+441,Landolphia mannii,['en']
+442,Landolphia maxima,['fr']
+443,Landolphia owariensis,"['es', 'en', 'fr']"
+444,Landolphia togolana,['fr']
+445,Landolphia uniflora,['fr']
+446,Larryleachia cactiformis,['en']
+447,Larryleachia marlothii,['en']
+448,Larryleachia perlata,['en']
+449,Larryleachia tirasmontana,['en']
+450,Lavrania haagnerae,['en']
+451,Lepinia taitensis,['en']
+452,Leptadenia lanceolata,['fr']
+453,Leptadenia madagascariensis,['en']
+454,Leptadenia pyrotechnica,"['en', 'fr']"
+455,Maclaudia felixii,['en']
+456,Macoubea guianensis,['es']
+457,Mahawoa montana,"['es', 'en']"
+458,Malouetia barbata,['fr']
+459,Malouetia tamaquarina,['fr']
+460,Mandevilla boliviensis,"['en', 'fr']"
+461,Mandevilla brachysiphon,['en']
+462,Mandevilla caurensis,['fr']
+463,Mandevilla equatorialis,['en']
+464,Mandevilla jamesonii,['en']
+465,Mandevilla laxa,"['es', 'en', 'fr']"
+466,Mandevilla sanderi,"['es', 'en', 'fr']"
+467,Mandevilla splendens,['en']
+468,Margaretta rosea,['en']
+469,Marsdenia australis,"['es', 'en']"
+470,Marsdenia cundurango,['en']
+471,Marsdenia elliptica,['en']
+472,Marsdenia flavescens,['en']
+473,Marsdenia geminata,['fr']
+474,Marsdenia lloydii,['en']
+475,Marsdenia mackeeorum,['en']
+476,Marsdenia oblanceolata,['en']
+477,Marsdenia robusta,['en']
+478,Marsdenia rostrata,['en']
+479,Marsdenia suaveolens,['en']
+480,Marsdenia tubulosa,['en']
+481,Matelea alabamensis,['en']
+482,Matelea baldwyniana,['en']
+483,Matelea carolinensis,['en']
+484,Matelea chimboracensis,['en']
+485,Matelea cynanchoides,['en']
+486,Matelea decipiens,['en']
+487,Matelea ecuadorensis,['en']
+488,Matelea floridana,['en']
+489,Matelea harlingii,['en']
+490,Matelea honorana,['en']
+491,Matelea jaramilloi,['en']
+492,Matelea lhotzkyana,['en']
+493,Matelea obliqua,['en']
+494,Matelea orthoneura,['en']
+495,Matelea parvifolia,['en']
+496,Matelea pastazana,['en']
+497,Matelea porphyrocephala,['en']
+498,Matelea reticulata,['en']
+499,Matelea sintenisii,['en']
+500,Matelea sprucei,['en']
+501,Melodinus acutiflorus,['en']
+502,Melodinus axillaris,['en']
+503,Melodinus fusiformis,['en']
+504,Metastelma anegadense,['en']
+505,Metastelma arizonicum,['en']
+506,Metastelma purpurascens,['en']
+507,Microloma calycinum,['en']
+508,Microloma sagittatum,['en']
+509,Microloma tenuifolium,['en']
+510,Microplumeria anomala,['en']
+511,Minaria hemipogonoides,['pt']
+512,Mondia whitei,['en']
+513,Monolluma quadrangula,['en']
+514,Mortoniella pittieri,"['es', 'en']"
+515,Myriopteron extensum,['en']
+516,Nautonia nummularia,"['es', 'en']"
+517,Neobracea bahamensis,['en']
+518,Neoschumannia cardinea,['es']
+519,Neoschumannia kamerunensis,"['en', 'fr']"
+520,Nerium oleander,"['es', 'en', 'fr', 'it', 'pt']"
+521,Notechidnopsis tessellata,"['es', 'en']"
+522,Ochrosia ackeringae,['en']
+523,Ochrosia borbonica,"['en', 'fr']"
+524,Ochrosia elliptica,"['en', 'fr']"
+525,Ochrosia fatuhivensis,['en']
+526,Ochrosia glomerata,['en']
+527,Ochrosia grandiflora,['en']
+528,Ochrosia haleakalae,['en']
+529,Ochrosia hexandra,['en']
+530,Ochrosia inventorum,['fr']
+531,Ochrosia kauaiensis,['en']
+532,Ochrosia kilaueaensis,['en']
+533,Ochrosia moorei,['en']
+534,Ochrosia oppositifolia,"['en', 'fr']"
+535,Ochrosia poweri,['en']
+536,Odontadenia geminata,['en']
+537,Oncinema lineare,['en']
+538,Oncinotis glabrata,['en']
+539,Oncinotis tenuiloba,['en']
+540,Ophionella arcuata,['en']
+541,Orbea ciliata,['en']
+542,Orbea decaisneana,['fr']
+543,Orbea lutea subsp. vaga,['es']
+544,Orbea paradoxa,['es']
+545,Orbea schweinfurthii,['es']
+546,Orbea variegata,"['es', 'en', 'fr']"
+547,Oreosparte celebica,"['es', 'en']"
+548,Orthosia mollis,['en']
+549,Oxypetalum coeruleum,['en']
+550,Oxystelma esculentum,['en']
+551,Pachycarpus medusonema,['fr']
+552,Pachypodium ambongense,"['en', 'it']"
+553,Pachypodium baronii,"['es', 'en', 'it']"
+554,Pachypodium bispinosum,"['en', 'it']"
+555,Pachypodium brevicaule,"['en', 'it']"
+556,Pachypodium decaryi,['en']
+557,Pachypodium densiflorum,"['en', 'it']"
+558,Pachypodium geayi,"['en', 'it']"
+559,Pachypodium horombense,"['en', 'it']"
+560,Pachypodium lamerei,"['es', 'en', 'fr', 'it']"
+561,Pachypodium lealii,"['es', 'en', 'fr', 'it']"
+562,Pachypodium namaquanum,"['es', 'en', 'fr', 'it']"
+563,Pachypodium rosulatum,"['es', 'en', 'fr', 'it']"
+564,Pachypodium rutenbergianum,"['en', 'it']"
+565,Pachypodium saundersii,"['en', 'it']"
+566,Pachypodium succulentum,"['en', 'it']"
+567,Papuechites aambe,"['es', 'en']"
+568,Parahancornia fasciculata,"['es', 'en']"
+569,Parahancornia peruviana,['en']
+570,Parepigynum funingense,"['es', 'en']"
+571,Parsonsia alboflavescens,['en']
+572,Parsonsia brownii,['en']
+573,Parsonsia capsularis,['en']
+574,Parsonsia curvisepala,['en']
+575,Parsonsia diaphanophlebia,['en']
+576,Parsonsia eucalyptophylla,['en']
+577,Parsonsia heterophylla,['en']
+578,Parsonsia howeana,['en']
+579,Parsonsia straminea,['en']
+580,Parsonsia velutina,['en']
+581,Pentalinon luteum,['en']
+582,Pergularia daemia,"['es', 'en']"
+583,Periploca angustifolia,['es']
+584,Periploca aphylla,['it']
+585,Periploca graeca,"['es', 'en', 'fr', 'it']"
+586,Periploca laevigata,"['en', 'pt']"
+587,Periploca sepium,['fr']
+588,Petchia africana,['fr']
+589,Petchia madagascariensis,['en']
+590,Picralima nitida,"['es', 'en', 'fr']"
+591,Pinochia monteverdensis,['en']
+592,Pleiocarpa mutica,['en']
+593,Pleiocarpa pycnantha,['en']
+594,Pleioceras barteri,['en']
+595,Pleioceras orientale,"['en', 'fr']"
+596,Plumeria alba,"['es', 'en', 'fr', 'it', 'pt']"
+597,Plumeria clusioides,['en']
+598,Plumeria obtusa,"['es', 'en', 'fr', 'pt']"
+599,Plumeria pudica,"['en', 'fr', 'pt']"
+600,Plumeria rubra,"['es', 'en', 'fr', 'it', 'pt']"
+601,Prestonia amazonica,['en']
+602,Prestonia parvifolia,['en']
+603,Prestonia peregrina,['en']
+604,Prestonia rotundifolia,['en']
+605,Prestonia schumanniana,['en']
+606,Pseudolithos cubiformis,"['es', 'en']"
+607,Pseudolithos horwoodii,['es']
+608,Pteralyxia kauaiensis,['en']
+609,Pteralyxia laurifolia,['en']
+610,Pycnobotrya nitida,"['es', 'en']"
+611,Pycnorhachis maingayi,['en']
+612,Raphionacme madiensis,['es']
+613,Rauvolfia caffra,"['es', 'en']"
+614,Rauvolfia cambodiana,"['es', 'en']"
+615,Rauvolfia mannii,"['en', 'fr']"
+616,Rauvolfia media,['en']
+617,Rauvolfia micrantha,['en']
+618,Rauvolfia nukuhivensis,['en']
+619,Rauvolfia sachetiae,"['es', 'en']"
+620,Rauvolfia sandwicensis,"['es', 'en']"
+621,Rauvolfia serpentina,"['es', 'en', 'fr', 'it']"
+622,Rauvolfia sumatrana,['en']
+623,Rauvolfia tetraphylla,"['es', 'en']"
+624,Rauvolfia verticillata,"['es', 'en']"
+625,Rauvolfia viridis,['fr']
+626,Rauvolfia vomitoria,"['en', 'fr']"
+627,Rhazya stricta,['en']
+628,Rhigospira quadrangularis,"['es', 'en']"
+629,Rhyssolobium dumosum,"['es', 'en']"
+630,Richtersveldia columnaris,['es']
+631,Rojasia gracilis,['en']
+632,Saba comorensis,"['es', 'en', 'fr']"
+633,Saba senegalensis,"['en', 'fr', 'it']"
+634,Sarcolobus globosus,"['es', 'en']"
+635,Schistonema weberbaueri,['en']
+636,Schubertia grandiflora,['es']
+637,Secamone alpini,['en']
+638,Secamone cuneifolia,['en']
+639,Secamone elliptica,['en']
+640,Secamone racemosa,['en']
+641,Secamone schatzii,['en']
+642,Secamone socotrana,"['es', 'en']"
+643,Secamone volubilis,['en']
+644,Secamonopsis madagascariensis,['en']
+645,Secamonopsis microphylla,['en']
+646,Skytanthus acutus,['es']
+647,Socotrella dolichocnema,['en']
+648,Spirolobium cambodianum,"['es', 'en']"
+649,Spongiosperma macrophyllum,['en']
+650,Stapelia flavopurpurea,['en']
+651,Stapelia gigantea,"['es', 'en', 'pt']"
+652,Stapelia grandiflora,['en']
+653,Stapelia hirsuta,"['en', 'fr']"
+654,Stapelia leendertziae,['en']
+655,Stapelia pearsonii,['en']
+656,Stapelianthus decaryi,['fr']
+657,Stelmagonum hahnianum,['en']
+658,Stephanostegia capuronii,['en']
+659,Stephanostema stenocarpum,"['es', 'en']"
+660,Stephanotis floribunda,"['en', 'fr', 'it']"
+661,Stipecoma peltigera,"['es', 'en']"
+662,Strempeliopsis arborea,['en']
+663,Strophanthus amboensis,['en']
+664,Strophanthus boivinii,"['es', 'en']"
+665,Strophanthus caudatus,"['es', 'en']"
+666,Strophanthus courmontii,['en']
+667,Strophanthus divaricatus,['en']
+668,Strophanthus eminii,['en']
+669,Strophanthus gratus,"['es', 'en', 'fr', 'it']"
+670,Strophanthus hispidus,"['es', 'en', 'fr', 'it']"
+671,Strophanthus kombe,"['es', 'en', 'fr']"
+672,Strophanthus nicholsonii,['en']
+673,Strophanthus petersianus,['en']
+674,Strophanthus preussii,['en']
+675,Strophanthus sarmentosus,"['en', 'fr']"
+676,Strophanthus speciosus,['en']
+677,Strophanthus thollonii,['en']
+678,Strophanthus welwitschii,['en']
+679,Tabernaemontana africana,['en']
+680,Tabernaemontana alba,['en']
+681,Tabernaemontana alternifolia,['en']
+682,Tabernaemontana amplifolia,['en']
+683,Tabernaemontana amygdalifolia,['en']
+684,Tabernaemontana angulata,['en']
+685,Tabernaemontana antheonycta,"['en', 'fr']"
+686,Tabernaemontana apoda,['en']
+687,Tabernaemontana arborea,['en']
+688,Tabernaemontana attenuata,['en']
+689,Tabernaemontana aurantiaca,['en']
+690,Tabernaemontana bouquetii,['en']
+691,Tabernaemontana bovina,['en']
+692,Tabernaemontana brachyantha,['en']
+693,Tabernaemontana bufalina,['en']
+694,Tabernaemontana calcarea,['en']
+695,Tabernaemontana capuronii,['en']
+696,Tabernaemontana catharinensis,"['es', 'en', 'pt']"
+697,Tabernaemontana cerea,['en']
+698,Tabernaemontana cerifera,['en']
+699,Tabernaemontana chocoensis,['en']
+700,Tabernaemontana ciliata,['en']
+701,Tabernaemontana citrifolia,"['en', 'fr']"
+702,Tabernaemontana coffeoides,['en']
+703,Tabernaemontana columbiensis,['en']
+704,Tabernaemontana contorta,"['en', 'fr']"
+705,Tabernaemontana cordata,['en']
+706,Tabernaemontana coriacea,['en']
+707,Tabernaemontana corymbosa,"['es', 'en', 'fr']"
+708,Tabernaemontana crassa,['en']
+709,Tabernaemontana crassifolia,['en']
+710,Tabernaemontana cumata,['en']
+711,Tabernaemontana cuspidata,['en']
+712,Tabernaemontana cymosa,['en']
+713,Tabernaemontana debrayi,['en']
+714,Tabernaemontana dichotoma,['en']
+715,Tabernaemontana disticha,['en']
+716,Tabernaemontana divaricata,['en']
+717,Tabernaemontana donnell-smithii,"['es', 'en']"
+718,Tabernaemontana eglandulosa,['en']
+719,Tabernaemontana elegans,['en']
+720,Tabernaemontana eusepala,['en']
+721,Tabernaemontana eusepaloides,['en']
+722,Tabernaemontana flavicans,['en']
+723,Tabernaemontana gamblei,['en']
+724,Tabernaemontana glabra,['en']
+725,Tabernaemontana glandulosa,"['en', 'fr']"
+726,Tabernaemontana grandiflora,['en']
+727,Tabernaemontana hallei,"['en', 'fr']"
+728,Tabernaemontana heterophylla,['en']
+729,Tabernaemontana humblotii,['en']
+730,Tabernaemontana hystrix,['en']
+731,Tabernaemontana inconspicua,['en']
+732,Tabernaemontana laeta,"['en', 'pt']"
+733,Tabernaemontana lagenaria,['en']
+734,Tabernaemontana laurifolia,['en']
+735,Tabernaemontana leeuwenbergiana,['en']
+736,Tabernaemontana letestui,['en']
+737,Tabernaemontana linkii,['en']
+738,Tabernaemontana longipes,['en']
+739,Tabernaemontana lorifera,['en']
+740,Tabernaemontana macrocalyx,['en']
+741,Tabernaemontana macrocarpa,['en']
+742,Tabernaemontana markgrafiana,['en']
+743,Tabernaemontana maxima,['en']
+744,Tabernaemontana muricata,['en']
+745,Tabernaemontana ochroleuca,['en']
+746,Tabernaemontana odoratissima,['en']
+747,Tabernaemontana oppositifolia,['en']
+748,Tabernaemontana ovalifolia,['en']
+749,Tabernaemontana pachysiphon,['en']
+750,Tabernaemontana palustris,['en']
+751,Tabernaemontana panamensis,['en']
+752,Tabernaemontana pandacaqui,['en']
+753,Tabernaemontana pauciflora,['en']
+754,Tabernaemontana pauli,['en']
+755,Tabernaemontana peduncularis,['en']
+756,Tabernaemontana penduliflora,"['en', 'fr']"
+757,Tabernaemontana persicariifolia,['en']
+758,Tabernaemontana peschiera,['en']
+759,Tabernaemontana phymata,['en']
+760,Tabernaemontana polyneura,['en']
+761,Tabernaemontana psorocarpa,['en']
+762,Tabernaemontana remota,"['en', 'fr']"
+763,Tabernaemontana retusa,['en']
+764,Tabernaemontana rostrata,['en']
+765,Tabernaemontana rupicola,['en']
+766,Tabernaemontana salomonensis,['en']
+767,Tabernaemontana salzmannii,['en']
+768,Tabernaemontana sambiranensis,['en']
+769,Tabernaemontana sananho,"['es', 'en']"
+770,Tabernaemontana sessilifolia,['en']
+771,Tabernaemontana siphilitica,['en']
+772,Tabernaemontana solanifolia,['en']
+773,Tabernaemontana sphaerocarpa,['en']
+774,Tabernaemontana stapfiana,['en']
+775,Tabernaemontana stellata,['en']
+776,Tabernaemontana stenosiphon,['en']
+777,Tabernaemontana ternifolia,['en']
+778,Tabernaemontana thurstonii,['en']
+779,Tabernaemontana tomentosa,['en']
+780,Tabernaemontana undulata,"['es', 'en']"
+781,Tabernaemontana vanheurckii,['en']
+782,Tabernaemontana ventricosa,"['en', 'fr']"
+783,Tabernaemontana wullschlaegelii,['en']
+784,Tabernanthe iboga,"['es', 'en', 'fr', 'it']"
+785,Telosma cordata,"['es', 'en']"
+786,Telosma procumbens,['en']
+787,Thevetia ahouai,"['es', 'pt']"
+788,Thyrsanthella difformis,['en']
+789,Trachelospermum asiaticum,"['es', 'en', 'fr']"
+790,Trachelospermum jasminoides,"['es', 'en', 'fr', 'it', 'pt']"
+791,Treutlera insignis,['es']
+792,Trichosandra borbonica,"['es', 'fr']"
+793,Tridentea gemmiflora,['en']
+794,Tridentea pachyrrhiza,['en']
+795,Urceola elastica,['fr']
+796,Urceola micrantha,"['es', 'en', 'fr']"
+797,Vailia mucronata,['en']
+798,Vallesia antillana,['en']
+799,Vallesia glabra,"['es', 'en']"
+800,Vinca difformis,"['es', 'en', 'pt']"
+801,Vinca difformis subsp. difformis,['pt']
+802,Vinca herbacea,['en']
+803,Vinca ispartensis,['en']
+804,Vinca major,"['es', 'en', 'fr', 'it', 'pt']"
+805,Vinca major subsp. major,['pt']
+806,Vinca minor,"['es', 'en', 'fr', 'it', 'pt']"
+807,Vincetoxicum auriculatum,['en']
+808,Vincetoxicum diplostigma,['en']
+809,Vincetoxicum funebre,['fr']
+810,Vincetoxicum hirundinaria,"['es', 'en', 'fr', 'it', 'pt']"
+811,Vincetoxicum lineare,['en']
+812,Vincetoxicum linifolium,['en']
+813,Vincetoxicum nigrum,"['es', 'en', 'fr', 'pt']"
+814,Vincetoxicum rossicum,['en']
+815,Vincetoxicum woollsii,['en']
+816,Voacanga africana,"['es', 'en', 'fr', 'it']"
+817,Voacanga caudiflora,['fr']
+818,Voacanga foetida,['en']
+819,Voacanga grandifolia,['en']
+820,Voacanga havilandii,['en']
+821,Voacanga thouarsii,['en']
+822,Willughbeia cirrhifera,['en']
+823,Willughbeia coriacea,"['es', 'fr']"
+824,Willughbeia edulis,['en']
+825,Willughbeia sarawacensis,['en']
+826,Wrightia angustifolia,['en']
+827,Wrightia annamensis,['en']
+828,Wrightia antidysenterica,"['es', 'en']"
+829,Wrightia demartiniana,['en']
+830,Wrightia dubia,['en']
+831,Wrightia laevis,['en']
+832,Wrightia lanceolata,"['en', 'fr']"
+833,Wrightia lecomtei,"['en', 'fr']"
+834,Wrightia natalensis,['en']
+835,Wrightia pubescens,['en']
+836,Wrightia religiosa,['en']
+837,Wrightia tinctoria,"['en', 'fr']"
+838,Wrightia viridiflora,"['en', 'fr']"
+839,Xysmalobium samoritourei,['en']
+840,Xysmalobium undulatum,['es']
+841,Zygostelma benthamii,['en']
+842,Acrobotrys discolor,"['es', 'en', 'pt']"
+843,Acunaeanthus tinifolius,"['es', 'en']"
+844,Adenorandia kalbreyeri,"['es', 'en']"
+845,Adina cordifolia,"['es', 'en']"
+846,Adina fagifolia,['es']
+847,Adina trichotoma,['es']
+848,Afrocanthium keniense,['en']
+849,Afrocanthium kilifiense,['en']
+850,Afrocanthium pseudoverticillatum,['en']
+851,Afrocanthium shabanii,['en']
+852,Afrocanthium siebenlistii,['en']
+853,Afrocanthium vollesenii,['en']
+854,Aidia cochinchinensis,"['en', 'fr']"
+855,Aidia densiflora,"['es', 'fr']"
+856,Aidia gardneri,['en']
+857,Aidia quintasii,['fr']
+858,Aidia rhacodosepala,['fr']
+859,Aidia wattii,['fr']
+860,Aidiopsis orophila,"['es', 'en']"
+861,Alberta magna,"['es', 'en']"
+862,Alibertia edulis,"['es', 'en', 'pt']"
+863,Alibertia patinoi,['en']
+864,Alleizettella leucocarpa,['en']
+865,Alleizettella rubra,['en']
+866,Alseis lugonis,"['es', 'en']"
+867,Amphidasya elegans,['en']
+868,Amphidasya longicalycina,['es']
+869,Anthospermopsis catechosperma,['en']
+870,Anthospermum aethiopicum,['en']
+871,Anthospermum asperuloides,"['en', 'fr']"
+872,Aoranthe penduliflora,['en']
+873,Aphanocarpus steyermarkii,"['es', 'en']"
+874,Arachnothryx chimboracensis,['en']
+875,Arachnothryx fosbergii,['en']
+876,Arachnothryx peruviana,['es']
+877,Arcytophyllum nitidum,['es']
+878,Argocoffeopsis lemblinii,"['es', 'en']"
+879,Argostemma ophirense,['en']
+880,Asperula abbreviata,['en']
+881,Asperula abchasica,['en']
+882,Asperula accrescens,['en']
+883,Asperula acuminata,['en']
+884,Asperula affinis,['en']
+885,Asperula albiflora,['en']
+886,Asperula ambleia,['en']
+887,Asperula apuana,['en']
+888,Asperula arcadiensis,['en']
+889,Asperula aristata,"['es', 'en', 'fr', 'pt']"
+890,Asperula aristata subsp. scabra,"['es', 'pt']"
+891,Asperula arvensis,"['es', 'en', 'fr', 'pt']"
+892,Asperula assamica,['en']
+893,Asperula asterocephala,['en']
+894,Asperula brachyantha,['en']
+895,Asperula breviflora,"['es', 'en']"
+896,Asperula conferta,['en']
+897,Asperula crassula,['en']
+898,Asperula cynanchica,"['es', 'en', 'fr', 'pt']"
+899,Asperula cypria,['en']
+900,Asperula euryphylla,['es']
+901,Asperula galioides,['es']
+902,Asperula gunnii,"['es', 'en']"
+903,Asperula gussonei,['en']
+904,Asperula hercegovina,['en']
+905,Asperula hexaphylla,['fr']
+906,Asperula hirsuta,['pt']
+907,Asperula hirta,['fr']
+908,Asperula involucrata,['en']
+909,Asperula lilaciflora,['en']
+910,Asperula mungieri,['en']
+911,Asperula naufraga,['en']
+912,Asperula nitida,['en']
+913,Asperula oblanceolata,['es']
+914,Asperula orientalis,"['es', 'en']"
+915,Asperula paui,['fr']
+916,Asperula podlechii,['en']
+917,Asperula purpurea,['en']
+918,Asperula pusilla,['en']
+919,Asperula rumelica,['en']
+920,Asperula rupicola,['en']
+921,Asperula scoparia,['en']
+922,Asperula serotina,['en']
+923,Asperula sintenisii,['en']
+924,Asperula subsimplex,['es']
+925,Asperula subulifolia,['en']
+926,Asperula taurina,['en']
+927,Asperula taygetea,['en']
+928,Asperula tetraphylla,"['es', 'en']"
+929,Asperula tinctoria,"['es', 'en', 'fr']"
+930,Asperula virgata,['en']
+931,Asperula wimmeriana,['en']
+932,Asperula xylorrhiza,['en']
+933,Astiella delicatula,"['es', 'en']"
+934,Atractocarpus benthamianus,"['es', 'en']"
+935,Atractocarpus chartaceus,['en']
+936,Atractocarpus fitzalanii,['en']
+937,Atractocarpus heterophyllus,['en']
+938,Atractocarpus hirtus,['en']
+939,Atractocarpus stipularis,['en']
+940,Aulacocalyx camerooniana,['fr']
+941,Aulacocalyx lamprophylla,['fr']
+942,Aulacocalyx mapiana,['fr']
+943,Aulacocalyx pallens,['fr']
+944,Balmea stormiae,['en']
+945,Belonophora coffeoides,['en']
+946,Belonophora coriacea,['en']
+947,Belonophora ongensis,"['en', 'fr']"
+948,Belonophora talbotii,['en']
+949,Belonophora wernhamii,"['en', 'fr']"
+950,Benzonia corymbosa,['en']
+951,Berghesia coccinea,['en']
+952,Bertiera borbonica,['fr']
+953,Bertiera elabensis,['fr']
+954,Bertiera heterophylla,['fr']
+955,Bertiera laxa,['fr']
+956,Bertiera laxissima,['fr']
+957,Bertiera lejolyana,['fr']
+958,Bertiera pauloi,['en']
+959,Bertiera pedicellata,['fr']
+960,Bertiera rosseeliana,['fr']
+961,Bertiera rufa,['fr']
+962,Bikkia tetrandra,"['es', 'en', 'fr']"
+963,Blepharidium guatemalense,"['es', 'en']"
+964,Bobea sandwicensis,['en']
+965,Bobea timonioides,['en']
+966,Boholia nematostylis,['en']
+967,Bothriospora corymbosa,"['es', 'en']"
+968,Bouvardia longiflora,"['es', 'en']"
+969,Bouvardia ternifolia,"['es', 'en']"
+970,Bremeria landia,['fr']
+971,Breonadia salicina,"['es', 'en']"
+972,Bruxanelia indica,['en']
+973,Burchellia bubalina,"['es', 'en']"
+974,Byrsophyllum ellipticum,['en']
+975,Byrsophyllum tetrandrum,['en']
+976,Callipeltis cucullaris,['es']
+977,Calochone acuminata,['en']
+978,Calycophyllum candidissimum,"['es', 'en']"
+979,Calycophyllum multiflorum,['es']
+980,Calycophyllum spruceanum,"['es', 'en', 'fr', 'pt']"
+981,Calycosiphonia macrochlamys,['en']
+982,Canthium angustifolium,['en']
+983,Canthium coromandelicum,"['es', 'en']"
+984,Canthium inerme,"['es', 'en']"
+985,Canthium lucidum,['es']
+986,Carajasia cangae,['en']
+987,Carapichea ipecacuanha,"['es', 'en', 'fr', 'it']"
+988,Carterella alexanderae,['en']
+989,Casasia acunae,['en']
+990,Casasia calophylla,['en']
+991,Casasia clusiifolia,['en']
+992,Casasia domingensis,['en']
+993,Casasia ekmanii,['en']
+994,Casasia jacquinioides,['en']
+995,Casasia longipes,['en']
+996,Casasia nigrescens,['en']
+997,Casasia samuelssonii,['en']
+998,Catesbaea melanocarpa,['en']
+999,Catesbaea phyllacantha,['es']
+1000,Catunaregam spinosa,['en']
+1001,Cephalanthus angustifolius,['es']
+1002,Cephalanthus glabratus,"['es', 'en']"
+1003,Cephalanthus occidentalis,"['es', 'en', 'fr']"
+1004,Cephalanthus salicifolius,['en']
+1005,Ceratopyxis verbenacea,"['es', 'en']"
+1006,Chalepophyllum guyanense,['en']
+1007,Chapelieria madagascariensis,['en']
+1008,Chassalia bipindensis,['fr']
+1009,Chassalia bosseri,['fr']
+1010,Chassalia corallioides,['fr']
+1011,Chassalia cristata,['fr']
+1012,Chassalia curviflora,['en']
+1013,Chassalia gaertneroides,['fr']
+1014,Chassalia laikomensis,['fr']
+1015,Chimarrhis cymosa,['fr']
+1016,Chimarrhis hookeri,['en']
+1017,Chiococca alba,"['es', 'en', 'pt']"
+1018,Chiococca filipes,['pt']
+1019,Chiococca insularis,['pt']
+1020,Chione venosa,"['es', 'en']"
+1021,Cinchona calisaya,"['es', 'en', 'fr', 'it']"
+1022,Cinchona hirsuta,['es']
+1023,Cinchona lancifolia,['es']
+1024,Cinchona officinalis,"['es', 'en', 'fr', 'pt']"
+1025,Cinchona pubescens,"['es', 'en', 'fr']"
+1026,Cinchona rugosa,['es']
+1027,Cinchonopsis amazonica,"['es', 'en']"
+1028,Cladoceras subcapitatum,"['es', 'en']"
+1029,Clarkella nana,['en']
+1030,Coddia rudis,"['es', 'en']"
+1031,Coelopyrena salicifolia,['en']
+1032,Coelospermum reticulatum,"['es', 'en']"
+1033,Coffea abbayesii,['en']
+1034,Coffea affinis,['en']
+1035,Coffea anthonyi,['fr']
+1036,Coffea arabica,"['es', 'en', 'fr', 'it', 'pt']"
+1037,Coffea bakossii,['fr']
+1038,Coffea benghalensis,['en']
+1039,Coffea canephora,"['es', 'en', 'fr', 'it', 'pt']"
+1040,Coffea charrieriana,"['en', 'fr', 'it']"
+1041,Coffea congensis,['fr']
+1042,Coffea costatifructa,['fr']
+1043,Coffea fotsoana,['fr']
+1044,Coffea kapakata,['en']
+1045,Coffea leonimontana,['fr']
+1046,Coffea liberica,"['en', 'fr', 'it', 'pt']"
+1047,Coffea magnistipula,['en']
+1048,Coffea mapiana,['fr']
+1049,Coffea mauritiana,['fr']
+1050,Coffea montekupensis,['fr']
+1051,Coffea pocsii,['fr']
+1052,Coffea racemosa,['en']
+1053,Coffea stenophylla,"['en', 'fr', 'it']"
+1054,Colletoecema magna,['fr']
+1055,Condaminea elegans,['en']
+1056,Condaminea glabrata,['fr']
+1057,Condaminea microcarpa,['fr']
+1058,Coprosma acerosa,['en']
+1059,Coprosma acutifolia,['en']
+1060,Coprosma arborea,['en']
+1061,Coprosma areolata,['en']
+1062,Coprosma autumnalis,['en']
+1063,Coprosma baueri,"['es', 'en']"
+1064,Coprosma ciliata,['en']
+1065,Coprosma cordicarpa,['en']
+1066,Coprosma crassifolia,['en']
+1067,Coprosma cuneata,['en']
+1068,Coprosma dodonaeifolia,['en']
+1069,Coprosma elegans,['en']
+1070,Coprosma ernodeoides,"['en', 'fr']"
+1071,Coprosma foetidissima,['en']
+1072,Coprosma fowerakeri,['en']
+1073,Coprosma hirtella,['en']
+1074,Coprosma huttoniana,['en']
+1075,Coprosma inopinata,['en']
+1076,Coprosma intertexta,['en']
+1077,Coprosma laevigata,['en']
+1078,Coprosma lanceolaris,['en']
+1079,Coprosma linariifolia,['en']
+1080,Coprosma lucida,['en']
+1081,Coprosma macrocarpa,['en']
+1082,Coprosma moorei,['en']
+1083,Coprosma neglecta,['en']
+1084,Coprosma niphophila,['en']
+1085,Coprosma nitida,"['es', 'en']"
+1086,Coprosma ochracea,['en']
+1087,Coprosma parviflora,['en']
+1088,Coprosma perpusilla,['en']
+1089,Coprosma petriei,"['es', 'en']"
+1090,Coprosma prisca,['en']
+1091,Coprosma propinqua,['en']
+1092,Coprosma pumila,['en']
+1093,Coprosma putida,['en']
+1094,Coprosma quadrifida,['en']
+1095,Coprosma rapensis,['fr']
+1096,Coprosma repens,"['es', 'en']"
+1097,Coprosma rhamnoides,['en']
+1098,Coprosma rigida,['en']
+1099,Coprosma robusta,['en']
+1100,Coprosma rotundifolia,['en']
+1101,Coprosma rubra,['en']
+1102,Coprosma rugosa,['en']
+1103,Coprosma spathulata,['en']
+1104,Coprosma tenuicaulis,['en']
+1105,Coprosma tenuifolia,['en']
+1106,Coprosma virescens,['en']
+1107,Coprosma waima,['en']
+1108,Coprosma wallii,['en']
+1109,Cordiera garapatica,['es']
+1110,Corynanthe brachythyrsus,['en']
+1111,Corynanthe johimbe,"['es', 'en', 'it']"
+1112,Coryphothamnus auyantepuiensis,['en']
+1113,Cosmocalyx spectabilis,['es']
+1114,Coussarea klugii,['fr']
+1115,Cowiea borneensis,['en']
+1116,Craterispermum aristatum,['fr']
+1117,Craterispermum montanum,"['fr', 'it']"
+1118,Craterispermum parvifolium,['fr']
+1119,Craterispermum robbrechtianum,['fr']
+1120,Craterispermum rumpianum,['fr']
+1121,Crobylanthe pellacalyx,['en']
+1122,Crossopteryx febrifuga,"['en', 'fr', 'it']"
+1123,Crucianella angustifolia,"['es', 'pt']"
+1124,Crucianella latifolia,"['es', 'pt']"
+1125,Crucianella maritima,"['es', 'pt']"
+1126,Crucianella patula,['es']
+1127,Cruciata glabra,"['es', 'en', 'pt']"
+1128,Cruciata glabra subsp. hirticaulis,['pt']
+1129,Cruciata laevipes,"['es', 'en', 'fr', 'pt']"
+1130,Cruciata pedemontana,"['es', 'en', 'pt']"
+1131,Crusea coronata,['es']
+1132,Cubanola domingensis,['en']
+1133,Cuviera talbotii,['fr']
+1134,Cuviera trilocularis,['fr']
+1135,Cyclophyllum coprosmoides,['en']
+1136,Cyclophyllum longipetalum,['en']
+1137,Deccania pubescens,"['es', 'en']"
+1138,Deppea splendens,['en']
+1139,Diacrodon compressus,['en']
+1140,Dialypetalanthus fuscescens,"['en', 'fr']"
+1141,Dibrachionostylus kaessneri,"['es', 'en']"
+1142,Dichilanthe zeylanica,['en']
+1143,Didymaea alsinoides,['es']
+1144,Didymopogon sumatranum,['en']
+1145,Diodia virginiana,['en']
+1146,Dioecrescis erythroclada,['en']
+1147,Dioicodendron dioicum,"['es', 'en', 'pt']"
+1148,Diplospora erythrospora,['en']
+1149,Discospermum philippinensis,['en']
+1150,Discospermum reyesii,['en']
+1151,Discospermum sphaerocarpum,['en']
+1152,Diyaminauclea zeylanica,['en']
+1153,Dolichodelphys chlorocrater,"['es', 'en', 'pt']"
+1154,Dolichometra leucantha,"['en', 'pt']"
+1155,Donnellyanthus deamii,['en']
+1156,Duidania montana,['en']
+1157,Dunnia sinensis,"['es', 'en']"
+1158,Duperrea pavettifolia,"['es', 'en']"
+1159,Duroia hirsuta,"['es', 'en', 'fr']"
+1160,Duroia maguirei,['es']
+1161,Durringtonia paludosa,"['es', 'en']"
+1162,Eizia mexicana,['en']
+1163,Elaeagia ecuadorensis,['fr']
+1164,Elaeagia pastoensis,['es']
+1165,Eleuthranthes liberiflora,['en']
+1166,Emmenopterys henryi,"['en', 'fr']"
+1167,Emmeorhiza umbellata,"['es', 'en']"
+1168,Empogona acidophylla,['en']
+1169,Empogona africana,['en']
+1170,Empogona concolor,"['en', 'fr']"
+1171,Empogona talbotii,['en']
+1172,Eosanthe cubensis,"['es', 'en']"
+1173,Eriosemopsis subanisophylla,"['es', 'en']"
+1174,Erithalis fruticosa,['fr']
+1175,Erithalis harrisii,['en']
+1176,Erithalis quadrangularis,['en']
+1177,Ernodea angusta,['en']
+1178,Ernodea littoralis,['en']
+1179,Eumachia frutescens,['en']
+1180,Everistia vacciniifolia,"['es', 'en']"
+1181,Exostema caribaeum,['es']
+1182,Fadogia homblei,['en']
+1183,Faramea angusta,['en']
+1184,Faramea exemplaris,"['es', 'en', 'fr']"
+1185,Ferdinandusa panamensis,['es']
+1186,Feretia apodanthera,['en']
+1187,Fernelia buxifolia,"['en', 'fr', 'pt']"
+1188,Fernelia pedunculata,['fr']
+1189,Flexanthera subcordata,['en']
+1190,Gaertnera hirtiflora,"['en', 'pt']"
+1191,Gaertnera letouzeyi,['fr']
+1192,Gaertnera longifolia,"['en', 'pt']"
+1193,Gaertnera rosea,['en']
+1194,Gaertnera ternifolia,"['en', 'fr']"
+1195,Gaertnera vaginata,['fr']
+1196,Gaertnera walkeri,"['en', 'fr']"
+1197,Galianthe brasiliensis,['es']
+1198,× Galiasperula ferdinandi-coburgii,['en']
+1199,Galium adhaerens,['es']
+1200,Galium aetnicum,['en']
+1201,Galium album,"['es', 'en', 'fr', 'it']"
+1202,Galium album subsp. suberectum,['es']
+1203,Galium amurense,['es']
+1204,Galium andrewsii,"['es', 'en']"
+1205,Galium anglicum,"['es', 'en']"
+1206,Galium angustifolium,"['es', 'en']"
+1207,Galium anisophyllon,"['es', 'en', 'fr']"
+1208,Galium anisophyllon subsp. anisophyllon,['es']
+1209,Galium antarcticum,"['es', 'en']"
+1210,Galium aparine,"['es', 'en', 'fr', 'it', 'pt']"
+1211,Galium aparinoides,['es']
+1212,Galium arenarium,"['es', 'en', 'fr']"
+1213,Galium argense,['en']
+1214,Galium aristatum,"['es', 'en']"
+1215,Galium arkansanum,['en']
+1216,Galium aschenbornii,['en']
+1217,Galium asprellum,"['en', 'fr']"
+1218,Galium atlanticum,['es']
+1219,Galium australe,['es']
+1220,Galium austriacum,['en']
+1221,Galium azuayicum,['en']
+1222,Galium baeticum,['pt']
+1223,Galium baldense,['en']
+1224,Galium balearicum,['es']
+1225,Galium bermudense,['en']
+1226,Galium bifolium,['en']
+1227,Galium bolanderi,['en']
+1228,Galium boreale,"['es', 'en', 'fr']"
+1229,Galium brachyphyllum,['es']
+1230,Galium brevifolium,['es']
+1231,Galium broterianum,['pt']
+1232,Galium buxifolium,['en']
+1233,Galium californicum,"['es', 'en']"
+1234,Galium × carmineum,['en']
+1235,Galium catalinense,"['es', 'en']"
+1236,Galium × centroniae,['en']
+1237,Galium cespitosum,['fr']
+1238,Galium circaezans,['en']
+1239,Galium clementis,['en']
+1240,Galium cliftonsmithii,['en']
+1241,Galium collomiae,['en']
+1242,Galium coloradoense,['en']
+1243,Galium cometerhizon,['en']
+1244,Galium concatenatum,['pt']
+1245,Galium concinnum,['en']
+1246,Galium corsicum,['en']
+1247,Galium crespianum,['es']
+1248,Galium debile,"['es', 'pt']"
+1249,Galium desereticum,['en']
+1250,Galium divaricatum,"['es', 'en']"
+1251,Galium ecuadoricum,"['es', 'en']"
+1252,Galium ehrenbergii,['en']
+1253,Galium elongatum,['en']
+1254,Galium emeryense,['en']
+1255,Galium fendleri,['en']
+1256,Galium fosbergii,['en']
+1257,Galium friedrichii,['es']
+1258,Galium fruticosum,['es']
+1259,Galium geminiflorum,"['en', 'pt']"
+1260,Galium glabrescens,['en']
+1261,Galium glaucophyllum,['en']
+1262,Galium glaucum,"['es', 'en', 'fr', 'pt']"
+1263,Galium glaucum subsp. australe,['pt']
+1264,Galium grande,['en']
+1265,Galium grayanum,"['es', 'en']"
+1266,Galium hallii,['en']
+1267,Galium hardhamiae,['en']
+1268,Galium hierosolymitanum,['es']
+1269,Galium humifusum,['en']
+1270,Galium hypotrichium,['en']
+1271,Galium intermedium,"['es', 'en']"
+1272,Galium intricatum,['es']
+1273,Galium jepsonii,['en']
+1274,Galium johnstonii,['en']
+1275,Galium kamtschaticum,['en']
+1276,Galium kitaibelianum,['fr']
+1277,Galium labradoricum,"['en', 'fr']"
+1278,Galium laevigatum,['en']
+1279,Galium lanceolatum,['en']
+1280,Galium latifolium,['en']
+1281,Galium leptogonium,['en']
+1282,Galium litorale,"['en', 'it']"
+1283,Galium lucidum,"['es', 'en', 'fr', 'it', 'pt']"
+1284,Galium lucidum subsp. lucidum,['pt']
+1285,Galium magellense,['en']
+1286,Galium magnifolium,['en']
+1287,Galium mahadivense,['en']
+1288,Galium maritimum,['fr']
+1289,Galium matthewsii,['en']
+1290,Galium megalospermum,['en']
+1291,Galium mexicanum,"['es', 'en']"
+1292,Galium microphyllum,['en']
+1293,Galium migrans,['en']
+1294,Galium minutulum,"['en', 'pt']"
+1295,Galium mollugo,"['es', 'en', 'fr', 'pt']"
+1296,Galium mollugo subsp. mollugo,['pt']
+1297,Galium montis-arerae,['en']
+1298,Galium multiflorum,"['es', 'en']"
+1299,Galium munzii,['en']
+1300,Galium murale,"['es', 'en', 'pt']"
+1301,Galium muricatum,['en']
+1302,Galium noricum,['en']
+1303,Galium nuttallii,"['es', 'en']"
+1304,Galium obliquum,"['en', 'fr']"
+1305,Galium obovatum,['es']
+1306,Galium obtusum,['en']
+1307,Galium odoratum,"['es', 'en', 'fr', 'it']"
+1308,Galium oelandicum,['en']
+1309,Galium olivetorum,['fr']
+1310,Galium oreganum,['en']
+1311,Galium orizabense,['en']
+1312,Galium palustre,"['es', 'en', 'fr', 'pt']"
+1313,Galium papillosum,['pt']
+1314,Galium papillosum subsp. helodes,['pt']
+1315,Galium parishii,['en']
+1316,Galium parisiense,"['es', 'en', 'fr', 'pt']"
+1317,Galium paschale,['en']
+1318,Galium perralderii,['en']
+1319,Galium pilosum,['en']
+1320,Galium × pomeranicum,['en']
+1321,Galium porrigens,['en']
+1322,Galium procurrens,['en']
+1323,Galium productum,['pt']
+1324,Galium proliferum,['en']
+1325,Galium propinquum,['en']
+1326,Galium pseudohelveticum,['fr']
+1327,Galium pumilum,"['es', 'en']"
+1328,Galium pusillum,['es']
+1329,Galium rotundifolium,"['es', 'en', 'fr', 'pt']"
+1330,Galium rubioides,"['es', 'en']"
+1331,Galium rubrum,"['es', 'en']"
+1332,Galium ruwenzoriense,['en']
+1333,Galium rzedowskii,['es']
+1334,Galium saxatile,"['es', 'en', 'fr', 'pt']"
+1335,Galium saxatile var. saxatile,['pt']
+1336,Galium saxatile var. vivianum,['pt']
+1337,Galium scabrum,"['es', 'pt']"
+1338,Galium serpenticum,['en']
+1339,Galium sparsiflorum,['en']
+1340,Galium spurium,"['es', 'en']"
+1341,Galium stebbinsii,['en']
+1342,Galium stellatum,['en']
+1343,Galium stenophyllum,['es']
+1344,Galium sterneri,['en']
+1345,Galium suecicum,['en']
+1346,Galium suffruticosum,['es']
+1347,Galium sylvaticum,"['es', 'en', 'fr']"
+1348,Galium talaveranum,['pt']
+1349,Galium texense,['en']
+1350,Galium tinctorium,"['es', 'en']"
+1351,Galium trichocarpum,['es']
+1352,Galium tricornutum,"['es', 'en', 'pt']"
+1353,Galium trifidum,"['es', 'en']"
+1354,Galium triflorum,"['es', 'en']"
+1355,Galium tunetanum,['en']
+1356,Galium uliginosum,"['es', 'en', 'fr']"
+1357,Galium uncinulatum,['en']
+1358,Galium uniflorum,"['es', 'en']"
+1359,Galium verrucosum,"['en', 'pt']"
+1360,Galium verum,"['es', 'en', 'fr', 'it', 'pt']"
+1361,Galium verum subsp. verum,['pt']
+1362,Galium virgatum,['en']
+1363,Galium viscosum,['pt']
+1364,Galium wrightii,['en']
+1365,Galium xeroticum,['en']
+1366,Gardenia actinocarpa,['en']
+1367,Gardenia anapetes,"['en', 'fr']"
+1368,Gardenia angkorensis,['en']
+1369,Gardenia barnesii,['en']
+1370,Gardenia brighamii,"['es', 'en']"
+1371,Gardenia candida,"['en', 'fr']"
+1372,Gardenia cornuta,['en']
+1373,Gardenia dacryoides,['en']
+1374,Gardenia elata,['en']
+1375,Gardenia erubescens,"['en', 'fr']"
+1376,Gardenia ewartii,['en']
+1377,Gardenia faucicola,['en']
+1378,Gardenia fucata,['en']
+1379,Gardenia gardneri,['en']
+1380,Gardenia gordonii,"['en', 'fr']"
+1381,Gardenia grievei,"['en', 'fr']"
+1382,Gardenia gummifera,['en']
+1383,Gardenia hillii,"['en', 'fr']"
+1384,Gardenia hutchinsoniana,"['en', 'fr']"
+1385,Gardenia imperialis,['en']
+1386,Gardenia jabiluka,['en']
+1387,Gardenia jasminoides,"['es', 'en', 'it', 'pt']"
+1388,Gardenia kakaduensis,['en']
+1389,Gardenia latifolia,['en']
+1390,Gardenia mannii,['en']
+1391,Gardenia megasperma,['en']
+1392,Gardenia mutabilis,['en']
+1393,Gardenia nitida,['fr']
+1394,Gardenia ornata,['en']
+1395,Gardenia ovularis,['en']
+1396,Gardenia psidioides,['en']
+1397,Gardenia pyriformis,['en']
+1398,Gardenia remyi,['en']
+1399,Gardenia resinosa,['en']
+1400,Gardenia scabrella,['en']
+1401,Gardenia sericea,['en']
+1402,Gardenia storckii,"['en', 'fr']"
+1403,Gardenia taitensis,"['en', 'fr']"
+1404,Gardenia thunbergia,"['es', 'en']"
+1405,Gardenia transvenulosa,['en']
+1406,Gardenia tubifera,['en']
+1407,Gardenia urvillei,['fr']
+1408,Gardenia vilhelmii,['en']
+1409,Gardenia vitiensis,['fr']
+1410,Gardenia volkensii,"['en', 'fr']"
+1411,Gardenia vulcanica,['en']
+1412,Genipa americana,"['es', 'en', 'fr', 'pt']"
+1413,Gillespiea speciosa,['pt']
+1414,Glionnetia sericea,"['es', 'en']"
+1415,Globulostylis cuvieroides,['fr']
+1416,Globulostylis dewildeana,['fr']
+1417,Globulostylis leniochlamys,['fr']
+1418,Globulostylis minor,['fr']
+1419,Globulostylis rammelooana,['fr']
+1420,Globulostylis robbrechtiana,['fr']
+1421,Gonzalagunia bifida,['en']
+1422,Gonzalagunia dodsonii,['en']
+1423,Gonzalagunia mollis,['en']
+1424,Gonzalagunia pauciflora,['en']
+1425,Guettarda calyptrata,['es']
+1426,Guettarda comata,"['es', 'en']"
+1427,Guettarda frangulifolia,['en']
+1428,Guettarda longiflora,['en']
+1429,Guettarda retusa,"['en', 'fr']"
+1430,Guettarda scabra,['en']
+1431,Guettarda speciosa,"['en', 'fr']"
+1432,Guettarda uruguensis,['es']
+1433,Gynochthodes hollrungiana,['en']
+1434,Gynochthodes jasminoides,['en']
+1435,Habroneuron radicans,['es']
+1436,Hamelia papillosa,['en']
+1437,Hamelia patens,"['es', 'en']"
+1438,Hedyotis indirae,['en']
+1439,Hedyotis lawsoniae,['en']
+1440,Hedyotis lessertiana,['en']
+1441,Hedyotis verticillaris,['en']
+1442,Heinsenia diervilleoides,['es']
+1443,Heinsenia diervilleoides subsp. diervilleoides,['es']
+1444,Heinsia crinita,['en']
+1445,Hekistocarpa minutiflora,['es']
+1446,Hexasepalum teres,['en']
+1447,Hillia parasitica,['fr']
+1448,Hillia triflora,['it']
+1449,Hintonia latiflora,"['es', 'en']"
+1450,Hintonia standleyana,['en']
+1451,Hoffmannia ecuatoriana,['en']
+1452,Hoffmannia modesta,['en']
+1453,Hoffmannia regalis,['en']
+1454,Hoffmannia rzedowskiana,['es']
+1455,Houstonia acerosa,['en']
+1456,Houstonia caerulea,"['es', 'en', 'fr']"
+1457,Houstonia canadensis,['en']
+1458,Houstonia correllii,['en']
+1459,Houstonia croftiae,['en']
+1460,Houstonia humifusa,"['en', 'fr']"
+1461,Houstonia longifolia,"['es', 'en']"
+1462,Houstonia micrantha,['en']
+1463,Houstonia ouachitana,['en']
+1464,Houstonia palmeri,['en']
+1465,Houstonia parviflora,['en']
+1466,Houstonia procumbens,"['en', 'fr']"
+1467,Houstonia purpurea,"['es', 'en', 'fr']"
+1468,Houstonia pusilla,"['es', 'en', 'fr']"
+1469,Houstonia rosea,['en']
+1470,Houstonia rubra,['en']
+1471,Houstonia serpyllifolia,"['es', 'en', 'fr']"
+1472,Houstonia sharpii,['en']
+1473,Houstonia spellenbergii,['en']
+1474,Houstonia subviscosa,['en']
+1475,Houstonia teretifolia,['en']
+1476,Houstonia wrightii,"['en', 'fr']"
+1477,Hutchinsonia barbata,['en']
+1478,Hutchinsonia glabrescens,['en']
+1479,Hydnophytum formicarum,['en']
+1480,Hydrophylax maritima,"['es', 'en']"
+1481,Hymenocoleus glaber,['en']
+1482,Hymenodictyon parvifolium,['en']
+1483,Ixora albersii,"['en', 'pt']"
+1484,Ixora batesii,['fr']
+1485,Ixora beckleri,['en']
+1486,Ixora brevipedunculata,['en']
+1487,Ixora calycina,"['en', 'fr']"
+1488,Ixora casei,['fr']
+1489,Ixora chinensis,"['es', 'en', 'pt']"
+1490,Ixora coccinea,"['es', 'en']"
+1491,Ixora elongata,['en']
+1492,Ixora euosmia,['en']
+1493,Ixora finlaysoniana,"['es', 'en']"
+1494,Ixora foliosa,"['en', 'fr']"
+1495,Ixora johnsonii,['en']
+1496,Ixora jucunda,['en']
+1497,Ixora killipii,['en']
+1498,Ixora lawsonii,['en']
+1499,Ixora malabarica,"['en', 'fr']"
+1500,Ixora margaretae,"['en', 'fr']"
+1501,Ixora marquesensis,['en']
+1502,Ixora mooreensis,['en']
+1503,Ixora nana,['fr']
+1504,Ixora nigerica,['en']
+1505,Ixora nigricans,['en']
+1506,Ixora ooumuensis,['en']
+1507,Ixora panurensis,['en']
+1508,Ixora pavetta,['en']
+1509,Ixora peruviana,['en']
+1510,Ixora pudica,['en']
+1511,Ixora raiateensis,['en']
+1512,Ixora raivavaensis,['en']
+1513,Ixora rufa,['en']
+1514,Ixora saulierei,['en']
+1515,Ixora setchellii,['en']
+1516,Ixora st-johnii,['en']
+1517,Ixora stokesii,['en']
+1518,Ixora synactica,['fr']
+1519,Ixora temehaniensis,['en']
+1520,Ixora umbellata,['en']
+1521,Ixora yavitensis,['en']
+1522,Jackiopsis ornata,['en']
+1523,Janotia macrostipula,"['es', 'en']"
+1524,Joosia aequatoria,['en']
+1525,Joosia longisepala,['en']
+1526,Joosia macrocalyx,['en']
+1527,Joosia obtusa,['en']
+1528,Joosia oligantha,['en']
+1529,Joosia standleyana,['en']
+1530,Jovetia humilis,['en']
+1531,Kadua cookiana,['en']
+1532,Kadua cordata,['en']
+1533,Kadua coriacea,['en']
+1534,Kadua degeneri,['en']
+1535,Kadua laxiflora,['en']
+1536,Kadua parvula,['en']
+1537,Kadua romanzoffiensis,['en']
+1538,Kadua st-johnii,['en']
+1539,Keetia bakossiorum,"['en', 'fr']"
+1540,Keetia gueinzii,['en']
+1541,Keetia koritschoneri,['en']
+1542,Keetia purpurascens,['en']
+1543,Kelloggia galioides,['en']
+1544,Kerianthera preclara,['es']
+1545,Khasiaclunea oligocephala,['en']
+1546,Klossia montana,['en']
+1547,Kohautia amatymbica,['en']
+1548,Kohautia socotrana,['en']
+1549,Kraussia floribunda,"['es', 'en']"
+1550,Kraussia socotrana,"['es', 'en']"
+1551,Kraussia speciosa,['en']
+1552,Kutchubaea montana,"['en', 'fr']"
+1553,Ladenbergia acutifolia,"['es', 'en', 'fr']"
+1554,Ladenbergia ferruginea,"['es', 'en', 'fr']"
+1555,Ladenbergia moritziana,['es']
+1556,Ladenbergia pavonii,"['en', 'fr']"
+1557,Ladenbergia rubiginosa,['en']
+1558,Ladenbergia stenocarpa,"['en', 'fr']"
+1559,Landiopsis capuronii,['es']
+1560,Larsenaikia jardinei,['en']
+1561,Lasianthus capitulatus,"['en', 'fr']"
+1562,Lasianthus ciliatus,['en']
+1563,Lasianthus gardneri,"['en', 'fr']"
+1564,Lasianthus kilimandscharicus,['en']
+1565,Lasianthus oliganthus,['en']
+1566,Lasianthus pedunculatus,['en']
+1567,Lasianthus rostratus,"['en', 'fr']"
+1568,Lasianthus strigosus,['en']
+1569,Lasianthus tomentosus,['en']
+1570,Lasianthus varians,"['en', 'fr']"
+1571,Lasianthus walkerianus,['en']
+1572,Lasianthus wallacei,['en']
+1573,Lelya osteocarpa,['es']
+1574,Leptactina densiflora,['en']
+1575,Leptactina papyrophloea,['en']
+1576,Leptopetalum pachyphyllum,['en']
+1577,Leptopetalum strigulosum,['fr']
+1578,Luculia gratissima,"['en', 'fr']"
+1579,Macbrideina peruviana,['es']
+1580,Machaonia havanensis,['es']
+1581,Machaonia havanensis subsp. havanensis,['es']
+1582,Machaonia woodburyana,['en']
+1583,Macrocnemum jamaicense,['en']
+1584,Macrocnemum roseum,['es']
+1585,Macrosphyra longistyla,['fr']
+1586,Maguireocharis neblinae,['es']
+1587,Manettia acutifolia,['pt']
+1588,Manettia alba,['pt']
+1589,Manettia albert-smithii,['pt']
+1590,Manettia angamarcensis,"['en', 'pt']"
+1591,Manettia arboricola,['pt']
+1592,Manettia asclepiadacea,['pt']
+1593,Manettia asperifolia,['pt']
+1594,Manettia auratifolia,['pt']
+1595,Manettia badilloi,['pt']
+1596,Manettia bangii,['pt']
+1597,Manettia barbata,['pt']
+1598,Manettia bernardii,['pt']
+1599,Manettia beyrichiana,['pt']
+1600,Manettia breteleri,['pt']
+1601,Manettia caliana,['pt']
+1602,Manettia calycosa,['pt']
+1603,Manettia campanulacea,['pt']
+1604,Manettia canescens,"['en', 'pt']"
+1605,Manettia cephalophora,['pt']
+1606,Manettia chrysoderma,['pt']
+1607,Manettia cinchonarum,['pt']
+1608,Manettia coccinea,['pt']
+1609,Manettia coccocypseloides,['pt']
+1610,Manettia coerulea,['pt']
+1611,Manettia congesta,['pt']
+1612,Manettia cordifolia,['pt']
+1613,Manettia cryptantha,['pt']
+1614,Manettia discolor,['pt']
+1615,Manettia divaricata,['pt']
+1616,Manettia domingensis,['pt']
+1617,Manettia dominicensis,['pt']
+1618,Manettia dubia,['pt']
+1619,Manettia echitidea,['pt']
+1620,Manettia evenia,['pt']
+1621,Manettia fiebrigii,['pt']
+1622,Manettia fimbriata,['pt']
+1623,Manettia flexilis,['pt']
+1624,Manettia glandulosa,['pt']
+1625,Manettia glazioviana,['pt']
+1626,Manettia glaziovii,['pt']
+1627,Manettia gracilis,['pt']
+1628,Manettia herthae,"['en', 'pt']"
+1629,Manettia holwayi,['en']
+1630,Manettia lilacina,['en']
+1631,Manettia longipedicellata,['es']
+1632,Manettia nebulosa,['en']
+1633,Manettia nubigena,['en']
+1634,Manettia pichinchensis,['en']
+1635,Manettia reclinata,['es']
+1636,Manettia skutchii,['en']
+1637,Manettia stenocalyx,['en']
+1638,Manettia teresitae,"['en', 'pt']"
+1639,Massularia acuminata,['es']
+1640,Mastixiodendron plectocarpum,"['en', 'fr']"
+1641,Mastixiodendron stoddardii,['en']
+1642,Melanopsidium nigrum,['es']
+1643,Meyna laxiflora,['en']
+1644,Meyna spinosa,['en']
+1645,Mitchella repens,"['en', 'fr']"
+1646,Mitracarpus hirtus,['fr']
+1647,Mitracarpus maxwelliae,['en']
+1648,Mitracarpus polycladus,['en']
+1649,Mitragyna diversifolia,"['es', 'en']"
+1650,Mitragyna inermis,"['es', 'fr']"
+1651,Mitragyna ledermannii,"['en', 'fr']"
+1652,Mitragyna parvifolia,"['es', 'en']"
+1653,Mitragyna parvifolia var. microphylla,['en']
+1654,Mitragyna rubrostipulata,['it']
+1655,Mitragyna speciosa,"['es', 'en', 'fr', 'it', 'pt']"
+1656,Mitragyna stipulosa,['fr']
+1657,Mitragyna tubulosa,['en']
+1658,Mitrasacmopsis quadrivalvis,['es']
+1659,Mitriostigma axillare,['fr']
+1660,Mitriostigma barteri,"['en', 'fr']"
+1661,Mitriostigma greenwayi,['fr']
+1662,Mitriostigma monocaule,['fr']
+1663,Mitriostigma usambarense,['fr']
+1664,Molopanthera paniculata,['es']
+1665,Morelia senegalensis,"['es', 'pt']"
+1666,Morinda angustifolia,"['es', 'en']"
+1667,Morinda asteroscepa,['en']
+1668,Morinda bracteata,['es']
+1669,Morinda chrysorhiza,['es']
+1670,Morinda citrifolia,"['es', 'en', 'fr', 'it', 'pt']"
+1671,Morinda coreia,['en']
+1672,Morinda elliptica,['es']
+1673,Morinda fasciculata,['en']
+1674,Morinda longiflora,['en']
+1675,Morinda lucida,['en']
+1676,Morinda morindoides,['en']
+1677,Morinda nana,['en']
+1678,Morinda panamensis,['en']
+1679,Morinda royoc,"['es', 'en']"
+1680,Motleyothamnus corymbosus,['en']
+1681,Mouretia tonkinensis,['en']
+1682,Multidentia sclerocarpa,['en']
+1683,Mussaenda arcuata,"['es', 'fr']"
+1684,Mussaenda bityensis,['fr']
+1685,Mussaenda epiphytica,['fr']
+1686,Mussaenda erythrophylla,"['es', 'en', 'pt']"
+1687,Mussaenda frondosa,"['es', 'en']"
+1688,Mussaenda isertiana,"['es', 'fr']"
+1689,Mussaenda leptantha,['fr']
+1690,Mussaenda macrophylla,"['es', 'en']"
+1691,Mussaenda parva,['es']
+1692,Mussaenda philippica,['en']
+1693,Mussaenda pubescens,['en']
+1694,Mussaenda raiateensis,['en']
+1695,Mussaenda soyauxii,['fr']
+1696,Mussaenda theifera,['es']
+1697,Mussaenda tomentosa,['es']
+1698,Mussaenda uniflora,['es']
+1699,Mussaenda villosa,"['es', 'en']"
+1700,Myrmecodia beccarii,"['en', 'it']"
+1701,Myrmecodia tuberosa,['it']
+1702,Nargedia macrocarpa,['en']
+1703,Nauclea diderrichii,"['en', 'fr']"
+1704,Nauclea latifolia,['fr']
+1705,Nauclea orientalis,"['en', 'fr', 'it']"
+1706,Nauclea vanderguchtii,['fr']
+1707,Nematostylis anthophylla,"['es', 'en']"
+1708,Neobertiera gracilis,['es']
+1709,Neolamarckia cadamba,"['en', 'it']"
+1710,Neonauclea sessilifolia,['en']
+1711,Nernstia mexicana,"['es', 'en']"
+1712,Nertera granadensis,"['es', 'en']"
+1713,Nertera nigricarpa,['es']
+1714,Nesohedyotis arborea,"['es', 'en']"
+1715,Neurocalyx calycinus,['en']
+1716,Nichallea soyauxii,['es']
+1717,Normandia neocaledonica,"['es', 'en']"
+1718,Nostolachma crassifolia,"['en', 'fr']"
+1719,Notopleura madida,['en']
+1720,Notopleura uliginosa,['en']
+1721,Ochreinauclea missionis,['en']
+1722,Octotropis travancorica,['es']
+1723,Oldenlandia adscensionis,['en']
+1724,Oldenlandia aretioides,['en']
+1725,Oldenlandia balfourii,['en']
+1726,Oldenlandia bicornuta,['en']
+1727,Oldenlandia corymbosa,['en']
+1728,Oldenlandia ocellata,['en']
+1729,Oldenlandia pulvinata,['en']
+1730,Oldenlandia salzmannii,['es']
+1731,Oldenlandia umbellata,"['es', 'en']"
+1732,Oldenlandia vasudevanii,['en']
+1733,Oldenlandiopsis callitrichoides,['en']
+1734,Oligocodon cunliffeae,['es']
+1735,Omiltemia longipes,['es']
+1736,Opercularia apiciflora,['en']
+1737,Opercularia echinocephala,['en']
+1738,Opercularia ovata,['en']
+1739,Opercularia vaginata,['en']
+1740,Oreopolus glacialis,['es']
+1741,Osa pulchra,"['es', 'en']"
+1742,Ottoschmidtia microphylla,['es']
+1743,Oxyanthus doucetii,['fr']
+1744,Oxyanthus montanus,['en']
+1745,Oxyanthus okuensis,"['en', 'fr']"
+1746,Oxyanthus tubiflorus,['en']
+1747,Oxyceros longiflorus,['en']
+1748,Paederia foetida,"['es', 'en', 'fr']"
+1749,Palicourea anderssoniana,['en']
+1750,Palicourea anianguana,['en']
+1751,Palicourea asplundii,['en']
+1752,Palicourea azurea,['en']
+1753,Palicourea calantha,['en']
+1754,Palicourea calothyrsus,['en']
+1755,Palicourea calycina,"['en', 'fr']"
+1756,Palicourea canarina,['en']
+1757,Palicourea candida,['en']
+1758,Palicourea consobrina,"['es', 'en', 'fr']"
+1759,Palicourea corniculata,['en']
+1760,Palicourea cornigera,['en']
+1761,Palicourea croceoides,['fr']
+1762,Palicourea elata,['en']
+1763,Palicourea fuchsioides,['en']
+1764,Palicourea gentryi,['en']
+1765,Palicourea heilbornii,['en']
+1766,Palicourea herrerae,"['es', 'en', 'fr']"
+1767,Palicourea holmgrenii,['en']
+1768,Palicourea jaramilloi,['en']
+1769,Palicourea latifolia,"['es', 'en', 'fr']"
+1770,Palicourea lobbii,['en']
+1771,Palicourea microcarpa,['es']
+1772,Palicourea prodiga,['en']
+1773,Palicourea rigida,['pt']
+1774,Palicourea sodiroi,['en']
+1775,Palicourea stenosepala,['en']
+1776,Palicourea subalatoides,['en']
+1777,Palicourea tectoneura,['en']
+1778,Palicourea wilesii,['en']
+1779,Parachimarrhis breviloba,['es']
+1780,Paragenipa lancifolia,['es']
+1781,Paraknoxia parviflora,['es']
+1782,Pauridiantha divaricata,['en']
+1783,Pauridiantha insularis,['en']
+1784,Pauridiantha multiflora,['fr']
+1785,Pauridiantha talbotii,['fr']
+1786,Pavetta abyssinica,['es']
+1787,Pavetta axillipara,"['en', 'fr']"
+1788,Pavetta baconiella,['fr']
+1789,Pavetta bangweensis,['fr']
+1790,Pavetta bidentata,['fr']
+1791,Pavetta blanda,['en']
+1792,Pavetta brachycalyx,['en']
+1793,Pavetta brachysiphon,['fr']
+1794,Pavetta camerounensis,['fr']
+1795,Pavetta canescens,['es']
+1796,Pavetta capensis,"['es', 'en', 'fr']"
+1797,Pavetta gleniei,['en']
+1798,Pavetta grossissima,['fr']
+1799,Pavetta holstii,['en']
+1800,Pavetta hongkongensis,['es']
+1801,Pavetta hookeriana,['fr']
+1802,Pavetta indica,['en']
+1803,Pavetta intermedia,['en']
+1804,Pavetta kimberleyana,['en']
+1805,Pavetta kribiensis,['fr']
+1806,Pavetta kupensis,"['en', 'fr']"
+1807,Pavetta lasioclada,"['en', 'fr']"
+1808,Pavetta laxa,['fr']
+1809,Pavetta linearifolia,['en']
+1810,Pavetta longistyla,['fr']
+1811,Pavetta lynesii,['en']
+1812,Pavetta manyanguensis,['en']
+1813,Pavetta mollissima,['en']
+1814,Pavetta monticola,['en']
+1815,Pavetta muiriana,"['en', 'fr']"
+1816,Pavetta namatae,['fr']
+1817,Pavetta nitidissima,['en']
+1818,Pavetta owariensis,['fr']
+1819,Pavetta plumosa,['fr']
+1820,Pavetta renidens,['fr']
+1821,Pavetta rigida,['fr']
+1822,Pavetta rubentifolia,"['en', 'fr']"
+1823,Pavetta schumanniana,['en']
+1824,Pavetta sparsipila,"['en', 'fr']"
+1825,Pavetta tarennoides,['en']
+1826,Pavetta tenuissima,['fr']
+1827,Pavetta tomentosa,['es']
+1828,Pavetta urophylla,['fr']
+1829,Pavetta viridiloba,['fr']
+1830,Pentagonia costaricensis,['es']
+1831,Pentagonia donnell-smithii,['es']
+1832,Pentagonia involucrata,['en']
+1833,Pentagonia macrophylla,['es']
+1834,Pentas lanceolata,"['es', 'en', 'fr', 'pt']"
+1835,Perakanthus velutinus,"['es', 'en']"
+1836,Perama hirsuta,['fr']
+1837,Petitiocodon parviflorum,['es']
+1838,Phialanthus jamaicensis,['en']
+1839,Phialanthus revolutus,['en']
+1840,Phuopsis stylosa,"['es', 'en', 'fr']"
+1841,Phyllis nobla,"['es', 'en', 'pt']"
+1842,Phyllis viscosa,"['es', 'en']"
+1843,Phyllomelia coronata,['es']
+1844,Phyllopentas ledermannii,['en']
+1845,Picardaea cubensis,['es']
+1846,Pimentelia glomerata,['es']
+1847,Pinckneya pubens,"['es', 'en']"
+1848,Plectroniella armata,"['es', 'en']"
+1849,Plocama calabrica,['it']
+1850,Plocama pendula,"['es', 'en']"
+1851,Plocama puberula,"['es', 'en']"
+1852,Plocama putorioides,"['es', 'en']"
+1853,Plocama rosea,['en']
+1854,Plocama thymoides,"['es', 'en']"
+1855,Plocama tinctoria,['en']
+1856,Plocaniophyllon flavum,['es']
+1857,Polysphaeria macrantha,['en']
+1858,Polysphaeria macrophylla,['fr']
+1859,Pomax umbellata,"['es', 'en', 'it']"
+1860,Portlandia coccinea,['en']
+1861,Portlandia grandiflora,['en']
+1862,Portlandia harrisii,['en']
+1863,Posoqueria latifolia,"['en', 'pt']"
+1864,Posoqueria longiflora,['en']
+1865,Preussiodora sulphurea,"['es', 'en']"
+1866,Prismatomeris fragrans,['en']
+1867,Pseudogalium paradoxum,['en']
+1868,Psychotria abdita,['en']
+1869,Psychotria acutiflora,['en']
+1870,Psychotria adamawae,['fr']
+1871,Psychotria adamsonii,['en']
+1872,Psychotria alatipes,['fr']
+1873,Psychotria alba,['en']
+1874,Psychotria alsophila,['en']
+1875,Psychotria altimontana,['fr']
+1876,Psychotria angustata,['en']
+1877,Psychotria arborea,['fr']
+1878,Psychotria asterogramma,['fr']
+1879,Psychotria atricaulis,['en']
+1880,Psychotria bakossiensis,['fr']
+1881,Psychotria basicordata,['fr']
+1882,Psychotria beddomei,"['en', 'fr']"
+1883,Psychotria bifaria,['fr']
+1884,Psychotria bimbiensis,"['en', 'fr']"
+1885,Psychotria bryonicola,['en']
+1886,Psychotria camerunensis,"['en', 'fr']"
+1887,Psychotria campoensis,['fr']
+1888,Psychotria capensis,['en']
+1889,Psychotria carronis,['en']
+1890,Psychotria carthagenensis,"['es', 'en']"
+1891,Psychotria catetensis,['fr']
+1892,Psychotria cathetoneura,['en']
+1893,Psychotria ceratalabastron,['fr']
+1894,Psychotria chalconeura,['en']
+1895,Psychotria chimboracensis,['en']
+1896,Psychotria clarendonensis,['en']
+1897,Psychotria clusioides,['en']
+1898,Psychotria congesta,['en']
+1899,Psychotria conica,['fr']
+1900,Psychotria cookei,['en']
+1901,Psychotria crassipetala,"['en', 'fr']"
+1902,Psychotria cuneifolia,['en']
+1903,Psychotria cyathicalyx,['en']
+1904,Psychotria dallachiana,['en']
+1905,Psychotria darwiniana,['fr']
+1906,Psychotria dasyophthalma,['en']
+1907,Psychotria densinervia,['en']
+1908,Psychotria deverdiana,['en']
+1909,Psychotria dubia,['en']
+1910,Psychotria dura,['en']
+1911,Psychotria elachistantha,['en']
+1912,Psychotria eladii,['fr']
+1913,Psychotria elephantina,['fr']
+1914,Psychotria fernandopoensis,['en']
+1915,Psychotria foetens,['en']
+1916,Psychotria franchetiana,['en']
+1917,Psychotria gardneri,"['en', 'fr']"
+1918,Psychotria glandulifera,['en']
+1919,Psychotria globicephala,['en']
+1920,Psychotria grandiflora,"['en', 'fr']"
+1921,Psychotria grantii,['en']
+1922,Psychotria greenwelliae,['en']
+1923,Psychotria guerkeana,['en']
+1924,Psychotria hanoverensis,['en']
+1925,Psychotria hexamera,['fr']
+1926,Psychotria hirsuta,['en']
+1927,Psychotria hobdyi,['en']
+1928,Psychotria ingentifolia,['fr']
+1929,Psychotria insularum,['en']
+1930,Psychotria korupensis,['fr']
+1931,Psychotria kribiensis,['fr']
+1932,Psychotria lanceifolia,"['en', 'fr']"
+1933,Psychotria ligustrifolia,['en']
+1934,Psychotria longipetiolata,['en']
+1935,Psychotria loniceroides,['en']
+1936,Psychotria macrocarpa,"['en', 'fr']"
+1937,Psychotria marantifolia,['fr']
+1938,Psychotria marchionica,['en']
+1939,Psychotria mariniana,['en']
+1940,Psychotria megalopus,['en']
+1941,Psychotria megistantha,['en']
+1942,Psychotria monensis,['fr']
+1943,Psychotria nervosa,"['en', 'fr']"
+1944,Psychotria nilgiriensis,['fr']
+1945,Psychotria peteri,['en']
+1946,Psychotria petitii,"['en', 'fr']"
+1947,Psychotria plicata,['en']
+1948,Psychotria plurivenia,['en']
+1949,Psychotria podocarpa,['en']
+1950,Psychotria pseudoplatyphylla,['en']
+1951,Psychotria punctata,"['es', 'en']"
+1952,Psychotria raivavaensis,['en']
+1953,Psychotria retrorsipilis,['fr']
+1954,Psychotria rhonhofiae,['en']
+1955,Psychotria rimbachii,['en']
+1956,Psychotria rufipilis,['en']
+1957,Psychotria saloiana,['en']
+1958,Psychotria satabiei,['fr']
+1959,Psychotria senterrei,['fr']
+1960,Psychotria siphonophora,['en']
+1961,Psychotria sordida,"['en', 'fr']"
+1962,Psychotria speciosa,['en']
+1963,Psychotria srilankensis,['en']
+1964,Psychotria sycophylla,['fr']
+1965,Psychotria tahitensis,['en']
+1966,Psychotria taitensis,"['en', 'fr']"
+1967,Psychotria tenuifolia,['en']
+1968,Psychotria torrenticola,['fr']
+1969,Psychotria trichocalyx,['en']
+1970,Psychotria tubuaiensis,['en']
+1971,Psychotria urbaniana,['fr']
+1972,Psychotria villicarpa,['fr']
+1973,Psychotria viridis,"['es', 'en', 'fr', 'it', 'pt']"
+1974,Psychotria vogeliana,['fr']
+1975,Psychotria whistleri,['en']
+1976,Psychotria woytkowskii,"['es', 'en', 'fr']"
+1977,Psychotria yaoundensis,['fr']
+1978,Psychotria zombamontana,['en']
+1979,Psydrax dicoccos,['en']
+1980,Psydrax faulknerae,['en']
+1981,Psydrax ficiformis,['en']
+1982,Psydrax horizontalis,['fr']
+1983,Psydrax kibuwae,['en']
+1984,Psydrax micans,['en']
+1985,Psydrax pergracilis,"['en', 'fr']"
+1986,Psydrax suborbicularis,"['en', 'fr']"
+1987,Puffia gerrardii,['en']
+1988,Pyrostria bispathacea,['fr']
+1989,Pyrostria commersonii,['fr']
+1990,Pyrostria orbicularis,['fr']
+1991,Pyrostria revoluta,['en']
+1992,Pyrostria socotrana,"['es', 'en']"
+1993,Rachicallis americana,['es']
+1994,Ramosmania rodriguesii,['en']
+1995,Randia aculeata,"['es', 'en', 'fr']"
+1996,Randia capitata,"['es', 'pt']"
+1997,Randia carlosiana,['en']
+1998,Randia echinocarpa,['es']
+1999,Randia hidalgensis,['es']
+2000,Randia lonicerioides,['es']
+2001,Randia moorei,"['es', 'en']"
+2002,Randia nicaraguensis,['en']
+2003,Randia obovata,['es']
+2004,Randia parvifolia,['es']
+2005,Randia portoricensis,['en']
+2006,Randia pterocarpa,['es']
+2007,Randia tomatillo,['es']
+2008,Randia vazquezii,['es']
+2009,Raritebe palicoureoides,['es']
+2010,Remijia ferruginea,['es']
+2011,Retiniphyllum cataractae,['en']
+2012,Retiniphyllum chloranthum,['en']
+2013,Retiniphyllum concolor,['en']
+2014,Rhaphidura lowii,['en']
+2015,Richardia brasiliensis,"['es', 'en', 'pt']"
+2016,Richardia gandarae,['es']
+2017,Richardia grandiflora,['pt']
+2018,Richardia scabra,"['es', 'en']"
+2019,Ridsdalea eucodon,['en']
+2020,Ridsdalea grandis,['en']
+2021,Riodocea pulcherrima,['en']
+2022,Robynsia glabrata,"['es', 'en']"
+2023,Rogiera amoena,['en']
+2024,Rogiera gratissima,['en']
+2025,Roigella correifolia,['es']
+2026,Ronabea emetica,['es']
+2027,Rondeletia adamsii,['en']
+2028,Rondeletia amplexicaulis,['en']
+2029,Rondeletia anguillensis,['fr']
+2030,Rondeletia bicolor,['en']
+2031,Rondeletia brachyphylla,['en']
+2032,Rondeletia buxifolia,"['es', 'fr']"
+2033,Rondeletia chinajensis,['es']
+2034,Rondeletia cincta,['en']
+2035,Rondeletia clarendonensis,['en']
+2036,Rondeletia dolphinensis,['en']
+2037,Rondeletia elegans,['en']
+2038,Rondeletia glauca,['en']
+2039,Rondeletia harrisii,['en']
+2040,Rondeletia hirsuta,['en']
+2041,Rondeletia hirta,['en']
+2042,Rondeletia odorata,['en']
+2043,Rondeletia pallida,['en']
+2044,Rondeletia portlandensis,['en']
+2045,Rondeletia racemosa,['en']
+2046,Rondeletia subsessilifolia,['en']
+2047,Rosenbergiodendron formosum,['en']
+2048,Rosenbergiodendron longiflorum,['en']
+2049,Rosenbergiodendron reflexum,['en']
+2050,Rothmannia annae,"['es', 'en', 'fr']"
+2051,Rothmannia capensis,"['es', 'en']"
+2052,Rothmannia ebamutensis,"['en', 'fr']"
+2053,Rothmannia globosa,"['es', 'en']"
+2054,Rothmannia longiflora,['es']
+2055,Rothmannia macrosiphon,['en']
+2056,Rothmannia manganjae,['es']
+2057,Rothmannia octomera,['es']
+2058,Rothmannia whitfieldii,['es']
+2059,Rubia agostinhoi,"['es', 'en', 'pt']"
+2060,Rubia alata,['es']
+2061,Rubia argyi,"['en', 'pt']"
+2062,Rubia chinensis,['en']
+2063,Rubia cordifolia,"['es', 'en', 'fr', 'pt']"
+2064,Rubia fruticosa,"['es', 'en', 'pt']"
+2065,Rubia laurae,['en']
+2066,Rubia peregrina,"['es', 'en', 'fr', 'pt']"
+2067,Rubia sylvatica,"['es', 'pt']"
+2068,Rubia tinctorum,"['es', 'en', 'fr', 'it', 'pt']"
+2069,Rudgea crassifolia,['en']
+2070,Rudgea obesiflora,"['es', 'en', 'fr']"
+2071,Rudgea parquioides,"['en', 'pt']"
+2072,Rudgea stenophylla,"['es', 'en', 'fr']"
+2073,Rustia alba,['en']
+2074,Rustia bilsana,['en']
+2075,Rustia occidentalis,['en']
+2076,Rustia viridiflora,['en']
+2077,Rutidea nigerica,['en']
+2078,Rutidea tenuicaulis,['fr']
+2079,Rytigynia binata,['en']
+2080,Rytigynia canthioides,['fr']
+2081,Rytigynia caudatissima,['en']
+2082,Rytigynia eickii,['en']
+2083,Rytigynia hirsutiflora,['en']
+2084,Rytigynia longipedicellata,['en']
+2085,Rytigynia nodulosa,['en']
+2086,Rytigynia pseudolongicaudata,['en']
+2087,Rytigynia subbiflora,['fr']
+2088,Sabicea amazonensis,['en']
+2089,Sabicea amomii,['en']
+2090,Sabicea batesii,['en']
+2091,Sabicea brasiliensis,['en']
+2092,Sabicea bullata,['fr']
+2093,Sabicea cinerea,['en']
+2094,Sabicea desseinii,['fr']
+2095,Sabicea hierniana,['fr']
+2096,Sabicea leucocarpa,['fr']
+2097,Sabicea medusula,['en']
+2098,Sabicea pedicellata,['en']
+2099,Sabicea pyramidalis,['en']
+2100,Sabicea sthenula,['fr']
+2101,Sabicea trigemina,['fr']
+2102,Sabicea urbaniana,['fr']
+2103,Sabicea villosa,['en']
+2104,Sabicea xanthotricha,['en']
+2105,Salzmannia nitida,['es']
+2106,Saprosma elegans,['en']
+2107,Saprosma fragrans,['en']
+2108,Schizomussaenda henryi,"['es', 'en']"
+2109,Schradera campii,['en']
+2110,Schumanniophyton problematicum,['en']
+2111,Schwendenera tetrapyxis,['en']
+2112,Scolosanthus howardii,['en']
+2113,Scyphiphora hydrophylacea,"['es', 'en', 'it']"
+2114,Sericanthe lowryana,['fr']
+2115,Sericanthe rabia,['fr']
+2116,Sericanthe toupetou,['en']
+2117,Serissa japonica,"['es', 'en', 'fr', 'it']"
+2118,Sherardia arvensis,"['en', 'fr', 'pt']"
+2119,Sherbournia ailarama,['fr']
+2120,Sherbournia batesii,['fr']
+2121,Sherbournia bignoniiflora,['en']
+2122,Sherbournia hapalophylla,['fr']
+2123,Siemensia pendula,['es']
+2124,Simira standleyi,['en']
+2125,Simira wurdackii,"['en', 'fr']"
+2126,Singaporandia macrophylla,['en']
+2127,Sinoadina racemosa,['es']
+2128,Spermacoce adscendens,['es']
+2129,Spermacoce alata,['en']
+2130,Spermacoce brachysepala,['en']
+2131,Spermacoce chartensis,['es']
+2132,Spermacoce glabra,['en']
+2133,Spermacoce keyensis,['en']
+2134,Spermacoce latifolia,['en']
+2135,Spermacoce neoterminalis,['en']
+2136,Spermacoce ocymoides,['en']
+2137,Spermacoce ovalifolia,['en']
+2138,Spermacoce prostrata,"['es', 'en']"
+2139,Spermacoce remota,['en']
+2140,Spermacoce riparia,['es']
+2141,Spermacoce verticillata,['en']
+2142,Spermadictyon suaveolens,['es']
+2143,Stenosepala hirsuta,['es']
+2144,Stenostomum radiatum,['fr']
+2145,Stichianthus minutiflorus,['en']
+2146,Stilpnophyllum grandifolium,['en']
+2147,Strumpfia maritima,"['es', 'en', 'fr', 'it']"
+2148,Stylosiphonia glabra,['en']
+2149,Syringantha coulteri,['es']
+2150,Tamilnadia uliginosa,['es']
+2151,Tamridaea capsulifera,"['es', 'en']"
+2152,Tarenna agumbensis,['en']
+2153,Tarenna bipindensis,['fr']
+2154,Tarenna drummondii,['en']
+2155,Tarenna luhomeroensis,['en']
+2156,Tarenna monosperma,['en']
+2157,Tarenna nilagirica,"['en', 'fr']"
+2158,Tarenna quadrangularis,['en']
+2159,Tarenna sechellensis,['en']
+2160,Temnocalyx nodulosa,"['es', 'en']"
+2161,Temnopteryx sericea,"['es', 'en']"
+2162,Tennantia sennii,['es']
+2163,Thamnoldenlandia ambovombensis,"['es', 'en']"
+2164,Theligonum cynocrambe,"['en', 'it', 'pt']"
+2165,Thiollierea kaalaensis,['en']
+2166,Thiollierea lenormandii,['en']
+2167,Thiollierea pachyphylla,['en']
+2168,Tinadendron noumeanum,"['en', 'fr']"
+2169,Tocoyena pittieri,['en']
+2170,Trailliaedoxa gracilis,['en']
+2171,Tricalysia achoundongiana,['fr']
+2172,Tricalysia amplexicaulis,['fr']
+2173,Tricalysia atherura,"['en', 'fr']"
+2174,Tricalysia coriacea,['fr']
+2175,Tricalysia fangana,['fr']
+2176,Tricalysia ferorum,['fr']
+2177,Tricalysia lasiodelphys,['fr']
+2178,Tricalysia lejolyana,"['en', 'fr']"
+2179,Tricalysia obstetrix,"['en', 'fr']"
+2180,Tricalysia oligoneura,['fr']
+2181,Tricalysia pangolina,['fr']
+2182,Tricalysia patentipilis,['fr']
+2183,Tricalysia pedicellata,['en']
+2184,Tricalysia pedunculosa,['fr']
+2185,Tricalysia schliebenii,['en']
+2186,Tricalysia soyauxii,['fr']
+2187,Tricalysia subsessilis,['fr']
+2188,Tricalysia sylvae,['fr']
+2189,Tricalysia vadensis,['fr']
+2190,Trichostachys interrupta,['en']
+2191,Trichostachys petiolata,['fr']
+2192,Triflorensia cameronii,['en']
+2193,Uncaria acida,['en']
+2194,Uncaria donisii,['fr']
+2195,Uncaria gambir,"['es', 'en', 'fr']"
+2196,Uncaria guianensis,"['es', 'en', 'fr']"
+2197,Uncaria perrottetii,['en']
+2198,Uncaria rhynchophylla,"['es', 'en', 'fr']"
+2199,Uncaria rhynchophylloides,['es']
+2200,Uncaria tomentosa,"['es', 'en', 'fr', 'it', 'pt']"
+2201,Urophyllum ellipticum,['en']
+2202,Valantia calva,"['es', 'it']"
+2203,Valantia deltoidea,['it']
+2204,Valantia hispida,"['es', 'pt']"
+2205,Valantia muralis,"['es', 'pt']"
+2206,Vangueria agrestis,['en']
+2207,Vangueria albosetulosa,['en']
+2208,Vangueria apiculata,['en']
+2209,Vangueria bicolor,['en']
+2210,Vangueria bowkeri,['en']
+2211,Vangueria burnettii,['en']
+2212,Vangueria burttii,['en']
+2213,Vangueria chariensis,['en']
+2214,Vangueria cinerascens,['en']
+2215,Vangueria cinnamomea,['en']
+2216,Vangueria cistifolia,['en']
+2217,Vangueria coerulea,['en']
+2218,Vangueria cyanescens,['en']
+2219,Vangueria discolor,['en']
+2220,Vangueria induta,['en']
+2221,Vangueria infausta,"['es', 'en', 'fr']"
+2222,Vangueria madagascariensis,"['es', 'en', 'fr']"
+2223,Vangueria pallidiflora,['en']
+2224,Vangueria pygmaea,['en']
+2225,Vangueria schliebenii,['en']
+2226,Vangueria venosa,"['es', 'en']"
+2227,Vangueriella chlorantha,['fr']
+2228,Vangueriella rufa,['fr']
+2229,Vangueriella spinosa,['en']
+2230,Vangueriella zenkeri,['fr']
+2231,Vangueriopsis lanciflora,['en']
+2232,Vangueriopsis longiflora,['en']
+2233,Vangueriopsis rubiginosa,['en']
+2234,Vangueriopsis shimbaensis,['en']
+2235,Villaria odorata,['es']
+2236,Virectaria angustifolia,['fr']
+2237,Virectaria multiflora,['fr']
+2238,Virectaria procumbens,['fr']
+2239,Warszewiczia coccinea,"['es', 'en']"
+2240,Wendlandia andamanica,['en']
+2241,Wendlandia angustifolia,"['en', 'pt']"
+2242,Wendlandia arabica,['en']
+2243,Wendlandia heynei,['en']
+2244,Wendlandia psychotrioides,['en']
+2245,Wittmackanthus stanleyanus,"['es', 'en']"
+2246,Xantonneopsis robinsonii,['en']
+2247,Zuccarinia macrophylla,['en']
