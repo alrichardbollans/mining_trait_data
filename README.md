@@ -22,13 +22,14 @@ Plants of the World Online (2022). Facilitated by the Royal Botanic Gardens, Kew
 Published on the Internet; http://www.plantsoftheworldonline.org/
 Accessed 10/01/2022
 
-The World Checklist of Vascular Plants, a continuously updated resource for exploring global plant diversity
-https://doi.org/10.1038/s41597-021-00997-6
-Accessed 20/01/22
+WCVP (2022). World Checklist of Vascular Plants, version 2.0. 
+Facilitated by the Royal Botanic Gardens, Kew. Published on the Internet
+http://wcvp.science.kew.org/
+Retrieved 20/01/2022.
 
 Royal Botanic Gardens, Kew (2022) Medicinal Plant Names Services, Version 11.
 www.kew.org/mpns 
-Accessed 18/01/22
+Accessed 18/01/2022
 
 Kew Species Profiles
 http://creativecommons.org/licenses/by/3.0
@@ -44,4 +45,4 @@ Kattge, J, Boenisch, G, Diaz, S, et al. TRY plant trait database - enhanced cove
 
 Wikipedia, The Free Encyclopedia
 https://en.wikipedia.org/
-Accessed 19/01/22
+Accessed 19/01/2022
