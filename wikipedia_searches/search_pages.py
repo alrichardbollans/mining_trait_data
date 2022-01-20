@@ -2,6 +2,7 @@ import string
 import pandas as pd
 import requests
 from typing import List
+from tqdm import tqdm
 import wikipediaapi
 
 
@@ -84,7 +85,8 @@ def make_wiki_hit_df(species_list: List[str], output_csv: str) -> pd.DataFrame:
     out_dict = {'Accepted_Name': [], 'Language': []}
     languages_to_check = ['es', 'en', 'fr', 'it', 'pt']
     wikis_to_check = [wikipediaapi.Wikipedia(lan) for lan in languages_to_check]
-    for sp in species_list:
+    for i in tqdm(range(len(species_list)), desc="Loading…", ascii=False, ncols=200):
+        sp = species_list[i]
         language_hits = []
         for wiki in wikis_to_check:
 
@@ -94,6 +96,7 @@ def make_wiki_hit_df(species_list: List[str], output_csv: str) -> pd.DataFrame:
         if len(language_hits) > 0:
             out_dict['Language'].append(str(language_hits))
             out_dict['Accepted_Name'].append(sp)
+
 
     df = pd.DataFrame(out_dict)
     df.to_csv(output_csv)
