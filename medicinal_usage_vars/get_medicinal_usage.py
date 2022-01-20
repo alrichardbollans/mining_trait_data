@@ -34,15 +34,15 @@ def get_powo_medicinal_usage():
 
 
 def prepare_MPNS_common_names(families_of_interest=None)->pd.DataFrame:
-    if families_of_interest is None:
-        families_of_interest = ['Apocynaceae', 'Rubiaceae']
+
     # TODO: Note this is particular to Rubiaceae and Apocynaceae
     # Requested from from MPNS
     mpns_df = pd.read_csv(initial_MPNS_csv)
     mpns_df.drop(columns=['refstand', 'ref_short'], inplace=True)
 
     mpns_df = mpns_df.dropna(subset=['taxon_name'])
-    mpns_df = mpns_df[mpns_df['family'].str.contains('|'.join(families_of_interest))]
+    if families_of_interest is not None:
+        mpns_df = mpns_df[mpns_df['family'].str.contains('|'.join(families_of_interest))]
 
     mpns_df = mpns_df.drop_duplicates()
     mpns_df.to_csv(cleaned_MPNS_csv)
@@ -66,7 +66,7 @@ def get_powo_antimalarial_usage():
 
 def main():
     get_powo_medicinal_usage()
-    prepare_MPNS_common_names()
+    prepare_MPNS_common_names(families_of_interest = ['Apocynaceae', 'Rubiaceae'])
     powo_medicinal_hits = pd.read_csv(powo_search_medicinal_temp_output_accepted_csv)
     mpns_medicinal_hits = pd.read_csv(cleaned_MPNS_accepted_csv)
     compile_hits([powo_medicinal_hits,mpns_medicinal_hits], output_medicinal_csv)
