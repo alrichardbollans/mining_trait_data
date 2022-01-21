@@ -44,7 +44,6 @@ output_common_names_csv = os.path.join(output_path, 'list_of_plants_with_common_
 
 
 def prepare_usda_common_names(families_of_interest=None):
-
     # # Copied from https://plants.usda.gov/csvdownload?plantLst=plantCompleteList
     usda_df = pd.read_csv(initial_USDA_csv)
     usda_df.drop(columns=['Symbol', 'Synonym Symbol'], inplace=True)
@@ -60,7 +59,7 @@ def prepare_usda_common_names(families_of_interest=None):
     accepted_usda_df = accepted_usda_df.dropna(subset=['Accepted_Name'])
     accepted_usda_df['Source'] = 'USDA Plants Database'
 
-    accepted_usda_df.drop(columns=['Unnamed: 0'], inplace=True)
+    accepted_usda_df.drop(accepted_usda_df.columns[0], axis=1, inplace=True)
 
     accepted_usda_df.to_csv(cleaned_USDA_accepted_csv)
 
@@ -91,11 +90,11 @@ def prepare_common_names_spp_ppa() -> pd.DataFrame:
 
     return with_accepted_info
 
-def prepare_MPNS_common_names(families_of_interest=None)->pd.DataFrame:
 
+def prepare_MPNS_common_names(families_of_interest=None) -> pd.DataFrame:
     # TODO: Note this is particular to Rubiaceae and Apocynaceae
     # Requested from from MPNS
-    mpns_df = pd.read_csv(initial_MPNS_csv,header=1)
+    mpns_df = pd.read_csv(initial_MPNS_csv, header=1)
     mpns_df.drop(columns=['authority', 'plant_id'], inplace=True)
 
     mpns_df = mpns_df.dropna(subset=['non_sci_name'])
@@ -103,10 +102,9 @@ def prepare_MPNS_common_names(families_of_interest=None)->pd.DataFrame:
     if families_of_interest is not None:
         mpns_df = mpns_df[mpns_df['family'].str.contains('|'.join(families_of_interest))]
 
-
     mpns_df['non_sci_name'] = mpns_df.groupby(['taxon_name'])['non_sci_name'].transform(lambda x: ':'.join(x))
     mpns_df = mpns_df.drop_duplicates()
-    mpns_df.rename(columns={'non_sci_name': 'MPNS_Snippet'},inplace=True)
+    mpns_df.rename(columns={'non_sci_name': 'MPNS_Snippet'}, inplace=True)
 
     mpns_df.to_csv(cleaned_MPNS_csv)
 
@@ -116,11 +114,12 @@ def prepare_MPNS_common_names(families_of_interest=None)->pd.DataFrame:
     accepted_mpns_df = accepted_mpns_df.dropna(subset=['Accepted_Name'])
     accepted_mpns_df['Source'] = 'MPNS'
     print(accepted_mpns_df)
-    accepted_mpns_df.drop(columns=['Unnamed: 0'], inplace=True)
+    accepted_mpns_df.drop(accepted_mpns_df.columns[0], axis=1, inplace=True)
 
     accepted_mpns_df.to_csv(cleaned_MPNS_accepted_csv)
 
     return accepted_mpns_df
+
 
 def get_powo_common_names(species_names: List[str], species_ids: List[str]) -> pd.DataFrame:
     '''
@@ -147,7 +146,7 @@ def get_powo_common_names(species_names: List[str], species_ids: List[str]) -> p
                 snippet = mystr[i - 1:i + len(common_name_section) + 1]
                 out_dict['Name'].append(name)
                 out_dict['POWO_Snippet'].append(snippet)
-                out_dict['Source'].append('POWO pages(' + str(id) +')')
+                out_dict['Source'].append('POWO pages(' + str(id) + ')')
         except HTTPError:
             print(f'Couldnt find id on POWO: {species_ids[i]}')
     df = pd.DataFrame(out_dict)
@@ -164,9 +163,9 @@ def standardise_names():
     standardise_names_in_column('Name', wiki_common_names_temp_output_csv, wiki_common_names_temp_output_accepted_csv)
     standardise_names_in_column('Name', powo_common_names_temp_output_csv, powo_common_names_temp_output_accepted_csv)
 
-    prepare_usda_common_names(families_of_interest = ['Apocynaceae', 'Rubiaceae'])
+    prepare_usda_common_names(families_of_interest=['Apocynaceae', 'Rubiaceae'])
     prepare_common_names_spp_ppa()
-    prepare_MPNS_common_names(families_of_interest = ['Apocynaceae', 'Rubiaceae'])
+    prepare_MPNS_common_names(families_of_interest=['Apocynaceae', 'Rubiaceae'])
 
 
 def main():
@@ -187,8 +186,7 @@ def main():
     print('Finished getting powo names')
     #
     standardise_names()
-    # # print('Finished standardising names')
-    # #
+    # print('Finished standardising names')
 
     usda_hits = pd.read_csv(cleaned_USDA_accepted_csv)
     spp_ppa_df = pd.read_csv(spp_ppa_common_names_temp_output_accepted_csv)
@@ -196,7 +194,7 @@ def main():
     wiki_hits = pd.read_csv(wiki_common_names_temp_output_accepted_csv)
     mpns_hits = pd.read_csv(cleaned_MPNS_accepted_csv)
 
-    all_dfs = [mpns_hits,usda_hits, powo_hits, wiki_hits, spp_ppa_df]
+    all_dfs = [mpns_hits, usda_hits, powo_hits, wiki_hits, spp_ppa_df]
     compile_hits(all_dfs, output_common_names_csv)
 
 
