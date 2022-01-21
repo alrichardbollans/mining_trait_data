@@ -1,6 +1,10 @@
 import os
+import zipfile
+import io
+from urllib.parse import urlparse
 
 import pandas as pd
+import requests
 from pkg_resources import resource_filename
 
 inputs_path = resource_filename(__name__, 'inputs')
@@ -8,10 +12,25 @@ inputs_path = resource_filename(__name__, 'inputs')
 outputs_path = resource_filename(__name__, 'outputs')
 
 
-def get_accepted_taxa(families_of_interest=None, output_csv=None) -> pd.DataFrame:
-    # Manually downloaded from http://sftp.kew.org/pub/data-repositories/WCVP/
-    wcvp_input_CSV = os.path.join(inputs_path, 'wcvp_v7_dec_2021.txt')
-    wcvp_data = pd.read_csv(wcvp_input_CSV, sep='|')
+def get_accepted_taxa(families_of_interest=None, output_csv=None, wcvp_input_file=None, wcvp_link=None) -> pd.DataFrame:
+    if wcvp_link is None:
+        wcvp_link = 'http://sftp.kew.org/pub/data-repositories/WCVP/wcvp_v7_dec_2021.zip'
+    if wcvp_input_file is None:
+        wcvp_input_file = os.path.join(inputs_path, 'wcvp_v7_dec_2021.txt')
+
+    # Download if doesn't exist
+    if not os.path.exists(wcvp_input_file):
+        r = requests.get(wcvp_link, stream=True)
+        z = zipfile.ZipFile(io.BytesIO(r.content))
+        z.extractall(inputs_path)
+
+        a = urlparse(wcvp_link)
+
+        basename_from_url = os.path.basename(a.path).replace('.zip', '.txt')
+
+        wcvp_input_file = os.path.join(inputs_path, basename_from_url)
+
+    wcvp_data = pd.read_csv(wcvp_input_file, sep='|')
     if families_of_interest is not None:
         wcvp_data = wcvp_data.loc[wcvp_data['family'].isin(families_of_interest)]
 
