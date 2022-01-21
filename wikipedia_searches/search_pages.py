@@ -85,7 +85,7 @@ def make_wiki_hit_df(species_list: List[str], output_csv: str) -> pd.DataFrame:
     out_dict = {'Accepted_Name': [], 'Language': []}
     languages_to_check = ['es', 'en', 'fr', 'it', 'pt']
     wikis_to_check = [wikipediaapi.Wikipedia(lan) for lan in languages_to_check]
-    for i in tqdm(range(len(species_list)), desc="Loading…", ascii=False, ncols=200):
+    for i in tqdm(range(len(species_list)), desc="Searching…", ascii=False, ncols=72):
         sp = species_list[i]
         language_hits = []
         for wiki in wikis_to_check:

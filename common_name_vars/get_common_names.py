@@ -129,7 +129,7 @@ def get_powo_common_names(species_names: List[str], species_ids: List[str]) -> p
     :return:
     '''
     out_dict = {'Name': [], 'POWO_Snippet': [], 'Source': []}
-    for i in tqdm(range(len(species_names)), desc="Loading…", ascii=False, ncols=200):
+    for i in tqdm(range(len(species_names)), desc="Searching…", ascii=False, ncols=72):
         try:
             name = species_names[i]
             id = species_ids[i]
