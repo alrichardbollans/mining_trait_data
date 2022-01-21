@@ -1,5 +1,7 @@
 from setuptools import setup, find_packages
 
+# To install run pip install -e PATH_TO_PACKAGE
+
 setup(
     name='miningtraitdata',
     url='https://github.com/alrichardbollans/mining_trait_data',
