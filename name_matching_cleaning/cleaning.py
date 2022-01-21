@@ -117,4 +117,6 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str):
     out_dfs = out_dfs[[c for c in out_dfs if c != col_names['sources']]
                          + [col_names['sources']]]
 
+    out_dfs.drop_duplicates(inplace=True)
+
     out_dfs.to_csv(output_csv)
