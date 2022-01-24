@@ -3,7 +3,7 @@ import subprocess
 
 import pandas as pd
 
-from name_matching_cleaning import col_names, standardise_names_in_column, filter_out_ranks
+from name_matching_cleaning import COL_NAMES, standardise_names_in_column, filter_out_ranks
 
 path_here = os.path.dirname(os.path.abspath(__file__))
 
@@ -25,7 +25,7 @@ def search_powo(search_terms: str, temp_output_file: str, accepted_output_file: 
     powo_poisons = pd.read_csv(temp_output_file)
     powo_poisons.rename(
         columns={'snippet': 'powo_Snippet',
-                 'url': col_names['single_source'], 'family': 'Family'},
+                 'url': COL_NAMES['single_source'], 'family': 'Family'},
         inplace=True)
     powo_poisons['Source'] = 'POWO pages(' + powo_poisons['Source'].astype(str) + ')'
 
