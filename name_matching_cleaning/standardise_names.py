@@ -6,7 +6,7 @@ import pandas as pd
 path_here = os.path.dirname(os.path.abspath(__file__))
 
 # TODO: Resolve all instances of multiple matches
-
+# TODO: Create batching
 def standardise_names_in_column(column_to_standardise: str, input_file: str, output_file: str):
     if " " in column_to_standardise:
         print('This will likely raise an error. R imports spaces as ".". Suggest changing spaces to full stops.')

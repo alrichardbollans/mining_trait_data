@@ -85,7 +85,7 @@ def get_accepted_info_spine_hits():
                    'Leaf pubescence'
 
                    ]
-    # TODO: check these in refs
+
     # Values for each feature which don't indicate spines
     val_to_drop = {'Thorn / spine length': [str(0), 0],
                    'Spinescence / thorniness': ['spines absent', str(0), 0, 'no', 'Absence'],
