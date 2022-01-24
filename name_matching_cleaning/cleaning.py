@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from typing import List
 
-col_names = {'acc_name': 'Accepted_Name',
+COL_NAMES = {'acc_name': 'Accepted_Name',
              'acc_species': 'Accepted_Species',
              'acc_id': 'Accepted_ID',
              'acc_rank': 'Accepted_Rank',
@@ -16,7 +16,7 @@ col_names = {'acc_name': 'Accepted_Name',
 def filter_out_ranks(df: pd.DataFrame) -> pd.DataFrame:
     ranks_of_interest = ['Species']
 
-    return df[df[col_names['acc_rank']].isin(ranks_of_interest)]
+    return df[df[COL_NAMES['acc_rank']].isin(ranks_of_interest)]
 
 
 def generate_temp_output_file_paths(filetag: str, temp_output_path: str):
@@ -58,25 +58,25 @@ def merge_columns(df: pd.DataFrame, new_col: str, old_columns: List[str]):
 
 def merge_on_accepted_id(x: pd.DataFrame, y: pd.DataFrame) -> pd.DataFrame:
 
-    merged_dfs = pd.merge(x, y, on=col_names['acc_id'], how='outer')
+    merged_dfs = pd.merge(x, y, on=COL_NAMES['acc_id'], how='outer')
 
-    new_sources_cols = [c for c in merged_dfs.columns.tolist() if (col_names['single_source'] in c)]
+    new_sources_cols = [c for c in merged_dfs.columns.tolist() if (COL_NAMES['single_source'] in c)]
     # # Merge Sources:
     for col in new_sources_cols:
         merged_dfs[col] = merged_dfs[col].astype('string')
         merged_dfs[col] = merged_dfs[col].fillna('')
-    merged_dfs[col_names['sources']] = merged_dfs[new_sources_cols].agg(':'.join, axis=1)
-    source_cols_to_drop = [c for c in new_sources_cols if c != col_names['sources']]
+    merged_dfs[COL_NAMES['sources']] = merged_dfs[new_sources_cols].agg(':'.join, axis=1)
+    source_cols_to_drop = [c for c in new_sources_cols if c != COL_NAMES['sources']]
     merged_dfs.drop(columns=source_cols_to_drop, inplace=True)
 
-    acc_cols = [c for c in merged_dfs.columns.tolist() if col_names['acc_name'] in c]
-    merged_dfs = merge_columns(merged_dfs, col_names['acc_name'], acc_cols)
+    acc_cols = [c for c in merged_dfs.columns.tolist() if COL_NAMES['acc_name'] in c]
+    merged_dfs = merge_columns(merged_dfs, COL_NAMES['acc_name'], acc_cols)
 
-    acc_sp_cols = [c for c in merged_dfs.columns.tolist() if col_names['acc_species'] in c]
-    merged_dfs = merge_columns(merged_dfs, col_names['acc_species'], acc_sp_cols)
+    acc_sp_cols = [c for c in merged_dfs.columns.tolist() if COL_NAMES['acc_species'] in c]
+    merged_dfs = merge_columns(merged_dfs, COL_NAMES['acc_species'], acc_sp_cols)
 
-    rank_cols = [c for c in merged_dfs.columns.tolist() if col_names['acc_rank'] in c]
-    merged_dfs = merge_columns(merged_dfs, col_names['acc_rank'], rank_cols)
+    rank_cols = [c for c in merged_dfs.columns.tolist() if COL_NAMES['acc_rank'] in c]
+    merged_dfs = merge_columns(merged_dfs, COL_NAMES['acc_rank'], rank_cols)
 
 
 
@@ -90,19 +90,19 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str):
     for df in all_dfs:
         [sources_cols.append(c) for c in df.columns.tolist() if 'Source' in c]
         [snippet_cols.append(c) for c in df.columns.tolist() if 'Snippet' in c]
-    cols_to_keep = list(col_names.values()) + sources_cols + snippet_cols
+    cols_to_keep = list(COL_NAMES.values()) + sources_cols + snippet_cols
 
     # Do some cleaning
     for df in all_dfs:
         cols_to_drop = [c for c in df.columns if
                         c not in cols_to_keep]
         df.drop(columns=cols_to_drop, inplace=True)
-        df.dropna(subset={col_names['acc_name']}, inplace=True)
+        df.dropna(subset={COL_NAMES['acc_name']}, inplace=True)
 
     # Do merges
     merged_dfs = all_dfs[0]
-    merged_dfs[col_names['sources']] = merged_dfs[col_names['single_source']]
-    merged_dfs.drop(columns=[col_names['single_source']], inplace=True)
+    merged_dfs[COL_NAMES['sources']] = merged_dfs[COL_NAMES['single_source']]
+    merged_dfs.drop(columns=[COL_NAMES['single_source']], inplace=True)
 
     if len(all_dfs) > 1:
         for i in all_dfs[1:]:
@@ -111,11 +111,11 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str):
 
 
 
-    start_cols = [col_names['acc_name'], col_names['acc_id'], col_names['acc_species'],col_names['acc_rank']]
+    start_cols = [COL_NAMES['acc_name'], COL_NAMES['acc_id'], COL_NAMES['acc_species'], COL_NAMES['acc_rank']]
     out_dfs = merged_dfs[[c for c in merged_dfs if c in start_cols]
                          + [c for c in merged_dfs if c not in start_cols]]
-    out_dfs = out_dfs[[c for c in out_dfs if c != col_names['sources']]
-                         + [col_names['sources']]]
+    out_dfs = out_dfs[[c for c in out_dfs if c != COL_NAMES['sources']]
+                      + [COL_NAMES['sources']]]
 
     out_dfs.drop_duplicates(inplace=True)
 
