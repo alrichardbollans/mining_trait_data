@@ -5,7 +5,9 @@ import pandas as pd
 from pkg_resources import resource_filename
 
 ### Inputs
-from name_matching_cleaning import standardise_names_in_column, generate_temp_output_file_paths, COL_NAMES, \
+from pykew import powo_terms
+
+from name_matching_cleaning import get_accepted_info_from_names_in_column, generate_temp_output_file_paths, COL_NAMES, \
     merge_on_accepted_id, compile_hits
 from powo_searches import search_powo
 
@@ -138,7 +140,8 @@ def get_accepted_info_hair_hits():
             raise ValueError(f'{y} found in Dataname column')
 
     hair_db.to_csv(hair_temp_output_cleaned_csv)
-    standardise_names_in_column('AccSpeciesName', hair_temp_output_cleaned_csv, hair_temp_output_accepted_csv)
+    get_accepted_info_from_names_in_column('AccSpeciesName', hair_temp_output_cleaned_csv,
+                                           hair_temp_output_accepted_csv)
 
 
 def get_accepted_info_spine_hits():
@@ -170,7 +173,8 @@ def get_accepted_info_spine_hits():
             raise ValueError(f'{y} found in Dataname column')
 
     spine_db.to_csv(spine_temp_output_cleaned_csv)
-    standardise_names_in_column('AccSpeciesName', spine_temp_output_cleaned_csv, spine_temp_output_accepted_csv)
+    get_accepted_info_from_names_in_column('AccSpeciesName', spine_temp_output_cleaned_csv,
+                                           spine_temp_output_accepted_csv)
 
 
 def clean_accepted_try_hits(temp_output_accepted_csv: str):
@@ -185,12 +189,17 @@ def clean_accepted_try_hits(temp_output_accepted_csv: str):
 
 
 def get_powo_spine_hits():
-    search_powo('spine,thorn,spike', spine_powo_search_temp_output_cleaned_csv,
-                spine_powo_search_temp_output_accepted_csv)
+    search_powo(['spine', 'thorn', 'spike'], spine_powo_search_temp_output_cleaned_csv,
+                spine_powo_search_temp_output_accepted_csv,
+                characteristics_to_search=['leaf', 'inflorescence', 'appearance', 'fruit'],
+                families_of_interest=['Rubiaceae', 'Apocynaceae'], filters=['genera','species','infraspecies'])
+
 
 def get_powo_hair_hits():
-    search_powo('hairs,hairy', hairs_powo_search_temp_output_cleaned_csv,
-                hairs_powo_search_temp_output_accepted_csv)
+    search_powo(['hairs', 'hairy'], hairs_powo_search_temp_output_cleaned_csv,
+                hairs_powo_search_temp_output_accepted_csv,
+                characteristics_to_search=['leaf', 'inflorescence', 'appearance'],
+                families_of_interest=['Rubiaceae', 'Apocynaceae'], filters=['genera','species','infraspecies'])
 
 
 def main():
@@ -198,7 +207,7 @@ def main():
     get_accepted_info_spine_hits()
     clean_accepted_try_hits(spine_temp_output_accepted_csv)
 
-    # get_powo_spine_hits()
+    get_powo_spine_hits()
 
     powo_spine_hits = pd.read_csv(spine_powo_search_temp_output_accepted_csv)
     try_spine_hits = pd.read_csv(spine_temp_output_accepted_csv)
@@ -208,12 +217,15 @@ def main():
 
     get_accepted_info_hair_hits()
     clean_accepted_try_hits(hair_temp_output_accepted_csv)
+
     get_powo_hair_hits()
 
     powo_hair_hits = pd.read_csv(hairs_powo_search_temp_output_accepted_csv)
     try_hair_hits = pd.read_csv(hair_temp_output_accepted_csv)
 
-    all_hair_hits = [powo_hair_hits,try_hair_hits]
-    compile_hits(all_hair_hits,hairy_output_csv)
+    all_hair_hits = [powo_hair_hits, try_hair_hits]
+    compile_hits(all_hair_hits, hairy_output_csv)
+
+
 if __name__ == '__main__':
     main()

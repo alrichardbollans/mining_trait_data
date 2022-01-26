@@ -7,8 +7,6 @@ from name_matching_cleaning import compile_hits
 from powo_searches import search_powo
 
 ### Inputs
-
-
 inputs_path = resource_filename(__name__, 'inputs')
 
 ### Temp outputs
@@ -22,7 +20,9 @@ output_alkaloid_csv = os.path.join(output_path, 'list_plants_with_alkaloids.csv'
 
 
 def get_powo_alkaloids():
-    search_powo('alkaloids,alkaloid,bitter,amine', powo_search_temp_output_csv,powo_search_temp_output_cleaned_csv)
+    search_powo(['alkaloids', 'alkaloid', 'bitter', 'amine'], powo_search_temp_output_csv,
+                powo_search_temp_output_cleaned_csv, families_of_interest=['Rubiaceae', 'Apocynaceae'],
+                filters=['species', 'infraspecies'])
 
 
 def main():

@@ -27,7 +27,7 @@ def generate_temp_output_file_paths(filetag: str, temp_output_path: str):
     return temp_output_cleaned_csv, temp_output_accepted_csv
 
 
-def clean_ids(given_value: str) -> str:
+def clean_urn_ids(given_value: str) -> str:
     '''
     Strips urn:lsid:ipni.org:names: from id
     '''
@@ -84,12 +84,19 @@ def merge_on_accepted_id(x: pd.DataFrame, y: pd.DataFrame) -> pd.DataFrame:
 
 
 def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str):
+    '''
+    Dataframes should contain the following headings 'Source', '[sourcename]_snippet', 'Accepted_Name',
+    'Accepted_Species', 'Accepted_Rank' and 'Accepted_ID'
+    :param all_dfs: List of dataframes to merge together
+    :param output_csv: Output file
+    :return:
+    '''
     # First remove extraneous columns
     sources_cols = []
     snippet_cols = []
     for df in all_dfs:
-        [sources_cols.append(c) for c in df.columns.tolist() if 'Source' in c]
-        [snippet_cols.append(c) for c in df.columns.tolist() if 'Snippet' in c]
+        [sources_cols.append(c) for c in df.columns.tolist() if 'source' in c.lower()]
+        [snippet_cols.append(c) for c in df.columns.tolist() if 'snippet' in c.lower()]
     cols_to_keep = list(COL_NAMES.values()) + sources_cols + snippet_cols
 
     # Do some cleaning

@@ -10,7 +10,8 @@ from tqdm import tqdm
 import wikipedia_searches
 from pkg_resources import resource_filename
 
-from name_matching_cleaning import standardise_names_in_column, clean_ids, get_accepted_name_info_from_IDS, compile_hits
+from name_matching_cleaning import get_accepted_info_from_names_in_column, clean_urn_ids, \
+    get_accepted_name_info_from_IDS, compile_hits
 
 ### Inputs
 from taxa_lists.get_taxa_from_wcvp import get_accepted_taxa
@@ -53,7 +54,7 @@ def prepare_usda_common_names(families_of_interest=None):
         usda_df = usda_df[usda_df['Family'].str.contains('|'.join(families_of_interest))]
     usda_df.to_csv(cleaned_USDA_csv)
 
-    standardise_names_in_column('Scientific.Name.with.Author', cleaned_USDA_csv, cleaned_USDA_accepted_csv)
+    get_accepted_info_from_names_in_column('Scientific.Name.with.Author', cleaned_USDA_csv, cleaned_USDA_accepted_csv)
 
     accepted_usda_df = pd.read_csv(cleaned_USDA_accepted_csv)
     accepted_usda_df = accepted_usda_df.dropna(subset=['Accepted_Name'])
@@ -72,13 +73,13 @@ def prepare_common_names_spp_ppa() -> pd.DataFrame:
 
     species_profile['Source'] = 'SpeciesProfileVernacular'
     species_profile['SPP_Snippet'] = species_profile[1] + ":" + species_profile[2]
-    species_profile['ID'] = species_profile[0].apply(clean_ids)
+    species_profile['ID'] = species_profile[0].apply(clean_urn_ids)
     species_profile.drop(columns=[0, 1, 2, 3], inplace=True)
 
     ppa_africa = pd.read_csv(ppa_africa_csv, sep='\t', header=None)
     ppa_africa['Source'] = 'PPAfrica-botswana-commonnames'
     ppa_africa['PPA_Snippet'] = ppa_africa[3] + ":" + ppa_africa[2]
-    ppa_africa['ID'] = ppa_africa[0].apply(clean_ids)
+    ppa_africa['ID'] = ppa_africa[0].apply(clean_urn_ids)
     ppa_africa.drop(columns=[0, 1, 2, 3, 4], inplace=True)
 
     merged = pd.merge(ppa_africa, species_profile, on="ID", how="outer")
@@ -108,7 +109,7 @@ def prepare_MPNS_common_names(families_of_interest=None) -> pd.DataFrame:
 
     mpns_df.to_csv(cleaned_MPNS_csv)
 
-    standardise_names_in_column('taxon_name', cleaned_MPNS_csv, cleaned_MPNS_accepted_csv)
+    get_accepted_info_from_names_in_column('taxon_name', cleaned_MPNS_csv, cleaned_MPNS_accepted_csv)
 
     accepted_mpns_df = pd.read_csv(cleaned_MPNS_accepted_csv)
     accepted_mpns_df = accepted_mpns_df.dropna(subset=['Accepted_Name'])
@@ -160,8 +161,10 @@ def get_wiki_common_names(species_names: List[str]):
 
 
 def standardise_names():
-    standardise_names_in_column('Name', wiki_common_names_temp_output_csv, wiki_common_names_temp_output_accepted_csv)
-    standardise_names_in_column('Name', powo_common_names_temp_output_csv, powo_common_names_temp_output_accepted_csv)
+    get_accepted_info_from_names_in_column('Name', wiki_common_names_temp_output_csv,
+                                           wiki_common_names_temp_output_accepted_csv)
+    get_accepted_info_from_names_in_column('Name', powo_common_names_temp_output_csv,
+                                           powo_common_names_temp_output_accepted_csv)
 
     prepare_usda_common_names(families_of_interest=['Apocynaceae', 'Rubiaceae'])
     prepare_common_names_spp_ppa()

@@ -5,13 +5,13 @@ import pandas as pd
 
 path_here = os.path.dirname(os.path.abspath(__file__))
 
+
 # TODO: Resolve all instances of multiple matches
 # TODO: Create batching
-def standardise_names_in_column(column_to_standardise: str, input_file: str, output_file: str):
+def get_accepted_info_from_names_in_column(column_to_standardise: str, input_file: str, output_file: str):
     if " " in column_to_standardise:
         print('This will likely raise an error. R imports spaces as ".". Suggest changing spaces to full stops.')
-    print(path_here)
-    print(input_file)
+    print(f'Standardising names in: {input_file}')
     r_script = os.path.join(path_here, 'standardise_names.R')
     command = f'Rscript "{r_script}" --input "{input_file}" --out "{output_file}" --colname "{column_to_standardise}" --packagepath "{path_here}"'
 
@@ -32,12 +32,11 @@ def batch_standardise_names(column_to_standardise: str, input_file: str, output_
         batch = batches[i]
         batch.to_csv(batch_file)
         print(batch)
-        standardise_names_in_column(column_to_standardise, batch_file, batch_file)
+        get_accepted_info_from_names_in_column(column_to_standardise, batch_file, batch_file)
 
 
 def get_accepted_name_info_from_IDS(column_to_standardise: str, input_file: str, output_file: str):
-    print(path_here)
-    print(input_file)
+    print(f'Standardising names in: {input_file}')
     r_script = os.path.join(path_here, 'standardise_ids.R')
     command = f'Rscript "{r_script}" --input "{input_file}" --out "{output_file}" --colname "{column_to_standardise}"'
 
