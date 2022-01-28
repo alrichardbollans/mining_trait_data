@@ -19,7 +19,6 @@ useful_plants_file = os.path.join(inputs_path, 'useful_plant_processed_db.txt')
 temp_outputs_path = resource_filename(__name__, 'temp_outputs')
 littox_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'littox_accepted.csv')
 useful_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'useful_accepted.csv')
-powo_search_temp_output_csv = os.path.join(temp_outputs_path, 'powo_poisons.csv')
 powo_search_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'powo_poisons_accepted.csv')
 
 ### Outputs
@@ -74,7 +73,7 @@ def prepare_littox_poisons() -> pd.DataFrame:
 
 
 def get_powo_poisons():
-    search_powo(['poison', 'poisonous', 'toxic', 'deadly'], powo_search_temp_output_csv,
+    search_powo(['poison', 'poisonous', 'toxic', 'deadly'],
                 powo_search_temp_output_accepted_csv,
                 families_of_interest=['Rubiaceae', 'Apocynaceae'],
                 filters=['species', 'infraspecies']
