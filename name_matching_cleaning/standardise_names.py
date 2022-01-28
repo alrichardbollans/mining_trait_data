@@ -8,9 +8,13 @@ path_here = os.path.dirname(os.path.abspath(__file__))
 
 # TODO: Resolve all instances of multiple matches
 # TODO: Create batching
-def get_accepted_info_from_names_in_column(column_to_standardise: str, input_file: str, output_file: str):
+def get_accepted_info_from_names_in_column(column_to_standardise: str, input_file: str, output_file: str,dropna=False):
     if " " in column_to_standardise:
         print('This will likely raise an error. R imports spaces as ".". Suggest changing spaces to full stops.')
+    if dropna:
+        df = pd.read_csv(input_file)
+        df.dropna(subset=[column_to_standardise], inplace=True)
+        df.to_csv(input_file)
     print(f'Standardising names in: {input_file}')
     r_script = os.path.join(path_here, 'standardise_names.R')
     command = f'Rscript "{r_script}" --input "{input_file}" --out "{output_file}" --colname "{column_to_standardise}" --packagepath "{path_here}"'

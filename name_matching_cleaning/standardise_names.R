@@ -53,8 +53,10 @@ temp_output_folder <- file.path(dirname(species_csv), 'name matching temp output
 dir.create(temp_output_folder)
 
 # load species names to query
+#species_csv =('test.csv')
+#col_name= 'Labelled'
 spp_df = read.csv(species_csv, header=T,sep=",")
-species_csv
+
 
 spp = spp_df[[col_name]]
 spp = as.character(spp)
