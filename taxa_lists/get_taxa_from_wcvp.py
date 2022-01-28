@@ -11,8 +11,20 @@ inputs_path = resource_filename(__name__, 'inputs')
 
 outputs_path = resource_filename(__name__, 'outputs')
 
+# Standardise rank names
+def capitalize_ranks(g: str):
+    try:
+        l = g.lower()
+        return l.capitalize()
+    except AttributeError:
+        return g
 
-def get_accepted_taxa(families_of_interest=None, output_csv=None, wcvp_input_file=None, wcvp_link=None) -> pd.DataFrame:
+def get_accepted_taxa(families_of_interest=None, output_csv=None, wcvp_input_file=None, wcvp_link=None):
+    get_all_taxa(families_of_interest, output_csv, wcvp_input_file, wcvp_link, accepted=True)
+
+
+def get_all_taxa(families_of_interest=None, output_csv=None, wcvp_input_file=None, wcvp_link=None,
+                 accepted=False) -> pd.DataFrame:
     if wcvp_link is None:
         wcvp_link = 'http://sftp.kew.org/pub/data-repositories/WCVP/wcvp_v7_dec_2021.zip'
     if wcvp_input_file is None:
@@ -34,18 +46,24 @@ def get_accepted_taxa(families_of_interest=None, output_csv=None, wcvp_input_fil
     if families_of_interest is not None:
         wcvp_data = wcvp_data.loc[wcvp_data['family'].isin(families_of_interest)]
 
-    wcvp_data = wcvp_data[wcvp_data['taxonomic_status'] == 'Accepted']
+    if accepted:
+        wcvp_data = wcvp_data[wcvp_data['taxonomic_status'] == 'Accepted']
+
+    wcvp_data['rank'] = wcvp_data['rank'].apply(capitalize_ranks)
 
     if output_csv is not None:
         wcvp_data.to_csv(output_csv)
+
+
 
     return wcvp_data
 
 
 def main():
-    get_accepted_taxa(output_csv=os.path.join(outputs_path, 'wcvp_accepted_taxa.csv'))
-    get_accepted_taxa(families_of_interest=['Apocynaceae', 'Rubiaceae'],
-                      output_csv=os.path.join(outputs_path, 'wcvp_accepted_taxa_apocynaceae_rubiaceae.csv'))
+    get_all_taxa(output_csv=os.path.join(outputs_path, 'wcvp_all_taxa.csv'))
+    # get_accepted_taxa(output_csv=os.path.join(outputs_path, 'wcvp_accepted_taxa.csv'))
+    # get_accepted_taxa(families_of_interest=['Apocynaceae', 'Rubiaceae'],
+    #                   output_csv=os.path.join(outputs_path, 'wcvp_accepted_taxa_apocynaceae_rubiaceae.csv'))
 
 
 if __name__ == '__main__':
