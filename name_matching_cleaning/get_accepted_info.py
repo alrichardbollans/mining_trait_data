@@ -35,9 +35,11 @@ def _find_best_matches_from_multiples(multiple_match_records: pd.DataFrame, fami
     return matches_to_use
 
 
-def _manually_resolve_missing_matches():
-    # TODO: To be implemented if errors are raised
-    pass
+def _manually_resolve_missing_matches(unmatched):
+    # TODO: split names into binomial form then check
+    print(unmatched)
+    print("TODO: To be implemented if errors are raised")
+
 
 
 def _resolve_unmatched(unmatched: pd.DataFrame) -> pd.DataFrame:
@@ -47,11 +49,12 @@ def _resolve_unmatched(unmatched: pd.DataFrame) -> pd.DataFrame:
     :return:
     """
     wcvp_matches = get_wcvp_info_for_names_in_column(unmatched, 'submitted')
+    wcvp_matches.dropna(subset=['Accepted_Name'],inplace=True)
     if len(wcvp_matches.index) == len(unmatched.index):
         wcvp_matches['submitted'] = wcvp_matches['Accepted_Name']
         return wcvp_matches
     else:
-        _manually_resolve_missing_matches()
+        _manually_resolve_missing_matches(unmatched)
         raise ValueError('Unmatched not in wcvp')
 
 
