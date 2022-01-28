@@ -11,13 +11,11 @@ initial_MPNS_csv = os.path.join(inputs_path, 'MPNS V11 subset Apocynaceae + Rubi
 
 ### Temp outputs
 temp_outputs_path = resource_filename(__name__, 'temp_outputs')
-powo_search_medicinal_temp_output_csv = os.path.join(temp_outputs_path, 'powo_medicinal.csv')
-powo_search_medicinal_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'powo_medicinal_cleaned.csv')
-cleaned_MPNS_csv = os.path.join(temp_outputs_path, 'MPNS Database_cleaned.csv')
-cleaned_MPNS_accepted_csv = os.path.join(temp_outputs_path, 'MPNS Data_cleaned_accepted.csv')
+powo_search_medicinal_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'powo_medicinal_accepted.csv')
 
-powo_search_malarial_temp_output_csv = os.path.join(temp_outputs_path, 'powo_malarial.csv')
-powo_search_malarial_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'powo_malarial_cleaned.csv')
+cleaned_MPNS_accepted_csv = os.path.join(temp_outputs_path, 'MPNS Data_accepted.csv')
+
+powo_search_malarial_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'powo_malarial_accepted.csv')
 
 ### Outputs
 output_path = resource_filename(__name__, 'outputs')
@@ -29,7 +27,7 @@ def get_powo_medicinal_usage():
     search_powo(
         ['medicinal', 'medication', 'medicine', 'therapeutic', 'healing', 'cure', 'drug', 'antibiotic', 'antiviral',
          'antibacterial'],
-        powo_search_medicinal_temp_output_csv, powo_search_medicinal_temp_output_accepted_csv,
+        powo_search_medicinal_temp_output_accepted_csv,
         characteristics_to_search=['use'],
         families_of_interest=['Rubiaceae', 'Apocynaceae'],
         filters=['species', 'infraspecies']
@@ -46,13 +44,10 @@ def prepare_MPNS_common_names(families_of_interest=None) -> pd.DataFrame:
         mpns_df = mpns_df[mpns_df['family'].str.contains('|'.join(families_of_interest))]
 
     mpns_df = mpns_df.drop_duplicates()
-    mpns_df.to_csv(cleaned_MPNS_csv)
+    accepted_mpns_df = get_accepted_info_from_names_in_column(mpns_df, 'taxon_name')
 
-    get_accepted_info_from_names_in_column('taxon_name', cleaned_MPNS_csv, cleaned_MPNS_accepted_csv)
-
-    accepted_mpns_df = pd.read_csv(cleaned_MPNS_accepted_csv, index_col=0)
     accepted_mpns_df = accepted_mpns_df.dropna(subset=['Accepted_Name'])
-    accepted_mpns_df['Source'] = 'MPNS'
+    accepted_mpns_df['Source'] = 'MPNS ('+accepted_mpns_df['taxon_name'].astype(str)+')'
 
     accepted_mpns_df.to_csv(cleaned_MPNS_accepted_csv)
 
@@ -61,7 +56,7 @@ def prepare_MPNS_common_names(families_of_interest=None) -> pd.DataFrame:
 
 def get_powo_antimalarial_usage():
     search_powo(['antimalarial', 'malaria', 'antimalaria'],
-                powo_search_malarial_temp_output_csv, powo_search_malarial_temp_output_accepted_csv,
+                powo_search_malarial_temp_output_accepted_csv,
                 characteristics_to_search=['use'],
                 families_of_interest=['Rubiaceae', 'Apocynaceae'],
                 filters=['species', 'infraspecies']
