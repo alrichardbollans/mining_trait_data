@@ -1,14 +1,14 @@
-from typing import List
+from typing import List, Tuple
 
 import numpy as np
 import pandas as pd
 import pykew.powo as powo
 from pykew import powo_terms
 
-from name_matching_cleaning import COL_NAMES, clean_urn_ids, get_accepted_name_info_from_IDS
+from name_matching_cleaning import COL_NAMES, clean_urn_ids, get_accepted_info_from_ids_in_column
 
 
-def search_powo(search_terms: List[str], temp_output_file: str, accepted_output_file: str, filters: List[str] = None,
+def search_powo(search_terms: List[str], accepted_output_file: str, filters: List[str] = None,
                 characteristics_to_search: List[str] = None, families_of_interest: List[str] = None):
     """
     Possible characteristics
@@ -79,8 +79,24 @@ def search_powo(search_terms: List[str], temp_output_file: str, accepted_output_
     else:
         df['Source'] = np.nan
 
-    df.to_csv(temp_output_file)
-    get_accepted_name_info_from_IDS('fqId', temp_output_file, accepted_output_file)
+    acc_df = get_accepted_info_from_ids_in_column(df, 'fqId')
+    acc_df.to_csv(accepted_output_file)
+
+
+def create_presence_absence_data(powo_hits: pd.DataFrame, terms_indicating_absence: List[str] = None,
+                                 accepted_ids_of_absence: List[str] = None) -> Tuple[pd.DataFrame]:
+    if terms_indicating_absence is not None:
+        absence_data = powo_hits[powo_hits['powo_Snippet'].str.contain('|'.join(terms_indicating_absence))]
+        presence_data = powo_hits[~powo_hits['powo_Snippet'].str.contain('|'.join(terms_indicating_absence))]
+
+    if accepted_ids_of_absence is not None:
+        absence_data = powo_hits[powo_hits['Accepted_ID'].isin(accepted_ids_of_absence)]
+        presence_data = powo_hits[~powo_hits['Accepted_ID'].isin(accepted_ids_of_absence)]
+
+    if len(absence_data.index) + len(presence_data.index) != len(powo_hits.index):
+        raise ValueError('Some values have been lost')
+
+    return presence_data, absence_data
 
 
 if __name__ == '__main__':
