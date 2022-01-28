@@ -57,7 +57,6 @@ def merge_columns(df: pd.DataFrame, new_col: str, old_columns: List[str]):
 
 
 def merge_on_accepted_id(x: pd.DataFrame, y: pd.DataFrame) -> pd.DataFrame:
-
     merged_dfs = pd.merge(x, y, on=COL_NAMES['acc_id'], how='outer')
 
     new_sources_cols = [c for c in merged_dfs.columns.tolist() if (COL_NAMES['single_source'] in c)]
@@ -77,8 +76,6 @@ def merge_on_accepted_id(x: pd.DataFrame, y: pd.DataFrame) -> pd.DataFrame:
 
     rank_cols = [c for c in merged_dfs.columns.tolist() if COL_NAMES['acc_rank'] in c]
     merged_dfs = merge_columns(merged_dfs, COL_NAMES['acc_rank'], rank_cols)
-
-
 
     return merged_dfs
 
@@ -113,10 +110,7 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str):
 
     if len(all_dfs) > 1:
         for i in all_dfs[1:]:
-
             merged_dfs = merge_on_accepted_id(merged_dfs, i)
-
-
 
     start_cols = [COL_NAMES['acc_name'], COL_NAMES['acc_id'], COL_NAMES['acc_species'], COL_NAMES['acc_rank']]
     out_dfs = merged_dfs[[c for c in merged_dfs if c in start_cols]
