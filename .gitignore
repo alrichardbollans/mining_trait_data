@@ -156,5 +156,9 @@ vignettes/*.pdf
 docs/
 # translation temp files
 po/*~
-# Large files (added with find * -size +100M | cat >> .gitignore)
+
+/poison_vars/outputs/list_of_poisonous_plants.csv
+# Large files (added with "find * -size +100M | cat >> .gitignore")
+taxa_lists/outputs/wcvp_all_taxa.csv
 taxa_lists/inputs/wcvp_v7_dec_2021.txt
+
