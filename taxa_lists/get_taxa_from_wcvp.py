@@ -50,6 +50,8 @@ def get_all_taxa(families_of_interest=None, output_csv=None, wcvp_input_file=Non
         wcvp_data = wcvp_data[wcvp_data['taxonomic_status'] == 'Accepted']
 
     wcvp_data['rank'] = wcvp_data['rank'].apply(capitalize_ranks)
+    # Remove unplaced taxa
+    wcvp_data = wcvp_data[wcvp_data['taxonomic_status'] != 'Unplaced']
 
     if output_csv is not None:
         wcvp_data.to_csv(output_csv)
