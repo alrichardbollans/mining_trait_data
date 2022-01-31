@@ -5,7 +5,7 @@ from name_matching_cleaning import clean_urn_ids
 from taxa_lists import get_all_taxa
 
 
-def get_dict_from_wcvp_record(record: pd.DataFrame) -> dict:
+def _get_dict_from_wcvp_record(record: pd.DataFrame) -> dict:
     """
     Formats a record from wcvp into a dictionary to integrate into other data
     :param record:
@@ -31,7 +31,7 @@ def get_dict_from_wcvp_record(record: pd.DataFrame) -> dict:
             'Accepted_Species': Accepted_Species, 'Accepted_Species_ID': Accepted_Species_ID}
 
 
-def name_lookup_wcvp(all_taxa: pd.DataFrame, given_name: str) -> dict:
+def _name_lookup_wcvp(all_taxa: pd.DataFrame, given_name: str) -> dict:
     """
     Looks for name in list of taxa, returns a dictionary of accepted information
     :param all_taxa:
@@ -52,10 +52,10 @@ def name_lookup_wcvp(all_taxa: pd.DataFrame, given_name: str) -> dict:
         record = all_taxa[all_taxa['accepted_name'] == given_name]
         if len(record.index) == 1:
             print("Found accepted name match")
-            return get_dict_from_wcvp_record(record)
+            return _get_dict_from_wcvp_record(record)
         print("Unique accepted name match not found")
         return nan_dict
-    return get_dict_from_wcvp_record(record)
+    return _get_dict_from_wcvp_record(record)
 
 
 def id_lookup_wcvp(all_taxa: pd.DataFrame, given_id: str) -> dict:
@@ -79,35 +79,7 @@ def id_lookup_wcvp(all_taxa: pd.DataFrame, given_id: str) -> dict:
     if len(record.index) > 1:
         print(f"Multiple id matches found in given wcvp data for id: {given_id}")
         return nan_dict
-    return get_dict_from_wcvp_record(record)
-
-
-def get_accepted_info_from_ids_in_column(df: pd.DataFrame, id_col_name: str,
-                                         all_taxa: pd.DataFrame = None) -> pd.DataFrame:
-    """
-    Appends accepted info columns to df from list of taxa, based on ids in id_col_name
-    :param all_taxa:
-    :param df:
-    :param id_col_name:
-    :return:
-    """
-    if all_taxa is None:
-        all_taxa = get_all_taxa()
-    dict_of_values = {'Accepted_Name': [], 'Accepted_ID': [], 'Accepted_Rank': [],
-                      'Accepted_Species': [], 'Accepted_Species_ID': []}
-    for x in df[id_col_name].values:
-        acc_info = id_lookup_wcvp(all_taxa, x)
-        for k in dict_of_values:
-            dict_of_values[k].append(acc_info[k])
-
-    match_df = pd.DataFrame(dict_of_values)
-
-    if len(match_df.index) != len(df.index):
-        raise ValueError('Generating accepted info is mismatched')
-
-    # Set indices for concatenating properly
-    match_df.set_index(df.index, inplace=True)
-    return pd.concat([df, match_df], axis=1)
+    return _get_dict_from_wcvp_record(record)
 
 
 def get_wcvp_info_for_names_in_column(df: pd.DataFrame, name_col: str, all_taxa: pd.DataFrame = None):
@@ -124,7 +96,7 @@ def get_wcvp_info_for_names_in_column(df: pd.DataFrame, name_col: str, all_taxa:
     dict_of_values = {'Accepted_Name': [], 'Accepted_ID': [], 'Accepted_Rank': [],
                       'Accepted_Species': [], 'Accepted_Species_ID': []}
     for x in df[name_col].values:
-        acc_info = name_lookup_wcvp(all_taxa, x)
+        acc_info = _name_lookup_wcvp(all_taxa, x)
         for k in dict_of_values:
             dict_of_values[k].append(acc_info[k])
 
