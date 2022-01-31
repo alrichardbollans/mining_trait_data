@@ -6,9 +6,10 @@ import pandas as pd
 from pkg_resources import resource_filename
 
 from name_matching_cleaning import id_lookup_wcvp, get_accepted_info_from_ids_in_column, \
-    get_accepted_info_from_names_in_column, find_best_matches_from_multiples, resolve_unmatched
+    get_accepted_info_from_names_in_column, resolve_missing_matches
 
-from name_matching_cleaning.get_accepted_info import _get_knms_matches_and_accepted_info_from_names_in_column
+from name_matching_cleaning.get_accepted_info import _get_knms_matches_and_accepted_info_from_names_in_column, \
+    _find_best_matches_from_multiples
 from taxa_lists.get_taxa_from_wcvp import get_all_taxa
 
 wcvp_taxa = get_all_taxa()
@@ -133,7 +134,7 @@ class MyTestCase(unittest.TestCase):
                              'Condylocarpus Descr. Pinus, ed. 3, 1: 120 (1832) Salisb. ex Lamb. 1832']}
 
         multiple_names_df = pd.DataFrame(multiple_names)
-        multiple_match_records = find_best_matches_from_multiples(multiple_names_df)
+        multiple_match_records = _find_best_matches_from_multiples(multiple_names_df)
 
         self.assertEqual(
             len(multiple_match_records[multiple_match_records['submitted'] == 'Asclepias curassavica'].index), 1)
@@ -201,7 +202,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_resolutions(self):
         unmatched_df = pd.read_csv(os.path.join(unittest_inputs, 'unmatched.csv'))
-        resolved_unmatched = resolve_unmatched(unmatched_df, 'Name')
+        resolved_unmatched = resolve_missing_matches(unmatched_df, 'Name')
 
         self.assertListEqual(sorted(unmatched_df['acc_name'].values.tolist()),
                              sorted(resolved_unmatched['Accepted_Name'].values.tolist()))
