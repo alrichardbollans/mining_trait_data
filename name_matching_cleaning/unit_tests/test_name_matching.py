@@ -6,10 +6,10 @@ import pandas as pd
 from pkg_resources import resource_filename
 
 from name_matching_cleaning import id_lookup_wcvp, get_accepted_info_from_ids_in_column, \
-    get_accepted_info_from_names_in_column, resolve_missing_matches
+    get_accepted_info_from_names_in_column
 
 from name_matching_cleaning.get_accepted_info import _get_knms_matches_and_accepted_info_from_names_in_column, \
-    _find_best_matches_from_multiples
+    _find_best_matches_from_multiples, _autoresolve_missing_matches
 from taxa_lists.get_taxa_from_wcvp import get_all_taxa
 
 wcvp_taxa = get_all_taxa()
@@ -157,6 +157,12 @@ class MyTestCase(unittest.TestCase):
             'Asclepias curassavica')
 
     def test_get_matched_names_and_accepted_info_from_names_in_column(self):
+        hyrbid_list = pd.read_csv(os.path.join(unittest_inputs, 'hybrid_list.csv'))
+        x = _get_knms_matches_and_accepted_info_from_names_in_column(hyrbid_list, 'name')
+        x.to_csv(os.path.join(unittest_outputs, 'test_output7.csv'))
+        self.assertTrue(len(x['Accepted_Name'].values.tolist()) == len(hyrbid_list['name'].values.tolist()))
+        self.assertListEqual(x['Accepted_Name'].values.tolist(), x['Know_acc_name'].values.tolist())
+
         synonym_list = pd.read_csv(os.path.join(unittest_inputs, 'synonym_list.csv'))
         x = _get_knms_matches_and_accepted_info_from_names_in_column(synonym_list, 'syn')
         x.to_csv(os.path.join(unittest_outputs, 'test_output3.csv'))
@@ -177,6 +183,8 @@ class MyTestCase(unittest.TestCase):
         self.assertListEqual(x['Labelled'].values.tolist(), x['Accepted_Name'].values.tolist())
         self.assertListEqual(sorted(species_list['Labelled'].values.tolist()),
                              sorted(x['Accepted_Name'].values.tolist()))
+
+
 
     def test_get_accepted_info_from_names_in_column(self):
         synonym_list = pd.read_csv(os.path.join(unittest_inputs, 'synonym_list.csv'))
@@ -202,8 +210,16 @@ class MyTestCase(unittest.TestCase):
 
     def test_resolutions(self):
         unmatched_df = pd.read_csv(os.path.join(unittest_inputs, 'unmatched.csv'))
-        resolved_unmatched = resolve_missing_matches(unmatched_df, 'Name')
+        resolved_unmatched = _get_knms_matches_and_accepted_info_from_names_in_column(unmatched_df, 'submitted',
+                                                                                      families_of_interest=['Rubiaceae',
+                                                                                                            'Apocynaceae'])
+        # resolved_unmatched = _autoresolve_missing_matches(unmatched_df)
+        self.assertTrue(np.isnan(unmatched_df.loc[unmatched_df[
+                                                      'submitted'] == "Hedyotis sp. ('' fruticosa or ''  pruinosa or oldenlandia corymbosa)", 'acc_name'].iloc[
+                                     0]))
 
+        unmatched_df.dropna(subset=['acc_name'], inplace=True)
+        resolved_unmatched.dropna(subset=['Accepted_Name'], inplace=True)
         self.assertListEqual(sorted(unmatched_df['acc_name'].values.tolist()),
                              sorted(resolved_unmatched['Accepted_Name'].values.tolist()))
         self.assertListEqual(resolved_unmatched['acc_name'].values.tolist(),
