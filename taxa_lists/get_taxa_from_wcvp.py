@@ -11,6 +11,7 @@ inputs_path = resource_filename(__name__, 'inputs')
 
 outputs_path = resource_filename(__name__, 'outputs')
 
+
 # Standardise rank names
 def capitalize_ranks(g: str):
     try:
@@ -18,9 +19,6 @@ def capitalize_ranks(g: str):
         return l.capitalize()
     except AttributeError:
         return g
-
-def get_accepted_taxa(families_of_interest=None, output_csv=None, wcvp_input_file=None, wcvp_link=None):
-    get_all_taxa(families_of_interest, output_csv, wcvp_input_file, wcvp_link, accepted=True)
 
 
 def get_all_taxa(families_of_interest=None, output_csv=None, wcvp_input_file=None, wcvp_link=None,
@@ -55,8 +53,6 @@ def get_all_taxa(families_of_interest=None, output_csv=None, wcvp_input_file=Non
 
     if output_csv is not None:
         wcvp_data.to_csv(output_csv)
-
-
 
     return wcvp_data
 
