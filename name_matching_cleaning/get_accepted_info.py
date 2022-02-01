@@ -218,8 +218,9 @@ def get_accepted_info_from_ids_in_column(df: pd.DataFrame, id_col_name: str,
     # Set indices for concatenating properly
     match_df.set_index(df.index, inplace=True)
 
-    # TODO: reorder by index column
-    return pd.concat([df, match_df], axis=1)
+    concat_df = pd.concat([df, match_df], axis=1)
+    concat_df.sort_values(concat_df.columns.values.tolist()[0], inplace=True)
+    return concat_df
 
 
 def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, families_of_interest: List[str] = None,
@@ -261,8 +262,7 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
         if keep_unmatched:
             resolved_df = pd.concat([resolved_df, unmatched_final_df])
 
-    # TODO: reorder by index column
-
+    resolved_df.sort_values(resolved_df.columns.values.tolist()[0], inplace=True)
     return resolved_df
 
 
