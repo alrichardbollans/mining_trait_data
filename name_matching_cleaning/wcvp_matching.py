@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from tqdm import tqdm
 
 from name_matching_cleaning import clean_urn_ids
 from taxa_lists import get_all_taxa
@@ -95,7 +96,9 @@ def get_wcvp_info_for_names_in_column(df: pd.DataFrame, name_col: str, all_taxa:
 
     dict_of_values = {'Accepted_Name': [], 'Accepted_ID': [], 'Accepted_Rank': [],
                       'Accepted_Species': [], 'Accepted_Species_ID': []}
-    for x in df[name_col].values:
+
+    for i in tqdm(range(len(df[name_col].values)), desc="Searching…", ascii=False, ncols=72):
+        x = df[name_col].values[i]
         acc_info = _name_lookup_wcvp(all_taxa, x)
         for k in dict_of_values:
             dict_of_values[k].append(acc_info[k])

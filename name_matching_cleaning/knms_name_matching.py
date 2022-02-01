@@ -12,6 +12,7 @@ from pkg_resources import resource_filename
 inputs_path = resource_filename(__name__, 'inputs')
 temp_outputs_name_matching = resource_filename(__name__, 'temp_outputs')
 
+
 def get_knms_name_matches(names: List[str]):
     """
     Searches knms for matching names
@@ -21,7 +22,7 @@ def get_knms_name_matches(names: List[str]):
     # Save previous searches using a hash of names to avoid repeating searches
     names = list(names)
     str_to_hash = str(names).encode()
-    temp_csv = str(hashlib.md5(str_to_hash).hexdigest()) + ".csv"
+    temp_csv = "knmns_matches_" + str(hashlib.md5(str_to_hash).hexdigest()) + ".csv"
 
     temp_output_knms_csv = os.path.join(temp_outputs_name_matching, temp_csv)
     if os.path.isfile(temp_output_knms_csv):
