@@ -2,7 +2,7 @@
 
 Still under construction. Some datasets are not yet included until publishing rights have been clarified.
 
-Analysis is focussed at species level.
+Analysis is generally focussed at species level, though the methods can be used for most ranks.
 
 ## Installation
 
@@ -14,8 +14,6 @@ Run:
 Developed on Linux and needs testing for Windows/Mac.
 
 Python requirements are given in requirements.txt
-
-Some methods make calls to RScript, so R is required along with a few R packages.
 
 ## Notes on Data in Repository
 
