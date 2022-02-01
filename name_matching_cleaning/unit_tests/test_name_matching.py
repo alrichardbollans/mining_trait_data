@@ -156,17 +156,18 @@ class MyTestCase(unittest.TestCase):
                 multiple_match_records['submitted'] == 'Asclepias curassavica', 'Accepted_Name'].iloc[0],
             'Asclepias curassavica')
 
-    def test_get_matched_names_and_accepted_info_from_names_in_column(self):
+    def test_matching_hybrids(self):
         hyrbid_list = pd.read_csv(os.path.join(unittest_inputs, 'hybrid_list.csv'))
         x = _get_knms_matches_and_accepted_info_from_names_in_column(hyrbid_list, 'name')
         x.to_csv(os.path.join(unittest_outputs, 'test_output7.csv'))
-        self.assertTrue(len(x['Accepted_Name'].values.tolist()) == len(hyrbid_list['name'].values.tolist()))
+        self.assertEqual(len(x['Accepted_Name'].values.tolist()), len(hyrbid_list['name'].values.tolist()))
         self.assertListEqual(x['Accepted_Name'].values.tolist(), x['Know_acc_name'].values.tolist())
 
+    def test_get_matched_names_and_accepted_info_from_names_in_column(self):
         synonym_list = pd.read_csv(os.path.join(unittest_inputs, 'synonym_list.csv'))
         x = _get_knms_matches_and_accepted_info_from_names_in_column(synonym_list, 'syn')
         x.to_csv(os.path.join(unittest_outputs, 'test_output3.csv'))
-        self.assertTrue(len(x['Accepted_Name'].values.tolist()) == len(synonym_list['syn'].values.tolist()))
+        self.assertEqual(len(x['Accepted_Name'].values.tolist()), len(synonym_list['syn'].values.tolist()))
         self.assertListEqual(x['Accepted_Name'].values.tolist(), x['Know_acc_name'].values.tolist())
 
         genera_list = pd.read_csv(os.path.join(unittest_inputs, 'genera_list.csv'))
@@ -184,29 +185,27 @@ class MyTestCase(unittest.TestCase):
         self.assertListEqual(sorted(species_list['Labelled'].values.tolist()),
                              sorted(x['Accepted_Name'].values.tolist()))
 
-
-
     def test_get_accepted_info_from_names_in_column(self):
+        genera_list = pd.read_csv(os.path.join(unittest_inputs, 'genera_list.csv'))
+        x = get_accepted_info_from_names_in_column(genera_list, 'Unlabelled', families_of_interest=['Rubiaceae',
+                                                                                                    'Apocynaceae'])
+        x.to_csv(os.path.join(unittest_outputs, 'test_output5.csv'))
+        self.assertListEqual(x['Unlabelled'].values.tolist(), x['Accepted_Name'].values.tolist())
+        self.assertListEqual(sorted(genera_list['Unlabelled'].values.tolist()),
+                             sorted(x['Accepted_Name'].values.tolist()))
         synonym_list = pd.read_csv(os.path.join(unittest_inputs, 'synonym_list.csv'))
         x = get_accepted_info_from_names_in_column(synonym_list, 'syn')
         x.to_csv(os.path.join(unittest_outputs, 'test_output4.csv'))
         self.assertTrue(len(x['Accepted_Name'].values.tolist()) == len(synonym_list['syn'].values.tolist()))
         self.assertListEqual(x['Accepted_Name'].values.tolist(), x['Know_acc_name'].values.tolist())
 
-        genera_list = pd.read_csv(os.path.join(unittest_inputs, 'genera_list.csv'))
-        x = get_accepted_info_from_names_in_column(genera_list, 'Unlabelled')
-        x.to_csv(os.path.join(unittest_outputs, 'test_output5.csv'))
-        self.assertListEqual(x['Unlabelled'].values.tolist(), x['Accepted_Name'].values.tolist())
-        self.assertListEqual(sorted(genera_list['Unlabelled'].values.tolist()),
-                             sorted(x['Accepted_Name'].values.tolist()))
-
         #
         species_list = pd.read_csv(os.path.join(unittest_inputs, 'species_list.csv'))
         x = get_accepted_info_from_names_in_column(species_list, 'Labelled')
         x.to_csv(os.path.join(unittest_outputs, 'test_output6.csv'))
         self.assertListEqual(x['Labelled'].values.tolist(), x['Accepted_Name'].values.tolist())
-        self.assertListEqual(sorted(species_list['Labelled'].values.tolist()),
-                             sorted(x['Accepted_Name'].values.tolist()))
+        self.assertListEqual(species_list['Labelled'].values.tolist(),
+                             x['Accepted_Name'].values.tolist())
 
     def test_resolutions(self):
         unmatched_df = pd.read_csv(os.path.join(unittest_inputs, 'unmatched.csv'))
@@ -220,8 +219,8 @@ class MyTestCase(unittest.TestCase):
 
         unmatched_df.dropna(subset=['acc_name'], inplace=True)
         resolved_unmatched.dropna(subset=['Accepted_Name'], inplace=True)
-        self.assertListEqual(sorted(unmatched_df['acc_name'].values.tolist()),
-                             sorted(resolved_unmatched['Accepted_Name'].values.tolist()))
+        self.assertListEqual(unmatched_df['acc_name'].values.tolist(),
+                             resolved_unmatched['Accepted_Name'].values.tolist())
         self.assertListEqual(resolved_unmatched['acc_name'].values.tolist(),
                              resolved_unmatched['Accepted_Name'].values.tolist())
 

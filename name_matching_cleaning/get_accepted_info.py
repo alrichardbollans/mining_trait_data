@@ -61,9 +61,6 @@ def _autoresolve_missing_matches(unmatched_submissions_df: pd.DataFrame,
         # For each submission, check if any accepted name is contained in the name, then take the lowest rank of match
         all_taxa = get_all_taxa(families_of_interest=families_of_interest, accepted=True)
 
-        # Remove genera as these matches here will be incorrect
-        all_taxa = all_taxa[all_taxa['rank'] != 'Genus']
-
         # Get more precise list of taxa which possibly matches submissions
         accepted_name_containment = all_taxa[
             all_taxa.apply(lambda x: any(x['taxon_name'] in y for y in unmatched_submissions_df['submitted'].values),
@@ -93,6 +90,11 @@ def _autoresolve_missing_matches(unmatched_submissions_df: pd.DataFrame,
                 raise ValueError(f'Rank priority list does not contain {r} and needs updating.')
         match_df['Accepted_Rank'] = pd.Categorical(match_df['Accepted_Rank'], rank_priority)
         match_df.sort_values('Accepted_Rank', inplace=True)
+
+        # Remove genera matches where submitted name has more than one word.
+        # This to avoid matching misspelt species to genera
+        # This is a problem for hybrid genera but these need resolving differently anyway.
+        match_df = match_df[~((match_df['Accepted_Rank'] == 'Genus') & match_df['submitted'].str.contains(" "))]
 
         # Get the most precise match by dropping duplicate submissions
         most_precise_match = match_df.drop_duplicates(subset=["submitted"], keep='first')
@@ -219,7 +221,7 @@ def get_accepted_info_from_ids_in_column(df: pd.DataFrame, id_col_name: str,
     match_df.set_index(df.index, inplace=True)
 
     concat_df = pd.concat([df, match_df], axis=1)
-    concat_df.sort_values(concat_df.columns.values.tolist()[0], inplace=True)
+
     return concat_df
 
 
@@ -236,7 +238,7 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
     all_taxa = get_all_taxa(families_of_interest=families_of_interest)
     duplicateRows = df[df.duplicated()]
     if len(duplicateRows.index) > 0:
-        print(f'Warning: duplicated rows exist is data and may be merged.')
+        print(f'Warning: duplicated rows exist is data and may be dropped.')
         print(duplicateRows)
     na_rows = df[df[name_col].isna()]
     if len(na_rows.index) > 0:
@@ -261,8 +263,14 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
         # TODO: append unmatched to resolved
         if keep_unmatched:
             resolved_df = pd.concat([resolved_df, unmatched_final_df])
+    try:
+        reordered_df = resolved_df.set_index(name_col)
+        reordered_df = reordered_df.reindex(index=df[name_col])
+        reordered_df = reordered_df.reset_index()
+        return reordered_df
+    except ValueError as e:
+        print(f'Warning: coulndt reorder: {e}')
 
-    resolved_df.sort_values(resolved_df.columns.values.tolist()[0], inplace=True)
     return resolved_df
 
 
