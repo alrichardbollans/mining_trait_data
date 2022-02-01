@@ -97,23 +97,36 @@ def make_wiki_hit_df(species_list: List[str], force_new_search=False) -> pd.Data
     temp_csv = "wiki_page_search_" + str(hashlib.md5(str_to_hash).hexdigest()) + ".csv"
 
     temp_output_wiki_page_csv = os.path.join(_temp_outputs_path, temp_csv)
+    unchecked_taxa_due_to_timeout = []
     if os.path.isfile(temp_output_wiki_page_csv) and not force_new_search:
         # Pandas will read TRUE/true as bools and therefore as True rather than true
         df = pd.read_csv(temp_output_wiki_page_csv)
     else:
+
         for i in tqdm(range(len(species_list)), desc="Searching…", ascii=False, ncols=72):
             sp = species_list[i]
             language_hits = []
-            for wiki in wikis_to_check:
+            try:
+                for wiki in wikis_to_check:
+                    if check_page_exists(sp, wiki):
+                        language_hits.append(wiki.language)
 
-                if check_page_exists(sp, wiki):
-                    language_hits.append(wiki.language)
+                if len(language_hits) > 0:
+                    out_dict['Language'].append(str(language_hits))
+                    out_dict['Name'].append(sp)
 
-            if len(language_hits) > 0:
-                out_dict['Language'].append(str(language_hits))
-                out_dict['Name'].append(sp)
+            except requests.exceptions.ReadTimeout:
+                unchecked_taxa_due_to_timeout.append(sp)
 
         df = pd.DataFrame(out_dict)
+
+    if len(unchecked_taxa_due_to_timeout) > 0:
+        taxa_to_check_dict = {'taxa': unchecked_taxa_due_to_timeout}
+        check_df = pd.DataFrame(taxa_to_check_dict)
+        check_csv = os.path.join(_temp_outputs_path, 'taxa_to_recheck.csv')
+        check_df.to_csv(check_csv)
+        print(f'Warning some taxa were unchecked due to server timeouts. Rerun search for taxa in {check_csv}')
+
     df.to_csv(temp_output_wiki_page_csv)
-    
+
     return df
