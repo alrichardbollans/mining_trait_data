@@ -7,7 +7,7 @@ from typing import List
 from pkg_resources import resource_filename
 
 from name_matching_cleaning import get_wcvp_info_for_names_in_column, \
-    get_knms_name_matches, id_lookup_wcvp, clean_urn_ids
+    get_knms_name_matches, id_lookup_wcvp, clean_urn_ids, COL_NAMES
 from name_matching_cleaning.resolving_names import _get_resolutions_with_single_rank
 
 from taxa_lists import get_all_taxa
@@ -263,6 +263,10 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
         # TODO: append unmatched to resolved
         if keep_unmatched:
             resolved_df = pd.concat([resolved_df, unmatched_final_df])
+    cols_to_drop = [c for c in resolved_df.columns.tolist() if
+                    (c not in df.columns.tolist() and c not in list(COL_NAMES.values()))]
+    resolved_df.drop(columns=cols_to_drop, inplace=True)
+
     try:
         reordered_df = resolved_df.set_index(name_col)
         reordered_df = reordered_df.reindex(index=df[name_col])
