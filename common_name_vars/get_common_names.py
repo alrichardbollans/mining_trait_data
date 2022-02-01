@@ -1,3 +1,4 @@
+import hashlib
 import os.path
 import urllib.request
 from urllib.error import HTTPError
@@ -11,10 +12,10 @@ import wikipedia_searches
 from pkg_resources import resource_filename
 
 from name_matching_cleaning import get_accepted_info_from_names_in_column, clean_urn_ids, \
-    get_accepted_name_info_from_IDS, compile_hits
+    compile_hits, get_accepted_info_from_ids_in_column
 
 ### Inputs
-from taxa_lists.get_taxa_from_wcvp import get_accepted_taxa
+from taxa_lists.get_taxa_from_wcvp import get_all_taxa
 
 inputs_path = resource_filename(__name__, 'inputs')
 inputs_species_path = resource_filename(__name__, '../inputs')
@@ -29,9 +30,6 @@ temp_outputs_path = resource_filename(__name__, 'temp_outputs')
 
 wiki_common_names_temp_output_csv = os.path.join(temp_outputs_path, 'wiki_common_name_hits.csv')
 powo_common_names_temp_output_csv = os.path.join(temp_outputs_path, 'powo_common_name_hits.csv')
-cleaned_USDA_csv = os.path.join(temp_outputs_path, 'USDA Plants Database_cleaned.csv')
-cleaned_MPNS_csv = os.path.join(temp_outputs_path, 'MPNS Database_cleaned.csv')
-spp_ppa_common_names_temp_output_csv = os.path.join(temp_outputs_path, 'spp_ppa_common_names.csv')
 
 # Standardised versions
 spp_ppa_common_names_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'spp_ppa_common_names_accepted.csv')
@@ -52,11 +50,9 @@ def prepare_usda_common_names(families_of_interest=None):
     usda_df = usda_df.dropna(subset=['USDA_Snippet'])
     if families_of_interest is not None:
         usda_df = usda_df[usda_df['Family'].str.contains('|'.join(families_of_interest))]
-    usda_df.to_csv(cleaned_USDA_csv)
 
-    get_accepted_info_from_names_in_column('Scientific.Name.with.Author', cleaned_USDA_csv, cleaned_USDA_accepted_csv)
+    accepted_usda_df = get_accepted_info_from_names_in_column(usda_df, 'Scientific Name with Author')
 
-    accepted_usda_df = pd.read_csv(cleaned_USDA_accepted_csv)
     accepted_usda_df = accepted_usda_df.dropna(subset=['Accepted_Name'])
     accepted_usda_df['Source'] = 'USDA Plants Database'
 
@@ -83,16 +79,15 @@ def prepare_common_names_spp_ppa() -> pd.DataFrame:
     ppa_africa.drop(columns=[0, 1, 2, 3, 4], inplace=True)
 
     merged = pd.merge(ppa_africa, species_profile, on="ID", how="outer")
-    merged.to_csv(spp_ppa_common_names_temp_output_csv)
-    get_accepted_name_info_from_IDS('ID', spp_ppa_common_names_temp_output_csv,
-                                    spp_ppa_common_names_temp_output_accepted_csv)
 
-    with_accepted_info = pd.read_csv(spp_ppa_common_names_temp_output_accepted_csv)
+    with_accepted_info = get_accepted_info_from_ids_in_column(merged, 'ID')
+
+    with_accepted_info.to_csv(spp_ppa_common_names_temp_output_accepted_csv)
 
     return with_accepted_info
 
 
-def prepare_MPNS_common_names(families_of_interest=None) -> pd.DataFrame:
+def prepare_MPNS_common_names(families_of_interest: List[str] = None) -> pd.DataFrame:
     # TODO: Note this is particular to Rubiaceae and Apocynaceae
     # Requested from from MPNS
     mpns_df = pd.read_csv(initial_MPNS_csv, header=1)
@@ -107,11 +102,9 @@ def prepare_MPNS_common_names(families_of_interest=None) -> pd.DataFrame:
     mpns_df = mpns_df.drop_duplicates()
     mpns_df.rename(columns={'non_sci_name': 'MPNS_Snippet'}, inplace=True)
 
-    mpns_df.to_csv(cleaned_MPNS_csv)
+    accepted_mpns_df = get_accepted_info_from_names_in_column(mpns_df, 'taxon_name',
+                                                              families_of_interest=families_of_interest)
 
-    get_accepted_info_from_names_in_column('taxon_name', cleaned_MPNS_csv, cleaned_MPNS_accepted_csv)
-
-    accepted_mpns_df = pd.read_csv(cleaned_MPNS_accepted_csv)
     accepted_mpns_df = accepted_mpns_df.dropna(subset=['Accepted_Name'])
     accepted_mpns_df['Source'] = 'MPNS'
     print(accepted_mpns_df)
@@ -122,7 +115,8 @@ def prepare_MPNS_common_names(families_of_interest=None) -> pd.DataFrame:
     return accepted_mpns_df
 
 
-def get_powo_common_names(species_names: List[str], species_ids: List[str]) -> pd.DataFrame:
+def get_powo_common_names(species_names: List[str], species_ids: List[str],
+                          families_of_interest: List[str] = None, force_new_search=False) -> pd.DataFrame:
     '''
     Searches POWO for species names which have a common names section.
     :param species_names:
@@ -130,41 +124,70 @@ def get_powo_common_names(species_names: List[str], species_ids: List[str]) -> p
     :return:
     '''
     out_dict = {'Name': [], 'POWO_Snippet': [], 'Source': []}
-    for i in tqdm(range(len(species_names)), desc="Searching…", ascii=False, ncols=72):
-        try:
-            name = species_names[i]
-            id = species_ids[i]
+    # Save previous searches using a hash of names to avoid repeating searches
+    names = list(species_names)
+    ids = list(species_ids)
+    full_list = names + ids
+    str_to_hash = str(full_list).encode()
+    temp_csv = "powo_common_name_search_" + str(hashlib.md5(str_to_hash).hexdigest()) + ".csv"
 
-            fp = urllib.request.urlopen("https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:" + str(id))
-            mybytes = fp.read()
+    temp_output_powo_csv = os.path.join(temp_outputs_path, temp_csv)
+    if os.path.isfile(temp_output_powo_csv) and not force_new_search:
+        # Pandas will read TRUE/true as bools and therefore as True rather than true
+        df = pd.read_csv(temp_output_powo_csv)
+    else:
+        for i in tqdm(range(len(species_names)), desc="Searching…", ascii=False, ncols=72):
+            try:
+                name = species_names[i]
+                id = species_ids[i]
 
-            mystr = mybytes.decode("utf8")
-            fp.close()
-            # print(mystr)
-            common_name_section = '<section id="vernacular-names" class="c-article-section">'
-            if common_name_section in mystr:
-                i = mystr.index(common_name_section)
-                snippet = mystr[i - 1:i + len(common_name_section) + 1]
-                out_dict['Name'].append(name)
-                out_dict['POWO_Snippet'].append(snippet)
-                out_dict['Source'].append('POWO pages(' + str(id) + ')')
-        except HTTPError:
-            print(f'Couldnt find id on POWO: {species_ids[i]}')
-    df = pd.DataFrame(out_dict)
+                fp = urllib.request.urlopen("https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:" + str(id))
+                mybytes = fp.read()
 
-    df.to_csv(powo_common_names_temp_output_csv)
-    return df
+                mystr = mybytes.decode("utf8")
+                fp.close()
+                # print(mystr)
+                common_name_section = '<section id="vernacular-names" class="c-article-section">'
+                if common_name_section in mystr:
+                    i = mystr.index(common_name_section)
+                    snippet = mystr[i - 1:i + len(common_name_section) + 1]
+                    out_dict['Name'].append(name)
+                    out_dict['POWO_Snippet'].append(snippet)
+                    out_dict['Source'].append('POWO pages(' + str(id) + ')')
+            except HTTPError:
+                print(f'Couldnt find id on POWO: {species_ids[i]}')
+        df = pd.DataFrame(out_dict)
+    df.to_csv(temp_output_powo_csv)
+    acc_df = get_accepted_info_from_names_in_column(df, 'Name',
+                                                    families_of_interest=families_of_interest)
+
+    acc_df.to_csv(powo_common_names_temp_output_accepted_csv)
+    return acc_df
 
 
-def get_wiki_common_names(species_names: List[str]):
-    wikipedia_searches.search_for_common_names(species_names, wiki_common_names_temp_output_csv)
+def get_wiki_common_names(species_names: List[str], families_of_interest: List[str] = None):
+    wiki_df = wikipedia_searches.search_for_common_names(species_names, wiki_common_names_temp_output_csv)
+    acc_wiki_df = get_accepted_info_from_names_in_column(wiki_df, 'Name',
+                                                         families_of_interest=families_of_interest)
+    acc_wiki_df.to_csv(wiki_common_names_temp_output_accepted_csv)
+
+    return acc_wiki_df
 
 
-def standardise_names():
-    get_accepted_info_from_names_in_column('Name', wiki_common_names_temp_output_csv,
-                                           wiki_common_names_temp_output_accepted_csv)
-    get_accepted_info_from_names_in_column('Name', powo_common_names_temp_output_csv,
-                                           powo_common_names_temp_output_accepted_csv)
+def prepare_data():
+    accepted_data = get_all_taxa(families_of_interest=['Apocynaceae', 'Rubiaceae'], accepted=True)
+
+    ranks_to_use = ["Species", "Variety", "Subspecies"]
+
+    accepted_taxa = accepted_data.loc[accepted_data["rank"].isin(ranks_to_use)]
+
+    species_list = accepted_taxa["taxon_name"].values
+    species_ids = accepted_taxa["kew_id"].values
+
+    # Get lists
+    get_wiki_common_names(species_list, families_of_interest=['Apocynaceae', 'Rubiaceae'])
+    print('Finished getting wiki names')
+    get_powo_common_names(species_list, species_ids, families_of_interest=['Apocynaceae', 'Rubiaceae'])
 
     prepare_usda_common_names(families_of_interest=['Apocynaceae', 'Rubiaceae'])
     prepare_common_names_spp_ppa()
@@ -173,23 +196,7 @@ def standardise_names():
 
 def main():
     # TODO: Note powo, wikipedia and USDA data is specific to our study
-    accepted_data = get_accepted_taxa(families_of_interest=['Apocynaceae', 'Rubiaceae'])
-
-    ranks_to_use = ["SPECIES", "VARIETY", "SUBSPECIES"]
-
-    accepted_taxa = accepted_data.loc[accepted_data["rank"].isin(ranks_to_use)]
-
-    species_list = accepted_taxa["taxon_name"].values
-    species_ids = accepted_taxa["kew_id"].values
-    #
-    # # Get lists
-    get_wiki_common_names(species_list)
-    print('Finished getting wiki names')
-    get_powo_common_names(species_list, species_ids)
-    print('Finished getting powo names')
-    #
-    standardise_names()
-    # print('Finished standardising names')
+    prepare_data()
 
     usda_hits = pd.read_csv(cleaned_USDA_accepted_csv)
     spp_ppa_df = pd.read_csv(spp_ppa_common_names_temp_output_accepted_csv)

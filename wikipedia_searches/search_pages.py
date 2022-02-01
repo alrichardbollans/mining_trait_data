@@ -1,9 +1,15 @@
+import hashlib
+import os
 import string
 import pandas as pd
 import requests
 from typing import List
+
+from pkg_resources import resource_filename
 from tqdm import tqdm
 import wikipediaapi
+
+_temp_outputs_path = resource_filename(__name__, 'temp_outputs')
 
 
 def get_all_page_text(lang, pagename):
@@ -81,23 +87,33 @@ def check_page_exists(species: str, wiki_lan: wikipediaapi.Wikipedia) -> bool:
         return False
 
 
-def make_wiki_hit_df(species_list: List[str], output_csv: str) -> pd.DataFrame:
-    out_dict = {'Accepted_Name': [], 'Language': []}
+def make_wiki_hit_df(species_list: List[str], force_new_search=False) -> pd.DataFrame:
+    out_dict = {'Name': [], 'Language': []}
     languages_to_check = ['es', 'en', 'fr', 'it', 'pt']
     wikis_to_check = [wikipediaapi.Wikipedia(lan) for lan in languages_to_check]
-    for i in tqdm(range(len(species_list)), desc="Searching…", ascii=False, ncols=72):
-        sp = species_list[i]
-        language_hits = []
-        for wiki in wikis_to_check:
+    # Save previous searches using a hash of names to avoid repeating searches
+    names = list(species_list)
+    str_to_hash = str(names).encode()
+    temp_csv = "wiki_page_search_" + str(hashlib.md5(str_to_hash).hexdigest()) + ".csv"
 
-            if check_page_exists(sp, wiki):
-                language_hits.append(wiki.language)
+    temp_output_wiki_page_csv = os.path.join(_temp_outputs_path, temp_csv)
+    if os.path.isfile(temp_output_wiki_page_csv) and not force_new_search:
+        # Pandas will read TRUE/true as bools and therefore as True rather than true
+        df = pd.read_csv(temp_output_wiki_page_csv)
+    else:
+        for i in tqdm(range(len(species_list)), desc="Searching…", ascii=False, ncols=72):
+            sp = species_list[i]
+            language_hits = []
+            for wiki in wikis_to_check:
 
-        if len(language_hits) > 0:
-            out_dict['Language'].append(str(language_hits))
-            out_dict['Accepted_Name'].append(sp)
+                if check_page_exists(sp, wiki):
+                    language_hits.append(wiki.language)
 
+            if len(language_hits) > 0:
+                out_dict['Language'].append(str(language_hits))
+                out_dict['Name'].append(sp)
 
-    df = pd.DataFrame(out_dict)
-    df.to_csv(output_csv)
+        df = pd.DataFrame(out_dict)
+    df.to_csv(temp_output_wiki_page_csv)
+    
     return df
