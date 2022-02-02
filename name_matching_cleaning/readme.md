@@ -58,6 +58,10 @@ submissions are included in the output dataframe without out any accepted inform
 
 * Ordering
 * Levels of strictness
+* Doing manual resolutions at the beginning will speed up the process.
+* Test homotypic synonyms
+* Resolution of hybrid genera
+* Format names on input --- captilised first letter
 
 ## Sources
 
