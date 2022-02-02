@@ -1,15 +1,13 @@
 import os
 import zipfile
 import io
-from urllib.parse import urlparse
 
 import pandas as pd
 import requests
 from pkg_resources import resource_filename
 
-inputs_path = resource_filename(__name__, 'inputs')
-
-outputs_path = resource_filename(__name__, 'outputs')
+_inputs_path = resource_filename(__name__, 'inputs')
+_outputs_path = resource_filename(__name__, 'outputs')
 
 
 # Standardise rank names
@@ -21,26 +19,22 @@ def capitalize_ranks(g: str):
         return g
 
 
-def get_all_taxa(families_of_interest=None, output_csv=None, wcvp_input_file=None, wcvp_link=None,
-                 accepted=False) -> pd.DataFrame:
-    if wcvp_link is None:
-        wcvp_link = 'http://sftp.kew.org/pub/data-repositories/WCVP/wcvp_v7_dec_2021.zip'
-    if wcvp_input_file is None:
-        wcvp_input_file = os.path.join(inputs_path, 'wcvp_v7_dec_2021.txt')
+def get_all_taxa(families_of_interest=None,
+                 accepted=False, version=None, output_csv=None) -> pd.DataFrame:
+    if version is None:
+        version = 'wcvp_v7_dec_2021'
+
+    input_file = os.path.join(_inputs_path, version + '.txt')
+
+    wcvp_link = 'http://sftp.kew.org/pub/data-repositories/WCVP/' + version + '.zip'
 
     # Download if doesn't exist
-    if not os.path.exists(wcvp_input_file):
+    if not os.path.exists(input_file):
         r = requests.get(wcvp_link, stream=True)
         z = zipfile.ZipFile(io.BytesIO(r.content))
-        z.extractall(inputs_path)
+        z.extractall(_inputs_path)
 
-        a = urlparse(wcvp_link)
-
-        basename_from_url = os.path.basename(a.path).replace('.zip', '.txt')
-
-        wcvp_input_file = os.path.join(inputs_path, basename_from_url)
-
-    wcvp_data = pd.read_csv(wcvp_input_file, sep='|')
+    wcvp_data = pd.read_csv(input_file, sep='|')
     if families_of_interest is not None:
         wcvp_data = wcvp_data.loc[wcvp_data['family'].isin(families_of_interest)]
 
@@ -58,10 +52,9 @@ def get_all_taxa(families_of_interest=None, output_csv=None, wcvp_input_file=Non
 
 
 def main():
-    get_all_taxa(output_csv=os.path.join(outputs_path, 'wcvp_all_taxa.csv'))
     # get_accepted_taxa(output_csv=os.path.join(outputs_path, 'wcvp_accepted_taxa.csv'))
-    # get_accepted_taxa(families_of_interest=['Apocynaceae', 'Rubiaceae'],
-    #                   output_csv=os.path.join(outputs_path, 'wcvp_accepted_taxa_apocynaceae_rubiaceae.csv'))
+    get_all_taxa(families_of_interest=['Apocynaceae', 'Rubiaceae'], accepted=True,
+                      output_csv=os.path.join(_outputs_path, 'wcvp_accepted_taxa_apocynaceae_rubiaceae.csv'))
 
 
 if __name__ == '__main__':
