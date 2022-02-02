@@ -1,40 +1,46 @@
 import os
 
-import numpy as np
 import pandas as pd
 from pkg_resources import resource_filename
 
 ### Inputs
-from pykew import powo_terms
 
-from name_matching_cleaning import get_accepted_info_from_names_in_column, generate_temp_output_file_paths, COL_NAMES, \
-    merge_on_accepted_id, compile_hits
-from powo_searches import search_powo
+from name_matching_cleaning import get_accepted_info_from_names_in_column, COL_NAMES, \
+    compile_hits, remove_whitespace
+from powo_searches import search_powo, create_presence_absence_data
 
 inputs_path = resource_filename(__name__, 'inputs')
 morph_input_csv = os.path.join(inputs_path, '18455.txt')
 emergence_input_csv = os.path.join(inputs_path, 'emergence_data.csv')
 latex_input_csv = os.path.join(inputs_path, 'latex_data.csv')
 corolla_input_csv = os.path.join(inputs_path, 'corolla_data.csv')
+manual_morph_data_csv = os.path.join(inputs_path, 'manual_morphological_traits.csv')
 ### Temp outputs
 
 temp_outputs_path = resource_filename(__name__, 'temp_outputs')
 
-spine_temp_output_cleaned_csv, spine_temp_output_accepted_csv = generate_temp_output_file_paths(
-    'spines_try', temp_outputs_path)
-hair_temp_output_cleaned_csv, hair_temp_output_accepted_csv = generate_temp_output_file_paths(
-    'hairs_try', temp_outputs_path)
+spine_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'spines_try' + '_accepted.csv')
+hair_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'hairs_try' + '_accepted.csv')
 
-spine_powo_search_temp_output_cleaned_csv, spine_powo_search_temp_output_accepted_csv = generate_temp_output_file_paths(
-    'spines_powo', temp_outputs_path)
+spine_powo_search_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'spines_powo' + '_accepted.csv')
+hairs_powo_search_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'hairs_powo' + '_accepted.csv')
 
-hairs_powo_search_temp_output_cleaned_csv, hairs_powo_search_temp_output_accepted_csv = generate_temp_output_file_paths(
-    'hairs_powo', temp_outputs_path)
+manual_data_accepted_temp_output = os.path.join(temp_outputs_path, 'manual_data_accepted.csv')
+manual_data_accepted_clean_temp_output = os.path.join(temp_outputs_path, 'manual_data_clean_accepted.csv')
+manual_spines_output_csv = os.path.join(temp_outputs_path, 'manual_spines_hits.csv')
+manual_no_spines_output_csv = os.path.join(temp_outputs_path, 'manual_no_spines_hits.csv')
 
 ### Outputs
 output_path = resource_filename(__name__, 'outputs')
 spines_output_csv = os.path.join(output_path, 'spines_hits.csv')
+no_spines_output_csv = os.path.join(output_path, 'no_spines_hits.csv')
+
 hairy_output_csv = os.path.join(output_path, 'hairy_hits.csv')
+non_coloured_latex_output_csv = os.path.join(output_path, 'non_coloured_latex.csv')
+coloured_latex_output_csv = os.path.join(output_path, 'coloured_latex.csv')
+left_corollas_latex_output_csv = os.path.join(output_path, 'left_corollas.csv')
+right_corollas_latex_output_csv = os.path.join(output_path, 'right_corollas.csv')
+habits_output_csv = os.path.join(output_path, 'habits.csv')
 
 #
 # Values for each spine feature which don't indicate spines
@@ -89,9 +95,9 @@ hair_values_to_drop = {'Leaf trichome canopy height': [],
 def clean_try_db():
     cols_to_drop = ['LastName', 'FirstName']
     morph_data = pd.read_csv(morph_input_csv, encoding='latin_1', sep='\t')
-    morph_data.dropna(subset=['TraitName'], inplace=True)
+    morph_data = morph_data.dropna(subset=['TraitName'])
 
-    morph_data.drop(columns=cols_to_drop, inplace=True)
+    morph_data = morph_data.drop(columns=cols_to_drop)
 
     emergence_db = morph_data[morph_data['TraitName'].str.contains('emergence')]
     latex_db = morph_data[morph_data['TraitName'].str.contains('latex')]
@@ -111,9 +117,9 @@ def clean_try_db():
         raise ValueError('Some items have been lost')
 
 
-def get_accepted_info_hair_hits():
+def get_accepted_info_try_hair_hits():
     emergence_db = pd.read_csv(emergence_input_csv)
-    emergence_db.dropna(subset=['OrigValueStr'], inplace=True)
+    emergence_db = emergence_db.dropna(subset=['OrigValueStr'])
 
     # First remove undesired traits (in this case hair)
     hair_db = emergence_db[~emergence_db['DataName'].isin(spine_values_to_drop.keys())]
@@ -139,14 +145,14 @@ def get_accepted_info_hair_hits():
         if any(y in x for x in list(hair_db['DataName'].unique())):
             raise ValueError(f'{y} found in Dataname column')
 
-    hair_db.to_csv(hair_temp_output_cleaned_csv)
-    get_accepted_info_from_names_in_column('AccSpeciesName', hair_temp_output_cleaned_csv,
-                                           hair_temp_output_accepted_csv)
+    hair_try_acc = get_accepted_info_from_names_in_column(hair_db, 'AccSpeciesName')
+    clean_accepted_try_hits(hair_try_acc)
+    hair_try_acc.to_csv(hair_temp_output_accepted_csv)
 
 
-def get_accepted_info_spine_hits():
+def get_accepted_try_info_spine_hits():
     emergence_db = pd.read_csv(emergence_input_csv)
-    emergence_db.dropna(subset=['OrigValueStr'], inplace=True)
+    emergence_db = emergence_db.dropna(subset=['OrigValueStr'])
 
     # First remove undesired traits (in this case hair)
     spine_db = emergence_db[~emergence_db['DataName'].isin(hair_values_to_drop.keys())]
@@ -172,59 +178,131 @@ def get_accepted_info_spine_hits():
         if any(y in x for x in list(spine_db['DataName'].unique())):
             raise ValueError(f'{y} found in Dataname column')
 
-    spine_db.to_csv(spine_temp_output_cleaned_csv)
-    get_accepted_info_from_names_in_column('AccSpeciesName', spine_temp_output_cleaned_csv,
-                                           spine_temp_output_accepted_csv)
+    spine_try_acc = get_accepted_info_from_names_in_column(spine_db, 'AccSpeciesName')
+    clean_accepted_try_hits(spine_try_acc)
+    spine_try_acc.to_csv(spine_temp_output_accepted_csv)
 
 
-def clean_accepted_try_hits(temp_output_accepted_csv: str):
-    df = pd.read_csv(temp_output_accepted_csv)
-
+def clean_accepted_try_hits(df: pd.DataFrame):
     df['OrigUnitStr'].fillna('', inplace=True)
     df['try_Snippet'] = df['DataName'] + ':' + df['OrigValueStr'] + df[
         'OrigUnitStr']
     df[COL_NAMES['single_source']] = 'TRY (' + df['Reference'] + ')'
 
-    df.to_csv(temp_output_accepted_csv)
-
 
 def get_powo_spine_hits():
-    search_powo(['spine', 'thorn', 'spike'], spine_powo_search_temp_output_cleaned_csv,
+    search_powo(['spine', 'thorn', 'spikes'],
                 spine_powo_search_temp_output_accepted_csv,
                 characteristics_to_search=['leaf', 'inflorescence', 'appearance', 'fruit'],
-                families_of_interest=['Rubiaceae', 'Apocynaceae'], filters=['genera','species','infraspecies'])
+                families_of_interest=['Rubiaceae', 'Apocynaceae'], filters=['genera', 'species', 'infraspecies'])
 
 
 def get_powo_hair_hits():
-    search_powo(['hairs', 'hairy'], hairs_powo_search_temp_output_cleaned_csv,
+    search_powo(['hairs', 'hairy', 'pubescent'],
                 hairs_powo_search_temp_output_accepted_csv,
                 characteristics_to_search=['leaf', 'inflorescence', 'appearance'],
-                families_of_interest=['Rubiaceae', 'Apocynaceae'], filters=['genera','species','infraspecies'])
+                families_of_interest=['Rubiaceae', 'Apocynaceae'], filters=['genera', 'species', 'infraspecies'])
 
 
-def main():
+def prepare_manually_collected_data():
+    manual_data = pd.read_csv(manual_morph_data_csv)
+    manual_data.drop(columns='Comment', inplace=True)
+    manual_data.rename(columns={'spines (present (y) or absent(x)': 'spines',
+                                'latex (white, clear, red, orange, yellow)': 'latex',
+                                'corolla overlap (left (l) or right(r))': 'corolla',
+                                'predominant habit (shrub (sh), subshrub (subsh), liana (li), tree(tr), succ (sc), herb (hb)': 'habit'
+                                }, inplace=True)
+    manual_data['Source'] = 'Manual check'
+    manual_data['Manual_snippet'] = ''
+    manual_data['spines'] = manual_data['spines'].apply(remove_whitespace)
+    manual_data['latex'] = manual_data['latex'].apply(remove_whitespace)
+    manual_data['corolla'] = manual_data['corolla'].apply(remove_whitespace)
+    manual_data['habit'] = manual_data['habit'].apply(remove_whitespace)
+
+    acc_manual_data = get_accepted_info_from_names_in_column(manual_data, 'Genera')
+
+    acc_manual_data.to_csv(manual_data_accepted_clean_temp_output)
+
+    # Spines
+    spines = acc_manual_data[acc_manual_data['spines'] == 'y']
+    no_spines = acc_manual_data[acc_manual_data['spines'] == 'x']
+
+    spines.to_csv(manual_spines_output_csv)
+    no_spines.to_csv(manual_no_spines_output_csv)
+
+
+def get_data():
     clean_try_db()
-    get_accepted_info_spine_hits()
-    clean_accepted_try_hits(spine_temp_output_accepted_csv)
+    get_accepted_try_info_spine_hits()
+    get_accepted_info_try_hair_hits()
+
+    prepare_manually_collected_data()
 
     get_powo_spine_hits()
-
-    powo_spine_hits = pd.read_csv(spine_powo_search_temp_output_accepted_csv)
-    try_spine_hits = pd.read_csv(spine_temp_output_accepted_csv)
-
-    all_spine_dfs = [try_spine_hits, powo_spine_hits]
-    compile_hits(all_spine_dfs, spines_output_csv)
-
-    get_accepted_info_hair_hits()
-    clean_accepted_try_hits(hair_temp_output_accepted_csv)
-
     get_powo_hair_hits()
 
+
+def output_compiled_data():
+    # Spines
+    powo_spine_hits = pd.read_csv(spine_powo_search_temp_output_accepted_csv)
+
+    # Spines are often reported as 'absent'
+    # List accepted ids of such cases to remove
+    spine_ids_for_absence = ['34290-1', '2257-1', '2425-1', '2469-1', '2560-1', '331696-2', '2171-1',
+                             '2218-1',
+                             '2298-1',
+                             '2180-1',
+                             '2516-1',
+                             '2198-1',
+                             '2377-1', '328992-2'
+                             ]
+    powo_presence_spine_hits, powo_absence_spine_hits = create_presence_absence_data(powo_spine_hits,
+                                                                                     accepted_ids_of_absence=spine_ids_for_absence)
+
+    try_spine_hits = pd.read_csv(spine_temp_output_accepted_csv)
+    manual_spine_hits = pd.read_csv(manual_spines_output_csv)
+    all_spine_dfs = [manual_spine_hits, try_spine_hits, powo_presence_spine_hits]
+    compile_hits(all_spine_dfs, spines_output_csv)
+
+    manual_no_spines_hits = pd.read_csv(manual_no_spines_output_csv)
+    compile_hits([powo_absence_spine_hits, manual_no_spines_hits], no_spines_output_csv)
+
+    # Hairs
     powo_hair_hits = pd.read_csv(hairs_powo_search_temp_output_accepted_csv)
     try_hair_hits = pd.read_csv(hair_temp_output_accepted_csv)
 
     all_hair_hits = [powo_hair_hits, try_hair_hits]
     compile_hits(all_hair_hits, hairy_output_csv)
+
+    # Latex
+    acc_manual_data = pd.read_csv(manual_data_accepted_clean_temp_output)
+    non_coloured_latex = acc_manual_data[
+        (acc_manual_data['latex'].isin(['w', 'c']))]
+    compile_hits([non_coloured_latex], non_coloured_latex_output_csv)
+    coloured_latex = acc_manual_data[
+        acc_manual_data['latex'].isin(['w/y', 'w/r', 'r/y/w', 'r/o/y'])]
+    compile_hits([coloured_latex], coloured_latex_output_csv)
+
+    # Corollas
+    left_corollas = acc_manual_data[
+        (acc_manual_data['corolla'].isin(['l']))]
+    compile_hits([left_corollas], left_corollas_latex_output_csv)
+    right_corollas = acc_manual_data[
+        acc_manual_data['corolla'].isin(['r'])]
+    compile_hits([right_corollas], right_corollas_latex_output_csv)
+
+    # Habit
+    habits = acc_manual_data.drop(columns=[
+        'spines',
+        'latex',
+        'corolla', 'Manual_snippet'])
+    habits = habits.rename(columns={'habit': 'Manual_snippet'})
+    habits.to_csv(habits_output_csv)
+
+
+def main():
+    # get_data()
+    output_compiled_data()
 
 
 if __name__ == '__main__':
