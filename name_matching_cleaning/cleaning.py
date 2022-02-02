@@ -26,6 +26,14 @@ def generate_temp_output_file_paths(filetag: str, temp_output_path: str):
 
     return temp_output_cleaned_csv, temp_output_accepted_csv
 
+def remove_whitespace(value):
+    if value is np.nan:
+        return value
+    else:
+        value = str(value)
+        v = value.rstrip()
+        out = v.lstrip()
+        return out
 
 def clean_urn_ids(given_value: str) -> str:
     '''
@@ -97,19 +105,21 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str):
     cols_to_keep = list(COL_NAMES.values()) + sources_cols + snippet_cols
 
     # Do some cleaning
+    cleaned_dfs = []
     for df in all_dfs:
         cols_to_drop = [c for c in df.columns if
                         c not in cols_to_keep]
-        df.drop(columns=cols_to_drop, inplace=True)
-        df.dropna(subset={COL_NAMES['acc_name']}, inplace=True)
+        df = df.drop(columns=cols_to_drop)
+        df = df.dropna(subset={COL_NAMES['acc_name']})
+        cleaned_dfs.append(df)
 
     # Do merges
-    merged_dfs = all_dfs[0]
+    merged_dfs = cleaned_dfs[0].copy()
     merged_dfs[COL_NAMES['sources']] = merged_dfs[COL_NAMES['single_source']]
-    merged_dfs.drop(columns=[COL_NAMES['single_source']], inplace=True)
+    merged_dfs = merged_dfs.drop(columns=[COL_NAMES['single_source']])
 
-    if len(all_dfs) > 1:
-        for i in all_dfs[1:]:
+    if len(cleaned_dfs) > 1:
+        for i in cleaned_dfs[1:]:
             merged_dfs = merge_on_accepted_id(merged_dfs, i)
 
     start_cols = [COL_NAMES['acc_name'], COL_NAMES['acc_id'], COL_NAMES['acc_species'], COL_NAMES['acc_rank']]
