@@ -87,7 +87,7 @@ def check_page_exists(species: str, wiki_lan: wikipediaapi.Wikipedia) -> bool:
         return False
 
 
-def make_wiki_hit_df(species_list: List[str], force_new_search=False) -> pd.DataFrame:
+def make_wiki_hit_df(species_list: List[str], output_csv:str=None,force_new_search=False) -> pd.DataFrame:
     out_dict = {'Name': [], 'Language': []}
     languages_to_check = ['es', 'en', 'fr', 'it', 'pt']
     wikis_to_check = [wikipediaapi.Wikipedia(lan) for lan in languages_to_check]
@@ -103,7 +103,7 @@ def make_wiki_hit_df(species_list: List[str], force_new_search=False) -> pd.Data
         df = pd.read_csv(temp_output_wiki_page_csv)
     else:
 
-        for i in tqdm(range(len(species_list)), desc="Searching…", ascii=False, ncols=72):
+        for i in tqdm(range(len(species_list)), desc="Searching for Wiki Pages…", ascii=False, ncols=72):
             sp = species_list[i]
             language_hits = []
             try:
@@ -115,7 +115,7 @@ def make_wiki_hit_df(species_list: List[str], force_new_search=False) -> pd.Data
                     out_dict['Language'].append(str(language_hits))
                     out_dict['Name'].append(sp)
 
-            except requests.exceptions.ReadTimeout:
+            except:
                 unchecked_taxa_due_to_timeout.append(sp)
 
         df = pd.DataFrame(out_dict)
@@ -125,8 +125,8 @@ def make_wiki_hit_df(species_list: List[str], force_new_search=False) -> pd.Data
         check_df = pd.DataFrame(taxa_to_check_dict)
         check_csv = os.path.join(_temp_outputs_path, 'taxa_to_recheck.csv')
         check_df.to_csv(check_csv)
-        print(f'Warning some taxa were unchecked due to server timeouts. Rerun search for taxa in {check_csv}')
+        print(f'Warning {str(len(unchecked_taxa_due_to_timeout))} taxa were unchecked due to server timeouts. Rerun search for taxa in {check_csv}')
 
     df.to_csv(temp_output_wiki_page_csv)
-
+    df.to_csv(output_csv)
     return df
