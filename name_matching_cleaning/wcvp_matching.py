@@ -31,34 +31,6 @@ def _get_dict_from_wcvp_record(record: pd.DataFrame) -> dict:
     return {'Accepted_Name': Accepted_Name, 'Accepted_ID': Accepted_ID, 'Accepted_Rank': Accepted_Rank,
             'Accepted_Species': Accepted_Species, 'Accepted_Species_ID': Accepted_Species_ID}
 
-
-def _name_lookup_wcvp(all_taxa: pd.DataFrame, given_name: str) -> dict:
-    """
-    Looks for name in list of taxa, returns a dictionary of accepted information
-    :param all_taxa:
-    :param given_name:
-    :return:
-    """
-    given_name = str(given_name)
-    record = all_taxa[all_taxa['taxon_name'] == given_name]
-    nan_dict = {'Accepted_Name': np.nan, 'Accepted_ID': np.nan, 'Accepted_Rank': np.nan,
-                'Accepted_Species': np.nan, 'Accepted_Species_ID': np.nan}
-    if len(record.index) == 0:
-        print(f"Can't find name: {given_name} in given wcvp taxa data")
-        return nan_dict
-    if len(record.index) > 1:
-        print(
-            f"Multiple matches found in given wcvp data for name: {given_name}. Attempting to find accepted name match...")
-
-        record = all_taxa[all_taxa['accepted_name'] == given_name]
-        if len(record.index) == 1:
-            print("Found accepted name match")
-            return _get_dict_from_wcvp_record(record)
-        print("Unique accepted name match not found")
-        return nan_dict
-    return _get_dict_from_wcvp_record(record)
-
-
 def id_lookup_wcvp(all_taxa: pd.DataFrame, given_id: str) -> dict:
     """
     Looks for id in list of taxa, returns a dictionary of accepted information
@@ -94,16 +66,31 @@ def get_wcvp_info_for_names_in_column(df: pd.DataFrame, name_col: str, all_taxa:
     if all_taxa is None:
         all_taxa = get_all_taxa()
 
-    dict_of_values = {'Accepted_Name': [], 'Accepted_ID': [], 'Accepted_Rank': [],
-                      'Accepted_Species': [], 'Accepted_Species_ID': []}
+    taxa_in_df = all_taxa[all_taxa['taxon_name'].isin(df[name_col])]
 
-    for i in tqdm(range(len(df[name_col].values)), desc="Searching…", ascii=False, ncols=72):
-        x = df[name_col].values[i]
-        acc_info = _name_lookup_wcvp(all_taxa, x)
-        for k in dict_of_values:
-            dict_of_values[k].append(acc_info[k])
+    renaming = {'accepted_name': 'Accepted_Name', 'accepted_kew_id': 'Accepted_ID', 'rank': 'Accepted_Rank',
+                'parent_name': 'Accepted_Species', 'parent_kew_id': 'Accepted_Species_ID'}
 
-    match_df = pd.DataFrame(dict_of_values)
-    # Set indices for concatenating properly
-    match_df.set_index(df.index, inplace=True)
-    return pd.concat([df, match_df], axis=1)
+    renamed_taxa_cols = taxa_in_df.rename(columns=renaming)
+    # Put accepted names and ids in columns for accepted taxa as otherwise they are nan
+    renamed_taxa_cols.loc[renamed_taxa_cols['taxonomic_status'] == 'Accepted', 'Accepted_Name'] = \
+        renamed_taxa_cols[renamed_taxa_cols['taxonomic_status'] == 'Accepted']['taxon_name']
+
+    renamed_taxa_cols.loc[renamed_taxa_cols['taxonomic_status'] == 'Accepted', 'Accepted_ID'] = \
+        renamed_taxa_cols[renamed_taxa_cols['taxonomic_status'] == 'Accepted']['kew_id']
+
+    status_priority = ["Accepted", "Synonym"]
+    for r in renamed_taxa_cols["taxonomic_status"].unique():
+        if r not in status_priority:
+            raise ValueError(f'Rank priority list does not contain {r} and needs updating.')
+    renamed_taxa_cols['taxonomic_status'] = pd.Categorical(renamed_taxa_cols['taxonomic_status'], status_priority)
+    renamed_taxa_cols.sort_values('taxonomic_status', inplace=True)
+
+    renamed_taxa_cols.drop_duplicates(subset=['taxon_name'], inplace=True,keep='first')
+
+    cols_to_drop = [c for c in renamed_taxa_cols.columns if (c not in renaming.values() and c != 'taxon_name')]
+    renamed_taxa_cols.drop(columns=cols_to_drop, inplace=True)
+
+    merged_with_taxa = df.merge(renamed_taxa_cols, left_on=name_col, right_on='taxon_name', suffixes=(False, False))
+
+    return merged_with_taxa

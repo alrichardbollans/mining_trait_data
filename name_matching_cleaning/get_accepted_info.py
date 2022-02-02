@@ -250,7 +250,7 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
     wcvp_matches = name_match_df[~name_match_df['Accepted_Name'].isna()]
 
     # If exact matches aren't found in wcvp, use knms first
-    unmatched_name_df = df[name_match_df['Accepted_Name'].isna()]
+    unmatched_name_df = df[~df[name_col].isin(wcvp_matches[name_col].values)]
 
     matches_with_knms = _get_knms_matches_and_accepted_info_from_names_in_column(unmatched_name_df, name_col,
                                                                                  families_of_interest=families_of_interest)

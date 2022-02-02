@@ -207,15 +207,12 @@ class MyTestCase(unittest.TestCase):
         self.assertListEqual(species_list['Labelled'].values.tolist(),
                              x['Accepted_Name'].values.tolist())
 
-    def test_resolutions(self):
+    def test_unmatched_resolutions(self):
         unmatched_df = pd.read_csv(os.path.join(unittest_inputs, 'unmatched.csv'))
         resolved_unmatched = _get_knms_matches_and_accepted_info_from_names_in_column(unmatched_df, 'submitted',
                                                                                       families_of_interest=['Rubiaceae',
                                                                                                             'Apocynaceae'])
         # resolved_unmatched = _autoresolve_missing_matches(unmatched_df)
-        self.assertTrue(np.isnan(unmatched_df.loc[unmatched_df[
-                                                      'submitted'] == "Hedyotis sp. ('' fruticosa or ''  pruinosa or oldenlandia corymbosa)", 'acc_name'].iloc[
-                                     0]))
 
         unmatched_df.dropna(subset=['acc_name'], inplace=True)
         resolved_unmatched.dropna(subset=['Accepted_Name'], inplace=True)
