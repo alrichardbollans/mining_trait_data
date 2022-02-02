@@ -79,7 +79,7 @@ def get_wcvp_info_for_names_in_column(df: pd.DataFrame, name_col: str, all_taxa:
     renamed_taxa_cols.loc[renamed_taxa_cols['taxonomic_status'] == 'Accepted', 'Accepted_ID'] = \
         renamed_taxa_cols[renamed_taxa_cols['taxonomic_status'] == 'Accepted']['kew_id']
 
-    status_priority = ["Accepted", "Synonym"]
+    status_priority = ["Accepted", "Synonym","Homotypic_Synonym"]
     for r in renamed_taxa_cols["taxonomic_status"].unique():
         if r not in status_priority:
             raise ValueError(f'Rank priority list does not contain {r} and needs updating.')
