@@ -62,6 +62,7 @@ submissions are included in the output dataframe without out any accepted inform
 * Test homotypic synonyms
 * Resolution of hybrid genera
 * Format names on input --- captilised first letter
+* Avoid repeating searches for duplicate names
 
 ## Sources
 

@@ -7,10 +7,10 @@ from typing import List
 from pkg_resources import resource_filename
 
 from name_matching_cleaning import get_wcvp_info_for_names_in_column, \
-    get_knms_name_matches, id_lookup_wcvp, clean_urn_ids, COL_NAMES
+    get_knms_name_matches, id_lookup_wcvp, clean_urn_ids, COL_NAMES, remove_whitespace
 from name_matching_cleaning.resolving_names import _get_resolutions_with_single_rank
 
-from taxa_lists import get_all_taxa
+from taxa_lists import get_all_taxa, capitalize_first_letter
 
 _temp_outputs_dir = 'name matching temp outputs'
 matching_data_path = resource_filename(__name__, 'matching data')
@@ -245,6 +245,10 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
     if len(na_rows.index) > 0:
         print(f'Warning: Rows in {name_col} with nan values. {na_rows}')
         df.dropna(subset=[name_col], inplace=True)
+
+    # Standardise input names
+    df[name_col] = df[name_col].apply(capitalize_first_letter)
+    df[name_col] = df[name_col].apply(remove_whitespace)
 
     # First match with exact matches in wcvp
     name_match_df = get_wcvp_info_for_names_in_column(df, name_col, all_taxa=all_taxa)
