@@ -9,6 +9,8 @@ from pkg_resources import resource_filename
 from tqdm import tqdm
 import wikipediaapi
 
+from name_matching_cleaning import get_accepted_info_from_names_in_column
+
 _temp_outputs_path = resource_filename(__name__, 'temp_outputs')
 
 
@@ -28,7 +30,9 @@ def get_all_page_text(lang, pagename):
     return text
 
 
-def search_for_common_names(species_list: List[str], output_csv: str) -> pd.DataFrame:
+def search_for_common_names(taxa_list: List[str], output_csv: str) -> pd.DataFrame:
+    if not os.path.isdir(os.path.dirname(output_csv)):
+        os.mkdir(os.path.dirname(output_csv))
     # TODO: also look for synonyms
     # Swedish list is split across the alphabet
     swedish_root_page = 'Lista_över_växter'
@@ -55,7 +59,7 @@ def search_for_common_names(species_list: List[str], output_csv: str) -> pd.Data
             page_texts[source] = get_all_page_text(lan, page)
 
     out_dict = {'Name': [], 'Wiki_Snippet': [], 'Source': []}
-    for sp in species_list:
+    for sp in taxa_list:
 
         try:
             hits = []
@@ -79,32 +83,35 @@ def search_for_common_names(species_list: List[str], output_csv: str) -> pd.Data
     return df
 
 
-def check_page_exists(species: str, wiki_lan: wikipediaapi.Wikipedia) -> bool:
-    page_py = wiki_lan.page(species)
+def check_page_exists(taxon: str, wiki_lan: wikipediaapi.Wikipedia) -> bool:
+    page_py = wiki_lan.page(taxon)
     if page_py.exists():
         return True
     else:
         return False
 
 
-def make_wiki_hit_df(species_list: List[str], output_csv:str=None,force_new_search=False) -> pd.DataFrame:
-    out_dict = {'Name': [], 'Language': []}
+def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_search=False) -> pd.DataFrame:
+    if not os.path.isdir(os.path.dirname(output_csv)):
+        os.mkdir(os.path.dirname(output_csv))
+    name_col = 'Name'
+    out_dict = {name_col: [], 'Language': []}
     languages_to_check = ['es', 'en', 'fr', 'it', 'pt']
     wikis_to_check = [wikipediaapi.Wikipedia(lan) for lan in languages_to_check]
     # Save previous searches using a hash of names to avoid repeating searches
-    names = list(species_list)
+    names = list(taxa_list)
     str_to_hash = str(names).encode()
     temp_csv = "wiki_page_search_" + str(hashlib.md5(str_to_hash).hexdigest()) + ".csv"
 
     temp_output_wiki_page_csv = os.path.join(_temp_outputs_path, temp_csv)
     unchecked_taxa_due_to_timeout = []
     if os.path.isfile(temp_output_wiki_page_csv) and not force_new_search:
-        # Pandas will read TRUE/true as bools and therefore as True rather than true
+
         df = pd.read_csv(temp_output_wiki_page_csv)
     else:
 
-        for i in tqdm(range(len(species_list)), desc="Searching for Wiki Pages…", ascii=False, ncols=72):
-            sp = species_list[i]
+        for i in tqdm(range(len(taxa_list)), desc="Searching for Wiki Pages…", ascii=False, ncols=72):
+            sp = taxa_list[i]
             language_hits = []
             try:
                 for wiki in wikis_to_check:
@@ -113,7 +120,7 @@ def make_wiki_hit_df(species_list: List[str], output_csv:str=None,force_new_sear
 
                 if len(language_hits) > 0:
                     out_dict['Language'].append(str(language_hits))
-                    out_dict['Name'].append(sp)
+                    out_dict[name_col].append(sp)
 
             except:
                 unchecked_taxa_due_to_timeout.append(sp)
@@ -125,8 +132,12 @@ def make_wiki_hit_df(species_list: List[str], output_csv:str=None,force_new_sear
         check_df = pd.DataFrame(taxa_to_check_dict)
         check_csv = os.path.join(_temp_outputs_path, 'taxa_to_recheck.csv')
         check_df.to_csv(check_csv)
-        print(f'Warning {str(len(unchecked_taxa_due_to_timeout))} taxa were unchecked due to server timeouts. Rerun search for taxa in {check_csv}')
+        print(
+            f'Warning {str(len(unchecked_taxa_due_to_timeout))} taxa were unchecked due to server timeouts. Rerun search for taxa in {check_csv}')
 
     df.to_csv(temp_output_wiki_page_csv)
-    df.to_csv(output_csv)
-    return df
+
+    acc_df = get_accepted_info_from_names_in_column(df, name_col)
+
+    acc_df.to_csv(output_csv)
+    return acc_df

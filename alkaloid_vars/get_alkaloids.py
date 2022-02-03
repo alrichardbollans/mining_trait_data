@@ -25,6 +25,10 @@ def get_powo_alkaloids():
 
 
 def main():
+    if not os.path.isdir(_temp_outputs_path):
+        os.mkdir(_temp_outputs_path)
+    if not os.path.isdir(_output_path):
+        os.mkdir(_output_path)
     get_powo_alkaloids()
     powo_hits = pd.read_csv(_powo_search_temp_output_accepted_csv)
     compile_hits([powo_hits], output_alkaloid_csv)

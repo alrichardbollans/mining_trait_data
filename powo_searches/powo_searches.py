@@ -1,3 +1,4 @@
+import os
 from typing import List, Tuple
 
 import numpy as np
@@ -37,6 +38,8 @@ def search_powo(search_terms: List[str], accepted_output_file: str, filters: Lis
     :param families_of_interest:
     :return:
     """
+    if not os.path.isdir(os.path.dirname(accepted_output_file)):
+        os.mkdir(os.path.dirname(accepted_output_file))
 
     if characteristics_to_search is None:
         powocharacteristics_to_search = [powo_terms.Characteristic.characteristic, powo_terms.Characteristic.use,

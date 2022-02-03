@@ -28,6 +28,11 @@ def get_metabolites_for_taxon(name: str):
 
 
 def get_metabolites_for_taxa(taxa_list: List[str], output_csv: str = None, force_new_search=False) -> pd.DataFrame:
+    if not os.path.isdir(_temp_outputs_path):
+        os.mkdir(_temp_outputs_path)
+    if not os.path.isdir(outputs_path):
+        os.mkdir(outputs_path)
+
     # Save previous searches using a hash of names to avoid repeating searches
     names = list(taxa_list)
     str_to_hash = str(names).encode()
@@ -74,6 +79,7 @@ def get_metabolites_for_taxa(taxa_list: List[str], output_csv: str = None, force
         print(
             f'Warning {str(len(unchecked_taxa_due_to_timeout))} taxa were unchecked due to server timeouts. Rerun search for taxa in {check_csv}')
 
+
     df.to_csv(temp_output_metabolite_csv)
 
     acc_df = get_accepted_info_from_names_in_column(df, 'taxa')
@@ -83,6 +89,7 @@ def get_metabolites_for_taxa(taxa_list: List[str], output_csv: str = None, force
 
 
 def main():
+
     data = get_all_taxa(families_of_interest=['Apocynaceae', 'Rubiaceae'], accepted=True)
 
     ranks_to_use = ["Species", "Variety", "Subspecies"]

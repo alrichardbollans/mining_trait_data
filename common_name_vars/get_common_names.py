@@ -133,7 +133,7 @@ def get_powo_common_names(species_names: List[str], species_ids: List[str],
 
     temp_output_powo_csv = os.path.join(_temp_outputs_path, temp_csv)
     if os.path.isfile(temp_output_powo_csv) and not force_new_search:
-        # Pandas will read TRUE/true as bools and therefore as True rather than true
+
         df = pd.read_csv(temp_output_powo_csv)
     else:
         for i in tqdm(range(len(species_names)), desc="Searching POWO for common names…", ascii=False, ncols=72):
@@ -195,6 +195,12 @@ def prepare_data():
 
 
 def main():
+
+    if not os.path.isdir(_temp_outputs_path):
+        os.mkdir(_temp_outputs_path)
+    if not os.path.isdir(output_path):
+        os.mkdir(output_path)
+
     # TODO: Note powo, wikipedia and USDA data is specific to our study
     prepare_data()
 

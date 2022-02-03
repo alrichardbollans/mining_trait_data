@@ -119,6 +119,10 @@ def output_compiled_data():
     habits.to_csv(habits_output_csv)
 
 def main():
+    if not os.path.isdir(temp_outputs_path):
+        os.mkdir(temp_outputs_path)
+    if not os.path.isdir(output_path):
+        os.mkdir(output_path)
     # get_powo_hairs_and_spines()
     output_compiled_data()
 

@@ -11,7 +11,10 @@ _outputs_path = resource_filename(__name__, 'outputs')
 
 
 # Standardise rank names
-def capitalize_ranks(g: str):
+def capitalize_first_letter(g: str,check_string_is_uppercase=False):
+    if check_string_is_uppercase:
+        if not g.isupper():
+            return g
     try:
         l = g.lower()
         return l.capitalize()
@@ -21,6 +24,9 @@ def capitalize_ranks(g: str):
 
 def get_all_taxa(families_of_interest=None,
                  accepted=False, version=None, output_csv=None) -> pd.DataFrame:
+    if not os.path.isdir(os.path.dirname(output_csv)):
+        os.mkdir(os.path.dirname(output_csv))
+
     if version is None:
         version = 'wcvp_v7_dec_2021'
 
@@ -41,7 +47,7 @@ def get_all_taxa(families_of_interest=None,
     if accepted:
         wcvp_data = wcvp_data[wcvp_data['taxonomic_status'] == 'Accepted']
 
-    wcvp_data['rank'] = wcvp_data['rank'].apply(capitalize_ranks)
+    wcvp_data['rank'] = wcvp_data['rank'].apply(capitalize_first_letter)
     # Remove unplaced taxa
     wcvp_data = wcvp_data[wcvp_data['taxonomic_status'] != 'Unplaced']
 
