@@ -31,8 +31,9 @@ def get_all_page_text(lang, pagename):
 
 
 def search_for_common_names(taxa_list: List[str], output_csv: str) -> pd.DataFrame:
-    if not os.path.isdir(os.path.dirname(output_csv)):
-        os.mkdir(os.path.dirname(output_csv))
+    if output_csv is not None:
+        if not os.path.isdir(os.path.dirname(output_csv)):
+            os.mkdir(os.path.dirname(output_csv))
     # TODO: also look for synonyms
     # Swedish list is split across the alphabet
     swedish_root_page = 'Lista_över_växter'
@@ -92,8 +93,9 @@ def check_page_exists(taxon: str, wiki_lan: wikipediaapi.Wikipedia) -> bool:
 
 
 def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_search=False) -> pd.DataFrame:
-    if not os.path.isdir(os.path.dirname(output_csv)):
-        os.mkdir(os.path.dirname(output_csv))
+    if output_csv is not None:
+        if not os.path.isdir(os.path.dirname(output_csv)):
+            os.mkdir(os.path.dirname(output_csv))
     name_col = 'Name'
     out_dict = {name_col: [], 'Language': []}
     languages_to_check = ['es', 'en', 'fr', 'it', 'pt']

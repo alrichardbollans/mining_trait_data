@@ -24,8 +24,9 @@ def capitalize_first_letter(g: str,check_string_is_uppercase=False):
 
 def get_all_taxa(families_of_interest=None,
                  accepted=False, version=None, output_csv=None) -> pd.DataFrame:
-    if not os.path.isdir(os.path.dirname(output_csv)):
-        os.mkdir(os.path.dirname(output_csv))
+    if output_csv is not None:
+        if not os.path.isdir(os.path.dirname(output_csv)):
+            os.mkdir(os.path.dirname(output_csv))
 
     if version is None:
         version = 'wcvp_v7_dec_2021'
