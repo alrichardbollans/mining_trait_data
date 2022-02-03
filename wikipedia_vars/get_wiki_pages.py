@@ -7,9 +7,9 @@ import wikipedia_searches
 from taxa_lists.get_taxa_from_wcvp import get_all_taxa
 
 ### Outputs
-output_path = resource_filename(__name__, 'outputs')
-output_wiki_csv = os.path.join(output_path, 'list_plants_with_wiki_pages.csv')
-more_checked_taxa_csv = os.path.join(output_path, 'initially_missed_taxa.csv')
+_output_path = resource_filename(__name__, 'outputs')
+output_wiki_csv = os.path.join(_output_path, 'list_plants_with_wiki_pages.csv')
+more_checked_taxa_csv = os.path.join(_output_path, 'initially_missed_taxa.csv')
 
 
 def main():

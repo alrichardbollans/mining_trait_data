@@ -9,24 +9,24 @@ from powo_searches import search_powo
 ### Inputs
 
 
-inputs_path = resource_filename(__name__, 'inputs')
-input_species_csv = os.path.join(inputs_path, 'clean.csv')
+_inputs_path = resource_filename(__name__, 'inputs')
+_input_species_csv = os.path.join(_inputs_path, 'clean.csv')
 
-useful_plants_file = os.path.join(inputs_path, 'useful_plant_processed_db.txt')
+_useful_plants_file = os.path.join(_inputs_path, 'useful_plant_processed_db.txt')
 
 ### Temp outputs
-temp_outputs_path = resource_filename(__name__, 'temp_outputs')
-littox_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'littox_accepted.csv')
-useful_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'useful_accepted.csv')
-powo_search_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'powo_poisons_accepted.csv')
+_temp_outputs_path = resource_filename(__name__, 'temp_outputs')
+_littox_temp_output_accepted_csv = os.path.join(_temp_outputs_path, 'littox_accepted.csv')
+_useful_temp_output_accepted_csv = os.path.join(_temp_outputs_path, 'useful_accepted.csv')
+_powo_search_temp_output_accepted_csv = os.path.join(_temp_outputs_path, 'powo_poisons_accepted.csv')
 
 ### Outputs
-output_path = resource_filename(__name__, 'outputs')
-output_poison_csv = os.path.join(output_path, 'list_of_poisonous_plants.csv')
+_output_path = resource_filename(__name__, 'outputs')
+output_poison_csv = os.path.join(_output_path, 'list_of_poisonous_plants.csv')
 
 
 def prepare_useful_plants_poisons() -> pd.DataFrame:
-    useful_db = pd.read_csv(useful_plants_file, encoding='latin_1', sep='\t')
+    useful_db = pd.read_csv(_useful_plants_file, encoding='latin_1', sep='\t')
 
     useful_db = useful_db[useful_db['Poisons'] == 1]
 
@@ -44,20 +44,20 @@ def prepare_useful_plants_poisons() -> pd.DataFrame:
     # Then add a source column
     useful_db['Source'] = 'Useful Plants Data'
 
-    useful_db.to_csv(useful_temp_output_accepted_csv)
+    useful_db.to_csv(_useful_temp_output_accepted_csv)
     return useful_db
 
 
 def prepare_littox_poisons() -> pd.DataFrame:
-    littox_db = pd.read_csv(os.path.join(inputs_path,'Littox_210428_copy.csv'))
+    littox_db = pd.read_csv(os.path.join(_inputs_path, 'Littox_210428_copy.csv'))
     littox_db_acc = get_accepted_info_from_names_in_column(littox_db,'Latin name provided')
-    littox_db_acc.to_csv(littox_temp_output_accepted_csv)
+    littox_db_acc.to_csv(_littox_temp_output_accepted_csv)
     return littox_db_acc
 
 
 def get_powo_poisons():
     search_powo(['poison', 'poisonous', 'toxic', 'deadly'],
-                powo_search_temp_output_accepted_csv,
+                _powo_search_temp_output_accepted_csv,
                 families_of_interest=['Rubiaceae', 'Apocynaceae'],
                 filters=['species', 'infraspecies']
                 )
@@ -67,9 +67,9 @@ def main():
     # get_powo_poisons()
     prepare_littox_poisons()
     prepare_useful_plants_poisons()
-    powo_hits = pd.read_csv(powo_search_temp_output_accepted_csv)
-    littox_hits = pd.read_csv(littox_temp_output_accepted_csv)
-    useful_hits = pd.read_csv(useful_temp_output_accepted_csv)
+    powo_hits = pd.read_csv(_powo_search_temp_output_accepted_csv)
+    littox_hits = pd.read_csv(_littox_temp_output_accepted_csv)
+    useful_hits = pd.read_csv(_useful_temp_output_accepted_csv)
     compile_hits([useful_hits, powo_hits, littox_hits], output_poison_csv)
 
 

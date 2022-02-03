@@ -172,6 +172,7 @@ def _find_best_matches_from_multiples(multiple_match_records: pd.DataFrame, fami
 
     unresolved_submissions = unique_matches[
         ~unique_matches["submitted"].isin(submitted_names_with_single_accepted_match["submitted"])]
+
     # We only check submissions where ranks are the same for every submission match
     # Otherwise a subspecies may match with it's parent and be erroneously resolved to that
     ranks = list(unresolved_submissions['Accepted_Rank'].unique())
