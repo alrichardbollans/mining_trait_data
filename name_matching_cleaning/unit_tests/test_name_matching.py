@@ -193,19 +193,27 @@ class MyTestCase(unittest.TestCase):
         self.assertListEqual(x['Unlabelled'].values.tolist(), x['Accepted_Name'].values.tolist())
         self.assertListEqual(sorted(genera_list['Unlabelled'].values.tolist()),
                              sorted(x['Accepted_Name'].values.tolist()))
+
         synonym_list = pd.read_csv(os.path.join(unittest_inputs, 'synonym_list.csv'))
-        x = get_accepted_info_from_names_in_column(synonym_list, 'syn')
-        x.to_csv(os.path.join(unittest_outputs, 'test_output4.csv'))
-        self.assertTrue(len(x['Accepted_Name'].values.tolist()) == len(synonym_list['syn'].values.tolist()))
-        self.assertListEqual(x['Accepted_Name'].values.tolist(), x['Know_acc_name'].values.tolist())
+        s = get_accepted_info_from_names_in_column(synonym_list, 'syn')
+        s.to_csv(os.path.join(unittest_outputs, 'test_output4.csv'))
+        self.assertTrue(len(s['Accepted_Name'].values.tolist()) == len(synonym_list['syn'].values.tolist()))
+        self.assertListEqual(s['Accepted_Name'].values.tolist(), s['Know_acc_name'].values.tolist())
 
         #
         species_list = pd.read_csv(os.path.join(unittest_inputs, 'species_list.csv'))
-        x = get_accepted_info_from_names_in_column(species_list, 'Labelled')
-        x.to_csv(os.path.join(unittest_outputs, 'test_output6.csv'))
-        self.assertListEqual(x['Labelled'].values.tolist(), x['Accepted_Name'].values.tolist())
+        z = get_accepted_info_from_names_in_column(species_list, 'Labelled')
+        z.to_csv(os.path.join(unittest_outputs, 'test_output6.csv'))
+        self.assertListEqual(z['Labelled'].values.tolist(), z['Accepted_Name'].values.tolist())
         self.assertListEqual(species_list['Labelled'].values.tolist(),
-                             x['Accepted_Name'].values.tolist())
+                             z['Accepted_Name'].values.tolist())
+
+        necessary_cols = ['Accepted_Rank', 'Accepted_ID', 'Accepted_Name', 'Accepted_Species','Accepted_Species_ID']
+        for c in necessary_cols:
+            self.assertTrue(c in x.columns)
+            self.assertTrue(c in s.columns)
+            self.assertTrue(c in z.columns)
+
 
     def test_unmatched_resolutions(self):
         unmatched_df = pd.read_csv(os.path.join(unittest_inputs, 'unmatched.csv'))

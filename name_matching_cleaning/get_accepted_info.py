@@ -247,7 +247,8 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
         df.dropna(subset=[name_col], inplace=True)
 
     # Standardise input names
-    df[name_col] = df[name_col].apply(capitalize_first_letter)
+    # TODO: add tests for cases
+    df[name_col] = df[name_col].apply(capitalize_first_letter, check_string_is_uppercase=True)
     df[name_col] = df[name_col].apply(remove_whitespace)
 
     # First match with exact matches in wcvp
@@ -265,7 +266,6 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
     unmatched_final_df = df[~df[name_col].isin(resolved_df[name_col].values)]
     if len(unmatched_final_df.index) > 0:
         _temp_output(unmatched_final_df, 'unmatched_samples', 'Warning: Unmatched samples.')
-        # TODO: append unmatched to resolved
         if keep_unmatched:
             resolved_df = pd.concat([resolved_df, unmatched_final_df])
     cols_to_drop = [c for c in resolved_df.columns.tolist() if

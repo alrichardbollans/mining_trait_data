@@ -7,6 +7,7 @@ from typing import List
 
 COL_NAMES = {'acc_name': 'Accepted_Name',
              'acc_species': 'Accepted_Species',
+            'acc_species_id': 'Accepted_Species_ID',
              'acc_id': 'Accepted_ID',
              'acc_rank': 'Accepted_Rank',
              'single_source': 'Source',

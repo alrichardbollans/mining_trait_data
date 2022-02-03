@@ -34,7 +34,10 @@ def get_knms_name_matches(names: List[str]):
         headings = ['submitted', 'match_state', 'ipni_id', 'matched_name']
 
         content = json.loads(res.content.decode('utf-8'))
-        records = pd.DataFrame(content["records"], columns=headings)
+        try:
+            records = pd.DataFrame(content["records"], columns=headings)
+        except ValueError:
+            raise requests.ConnectionError('records not retrievd due to server error')
         records.replace('', np.nan, inplace=True)
         records['submitted'].ffill(inplace=True)
         records['match_state'].ffill(inplace=True)
