@@ -80,8 +80,12 @@ def merge_on_accepted_id(x: pd.DataFrame, y: pd.DataFrame) -> pd.DataFrame:
     acc_cols = [c for c in merged_dfs.columns.tolist() if COL_NAMES['acc_name'] in c]
     merged_dfs = merge_columns(merged_dfs, COL_NAMES['acc_name'], acc_cols)
 
-    acc_sp_cols = [c for c in merged_dfs.columns.tolist() if COL_NAMES['acc_species'] in c]
+    acc_sp_id_cols = [c for c in merged_dfs.columns.tolist() if COL_NAMES['acc_species_id'] in c]
+    acc_sp_cols = [c for c in merged_dfs.columns.tolist() if (COL_NAMES['acc_species'] in c and '_ID' not in c)]
     merged_dfs = merge_columns(merged_dfs, COL_NAMES['acc_species'], acc_sp_cols)
+
+
+    merged_dfs = merge_columns(merged_dfs, COL_NAMES['acc_species_id'], acc_sp_id_cols)
 
     rank_cols = [c for c in merged_dfs.columns.tolist() if COL_NAMES['acc_rank'] in c]
     merged_dfs = merge_columns(merged_dfs, COL_NAMES['acc_rank'], rank_cols)
@@ -111,7 +115,7 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str):
         cols_to_drop = [c for c in df.columns if
                         c not in cols_to_keep]
         df = df.drop(columns=cols_to_drop)
-        df = df.dropna(subset={COL_NAMES['acc_name']})
+        df = df.dropna(subset=[COL_NAMES['acc_name']])
         cleaned_dfs.append(df)
 
     # Do merges
@@ -122,10 +126,11 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str):
     if len(cleaned_dfs) > 1:
         for i in cleaned_dfs[1:]:
             merged_dfs = merge_on_accepted_id(merged_dfs, i)
-
+    # Put name columns at begining
     start_cols = [COL_NAMES['acc_name'], COL_NAMES['acc_id'], COL_NAMES['acc_species'], COL_NAMES['acc_rank']]
     out_dfs = merged_dfs[[c for c in merged_dfs if c in start_cols]
                          + [c for c in merged_dfs if c not in start_cols]]
+    # And source column at the end
     out_dfs = out_dfs[[c for c in out_dfs if c != COL_NAMES['sources']]
                       + [COL_NAMES['sources']]]
 
