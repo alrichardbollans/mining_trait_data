@@ -1,6 +1,7 @@
 import hashlib
 import os
 
+import numpy as np
 import pandas as pd
 import requests
 from typing import List
@@ -11,11 +12,27 @@ from tqdm import tqdm
 from name_matching_cleaning import get_accepted_info_from_names_in_column
 from taxa_lists import get_all_taxa
 
+_inputs_path = resource_filename(__name__, 'inputs')
 _temp_outputs_path = resource_filename(__name__, 'temp_outputs')
 _check_csv = os.path.join(_temp_outputs_path, 'taxa_to_recheck.csv')
 outputs_path = resource_filename(__name__, 'outputs')
 rubiaceae_apocynaceae_metabolites_output_csv = os.path.join(outputs_path, 'rub_apocs_metabolites.csv')
+rub_apoc_antibac_antimal_metabolites_csv = os.path.join(outputs_path, 'rub_apocs_antimal_antibac_metabolites.csv')
 _check_output_csv = os.path.join(outputs_path, 'rechecked_taxa.csv')
+
+
+def get_antibacterial_metabolites():
+    antibac_table = pd.read_html(os.path.join(_inputs_path, 'antibacterialmetabolites.html'), flavor='html5lib')[0]
+    antibac_table = antibac_table[antibac_table['Biological Activity (Function)'] != 'Antibacterial inactive']
+    antibac_table = antibac_table.dropna(subset=['Metabolite Name'])
+    return antibac_table['Metabolite Name'].unique().tolist()
+
+
+def get_antimalarial_metabolites():
+    antimal_table = pd.read_html(os.path.join(_inputs_path, 'antimalarialmetabolites.html'), flavor='html5lib')[0]
+    antimal_table = antimal_table[antimal_table['Biological Activity (Function)'] != 'Antimalarial inactive']
+    antimal_table = antimal_table.dropna(subset=['Metabolite Name'])
+    return antimal_table['Metabolite Name'].unique().tolist()
 
 
 def get_metabolites_for_taxon(name: str):
@@ -112,7 +129,6 @@ def summarise_metabolites():
     print(worthwhile_metabolites)
 
 
-
 def get_rub_apoc_metabolites():
     data = get_all_taxa(families_of_interest=['Apocynaceae', 'Rubiaceae'], accepted=True)
 
@@ -125,10 +141,51 @@ def get_rub_apoc_metabolites():
     get_metabolites_for_taxa(taxa_list, output_csv=rubiaceae_apocynaceae_metabolites_output_csv)
 
 
+def get_rub_apoc_antimal_antibac_metabolite_hits():
+    all_metas_data = pd.read_csv(rubiaceae_apocynaceae_metabolites_output_csv)
+    antimal_metabolites = get_antimalarial_metabolites()
+    antibac_metabolites = get_antibacterial_metabolites()
+
+    out_dict = {'taxa': [], 'AntiMal_Metabolites': [], 'AntiBac_Metabolites': [], 'antimal_snippet': [],
+                'antibac_snippet': []}
+    for i in tqdm(range(len(all_metas_data['taxa'].values)), desc="Searching...", ascii=False, ncols=72):
+        taxa = all_metas_data['taxa'].values[i]
+        out_dict['taxa'].append(taxa)
+        taxa_record = all_metas_data[all_metas_data['taxa'] == taxa]
+        # print(taxa_record.columns)
+        metabolites_in_taxa = [x for x in taxa_record.columns if taxa_record[x].iloc[0] == 1]
+
+        anti_mal_metabolites_in_taxa = []
+        antibac_metabolites_in_taxa = []
+        for metabolite in metabolites_in_taxa:
+            if metabolite in antimal_metabolites:
+                anti_mal_metabolites_in_taxa.append(metabolite)
+            if metabolite in antibac_metabolites:
+                antibac_metabolites_in_taxa.append(metabolite)
+
+        if len(anti_mal_metabolites_in_taxa) > 0:
+            out_dict['AntiMal_Metabolites'].append(1)
+        else:
+            out_dict['AntiMal_Metabolites'].append(np.nan)
+
+        if len(antibac_metabolites_in_taxa) > 0:
+            out_dict['AntiBac_Metabolites'].append(1)
+        else:
+            out_dict['AntiBac_Metabolites'].append(np.nan)
+
+        out_dict['antimal_snippet'].append('"' + str(anti_mal_metabolites_in_taxa) + '"')
+        out_dict['antibac_snippet'].append('"' + str(antibac_metabolites_in_taxa) + '"')
+    out_df = pd.DataFrame(out_dict)
+    out_df["Source"] = "KNApSAcK"
+
+    out_df.to_csv(rub_apoc_antibac_antimal_metabolites_csv)
+
+
 def main():
-    # get_rub_apoc_metabolites()
-    # recheck_taxa()
+    get_rub_apoc_metabolites()
+    recheck_taxa()
     summarise_metabolites()
+    get_rub_apoc_antimal_antibac_metabolite_hits()
 
 
 if __name__ == '__main__':
