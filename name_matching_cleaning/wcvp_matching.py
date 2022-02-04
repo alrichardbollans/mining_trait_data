@@ -107,6 +107,8 @@ def get_wcvp_info_for_names_in_column(df: pd.DataFrame, name_col: str, all_taxa:
     cols_to_drop = [c for c in renamed_taxa_cols.columns if (c not in renaming.values() and c != 'taxon_name')]
     renamed_taxa_cols.drop(columns=cols_to_drop, inplace=True)
 
-    merged_with_taxa = df.merge(renamed_taxa_cols, left_on=name_col, right_on='taxon_name', suffixes=(False, False))
+    # Merge in this way to preserve index from df
+    merged_with_taxa = df.reset_index().merge(renamed_taxa_cols, left_on=name_col, right_on='taxon_name',
+                                suffixes=(False, False)).set_index('index')
 
     return merged_with_taxa

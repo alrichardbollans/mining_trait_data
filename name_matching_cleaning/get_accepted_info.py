@@ -263,6 +263,7 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
     df[name_col] = df[name_col].apply(remove_whitespace)
 
     # First match with exact matches in wcvp
+    # TODO:Get WCVP matches to preserve index
     name_match_df = get_wcvp_info_for_names_in_column(df, name_col, all_taxa=all_taxa)
     wcvp_matches = name_match_df[~name_match_df['Accepted_Name'].isna()]
 
@@ -283,7 +284,7 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
     cols_to_drop = [c for c in resolved_df.columns.tolist() if
                     (c not in df.columns.tolist() and c not in list(COL_NAMES.values()))]
     resolved_df.drop(columns=cols_to_drop, inplace=True)
-
+    resolved_df = resolved_df.sort_index()
     try:
         reordered_df = resolved_df.set_index(name_col)
         reordered_df = reordered_df.reindex(index=df[name_col])
