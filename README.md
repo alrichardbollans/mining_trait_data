@@ -51,3 +51,10 @@ Glob Change Biol. 2020; 26: 119-188. https://doi.org/10.1111/gcb.14904
 Wikipedia, The Free Encyclopedia
 https://en.wikipedia.org/
 Accessed 19/01/2022
+
+Farit Mochamad Afendi, Taketo Okada,, Mami Yamazaki, Aki-Hirai-Morita, Yukiko Nakamura,
+Kensuke Nakamura, Shun Ikeda, Hiroki Takahashi, Md. Altaf-Ul-Amin, Latifah, Darusman, Kazuki
+Saito, Shigehiko Kanaya, “KNApSAcK Family Databases: Integrated Metabolite-Plant Species
+Databases for Multifaceted Plant Research,” Plant Cell Physiol., 53, e1(1-12), (2012). doi:
+10.1093/pcp/pcr165.
+Accessed 04/02/2022
