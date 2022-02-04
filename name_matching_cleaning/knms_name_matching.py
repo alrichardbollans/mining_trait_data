@@ -27,7 +27,7 @@ def get_knms_name_matches(names: List[str]):
     temp_output_knms_csv = os.path.join(temp_outputs_name_matching, temp_csv)
     if os.path.isfile(temp_output_knms_csv):
         # Pandas will read TRUE/true as bools and therefore as True rather than true
-        records = pd.read_csv(temp_output_knms_csv, dtype={'match_state': str})
+        records = pd.read_csv(temp_output_knms_csv, dtype={'match_state': str},index_col=0)
     else:
         knms_url = "http://namematch.science.kew.org/api/v2/powo/match"
         res = requests.post(knms_url, json=names)

@@ -141,7 +141,11 @@ def _get_knms_matches_and_accepted_info_from_names_in_column(df: pd.DataFrame, n
 
     resolved_df.drop(columns=['match_state', 'ipni_id', 'matched_name'], inplace=True)
 
-    merged_df = pd.merge(df, resolved_df, on=name_col, sort=False)
+    # This trick allows merging on columns with duplicates and matches duplicates rather than repeating them
+    df['cc'] = df.groupby(name_col).cumcount()
+    resolved_df['cc'] = resolved_df.groupby(name_col).cumcount()
+    merged_df = df.merge(resolved_df, how='outer').drop('cc', 1)
+    # merged_df = pd.merge(df, resolved_df, on=name_col, sort=False)
 
     return merged_df
 
@@ -284,6 +288,8 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
         reordered_df = resolved_df.set_index(name_col)
         reordered_df = reordered_df.reindex(index=df[name_col])
         reordered_df = reordered_df.reset_index()
+
+
         return reordered_df
     except ValueError as e:
         print(f'Warning: coulndt reorder: {e}')
