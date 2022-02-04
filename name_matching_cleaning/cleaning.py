@@ -7,7 +7,7 @@ from typing import List
 
 COL_NAMES = {'acc_name': 'Accepted_Name',
              'acc_species': 'Accepted_Species',
-            'acc_species_id': 'Accepted_Species_ID',
+             'acc_species_id': 'Accepted_Species_ID',
              'acc_id': 'Accepted_ID',
              'acc_rank': 'Accepted_Rank',
              'single_source': 'Source',
@@ -27,6 +27,7 @@ def generate_temp_output_file_paths(filetag: str, temp_output_path: str):
 
     return temp_output_cleaned_csv, temp_output_accepted_csv
 
+
 def remove_whitespace(value):
     if value is np.nan:
         return value
@@ -35,6 +36,7 @@ def remove_whitespace(value):
         v = value.rstrip()
         out = v.lstrip()
         return out
+
 
 def clean_urn_ids(given_value: str) -> str:
     '''
@@ -58,10 +60,11 @@ def merge_columns(df: pd.DataFrame, new_col: str, old_columns: List[str]):
     :param old_columns:
     :return:
     '''
-    for col in old_columns:
-        df[col] = df[col].astype(str)
-    df[new_col] = df[old_columns].agg(lambda x: next((y for y in x.values if (y != '' and y != 'nan')), 'nan'), axis=1)
-    df = df.drop(columns=old_columns)
+    if len(old_columns)>1:
+        for col in old_columns:
+            df[col] = df[col].astype(str)
+        df[new_col] = df[old_columns].agg(lambda x: next((y for y in x.values if (y != '' and y != 'nan')), 'nan'), axis=1)
+        df = df.drop(columns=old_columns)
     return df
 
 
@@ -83,7 +86,6 @@ def merge_on_accepted_id(x: pd.DataFrame, y: pd.DataFrame) -> pd.DataFrame:
     acc_sp_id_cols = [c for c in merged_dfs.columns.tolist() if COL_NAMES['acc_species_id'] in c]
     acc_sp_cols = [c for c in merged_dfs.columns.tolist() if (COL_NAMES['acc_species'] in c and '_ID' not in c)]
     merged_dfs = merge_columns(merged_dfs, COL_NAMES['acc_species'], acc_sp_cols)
-
 
     merged_dfs = merge_columns(merged_dfs, COL_NAMES['acc_species_id'], acc_sp_id_cols)
 
@@ -127,7 +129,8 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str):
         for i in cleaned_dfs[1:]:
             merged_dfs = merge_on_accepted_id(merged_dfs, i)
     # Put name columns at begining
-    start_cols = [COL_NAMES['acc_name'], COL_NAMES['acc_id'], COL_NAMES['acc_species'], COL_NAMES['acc_rank']]
+    start_cols = [COL_NAMES['acc_name'], COL_NAMES['acc_id'], COL_NAMES['acc_rank'], COL_NAMES['acc_species'],
+                  COL_NAMES['acc_species_id']]
     out_dfs = merged_dfs[[c for c in merged_dfs if c in start_cols]
                          + [c for c in merged_dfs if c not in start_cols]]
     # And source column at the end

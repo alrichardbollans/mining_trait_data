@@ -6,7 +6,7 @@ import pandas as pd
 from pkg_resources import resource_filename
 
 from name_matching_cleaning import id_lookup_wcvp, get_accepted_info_from_ids_in_column, \
-    get_accepted_info_from_names_in_column
+    get_accepted_info_from_names_in_column, COL_NAMES
 
 from name_matching_cleaning.get_accepted_info import _get_knms_matches_and_accepted_info_from_names_in_column, \
     _find_best_matches_from_multiples, _autoresolve_missing_matches
@@ -185,7 +185,7 @@ class MyTestCase(unittest.TestCase):
         self.assertListEqual(sorted(species_list['Labelled'].values.tolist()),
                              sorted(x['Accepted_Name'].values.tolist()))
 
-    def test_get_accepted_info_from_names_in_column(self):
+    def test_get_accepted_name_from_names_in_column(self):
         genera_list = pd.read_csv(os.path.join(unittest_inputs, 'genera_list.csv'))
         x = get_accepted_info_from_names_in_column(genera_list, 'Unlabelled', families_of_interest=['Rubiaceae',
                                                                                                     'Apocynaceae'])
@@ -214,30 +214,14 @@ class MyTestCase(unittest.TestCase):
             self.assertTrue(c in s.columns)
             self.assertTrue(c in z.columns)
 
-    def test_accepted_species(self):
-        examples = ['Galium scioanum var. scioanum', 'Galium × schmidelyi', 'Oldenlandia']
-        taxa = pd.DataFrame({'taxa': examples})
-        response = get_accepted_info_from_names_in_column(taxa, 'taxa', families_of_interest=['Rubiaceae',
-                                                                                              'Apocynaceae'])
+    def test_get_accepted_info_from_names_in_column(self):
+        test_df = pd.read_csv(os.path.join(unittest_inputs, 'test_plant_db.csv'))
+        response = get_accepted_info_from_names_in_column(test_df, 'name')
 
-        def test_case(name, acc_sp, acc_sp_id):
-            if pd.isnull(acc_sp):
-                self.assertTrue(np.isnan(response.loc[response['taxa'] == name, 'Accepted_Species'].iloc[0]))
-            else:
-                self.assertEqual(
-                    response.loc[response['taxa'] == name, 'Accepted_Species'].iloc[0],
-                    acc_sp)
-            if pd.isnull(acc_sp_id):
-
-                self.assertTrue(np.isnan(response.loc[response['taxa'] == name, 'Accepted_Species_ID'].iloc[0]))
-            else:
-                self.assertEqual(
-                    response.loc[response['taxa'] == name, 'Accepted_Species_ID'].iloc[0],
-                    acc_sp_id)
-
-        test_case('Galium scioanum var. scioanum', 'Galium scioanum', '50884105-1')
-        test_case('Galium × schmidelyi', 'Galium × schmidelyi', '750605-1')
-        test_case('Oldenlandia', np.nan, np.nan)
+        for k in COL_NAMES:
+            print(test_df[k])
+            print(response[COL_NAMES[k]])
+            pd.testing.assert_series_equal(test_df[k], response[COL_NAMES[k]])
 
     def test_unmatched_resolutions(self):
         unmatched_df = pd.read_csv(os.path.join(unittest_inputs, 'unmatched.csv'))

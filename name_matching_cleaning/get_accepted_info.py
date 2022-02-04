@@ -265,6 +265,7 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
     # If exact matches aren't found in wcvp, use knms first
     unmatched_name_df = df[~df[name_col].isin(wcvp_matches[name_col].values)]
 
+    # TODO:split this function
     matches_with_knms = _get_knms_matches_and_accepted_info_from_names_in_column(unmatched_name_df, name_col,
                                                                                  families_of_interest=families_of_interest)
     resolved_df = pd.concat([wcvp_matches, matches_with_knms], axis=0)
