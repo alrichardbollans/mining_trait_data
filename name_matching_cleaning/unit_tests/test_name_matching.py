@@ -208,12 +208,36 @@ class MyTestCase(unittest.TestCase):
         self.assertListEqual(species_list['Labelled'].values.tolist(),
                              z['Accepted_Name'].values.tolist())
 
-        necessary_cols = ['Accepted_Rank', 'Accepted_ID', 'Accepted_Name', 'Accepted_Species','Accepted_Species_ID']
+        necessary_cols = ['Accepted_Rank', 'Accepted_ID', 'Accepted_Name', 'Accepted_Species', 'Accepted_Species_ID']
         for c in necessary_cols:
             self.assertTrue(c in x.columns)
             self.assertTrue(c in s.columns)
             self.assertTrue(c in z.columns)
 
+    def test_accepted_species(self):
+        examples = ['Galium scioanum var. scioanum', 'Galium × schmidelyi', 'Oldenlandia']
+        taxa = pd.DataFrame({'taxa': examples})
+        response = get_accepted_info_from_names_in_column(taxa, 'taxa', families_of_interest=['Rubiaceae',
+                                                                                              'Apocynaceae'])
+
+        def test_case(name, acc_sp, acc_sp_id):
+            if pd.isnull(acc_sp):
+                self.assertTrue(np.isnan(response.loc[response['taxa'] == name, 'Accepted_Species'].iloc[0]))
+            else:
+                self.assertEqual(
+                    response.loc[response['taxa'] == name, 'Accepted_Species'].iloc[0],
+                    acc_sp)
+            if pd.isnull(acc_sp_id):
+
+                self.assertTrue(np.isnan(response.loc[response['taxa'] == name, 'Accepted_Species_ID'].iloc[0]))
+            else:
+                self.assertEqual(
+                    response.loc[response['taxa'] == name, 'Accepted_Species_ID'].iloc[0],
+                    acc_sp_id)
+
+        test_case('Galium scioanum var. scioanum', 'Galium scioanum', '50884105-1')
+        test_case('Galium × schmidelyi', 'Galium × schmidelyi', '750605-1')
+        test_case('Oldenlandia', np.nan, np.nan)
 
     def test_unmatched_resolutions(self):
         unmatched_df = pd.read_csv(os.path.join(unittest_inputs, 'unmatched.csv'))

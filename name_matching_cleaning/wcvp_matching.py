@@ -79,6 +79,12 @@ def get_wcvp_info_for_names_in_column(df: pd.DataFrame, name_col: str, all_taxa:
     renamed_taxa_cols.loc[renamed_taxa_cols['taxonomic_status'] == 'Accepted', 'Accepted_ID'] = \
         renamed_taxa_cols[renamed_taxa_cols['taxonomic_status'] == 'Accepted']['kew_id']
 
+    renamed_taxa_cols.loc[renamed_taxa_cols['Accepted_Rank'] == 'Species', 'Accepted_Species'] = \
+        renamed_taxa_cols[renamed_taxa_cols['Accepted_Rank'] == 'Species']['Accepted_Name']
+
+    renamed_taxa_cols.loc[renamed_taxa_cols['Accepted_Rank'] == 'Species', 'Accepted_Species_ID'] = \
+        renamed_taxa_cols[renamed_taxa_cols['Accepted_Rank'] == 'Species']['Accepted_ID']
+
     status_priority = ["Accepted", "Synonym","Homotypic_Synonym"]
     for r in renamed_taxa_cols["taxonomic_status"].unique():
         if r not in status_priority:
