@@ -66,18 +66,16 @@ dataframe without out any accepted information.
 
 ## Possible Improvements
 
-* Ordering
-* Levels of strictness
-* Doing manual resolutions at the beginning will speed up the process.
+* Levels of strictness (specify how conserative you want to be about matching)
 * Test homotypic synonyms
 * Resolution of hybrid genera
-* Avoid repeating searches for duplicate names
 * Resolution of capitalised names
 
 ## Sources
 
-WCVP (2022). World Checklist of Vascular Plants, version 2.0. Facilitated by the Royal Botanic Gardens, Kew. Published
-on the Internet
+WCVP (2022). World Checklist of Vascular Plants, version 2.0. 
+Facilitated by the Royal Botanic Gardens, Kew. 
+Published on the Internet
 http://wcvp.science.kew.org/
 Retrieved 20/01/2022.
 
