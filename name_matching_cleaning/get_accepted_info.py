@@ -72,7 +72,7 @@ def _autoresolve_missing_matches(unmatched_submissions_df: pd.DataFrame, name_co
 
         # Create a dataframe of submissions with possible matches
         dict_for_matches = {name_col: [], 'Accepted_Name': [], 'Accepted_ID': [], 'Accepted_Rank': [],
-                            'Accepted_Species': [], 'Accepted_Species_ID': [],'taxonomic_status_of_submitted_name':[]}
+                            'Accepted_Species': [], 'Accepted_Species_ID': [], 'taxonomic_status_of_submitted_name': []}
         for s in unmatched_submissions_df[name_col].values:
             for taxa in accepted_name_containment['taxon_name']:
                 if taxa in s:
@@ -222,7 +222,7 @@ def get_accepted_info_from_ids_in_column(df: pd.DataFrame, id_col_name: str,
     return concat_df
 
 
-def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, families_of_interest: List[str] = None):
+def get_accepted_info_from_names_in_column(in_df: pd.DataFrame, name_col: str, families_of_interest: List[str] = None):
     """
     First tries to match names in df to wcvp directly to obtain accepted info and then
     matches names in df using knms and gets corresponding accepted info from wcvp
@@ -232,8 +232,8 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
     :return:
     """
 
-
-    all_taxa = get_all_taxa(families_of_interest=families_of_interest)
+    df = in_df.copy()
+    df = df.drop_duplicates(subset=[name_col])
 
     na_rows = df[df[name_col].isna()]
     if len(na_rows.index) > 0:
@@ -255,6 +255,7 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
     unmatched_manual_df = df[~df[name_col].isin(manual_matches[name_col].values)]
 
     # Then match with exact matches in wcvp
+    all_taxa = get_all_taxa(families_of_interest=families_of_interest)
     wcvp_exact_name_match_df = get_wcvp_info_for_names_in_column(unmatched_manual_df, name_col, all_taxa=all_taxa)
     wcvp_manual_resolved_df = pd.concat([wcvp_exact_name_match_df, manual_matches], axis=0)
     unmatched_name_df = df[~df[name_col].isin(wcvp_manual_resolved_df[name_col].values)]

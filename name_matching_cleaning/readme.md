@@ -46,9 +46,9 @@ dataframe without out any accepted information.
 
 ## Notes on KNMS
 
-* KNMS may not return anything if you submit too many names and/or request. We mitigate this by only checking names in
-  KNMS which can't be found in WCVP. Also, results from KNMS are stored for reuse in the `temp_outputs` folder of the
-  package. To clear these files, run `clear_temp_files()`.
+* KNMS may not return anything if you submit too many names and/or requests. We mitigate this by only checking names in
+  KNMS which can't be found in WCVP. Also, results from KNMS are stored for reuse in a `name matching temp outputs`
+  folder.
 * KNMS does not appear to account for spelling errors e.g. 'Neonauclea observifolia' returns no info (it should be '
   Neonauclea obversifolia').
 * KNMS does not always find matches for correctly spelled accepted names. Some examples are given
@@ -61,6 +61,8 @@ dataframe without out any accepted information.
 ## Notes on WCVP
 
 * Some records in WCVP are not given accepted information e.g. 'Psychotria guadalupensis subsp. grosourdieana'
+* Some records have ranks differing from their accepted taxa e.g. the Variety 'Diodia teres var. hirsutior' is a synonym
+  of the Species 'Hexasepalum teres'
 
 ## Possible Improvements
 
