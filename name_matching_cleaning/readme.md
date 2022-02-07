@@ -6,10 +6,14 @@ Run `get_accepted_info_from_names_in_column` with Pandas dataframe containing na
 program will be much quicker if you specify which families to include
 e.g. `families_of_interest=['Rubiaceae','Apocynaceae']`.
 
-In the first step, we try to match names directly to taxa in WCVP. This finds taxa in WCVP which match our submitted
-names. In cases where multiple taxa are returned for a given submission, taxa labelled as 'Accepted' are prioritised.
+In the first step, to avoid the program spending time trying to find names we know to be problematic we do some manual
+matching. Manual resolutions are included by editing the given `manual_match.csv` file.
 
-Submitted names which aren't found in this first step are then matched to names using KNMS, which contains multiple
+Once manual matches have been found, we try to match names directly to taxa in WCVP. This finds taxa in WCVP which match
+our submitted names exactly. In cases where multiple taxa are returned for a given submission, taxa labelled as '
+Accepted' are prioritised.
+
+Submitted names which aren't found in these first steps are then matched to names using KNMS, which contains multiple
 steps. Firstly, in simple cases where KNMS returns a single match for a submitted name we use the match IPNI ID to find
 accepted information from WCVP.
 
@@ -36,13 +40,9 @@ these cases the genus will be the only match to the same and this resolution wou
 match submissions to genera where the submitted name contains a space. Note that this is conservative and will cause
 some good matches to not be matched, in particular hybrid genera or genera given with authors.
 
-Submitted names which are unresolved during any of the previous steps must be manually resolved. Manual resolutions are
-included by editing the given `manual_match.csv` file and names which need manual matching are saved in a temp_output
-file.
-
 Finally, the resolutions are recompiled and an updated dataframe is returned. Submitted names which haven't been matched
-at any point are output to a csv file for you to check. When `keep_unmatched` is set to `True`, these unmatched
-submissions are included in the output dataframe without out any accepted information.
+at any point are output to a csv file for you to check. Note that unmatched submissions are included in the output
+dataframe without out any accepted information.
 
 ## Notes on KNMS
 
@@ -57,6 +57,10 @@ submissions are included in the output dataframe without out any accepted inform
   ENGLERIANA (K. SCHUM.) KEAV' and 'ROTHMANIA ENGLERIANA (K. Schum) Keav' match the genus 'Rothmannia Kongl. Vetensk.
   Acad. Handl. 37: 63 (1776) Thunb. 1776'. Moreover, uncapitalised authors cause no matches e.g. 'Acokanthera deflersii
   schweinf. ex lewin' returns no match.
+
+## Notes on WCVP
+
+* Some records in WCVP are not given accepted information e.g. 'Psychotria guadalupensis subsp. grosourdieana'
 
 ## Possible Improvements
 

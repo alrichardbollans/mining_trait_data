@@ -221,8 +221,7 @@ class MyTestCase(unittest.TestCase):
 
         for k in COL_NAMES:
             if k not in ['single_source', 'sources']:
-                print(test_df[k])
-                print(response[COL_NAMES[k]])
+
                 pd.testing.assert_series_equal(test_df[k], response[COL_NAMES[k]], check_names=False)
 
     def test_capitals(self):

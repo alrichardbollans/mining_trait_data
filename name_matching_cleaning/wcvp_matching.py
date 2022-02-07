@@ -24,7 +24,8 @@ def _get_dict_from_wcvp_record(record: pd.DataFrame, taxa_list: pd.DataFrame) ->
         accepted_taxon = taxa_list[(taxa_list['taxon_name'] == Accepted_Name) & (taxa_list['kew_id'] == Accepted_ID)]
         if len(accepted_taxon.index) == 0:
             return {'Accepted_Name': np.nan, 'Accepted_ID': np.nan, 'Accepted_Rank': np.nan,
-                    'Accepted_Species': np.nan, 'Accepted_Species_ID': np.nan}
+                    'Accepted_Species': np.nan, 'Accepted_Species_ID': np.nan,
+                    'taxonomic_status_of_submitted_name': taxonomic_status}
     Accepted_Rank = accepted_taxon['rank'].values[0]
     if Accepted_Rank in ["Synonym", "Homotypic_Synonym", "Species"]:
         Accepted_Species = Accepted_Name
@@ -40,7 +41,8 @@ def _get_dict_from_wcvp_record(record: pd.DataFrame, taxa_list: pd.DataFrame) ->
         Accepted_Species_ID = accepted_taxon['parent_kew_id'].values[0]
 
     return {'Accepted_Name': Accepted_Name, 'Accepted_ID': Accepted_ID, 'Accepted_Rank': Accepted_Rank,
-            'Accepted_Species': Accepted_Species, 'Accepted_Species_ID': Accepted_Species_ID}
+            'Accepted_Species': Accepted_Species, 'Accepted_Species_ID': Accepted_Species_ID,
+            'taxonomic_status_of_submitted_name': taxonomic_status}
 
 
 def id_lookup_wcvp(all_taxa: pd.DataFrame, given_id: str) -> dict:
@@ -55,7 +57,7 @@ def id_lookup_wcvp(all_taxa: pd.DataFrame, given_id: str) -> dict:
         given_id = clean_urn_ids(given_id)
     record = all_taxa[all_taxa['kew_id'] == given_id]
     nan_dict = {'Accepted_Name': np.nan, 'Accepted_ID': np.nan, 'Accepted_Rank': np.nan,
-                'Accepted_Species': np.nan, 'Accepted_Species_ID': np.nan}
+                'Accepted_Species': np.nan, 'Accepted_Species_ID': np.nan, 'taxonomic_status_of_submitted_name': np.nan}
     if len(record.index) == 0:
         print(f"Can't find id: {given_id} in given wcvp taxa data")
         return nan_dict
@@ -78,39 +80,30 @@ def get_wcvp_info_for_names_in_column(df: pd.DataFrame, name_col: str, all_taxa:
 
     taxa_in_df = all_taxa[all_taxa['taxon_name'].isin(df[name_col])]
 
-    renaming = {'accepted_name': 'Accepted_Name', 'accepted_kew_id': 'Accepted_ID', 'rank': 'Accepted_Rank',
-                'parent_name': 'Accepted_Species', 'parent_kew_id': 'Accepted_Species_ID'}
+    # First get df of wcvp matches for each sample
+    dict_for_matches = {name_col: [], 'Accepted_Name': [], 'Accepted_ID': [], 'Accepted_Rank': [],
+                        'Accepted_Species': [], 'Accepted_Species_ID': [], 'taxonomic_status_of_submitted_name': []}
+    for sample in df[name_col].values:
 
-    renamed_taxa_cols = taxa_in_df.rename(columns=renaming)
-    # Put accepted names and ids in columns for accepted taxa as otherwise they are nan
-    renamed_taxa_cols.loc[renamed_taxa_cols['taxonomic_status'] == 'Accepted', 'Accepted_Name'] = \
-        renamed_taxa_cols[renamed_taxa_cols['taxonomic_status'] == 'Accepted']['taxon_name']
+        matching_records = taxa_in_df[taxa_in_df['taxon_name'] == sample]
+        for record_id in matching_records['kew_id'].values:
+            dict_for_matches[name_col].append(sample)
+            dict_for_record = id_lookup_wcvp(all_taxa, record_id)
 
-    renamed_taxa_cols.loc[renamed_taxa_cols['taxonomic_status'] == 'Accepted', 'Accepted_ID'] = \
-        renamed_taxa_cols[renamed_taxa_cols['taxonomic_status'] == 'Accepted']['kew_id']
+            for k in dict_for_record:
+                dict_for_matches[k].append(dict_for_record[k])
 
-    renamed_taxa_cols.loc[renamed_taxa_cols['Accepted_Rank'] == 'Species', 'Accepted_Species'] = \
-        renamed_taxa_cols[renamed_taxa_cols['Accepted_Rank'] == 'Species']['Accepted_Name']
+    match_df = pd.DataFrame(dict_for_matches)
 
-    renamed_taxa_cols.loc[renamed_taxa_cols['Accepted_Rank'] == 'Species', 'Accepted_Species_ID'] = \
-        renamed_taxa_cols[renamed_taxa_cols['Accepted_Rank'] == 'Species']['Accepted_ID']
-
+    # Remove duplicates in match_df based on priority
     status_priority = ["Accepted", "Synonym", "Homotypic_Synonym"]
-    for r in renamed_taxa_cols["taxonomic_status"].unique():
+    for r in match_df["taxonomic_status_of_submitted_name"].unique():
         if r not in status_priority:
-            raise ValueError(f'Rank priority list does not contain {r} and needs updating.')
-    renamed_taxa_cols['taxonomic_status'] = pd.Categorical(renamed_taxa_cols['taxonomic_status'], status_priority)
-    renamed_taxa_cols.sort_values('taxonomic_status', inplace=True)
+            raise ValueError(f'Status priority list does not contain {r} and needs updating.')
+    match_df['taxonomic_status_of_submitted_name'] = pd.Categorical(match_df['taxonomic_status_of_submitted_name'],
+                                                                    status_priority)
+    match_df.sort_values('taxonomic_status_of_submitted_name', inplace=True)
 
-    renamed_taxa_cols.drop_duplicates(subset=['taxon_name'], inplace=True, keep='first')
+    match_df.drop_duplicates(subset=[name_col], inplace=True, keep='first')
 
-    cols_to_drop = [c for c in renamed_taxa_cols.columns if (c not in renaming.values() and c != 'taxon_name')]
-    renamed_taxa_cols.drop(columns=cols_to_drop, inplace=True)
-
-    # Merge in this way to preserve index from df
-    merged_with_taxa = df.reset_index().merge(renamed_taxa_cols, left_on=name_col, right_on='taxon_name',
-                                              suffixes=(False, False)).set_index('index')
-
-    merged_with_taxa = merged_with_taxa.dropna(subset=['Accepted_Name'])
-
-    return merged_with_taxa
+    return match_df

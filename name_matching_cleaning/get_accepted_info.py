@@ -72,7 +72,7 @@ def _autoresolve_missing_matches(unmatched_submissions_df: pd.DataFrame, name_co
 
         # Create a dataframe of submissions with possible matches
         dict_for_matches = {name_col: [], 'Accepted_Name': [], 'Accepted_ID': [], 'Accepted_Rank': [],
-                            'Accepted_Species': [], 'Accepted_Species_ID': []}
+                            'Accepted_Species': [], 'Accepted_Species_ID': [],'taxonomic_status_of_submitted_name':[]}
         for s in unmatched_submissions_df[name_col].values:
             for taxa in accepted_name_containment['taxon_name']:
                 if taxa in s:
@@ -253,6 +253,7 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
 
     # First get manual matches
     manual_match_df = pd.read_csv(_resolution_csv)
+    manual_match_df = manual_match_df[manual_match_df['submitted'].isin(df[name_col].values.tolist())]
     man_matches_with_accepted_info = get_accepted_info_from_ids_in_column(manual_match_df, 'resolution_id')
     man_matches_with_accepted_info = man_matches_with_accepted_info.dropna(subset=['Accepted_Name'])
     manual_matches = pd.merge(df, man_matches_with_accepted_info, left_on=name_col, right_on='submitted', sort=False)
