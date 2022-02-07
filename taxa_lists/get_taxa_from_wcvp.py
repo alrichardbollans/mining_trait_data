@@ -11,12 +11,10 @@ _outputs_path = resource_filename(__name__, 'outputs')
 
 
 # Standardise rank names
-def capitalize_first_letter(g: str,check_string_is_uppercase=False):
-    if check_string_is_uppercase:
-        if not g.isupper():
-            return g
+def capitalize_first_letter_of_rank(g: str):
     try:
         l = g.lower()
+
         return l.capitalize()
     except AttributeError:
         return g
@@ -48,7 +46,7 @@ def get_all_taxa(families_of_interest=None,
     if accepted:
         wcvp_data = wcvp_data[wcvp_data['taxonomic_status'] == 'Accepted']
 
-    wcvp_data['rank'] = wcvp_data['rank'].apply(capitalize_first_letter)
+    wcvp_data['rank'] = wcvp_data['rank'].apply(capitalize_first_letter_of_rank)
     # Remove unplaced taxa
     wcvp_data = wcvp_data[wcvp_data['taxonomic_status'] != 'Unplaced']
 
@@ -61,7 +59,7 @@ def get_all_taxa(families_of_interest=None,
 def main():
     # get_accepted_taxa(output_csv=os.path.join(outputs_path, 'wcvp_accepted_taxa.csv'))
     get_all_taxa(families_of_interest=['Apocynaceae', 'Rubiaceae'], accepted=True,
-                      output_csv=os.path.join(_outputs_path, 'wcvp_accepted_taxa_apocynaceae_rubiaceae.csv'))
+                 output_csv=os.path.join(_outputs_path, 'wcvp_accepted_taxa_apocynaceae_rubiaceae.csv'))
 
 
 if __name__ == '__main__':

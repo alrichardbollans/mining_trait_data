@@ -158,55 +158,56 @@ class MyTestCase(unittest.TestCase):
 
     def test_matching_hybrids(self):
         hyrbid_list = pd.read_csv(os.path.join(unittest_inputs, 'hybrid_list.csv'))
-        x = _get_knms_matches_and_accepted_info_from_names_in_column(hyrbid_list, 'name')
+        x = get_accepted_info_from_names_in_column(hyrbid_list, 'name')
         x.to_csv(os.path.join(unittest_outputs, 'test_output7.csv'))
-        self.assertEqual(len(x['Accepted_Name'].values.tolist()), len(hyrbid_list['name'].values.tolist()))
-        self.assertListEqual(x['Accepted_Name'].values.tolist(), x['Know_acc_name'].values.tolist())
+        pd.testing.assert_series_equal(x['Accepted_Name'], x['Know_acc_name'])
 
     def test_get_matched_names_and_accepted_info_from_names_in_column(self):
-        synonym_list = pd.read_csv(os.path.join(unittest_inputs, 'synonym_list.csv'))
-        x = _get_knms_matches_and_accepted_info_from_names_in_column(synonym_list, 'syn')
-        x.to_csv(os.path.join(unittest_outputs, 'test_output3.csv'))
-        self.assertEqual(len(x['Accepted_Name'].values.tolist()), len(synonym_list['syn'].values.tolist()))
-        self.assertListEqual(x['Accepted_Name'].values.tolist(), x['Know_acc_name'].values.tolist())
 
         genera_list = pd.read_csv(os.path.join(unittest_inputs, 'genera_list.csv'))
         x = _get_knms_matches_and_accepted_info_from_names_in_column(genera_list, 'Unlabelled')
         x.to_csv(os.path.join(unittest_outputs, 'test_output1.csv'))
-        self.assertListEqual(x['Unlabelled'].values.tolist(), x['Accepted_Name'].values.tolist())
-        self.assertListEqual(sorted(genera_list['Unlabelled'].values.tolist()),
-                             sorted(x['Accepted_Name'].values.tolist()))
+        pd.testing.assert_series_equal(x['Unlabelled'], x['Accepted_Name'], check_names=False)
+        pd.testing.assert_series_equal(genera_list['Unlabelled'],
+                                       x['Accepted_Name'], check_names=False)
+
+        synonym_list = pd.read_csv(os.path.join(unittest_inputs, 'synonym_list.csv'))
+        x = _get_knms_matches_and_accepted_info_from_names_in_column(synonym_list, 'syn')
+        x.to_csv(os.path.join(unittest_outputs, 'test_output3.csv'))
+        self.assertEqual(len(x['Accepted_Name'].values.tolist()), len(synonym_list['syn'].values.tolist()))
+        pd.testing.assert_series_equal(x['Accepted_Name'], x['Know_acc_name'], check_names=False)
 
         #
         species_list = pd.read_csv(os.path.join(unittest_inputs, 'species_list.csv'))
+        print(species_list[species_list.duplicated(subset=['Labelled'])])
         x = _get_knms_matches_and_accepted_info_from_names_in_column(species_list, 'Labelled')
         x.to_csv(os.path.join(unittest_outputs, 'test_output2.csv'))
-        self.assertListEqual(x['Labelled'].values.tolist(), x['Accepted_Name'].values.tolist())
-        self.assertListEqual(sorted(species_list['Labelled'].values.tolist()),
-                             sorted(x['Accepted_Name'].values.tolist()))
+        pd.testing.assert_series_equal(x['Labelled'], x['Accepted_Name'], check_names=False)
+        pd.testing.assert_series_equal(species_list['Labelled'],
+                                       x['Accepted_Name'], check_names=False)
 
     def test_get_accepted_name_from_names_in_column(self):
         genera_list = pd.read_csv(os.path.join(unittest_inputs, 'genera_list.csv'))
         x = get_accepted_info_from_names_in_column(genera_list, 'Unlabelled', families_of_interest=['Rubiaceae',
                                                                                                     'Apocynaceae'])
         x.to_csv(os.path.join(unittest_outputs, 'test_output5.csv'))
-        self.assertListEqual(x['Unlabelled'].values.tolist(), x['Accepted_Name'].values.tolist())
-        self.assertListEqual(sorted(genera_list['Unlabelled'].values.tolist()),
-                             sorted(x['Accepted_Name'].values.tolist()))
+        pd.testing.assert_series_equal(x['Unlabelled'], x['Accepted_Name'], check_names=False)
+        pd.testing.assert_series_equal(genera_list['Unlabelled'],
+                                       x['Accepted_Name'], check_names=False)
 
         synonym_list = pd.read_csv(os.path.join(unittest_inputs, 'synonym_list.csv'))
         s = get_accepted_info_from_names_in_column(synonym_list, 'syn')
         s.to_csv(os.path.join(unittest_outputs, 'test_output4.csv'))
         self.assertTrue(len(s['Accepted_Name'].values.tolist()) == len(synonym_list['syn'].values.tolist()))
-        self.assertListEqual(s['Accepted_Name'].values.tolist(), s['Know_acc_name'].values.tolist())
+        pd.testing.assert_series_equal(s['Accepted_Name'], s['Know_acc_name'], check_names=False)
 
         #
         species_list = pd.read_csv(os.path.join(unittest_inputs, 'species_list.csv'))
         z = get_accepted_info_from_names_in_column(species_list, 'Labelled')
         z.to_csv(os.path.join(unittest_outputs, 'test_output6.csv'))
-        self.assertListEqual(z['Labelled'].values.tolist(), z['Accepted_Name'].values.tolist())
-        self.assertListEqual(species_list['Labelled'].values.tolist(),
-                             z['Accepted_Name'].values.tolist())
+        pd.testing.assert_series_equal(z['Labelled'], z['Accepted_Name'], check_names=False)
+        pd.testing.assert_series_equal(species_list['Labelled'],
+                                       z['Accepted_Name'], check_names=False)
 
         necessary_cols = ['Accepted_Rank', 'Accepted_ID', 'Accepted_Name', 'Accepted_Species', 'Accepted_Species_ID']
         for c in necessary_cols:
@@ -219,23 +220,31 @@ class MyTestCase(unittest.TestCase):
         response = get_accepted_info_from_names_in_column(test_df, 'name')
 
         for k in COL_NAMES:
-            print(test_df[k])
-            print(response[COL_NAMES[k]])
-            pd.testing.assert_series_equal(test_df[k], response[COL_NAMES[k]],check_names=False)
+            if k not in ['single_source', 'sources']:
+                print(test_df[k])
+                print(response[COL_NAMES[k]])
+                pd.testing.assert_series_equal(test_df[k], response[COL_NAMES[k]], check_names=False)
+
+    def test_capitals(self):
+        test_df = pd.read_csv(os.path.join(unittest_inputs, 'test_capitals_db.csv'))
+        response = get_accepted_info_from_names_in_column(test_df, 'name')
+
+        for k in COL_NAMES:
+            if k not in ['single_source', 'sources']:
+                print(test_df[k])
+                print(response[COL_NAMES[k]])
+                pd.testing.assert_series_equal(test_df[k], response[COL_NAMES[k]], check_names=False)
 
     def test_unmatched_resolutions(self):
         unmatched_df = pd.read_csv(os.path.join(unittest_inputs, 'unmatched.csv'))
-        resolved_unmatched = _get_knms_matches_and_accepted_info_from_names_in_column(unmatched_df, 'submitted',
-                                                                                      families_of_interest=['Rubiaceae',
-                                                                                                            'Apocynaceae'])
-        # resolved_unmatched = _autoresolve_missing_matches(unmatched_df)
-
-        unmatched_df.dropna(subset=['acc_name'], inplace=True)
-        resolved_unmatched.dropna(subset=['Accepted_Name'], inplace=True)
-        self.assertListEqual(unmatched_df['acc_name'].values.tolist(),
-                             resolved_unmatched['Accepted_Name'].values.tolist())
-        self.assertListEqual(resolved_unmatched['acc_name'].values.tolist(),
-                             resolved_unmatched['Accepted_Name'].values.tolist())
+        resolved_unmatched = get_accepted_info_from_names_in_column(unmatched_df, 'submitted',
+                                                          families_of_interest=['Rubiaceae',
+                                                                                'Apocynaceae'])
+        resolved_unmatched.to_csv(os.path.join(unittest_outputs, 'test_output8.csv'))
+        pd.testing.assert_series_equal(unmatched_df['acc_name'],
+                                       resolved_unmatched['Accepted_Name'], check_names=False)
+        pd.testing.assert_series_equal(resolved_unmatched['acc_name'],
+                                       resolved_unmatched['Accepted_Name'], check_names=False)
 
 
 if __name__ == '__main__':

@@ -53,6 +53,10 @@ submissions are included in the output dataframe without out any accepted inform
   Neonauclea obversifolia').
 * KNMS does not always find matches for correctly spelled accepted names. Some examples are given
   in `knms_unmatched_accepted_names.csv`.
+* KNMS does not handle captilisation particularly well. For example, 'PALICOUREA GRACILENTA' is unmatched and 'ROTHMANIA
+  ENGLERIANA (K. SCHUM.) KEAV' and 'ROTHMANIA ENGLERIANA (K. Schum) Keav' match the genus 'Rothmannia Kongl. Vetensk.
+  Acad. Handl. 37: 63 (1776) Thunb. 1776'. Moreover, uncapitalised authors cause no matches e.g. 'Acokanthera deflersii
+  schweinf. ex lewin' returns no match.
 
 ## Possible Improvements
 
@@ -62,6 +66,7 @@ submissions are included in the output dataframe without out any accepted inform
 * Test homotypic synonyms
 * Resolution of hybrid genera
 * Avoid repeating searches for duplicate names
+* Resolution of capitalised names
 
 ## Sources
 

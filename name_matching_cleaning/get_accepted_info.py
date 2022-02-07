@@ -1,19 +1,20 @@
 import hashlib
 import os
 
+import numpy as np
 import pandas as pd
 from typing import List
 
 from pkg_resources import resource_filename
 
 from name_matching_cleaning import get_wcvp_info_for_names_in_column, \
-    get_knms_name_matches, id_lookup_wcvp, clean_urn_ids, COL_NAMES, remove_whitespace
+    get_knms_name_matches, id_lookup_wcvp, clean_urn_ids, COL_NAMES, remove_whitespace, temp_outputs_dir
 from name_matching_cleaning.resolving_names import _get_resolutions_with_single_rank
 
-from taxa_lists import get_all_taxa, capitalize_first_letter
+from taxa_lists import get_all_taxa
 
-_temp_outputs_dir = 'name matching temp outputs'
 matching_data_path = resource_filename(__name__, 'matching data')
+_resolution_csv = os.path.join(matching_data_path, 'manual_match.csv')
 
 
 def _temp_output(df: pd.DataFrame, tag: str, warning: str):
@@ -21,33 +22,36 @@ def _temp_output(df: pd.DataFrame, tag: str, warning: str):
     str_to_hash = str(df_str).encode()
     temp_basename_csv = str(hashlib.md5(str_to_hash).hexdigest()) + ".csv"
     try:
-        os.mkdir(_temp_outputs_dir)
+        os.mkdir(temp_outputs_dir)
     except FileExistsError as error:
         pass
-    outfile = os.path.join(_temp_outputs_dir, tag + temp_basename_csv)
+    outfile = os.path.join(temp_outputs_dir, tag + temp_basename_csv)
     print(f'{warning}. Check tempfile: {outfile}.')
     df.to_csv(outfile)
 
 
-def _manual_resolution(unmatched_submissions_df: pd.DataFrame) -> pd.DataFrame:
-    if len(unmatched_submissions_df.index) > 0:
+def _capitalize_first_letter_of_taxon(g: str, check_string_is_uppercase=False):
+    try:
+        if check_string_is_uppercase:
+            if not g.isupper():
+                return g
 
-        _temp_output(unmatched_submissions_df,
-                     'submissions_to_manually_resolve',
-                     'WARNING: some submissions have not been resolved and must be manually resolved.Consider fixing names in your original data.',
-                     )
+        append_to_beginning = ''
+        if g.startswith('× '):
+            append_to_beginning = '× '
+            g = g[2:]
+        l = g.lower()
 
-        resolution_csv = os.path.join(matching_data_path, 'manual_match.csv')
-        print(f'Manual matches must be added to {resolution_csv}')
-        manual_matches = pd.read_csv(resolution_csv)
-        man_matches_with_accepted_info = get_accepted_info_from_ids_in_column(manual_matches, 'resolution_id')
-        merged = pd.merge(unmatched_submissions_df, man_matches_with_accepted_info, on='submitted', sort=False)
-        return merged
-    else:
-        return unmatched_submissions_df
+        if len([x for x in g if x == " "]) > 1:
+            # KNMS does not return matches where authors are incorrectly capitalised
+            return g
+
+        return append_to_beginning + l.capitalize()
+    except AttributeError:
+        return g
 
 
-def _autoresolve_missing_matches(unmatched_submissions_df: pd.DataFrame,
+def _autoresolve_missing_matches(unmatched_submissions_df: pd.DataFrame, name_col: str,
                                  families_of_interest: List[str] = None) -> pd.DataFrame:
     """
     Manually resolve matches.
@@ -55,7 +59,7 @@ def _autoresolve_missing_matches(unmatched_submissions_df: pd.DataFrame,
     :return:
     """
     if len(unmatched_submissions_df.index) > 0:
-        _temp_output(unmatched_submissions_df, 'initial_unmatched',
+        _temp_output(unmatched_submissions_df, 'unmatched_to_autoresolve',
                      "Resolving submitted names which weren't initially matched using KNMS. This may take some time... This can be sped up by specifying families of interest (if you haven't already done so) or checking the temp file for misspelled submissions.")
 
         # For each submission, check if any accepted name is contained in the name, then take the lowest rank of match
@@ -63,16 +67,16 @@ def _autoresolve_missing_matches(unmatched_submissions_df: pd.DataFrame,
 
         # Get more precise list of taxa which possibly matches submissions
         accepted_name_containment = all_taxa[
-            all_taxa.apply(lambda x: any(x['taxon_name'] in y for y in unmatched_submissions_df['submitted'].values),
+            all_taxa.apply(lambda x: any(x['taxon_name'] in y for y in unmatched_submissions_df[name_col].values),
                            axis=1)]
 
         # Create a dataframe of submissions with possible matches
-        dict_for_matches = {'submitted': [], 'Accepted_Name': [], 'Accepted_ID': [], 'Accepted_Rank': [],
+        dict_for_matches = {name_col: [], 'Accepted_Name': [], 'Accepted_ID': [], 'Accepted_Rank': [],
                             'Accepted_Species': [], 'Accepted_Species_ID': []}
-        for s in unmatched_submissions_df['submitted'].values:
+        for s in unmatched_submissions_df[name_col].values:
             for taxa in accepted_name_containment['taxon_name']:
                 if taxa in s:
-                    dict_for_matches['submitted'].append(s)
+                    dict_for_matches[name_col].append(s)
                     acc_id = \
                         accepted_name_containment.loc[accepted_name_containment['taxon_name'] == taxa, 'kew_id'].iloc[
                             0]
@@ -92,16 +96,17 @@ def _autoresolve_missing_matches(unmatched_submissions_df: pd.DataFrame,
         match_df.sort_values('Accepted_Rank', inplace=True)
 
         # Remove genera matches where submitted name has more than one word.
-        # This to avoid matching misspelt species to genera
+        # This to avoid matching mispelt species to genera
         # This is a problem for hybrid genera but these need resolving differently anyway.
-        match_df = match_df[~((match_df['Accepted_Rank'] == 'Genus') & match_df['submitted'].str.contains(" "))]
+        if len(match_df.index) > 0:
+            match_df = match_df[~((match_df['Accepted_Rank'] == 'Genus') & match_df[name_col].str.contains(" "))]
 
         # Get the most precise match by dropping duplicate submissions
-        most_precise_match = match_df.drop_duplicates(subset=["submitted"], keep='first')
+        most_precise_match = match_df.drop_duplicates(subset=[name_col], keep='first')
 
         # Merge with original data
-        matches = pd.merge(unmatched_submissions_df, most_precise_match, on='submitted', sort=False)
-
+        matches = pd.merge(unmatched_submissions_df, most_precise_match, on=name_col, sort=False)
+        matches = matches.dropna(subset=['Accepted_Name'])
         return matches
     else:
         return unmatched_submissions_df
@@ -124,19 +129,7 @@ def _get_knms_matches_and_accepted_info_from_names_in_column(df: pd.DataFrame, n
     multiple_matches = match_records[match_records['match_state'] == 'multiple_matches'].copy()
     best_matches = _find_best_matches_from_multiples(multiple_matches)
 
-    initial_matches = pd.concat([single_matches_with_info, best_matches], axis=0)
-
-    unmatched = match_records[~match_records['submitted'].isin(initial_matches['submitted'].values)]
-
-    unmatched_resolutions = _autoresolve_missing_matches(unmatched, families_of_interest=families_of_interest)
-
-    submissions_to_manually_match = match_records[
-        ~match_records['submitted'].isin(initial_matches['submitted'].values) & ~match_records['submitted'].isin(
-            unmatched_resolutions['submitted'].values)]
-
-    manually_matched = _manual_resolution(submissions_to_manually_match)
-
-    resolved_df = pd.concat([single_matches_with_info, best_matches, unmatched_resolutions, manually_matched], axis=0)
+    resolved_df = pd.concat([single_matches_with_info, best_matches], axis=0)
     resolved_df.rename(columns={'submitted': name_col}, inplace=True)
 
     resolved_df.drop(columns=['match_state', 'ipni_id', 'matched_name'], inplace=True)
@@ -144,9 +137,8 @@ def _get_knms_matches_and_accepted_info_from_names_in_column(df: pd.DataFrame, n
     # This trick allows merging on columns with duplicates and matches duplicates rather than repeating them
     df['cc'] = df.groupby(name_col).cumcount()
     resolved_df['cc'] = resolved_df.groupby(name_col).cumcount()
-    merged_df = df.merge(resolved_df, how='outer').drop('cc', 1)
-    # merged_df = pd.merge(df, resolved_df, on=name_col, sort=False)
-
+    merged_df = df.merge(resolved_df, how='outer').drop(columns='cc', axis=1)
+    merged_df = merged_df.dropna(subset=['Accepted_Name'])
     return merged_df
 
 
@@ -209,8 +201,8 @@ def get_accepted_info_from_ids_in_column(df: pd.DataFrame, id_col_name: str,
     :return:
     """
 
-    if not os.path.isdir(_temp_outputs_dir):
-        os.mkdir(_temp_outputs_dir)
+    if not os.path.isdir(temp_outputs_dir):
+        os.mkdir(temp_outputs_dir)
 
     all_taxa = get_all_taxa(families_of_interest=families_of_interest)
     dict_of_values = {'Accepted_Name': [], 'Accepted_ID': [], 'Accepted_Rank': [],
@@ -233,8 +225,7 @@ def get_accepted_info_from_ids_in_column(df: pd.DataFrame, id_col_name: str,
     return concat_df
 
 
-def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, families_of_interest: List[str] = None,
-                                           keep_unmatched=True):
+def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, families_of_interest: List[str] = None):
     """
     First tries to match names in df to wcvp directly to obtain accepted info and then
     matches names in df using knms and gets corresponding accepted info from wcvp
@@ -244,58 +235,66 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
     :return:
     """
 
-    if not os.path.isdir(_temp_outputs_dir):
-        os.mkdir(_temp_outputs_dir)
+    if not os.path.isdir(temp_outputs_dir):
+        os.mkdir(temp_outputs_dir)
 
     all_taxa = get_all_taxa(families_of_interest=families_of_interest)
-    duplicateRows = df[df.duplicated()]
-    if len(duplicateRows.index) > 0:
-        print(f'Warning: duplicated rows exist is data and may be dropped.')
-        print(duplicateRows)
+
     na_rows = df[df[name_col].isna()]
     if len(na_rows.index) > 0:
         print(f'Warning: Rows in {name_col} with nan values. {na_rows}')
         df.dropna(subset=[name_col], inplace=True)
 
     # Standardise input names
-    # TODO: add tests for cases
-    df[name_col] = df[name_col].apply(capitalize_first_letter, check_string_is_uppercase=True)
+    # Non standard captialisation causes issues
+    # If input names are all caps then we change to capitalise the first letter
+    df[name_col] = df[name_col].apply(_capitalize_first_letter_of_taxon, check_string_is_uppercase=True)
     df[name_col] = df[name_col].apply(remove_whitespace)
 
-    # First match with exact matches in wcvp
-    # TODO:Get WCVP matches to preserve index
-    name_match_df = get_wcvp_info_for_names_in_column(df, name_col, all_taxa=all_taxa)
-    wcvp_matches = name_match_df[~name_match_df['Accepted_Name'].isna()]
+    # First get manual matches
+    manual_match_df = pd.read_csv(_resolution_csv)
+    man_matches_with_accepted_info = get_accepted_info_from_ids_in_column(manual_match_df, 'resolution_id')
+    man_matches_with_accepted_info = man_matches_with_accepted_info.dropna(subset=['Accepted_Name'])
+    manual_matches = pd.merge(df, man_matches_with_accepted_info, left_on=name_col, right_on='submitted', sort=False)
+    unmatched_manual_df = df[~df[name_col].isin(manual_matches[name_col].values)]
 
-    # If exact matches aren't found in wcvp, use knms first
-    unmatched_name_df = df[~df[name_col].isin(wcvp_matches[name_col].values)]
+    # Then match with exact matches in wcvp
+    wcvp_exact_name_match_df = get_wcvp_info_for_names_in_column(unmatched_manual_df, name_col, all_taxa=all_taxa)
+    wcvp_manual_resolved_df = pd.concat([wcvp_exact_name_match_df, manual_matches], axis=0)
+    unmatched_name_df = df[~df[name_col].isin(wcvp_manual_resolved_df[name_col].values)]
 
-    # TODO:split this function
+    # If exact matches aren't found in wcvp, use knms
     matches_with_knms = _get_knms_matches_and_accepted_info_from_names_in_column(unmatched_name_df, name_col,
                                                                                  families_of_interest=families_of_interest)
-    resolved_df = pd.concat([wcvp_matches, matches_with_knms], axis=0)
+    wcvp_manual_knms_resolved_df = pd.concat([wcvp_manual_resolved_df, matches_with_knms], axis=0)
+    unmatched_df = df[~df[name_col].isin(wcvp_manual_knms_resolved_df[name_col].values)]
+
+    # Get autoresolved matches
+    unmatched_resolutions = _autoresolve_missing_matches(unmatched_df, name_col,
+                                                         families_of_interest=families_of_interest)
+
+    final_resolved_df = pd.concat([unmatched_resolutions, wcvp_manual_knms_resolved_df], axis=0)
 
     # Provide temp outputs
-    unmatched_final_df = df[~df[name_col].isin(resolved_df[name_col].values)]
+    unmatched_final_df = df[~df[name_col].isin(final_resolved_df[name_col].values)]
     if len(unmatched_final_df.index) > 0:
-        _temp_output(unmatched_final_df, 'unmatched_samples', 'Warning: Unmatched samples.')
-        if keep_unmatched:
-            resolved_df = pd.concat([resolved_df, unmatched_final_df])
-    cols_to_drop = [c for c in resolved_df.columns.tolist() if
+        _temp_output(unmatched_final_df, 'unmatched_samples',
+                     'WARNING: some submissions have not been resolved and must be manually resolved. Consider fixing names in your original data.')
+        final_resolved_df = pd.concat([final_resolved_df, unmatched_final_df])
+    cols_to_drop = [c for c in final_resolved_df.columns.tolist() if
                     (c not in df.columns.tolist() and c not in list(COL_NAMES.values()))]
-    resolved_df.drop(columns=cols_to_drop, inplace=True)
-    resolved_df = resolved_df.sort_index()
-    try:
-        reordered_df = resolved_df.set_index(name_col)
-        reordered_df = reordered_df.reindex(index=df[name_col])
-        reordered_df = reordered_df.reset_index()
+    final_resolved_df.drop(columns=cols_to_drop, inplace=True)
 
+    def get_acc_info_from_matches(submitted_name: str, col: str):
+        return final_resolved_df[final_resolved_df[name_col] == submitted_name][col].values[0]
 
-        return reordered_df
-    except ValueError as e:
-        print(f'Warning: coulndt reorder: {e}')
+    out_df = df.copy()
+    for k in COL_NAMES:
+        if k not in ['single_source', 'sources']:
+            out_df[COL_NAMES[k]] = out_df[name_col]
+            out_df[COL_NAMES[k]] = out_df[COL_NAMES[k]].apply(get_acc_info_from_matches, col=COL_NAMES[k])
 
-    return resolved_df
+    return out_df
 
 
 if __name__ == '__main__':

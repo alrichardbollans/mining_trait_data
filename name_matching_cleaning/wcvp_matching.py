@@ -111,4 +111,6 @@ def get_wcvp_info_for_names_in_column(df: pd.DataFrame, name_col: str, all_taxa:
     merged_with_taxa = df.reset_index().merge(renamed_taxa_cols, left_on=name_col, right_on='taxon_name',
                                 suffixes=(False, False)).set_index('index')
 
+    merged_with_taxa = merged_with_taxa.dropna(subset=['Accepted_Name'])
+
     return merged_with_taxa
