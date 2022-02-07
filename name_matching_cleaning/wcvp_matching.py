@@ -16,26 +16,28 @@ def _get_dict_from_wcvp_record(record: pd.DataFrame, taxa_list: pd.DataFrame) ->
     if taxonomic_status == 'Accepted':
         Accepted_Name = record['taxon_name'].values[0]
         Accepted_ID = record['kew_id'].values[0]
+        accepted_taxon = record
     else:
         Accepted_Name = record['accepted_name'].values[0]
         Accepted_ID = record['accepted_kew_id'].values[0]
-    Accepted_Rank = record['rank'].values[0]
 
+        accepted_taxon = taxa_list[(taxa_list['taxon_name'] == Accepted_Name) & (taxa_list['kew_id'] == Accepted_ID)]
+        if len(accepted_taxon.index) == 0:
+            return {'Accepted_Name': np.nan, 'Accepted_ID': np.nan, 'Accepted_Rank': np.nan,
+                    'Accepted_Species': np.nan, 'Accepted_Species_ID': np.nan}
+    Accepted_Rank = accepted_taxon['rank'].values[0]
     if Accepted_Rank in ["Synonym", "Homotypic_Synonym", "Species"]:
         Accepted_Species = Accepted_Name
         Accepted_Species_ID = Accepted_ID
-    elif taxonomic_status == 'Accepted' or Accepted_Rank == "Genus":
-        # Parents are only given to accepted taxa in wcvp
-        Accepted_Species = record['parent_name'].values[0]
-        Accepted_Species_ID = record['parent_kew_id'].values[0]
+    elif Accepted_Rank == "Genus":
+        Accepted_Species = np.nan
+        Accepted_Species_ID = np.nan
 
-    elif Accepted_Rank in ["Variety", "Subspecies"]:
+    else:
         # When subspecies and varieties are not accepted we need to find their parent
-        accepted_taxon = taxa_list[(taxa_list['taxon_name'] == Accepted_Name) & (taxa_list['kew_id'] == Accepted_ID)]
+
         Accepted_Species = accepted_taxon['parent_name'].values[0]
         Accepted_Species_ID = accepted_taxon['parent_kew_id'].values[0]
-    else:
-        raise ValueError(f'Combination of status: {taxonomic_status} and rank: {Accepted_Rank} unaccounted for.')
 
     return {'Accepted_Name': Accepted_Name, 'Accepted_ID': Accepted_ID, 'Accepted_Rank': Accepted_Rank,
             'Accepted_Species': Accepted_Species, 'Accepted_Species_ID': Accepted_Species_ID}
@@ -55,8 +57,6 @@ def id_lookup_wcvp(all_taxa: pd.DataFrame, given_id: str) -> dict:
     nan_dict = {'Accepted_Name': np.nan, 'Accepted_ID': np.nan, 'Accepted_Rank': np.nan,
                 'Accepted_Species': np.nan, 'Accepted_Species_ID': np.nan}
     if len(record.index) == 0:
-        nan_dict = {'Accepted_Name': np.nan, 'Accepted_ID': np.nan, 'Accepted_Rank': np.nan,
-                    'Accepted_Species': np.nan, 'Accepted_Species_ID': np.nan}
         print(f"Can't find id: {given_id} in given wcvp taxa data")
         return nan_dict
     if len(record.index) > 1:
@@ -109,7 +109,7 @@ def get_wcvp_info_for_names_in_column(df: pd.DataFrame, name_col: str, all_taxa:
 
     # Merge in this way to preserve index from df
     merged_with_taxa = df.reset_index().merge(renamed_taxa_cols, left_on=name_col, right_on='taxon_name',
-                                suffixes=(False, False)).set_index('index')
+                                              suffixes=(False, False)).set_index('index')
 
     merged_with_taxa = merged_with_taxa.dropna(subset=['Accepted_Name'])
 

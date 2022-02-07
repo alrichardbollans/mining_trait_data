@@ -235,6 +235,16 @@ class MyTestCase(unittest.TestCase):
                 print(response[COL_NAMES[k]])
                 pd.testing.assert_series_equal(test_df[k], response[COL_NAMES[k]], check_names=False)
 
+    def test_varieties(self):
+        test_df = pd.read_csv(os.path.join(unittest_inputs, 'test_variety_db.csv'))
+        response = get_accepted_info_from_names_in_column(test_df, 'name')
+
+        for k in COL_NAMES:
+            if k not in ['single_source', 'sources']:
+                print(test_df[k])
+                print(response[COL_NAMES[k]])
+                pd.testing.assert_series_equal(test_df[k], response[COL_NAMES[k]], check_names=False)
+
     def test_unmatched_resolutions(self):
         unmatched_df = pd.read_csv(os.path.join(unittest_inputs, 'unmatched.csv'))
         resolved_unmatched = get_accepted_info_from_names_in_column(unmatched_df, 'submitted',
