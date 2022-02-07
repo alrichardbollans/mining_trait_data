@@ -186,7 +186,7 @@ def prepare_data():
 
     # Get lists
     get_wiki_common_names(species_list, families_of_interest=['Apocynaceae', 'Rubiaceae'])
-    print('Finished getting wiki names')
+    # # print('Finished getting wiki names')
     get_powo_common_names(species_list, species_ids, families_of_interest=['Apocynaceae', 'Rubiaceae'])
 
     prepare_usda_common_names(families_of_interest=['Apocynaceae', 'Rubiaceae'])
@@ -215,4 +215,5 @@ def main():
 
 
 if __name__ == '__main__':
+    # prepare_usda_common_names(families_of_interest=['Apocynaceae', 'Rubiaceae'])
     main()
