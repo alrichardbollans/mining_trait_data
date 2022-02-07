@@ -19,7 +19,7 @@ output_alkaloid_csv = os.path.join(_output_path, 'list_plants_with_alkaloids.csv
 
 
 def get_powo_alkaloids():
-    search_powo(['alkaloids', 'alkaloid', 'bitter', 'amine'],
+    search_powo(['alkaloid'],
                 _powo_search_temp_output_accepted_csv, families_of_interest=['Rubiaceae', 'Apocynaceae'],
                 filters=['species', 'infraspecies'])
 

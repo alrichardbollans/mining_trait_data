@@ -123,7 +123,7 @@ def main():
         os.mkdir(temp_outputs_path)
     if not os.path.isdir(output_path):
         os.mkdir(output_path)
-    # get_powo_hairs_and_spines()
+    get_powo_hairs_and_spines()
     output_compiled_data()
 
 
