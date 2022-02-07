@@ -201,9 +201,6 @@ def get_accepted_info_from_ids_in_column(df: pd.DataFrame, id_col_name: str,
     :return:
     """
 
-    if not os.path.isdir(temp_outputs_dir):
-        os.mkdir(temp_outputs_dir)
-
     all_taxa = get_all_taxa(families_of_interest=families_of_interest)
     dict_of_values = {'Accepted_Name': [], 'Accepted_ID': [], 'Accepted_Rank': [],
                       'Accepted_Species': [], 'Accepted_Species_ID': []}
@@ -235,8 +232,6 @@ def get_accepted_info_from_names_in_column(df: pd.DataFrame, name_col: str, fami
     :return:
     """
 
-    if not os.path.isdir(temp_outputs_dir):
-        os.mkdir(temp_outputs_dir)
 
     all_taxa = get_all_taxa(families_of_interest=families_of_interest)
 
