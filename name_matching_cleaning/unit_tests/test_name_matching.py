@@ -244,6 +244,14 @@ class MyTestCase(unittest.TestCase):
                 print(response[COL_NAMES[k]])
                 pd.testing.assert_series_equal(test_df[k], response[COL_NAMES[k]], check_names=False)
 
+    def test_our_data(self):
+        test_df = pd.read_csv(os.path.join(unittest_inputs, 'our_data_test.csv'))
+        response = get_accepted_info_from_names_in_column(test_df, 'Name')
+
+        for k in COL_NAMES:
+            if k not in ['single_source', 'sources']:
+                pd.testing.assert_series_equal(test_df[k], response[COL_NAMES[k]], check_names=False)
+
     def test_unmatched_resolutions(self):
         unmatched_df = pd.read_csv(os.path.join(unittest_inputs, 'unmatched.csv'))
         resolved_unmatched = get_accepted_info_from_names_in_column(unmatched_df, 'submitted',
