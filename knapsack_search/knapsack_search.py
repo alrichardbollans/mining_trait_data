@@ -15,10 +15,10 @@ from taxa_lists import get_all_taxa
 _inputs_path = resource_filename(__name__, 'inputs')
 _temp_outputs_path = resource_filename(__name__, 'temp_outputs')
 _check_csv = os.path.join(_temp_outputs_path, 'taxa_to_recheck.csv')
-outputs_path = resource_filename(__name__, 'outputs')
-rubiaceae_apocynaceae_metabolites_output_csv = os.path.join(outputs_path, 'rub_apocs_metabolites.csv')
-rub_apoc_antibac_antimal_metabolites_csv = os.path.join(outputs_path, 'rub_apocs_antimal_antibac_metabolites.csv')
-_check_output_csv = os.path.join(outputs_path, 'rechecked_taxa.csv')
+_outputs_path = resource_filename(__name__, 'outputs')
+rubiaceae_apocynaceae_metabolites_output_csv = os.path.join(_outputs_path, 'rub_apocs_metabolites.csv')
+rub_apoc_antibac_metabolites_output_csv = os.path.join(_outputs_path, 'rub_apocs_antibac_metabolites.csv')
+_check_output_csv = os.path.join(_outputs_path, 'rechecked_taxa.csv')
 
 
 def get_antibacterial_metabolites():
@@ -146,11 +146,10 @@ def get_rub_apoc_antimal_antibac_metabolite_hits():
     antimal_metabolites = get_antimalarial_metabolites()
     antibac_metabolites = get_antibacterial_metabolites()
 
-    out_dict = {'taxa': [], 'AntiMal_Metabolites': [], 'AntiBac_Metabolites': [], 'antimal_snippet': [],
-                'antibac_snippet': []}
+    out_dict = {'taxa': [], 'knapsack_snippet': []}
     for i in tqdm(range(len(all_metas_data['taxa'].values)), desc="Searching...", ascii=False, ncols=72):
         taxa = all_metas_data['taxa'].values[i]
-        out_dict['taxa'].append(taxa)
+
         taxa_record = all_metas_data[all_metas_data['taxa'] == taxa]
         # print(taxa_record.columns)
         metabolites_in_taxa = [x for x in taxa_record.columns if taxa_record[x].iloc[0] == 1]
@@ -162,23 +161,16 @@ def get_rub_apoc_antimal_antibac_metabolite_hits():
                 anti_mal_metabolites_in_taxa.append(metabolite)
             if metabolite in antibac_metabolites:
                 antibac_metabolites_in_taxa.append(metabolite)
+        all_antibac_metabolites = anti_mal_metabolites_in_taxa + antibac_metabolites_in_taxa
 
-        if len(anti_mal_metabolites_in_taxa) > 0:
-            out_dict['AntiMal_Metabolites'].append(1)
-        else:
-            out_dict['AntiMal_Metabolites'].append(np.nan)
+        if len(all_antibac_metabolites) > 0:
+            out_dict['taxa'].append(taxa)
 
-        if len(antibac_metabolites_in_taxa) > 0:
-            out_dict['AntiBac_Metabolites'].append(1)
-        else:
-            out_dict['AntiBac_Metabolites'].append(np.nan)
-
-        out_dict['antimal_snippet'].append('"' + str(anti_mal_metabolites_in_taxa) + '"')
-        out_dict['antibac_snippet'].append('"' + str(antibac_metabolites_in_taxa) + '"')
+            out_dict['knapsack_snippet'].append('"' + str(all_antibac_metabolites) + '"')
     out_df = pd.DataFrame(out_dict)
     out_df["Source"] = "KNApSAcK"
 
-    out_df.to_csv(rub_apoc_antibac_antimal_metabolites_csv)
+    out_df.to_csv(rub_apoc_antibac_metabolites_output_csv)
 
 
 def main():
@@ -189,4 +181,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    get_rub_apoc_antimal_antibac_metabolite_hits()

@@ -1,0 +1,42 @@
+,taxa,knapsack_snippet,Source
+0,Catharanthus roseus,"""['Ajmalicine', 'Gallic acid', 'Quercetin']""",KNApSAcK
+1,Nerium oleander,"""['Quercetin']""",KNApSAcK
+2,Ochrosia moorei,"""['Desoxycordifoline']""",KNApSAcK
+3,Rauvolfia serpentina,"""['Ajmalicine']""",KNApSAcK
+4,Rauvolfia verticillata,"""['Robinin']""",KNApSAcK
+5,Rhazya stricta,"""['Robinin']""",KNApSAcK
+6,Tabernaemontana arborea,"""['Voacamine']""",KNApSAcK
+7,Tabernaemontana oppositifolia,"""['Voacamine']""",KNApSAcK
+8,Tabernaemontana pachysiphon,"""['Voacamine']""",KNApSAcK
+9,Voacanga africana,"""['Voacamine']""",KNApSAcK
+10,Voacanga globosa,"""['Voacamine']""",KNApSAcK
+11,Voacanga thouarsii,"""['Voacamine']""",KNApSAcK
+12,Adina cordifolia,"""['Cadambine']""",KNApSAcK
+13,Chimarrhis turbinata,"""['Desoxycordifoline']""",KNApSAcK
+14,Cinchona officinalis,"""['Cinchonidine', 'Hydroquinidine', 'Quinine']""",KNApSAcK
+15,Cinchona pubescens,"""['Quinine']""",KNApSAcK
+16,Coelospermum reticulatum,"""['Lucidin']""",KNApSAcK
+17,Coffea arabica,"""['Caffeic acid', 'Acetic acid']""",KNApSAcK
+18,Coffea canephora,"""['Acetic acid']""",KNApSAcK
+19,Coprosma propinqua,"""['Scopoletin']""",KNApSAcK
+20,Coprosma robusta,"""['Scopoletin']""",KNApSAcK
+21,Coprosma rotundifolia,"""['Lucidin', 'Scopoletin']""",KNApSAcK
+22,Coprosma tenuicaulis,"""['Scopoletin']""",KNApSAcK
+23,Coussarea macrophylla,"""['Scopoletin']""",KNApSAcK
+24,Cruciata taurica,"""['Quercetin', 'Scopoletin']""",KNApSAcK
+25,Mitragyna inermis,"""['Quercetin']""",KNApSAcK
+26,Mitragyna rotundifolia,"""['Caffeic acid']""",KNApSAcK
+27,Mitragyna speciosa,"""['Quercetin', 'Caffeic acid']""",KNApSAcK
+28,Morinda citrifolia,"""['Lucidin', 'Scopoletin', 'Alizarin']""",KNApSAcK
+29,Morinda morindoides,"""['Quercetin']""",KNApSAcK
+30,Nauclea diderrichii,"""['Desoxycordifoline', 'Desoxycordifolinic acid']""",KNApSAcK
+31,Nauclea latifolia,"""['17-Epinaucleidinal', '18,19-Dihydroangustine']""",KNApSAcK
+32,Rubia cordifolia,"""['Alizarin']""",KNApSAcK
+33,Rubia tinctorum,"""['Lucidin', 'Alizarin']""",KNApSAcK
+34,Rubia wallichiana,"""['Lucidin', 'Scopoletin']""",KNApSAcK
+35,Uncaria africana,"""['Ajmalicine']""",KNApSAcK
+36,Uncaria elliptica,"""['Ajmalicine']""",KNApSAcK
+37,Uncaria gambir,"""['Gallic acid']""",KNApSAcK
+38,Uncaria orientalis,"""['Ajmalicine']""",KNApSAcK
+39,Uncaria rhynchophylla,"""['Cadambine', '3alpha-Dihydrocadambine', 'Angustidine']""",KNApSAcK
+40,Uncaria sinensis,"""['Caffeic acid', 'Scopoletin', '3alpha-Dihydrocadambine']""",KNApSAcK
