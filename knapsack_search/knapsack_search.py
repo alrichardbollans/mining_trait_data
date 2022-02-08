@@ -146,7 +146,7 @@ def get_rub_apoc_antimal_antibac_metabolite_hits():
     antimal_metabolites = get_antimalarial_metabolites()
     antibac_metabolites = get_antibacterial_metabolites()
 
-    out_dict = {'taxa': [], 'knapsack_snippet': []}
+    out_dict = {'Accepted_Name': [], 'knapsack_snippet': []}
     for i in tqdm(range(len(all_metas_data['taxa'].values)), desc="Searching...", ascii=False, ncols=72):
         taxa = all_metas_data['taxa'].values[i]
 
