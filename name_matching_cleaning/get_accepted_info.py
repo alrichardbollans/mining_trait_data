@@ -6,6 +6,7 @@ import pandas as pd
 from typing import List
 
 from pkg_resources import resource_filename
+from tqdm import tqdm
 
 from name_matching_cleaning import get_wcvp_info_for_names_in_column, \
     get_knms_name_matches, id_lookup_wcvp, clean_urn_ids, COL_NAMES, remove_whitespace, temp_outputs_dir
@@ -73,7 +74,9 @@ def _autoresolve_missing_matches(unmatched_submissions_df: pd.DataFrame, name_co
         # Create a dataframe of submissions with possible matches
         dict_for_matches = {name_col: [], 'Accepted_Name': [], 'Accepted_ID': [], 'Accepted_Rank': [],
                             'Accepted_Species': [], 'Accepted_Species_ID': [], 'taxonomic_status_of_submitted_name': []}
-        for s in unmatched_submissions_df[name_col].values:
+
+        for i in tqdm(range(len(unmatched_submissions_df[name_col].values)), desc="Searching…", ascii=False, ncols=72):
+            s = unmatched_submissions_df[name_col].values[i]
             for taxa in accepted_name_containment['taxon_name']:
                 if taxa in s:
                     dict_for_matches[name_col].append(s)
