@@ -115,7 +115,7 @@ def output_compiled_data():
         'spines',
         'latex',
         'corolla', 'Manual_snippet'])
-    habits = habits.rename(columns={'habit': 'Manual_snippet'})
+    habits = habits.rename(columns={'habit': 'Habit'})
     habits.to_csv(habits_output_csv)
 
 def main():
