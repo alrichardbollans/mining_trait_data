@@ -53,10 +53,7 @@ def prepare_usda_common_names(families_of_interest=None):
 
     accepted_usda_df = get_accepted_info_from_names_in_column(usda_df, 'Scientific Name with Author')
 
-    accepted_usda_df = accepted_usda_df.dropna(subset=['Accepted_Name'])
     accepted_usda_df['Source'] = 'USDA Plants Database'
-
-    accepted_usda_df.drop(accepted_usda_df.columns[0], axis=1, inplace=True)
 
     accepted_usda_df.to_csv(_cleaned_USDA_accepted_csv)
 
@@ -202,7 +199,7 @@ def main():
         os.mkdir(output_path)
 
     # TODO: Note powo, wikipedia and USDA data is specific to our study
-    prepare_data()
+    # prepare_data()
 
     usda_hits = pd.read_csv(_cleaned_USDA_accepted_csv)
     spp_ppa_df = pd.read_csv(_spp_ppa_common_names_temp_output_accepted_csv)
