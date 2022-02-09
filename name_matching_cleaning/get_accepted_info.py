@@ -259,15 +259,16 @@ def get_accepted_info_from_names_in_column(in_df: pd.DataFrame, name_col: str, f
     unmatched_manual_df = df[~df[name_col].isin(manual_matches[name_col].values)]
 
     # Then get matches from Kew Reconciliation Service
-    reconciled_df = get_reconciliations(unmatched_manual_df, name_col)
-    reconciled_df_with_acc_info = get_accepted_info_from_ids_in_column(reconciled_df, 'reco_id')
-    reco_resolved_df = pd.concat([reconciled_df_with_acc_info, manual_matches], axis=0)
-    unmatched_name_df = df[~df[name_col].isin(reco_resolved_df[name_col].values)]
+    # TODO: maybe include this step at the end
+    # reconciled_df = get_reconciliations(unmatched_manual_df, name_col)
+    # reconciled_df_with_acc_info = get_accepted_info_from_ids_in_column(reconciled_df, 'reco_id')
+    # reco_resolved_df = pd.concat([reconciled_df_with_acc_info, manual_matches], axis=0)
+    # unmatched_name_df = df[~df[name_col].isin(reco_resolved_df[name_col].values)]
 
     # Then match with exact matches in wcvp
     all_taxa = get_all_taxa(families_of_interest=families_of_interest)
-    wcvp_exact_name_match_df = get_wcvp_info_for_names_in_column(unmatched_name_df, name_col, all_taxa=all_taxa)
-    wcvp_resolved_df = pd.concat([wcvp_exact_name_match_df, reco_resolved_df], axis=0)
+    wcvp_exact_name_match_df = get_wcvp_info_for_names_in_column(unmatched_manual_df, name_col, all_taxa=all_taxa)
+    wcvp_resolved_df = pd.concat([wcvp_exact_name_match_df, manual_matches], axis=0)
     unmatched_name_df = df[~df[name_col].isin(wcvp_resolved_df[name_col].values)]
 
     # If exact matches aren't found in wcvp, use knms

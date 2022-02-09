@@ -1,14 +1,10 @@
 # Taken from https://gist.github.com/nickynicolson/11fe9e57a198d31fa010fb3feaa65d94
 import json
-import os.path
-import subprocess
 
-import numpy as np
 import pandas as pd
 import requests
 
-from name_matching_cleaning import get_genus_from_full_name, get_species_from_full_name
-from name_matching_cleaning.name_parsing import get_epithets_for_names_in_df
+from name_matching_cleaning import get_epithets_for_names_in_df
 
 _KEW_RECONCILE_SERVICE_URL = 'http://data1.kew.org/reconciliation/reconcile/IpniName'
 
@@ -108,7 +104,7 @@ if __name__ == '__main__':
     4|Vaccinium L.|||
     """
     df = pd.read_csv(StringIO(data), sep="|")
-    acc_df = get_reconciliations(df, 'fullname_w_auth',keep_all=True)
+    acc_df = get_reconciliations(df, 'fullname_w_auth', keep_all=True)
     acc_df.to_csv('test1.csv')
 
     # df = pd.read_csv('unit_tests/test_inputs/genera_list.csv')
