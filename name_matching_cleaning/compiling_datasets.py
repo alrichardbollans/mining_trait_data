@@ -1,7 +1,5 @@
 import os
-import re
 
-import numpy as np
 import pandas as pd
 from typing import List
 
@@ -28,30 +26,6 @@ def generate_temp_output_file_paths(filetag: str, temp_output_path: str):
     return temp_output_cleaned_csv, temp_output_accepted_csv
 
 
-def remove_whitespace(value):
-    if value is np.nan:
-        return value
-    else:
-        value = str(value)
-        v = value.rstrip()
-        out = v.lstrip()
-        return out
-
-
-def clean_urn_ids(given_value: str) -> str:
-    '''
-    Strips urn:lsid:ipni.org:names: from id
-    '''
-    try:
-        if re.search('urn:lsid:ipni.org:names:', given_value):
-            pos = re.search('urn:lsid:ipni.org:names:', given_value).end()
-            return given_value[pos:]
-        else:
-            return np.nan
-    except TypeError:
-        return given_value
-
-
 def merge_columns(df: pd.DataFrame, new_col: str, old_columns: List[str]):
     '''
     Creates a new column using old columns by getting first non empty instance from the old columns
@@ -60,10 +34,11 @@ def merge_columns(df: pd.DataFrame, new_col: str, old_columns: List[str]):
     :param old_columns:
     :return:
     '''
-    if len(old_columns)>1:
+    if len(old_columns) > 1:
         for col in old_columns:
             df[col] = df[col].astype(str)
-        df[new_col] = df[old_columns].agg(lambda x: next((y for y in x.values if (y != '' and y != 'nan')), 'nan'), axis=1)
+        df[new_col] = df[old_columns].agg(lambda x: next((y for y in x.values if (y != '' and y != 'nan')), 'nan'),
+                                          axis=1)
         df = df.drop(columns=old_columns)
     return df
 

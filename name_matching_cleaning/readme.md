@@ -64,18 +64,26 @@ dataframe without out any accepted information.
 * Some records have ranks differing from their accepted taxa e.g. the Variety 'Diodia teres var. hirsutior' is a synonym
   of the Species 'Hexasepalum teres'
 
+## Notes on Kew Reconciliation Service
+
+* KRS relies a little on manually matching unknown samples/multiple matches. 
+* If we try to include KRS by only including records with single matches, we may still get some errors.
+* When doing automatic matching as in `open_reconcoling.py` 'Vaccinium vitis-idaea L.' is matched to it's genus '
+  Vaccinium L.'
+
 ## Possible Improvements
 
 * Levels of strictness (specify how conserative you want to be about matching)
 * Test homotypic synonyms
 * Resolution of hybrid genera
 * Resolution of capitalised names
+* Provide more info in output e.g. genus/parent
+* Compare to reconciliation service/include as initial step
 
 ## Sources
 
-WCVP (2022). World Checklist of Vascular Plants, version 2.0. 
-Facilitated by the Royal Botanic Gardens, Kew. 
-Published on the Internet
+WCVP (2022). World Checklist of Vascular Plants, version 2.0. Facilitated by the Royal Botanic Gardens, Kew. Published
+on the Internet
 http://wcvp.science.kew.org/
 Retrieved 20/01/2022.
 
