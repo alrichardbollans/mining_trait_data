@@ -9,7 +9,8 @@ from pkg_resources import resource_filename
 from tqdm import tqdm
 
 from name_matching_cleaning import get_wcvp_info_for_names_in_column, \
-    get_knms_name_matches, id_lookup_wcvp, clean_urn_ids, COL_NAMES, remove_whitespace, temp_outputs_dir
+    get_knms_name_matches, id_lookup_wcvp, clean_urn_ids, COL_NAMES, remove_whitespace_at_beginning_and_end, \
+    temp_outputs_dir, get_reconciliations
 from name_matching_cleaning.resolving_names import _get_resolutions_with_single_rank
 
 from taxa_lists import get_all_taxa
@@ -247,7 +248,7 @@ def get_accepted_info_from_names_in_column(in_df: pd.DataFrame, name_col: str, f
     # Non standard captialisation causes issues
     # If input names are all caps then we change to capitalise the first letter
     df[name_col] = df[name_col].apply(_capitalize_first_letter_of_taxon, check_string_is_uppercase=True)
-    df[name_col] = df[name_col].apply(remove_whitespace)
+    df[name_col] = df[name_col].apply(remove_whitespace_at_beginning_and_end)
 
     # First get manual matches
     manual_match_df = pd.read_csv(_resolution_csv)
@@ -257,23 +258,29 @@ def get_accepted_info_from_names_in_column(in_df: pd.DataFrame, name_col: str, f
     manual_matches = pd.merge(df, man_matches_with_accepted_info, left_on=name_col, right_on='submitted', sort=False)
     unmatched_manual_df = df[~df[name_col].isin(manual_matches[name_col].values)]
 
+    # Then get matches from Kew Reconciliation Service
+    # reconciled_df = get_reconciliations(unmatched_manual_df, name_col)
+    # reconciled_df_with_acc_info = get_accepted_info_from_ids_in_column(reconciled_df, 'reco_id')
+    # reco_resolved_df = pd.concat([reconciled_df_with_acc_info, manual_matches], axis=0)
+    # unmatched_name_df = df[~df[name_col].isin(reco_resolved_df[name_col].values)]
+
     # Then match with exact matches in wcvp
     all_taxa = get_all_taxa(families_of_interest=families_of_interest)
     wcvp_exact_name_match_df = get_wcvp_info_for_names_in_column(unmatched_manual_df, name_col, all_taxa=all_taxa)
-    wcvp_manual_resolved_df = pd.concat([wcvp_exact_name_match_df, manual_matches], axis=0)
-    unmatched_name_df = df[~df[name_col].isin(wcvp_manual_resolved_df[name_col].values)]
+    wcvp_resolved_df = pd.concat([wcvp_exact_name_match_df, manual_matches], axis=0)
+    unmatched_name_df = df[~df[name_col].isin(wcvp_resolved_df[name_col].values)]
 
     # If exact matches aren't found in wcvp, use knms
     matches_with_knms = _get_knms_matches_and_accepted_info_from_names_in_column(unmatched_name_df, name_col,
                                                                                  families_of_interest=families_of_interest)
-    wcvp_manual_knms_resolved_df = pd.concat([wcvp_manual_resolved_df, matches_with_knms], axis=0)
-    unmatched_df = df[~df[name_col].isin(wcvp_manual_knms_resolved_df[name_col].values)]
+    knms_resolved_df = pd.concat([wcvp_resolved_df, matches_with_knms], axis=0)
+    unmatched_df = df[~df[name_col].isin(knms_resolved_df[name_col].values)]
 
     # Get autoresolved matches
     unmatched_resolutions = _autoresolve_missing_matches(unmatched_df, name_col,
                                                          families_of_interest=families_of_interest)
 
-    final_resolved_df = pd.concat([unmatched_resolutions, wcvp_manual_knms_resolved_df], axis=0)
+    final_resolved_df = pd.concat([unmatched_resolutions, knms_resolved_df], axis=0)
 
     # Provide temp outputs
     unmatched_final_df = df[~df[name_col].isin(final_resolved_df[name_col].values)]
@@ -288,7 +295,7 @@ def get_accepted_info_from_names_in_column(in_df: pd.DataFrame, name_col: str, f
     def get_acc_info_from_matches(submitted_name: str, col: str):
         return final_resolved_df[final_resolved_df[name_col] == submitted_name][col].values[0]
 
-    out_df = df.copy()
+    out_df = in_df.copy()
     for k in COL_NAMES:
         if k not in ['single_source', 'sources']:
             out_df[COL_NAMES[k]] = out_df[name_col]
