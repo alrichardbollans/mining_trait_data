@@ -66,10 +66,13 @@ dataframe without out any accepted information.
 
 ## Notes on Kew Reconciliation Service
 
-* KRS relies a little on manually matching unknown samples/multiple matches. 
+* KRS relies a little on manually matching unknown samples/multiple matches.
 * If we try to include KRS by only including records with single matches, we may still get some errors.
-* When doing automatic matching as in `open_reconcoling.py` 'Vaccinium vitis-idaea L.' is matched to it's genus '
+* When doing automatic matching as in `open_reconciling.py` each epithet needs extracting and adding to the query
+  otherwise e.g. 'Vaccinium vitis-idaea L.' is matched to its genus '
   Vaccinium L.'
+* I've created an implementation which includes KRS but so far it is very slow (possibly because extracting epithets for
+  lots of samples is slow).
 
 ## Possible Improvements
 
@@ -89,3 +92,8 @@ Retrieved 20/01/2022.
 
 KNMS (2022). Kew Names Matching Service.
 http://namematch.science.kew.org/
+
+Kew Reconciliation Service
+
+gnparser Mozzherin, D.Y., Myltsev, A.A. & Patterson, D.J. “gnparser”: a powerful parser for scientific names based on
+Parsing Expression Grammar. BMC Bioinformatics 18, 279 (2017).https://doi.org/10.1186/s12859-017-1663-3

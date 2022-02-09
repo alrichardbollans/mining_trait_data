@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-from name_matching_cleaning import get_genus_from_full_name, clean_urn_ids
+from name_matching_cleaning import get_genus_from_full_name, clean_urn_ids, get_species_from_full_name
 
 
 class MyTestCase(unittest.TestCase):
@@ -17,6 +17,16 @@ class MyTestCase(unittest.TestCase):
         for k in correct_dict:
             print(k)
             self.assertEqual(correct_dict[k], get_genus_from_full_name(k))
+    def test_species_name(self):
+        self.assertIsNone(get_species_from_full_name(None))
+        self.assertTrue(np.isnan(get_species_from_full_name(np.nan)))
+        correct_dict = {'': '', 'x': '', 'x ': '', ' x': '', ' x y': 'y',
+                        'Hoodia Sweet ex Decne': 'Sweet', '× Sarcorhiza Anon.': 'Anon.',
+                        'Medinilla sarcorhiza Cogn.': 'sarcorhiza', 'Clematis × pinnata': '× pinnata'}
+
+        for k in correct_dict:
+            print(k)
+            self.assertEqual(correct_dict[k], get_species_from_full_name(k))
 
     def test_clean_urn_ids(self):
         self.assertIsNone(clean_urn_ids(None))
