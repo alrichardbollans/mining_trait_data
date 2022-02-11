@@ -13,30 +13,28 @@
 11,Voacanga thouarsii,"""['Voacamine']""",KNApSAcK
 12,Adina cordifolia,"""['Cadambine']""",KNApSAcK
 13,Chimarrhis turbinata,"""['Desoxycordifoline']""",KNApSAcK
-14,Cinchona officinalis,"""['Cinchonidine', 'Hydroquinidine', 'Quinine']""",KNApSAcK
-15,Cinchona pubescens,"""['Quinine']""",KNApSAcK
-16,Coelospermum reticulatum,"""['Lucidin']""",KNApSAcK
-17,Coffea arabica,"""['Caffeic acid', 'Acetic acid']""",KNApSAcK
-18,Coffea canephora,"""['Acetic acid']""",KNApSAcK
-19,Coprosma propinqua,"""['Scopoletin']""",KNApSAcK
-20,Coprosma robusta,"""['Scopoletin']""",KNApSAcK
-21,Coprosma rotundifolia,"""['Lucidin', 'Scopoletin']""",KNApSAcK
-22,Coprosma tenuicaulis,"""['Scopoletin']""",KNApSAcK
-23,Coussarea macrophylla,"""['Scopoletin']""",KNApSAcK
-24,Cruciata taurica,"""['Quercetin', 'Scopoletin']""",KNApSAcK
-25,Mitragyna inermis,"""['Quercetin']""",KNApSAcK
-26,Mitragyna rotundifolia,"""['Caffeic acid']""",KNApSAcK
-27,Mitragyna speciosa,"""['Quercetin', 'Caffeic acid']""",KNApSAcK
-28,Morinda citrifolia,"""['Lucidin', 'Scopoletin', 'Alizarin']""",KNApSAcK
-29,Morinda morindoides,"""['Quercetin']""",KNApSAcK
-30,Nauclea diderrichii,"""['Desoxycordifoline', 'Desoxycordifolinic acid']""",KNApSAcK
-31,Nauclea latifolia,"""['17-Epinaucleidinal', '18,19-Dihydroangustine']""",KNApSAcK
-32,Rubia cordifolia,"""['Alizarin']""",KNApSAcK
-33,Rubia tinctorum,"""['Lucidin', 'Alizarin']""",KNApSAcK
-34,Rubia wallichiana,"""['Lucidin', 'Scopoletin']""",KNApSAcK
-35,Uncaria africana,"""['Ajmalicine']""",KNApSAcK
-36,Uncaria elliptica,"""['Ajmalicine']""",KNApSAcK
-37,Uncaria gambir,"""['Gallic acid']""",KNApSAcK
-38,Uncaria orientalis,"""['Ajmalicine']""",KNApSAcK
-39,Uncaria rhynchophylla,"""['Cadambine', '3alpha-Dihydrocadambine', 'Angustidine']""",KNApSAcK
-40,Uncaria sinensis,"""['Caffeic acid', 'Scopoletin', '3alpha-Dihydrocadambine']""",KNApSAcK
+14,Coelospermum reticulatum,"""['Lucidin']""",KNApSAcK
+15,Coffea arabica,"""['Caffeic acid', 'Acetic acid']""",KNApSAcK
+16,Coffea canephora,"""['Acetic acid']""",KNApSAcK
+17,Coprosma propinqua,"""['Scopoletin']""",KNApSAcK
+18,Coprosma robusta,"""['Scopoletin']""",KNApSAcK
+19,Coprosma rotundifolia,"""['Lucidin', 'Scopoletin']""",KNApSAcK
+20,Coprosma tenuicaulis,"""['Scopoletin']""",KNApSAcK
+21,Coussarea macrophylla,"""['Scopoletin']""",KNApSAcK
+22,Cruciata taurica,"""['Quercetin', 'Scopoletin']""",KNApSAcK
+23,Mitragyna inermis,"""['Quercetin']""",KNApSAcK
+24,Mitragyna rotundifolia,"""['Caffeic acid']""",KNApSAcK
+25,Mitragyna speciosa,"""['Quercetin', 'Caffeic acid']""",KNApSAcK
+26,Morinda citrifolia,"""['Lucidin', 'Scopoletin', 'Alizarin']""",KNApSAcK
+27,Morinda morindoides,"""['Quercetin']""",KNApSAcK
+28,Nauclea diderrichii,"""['Desoxycordifoline', 'Desoxycordifolinic acid']""",KNApSAcK
+29,Nauclea latifolia,"""['17-Epinaucleidinal', '18,19-Dihydroangustine']""",KNApSAcK
+30,Rubia cordifolia,"""['Alizarin']""",KNApSAcK
+31,Rubia tinctorum,"""['Lucidin', 'Alizarin']""",KNApSAcK
+32,Rubia wallichiana,"""['Lucidin', 'Scopoletin']""",KNApSAcK
+33,Uncaria africana,"""['Ajmalicine']""",KNApSAcK
+34,Uncaria elliptica,"""['Ajmalicine']""",KNApSAcK
+35,Uncaria gambir,"""['Gallic acid']""",KNApSAcK
+36,Uncaria orientalis,"""['Ajmalicine']""",KNApSAcK
+37,Uncaria rhynchophylla,"""['Cadambine', '3alpha-Dihydrocadambine', 'Angustidine']""",KNApSAcK
+38,Uncaria sinensis,"""['Caffeic acid', 'Scopoletin', '3alpha-Dihydrocadambine']""",KNApSAcK
