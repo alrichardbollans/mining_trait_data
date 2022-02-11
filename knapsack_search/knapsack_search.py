@@ -153,7 +153,7 @@ def summarise_metabolites():
     print(worthwhile_metabolites)
 
 
-def get_antibac_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, output_csv: str):
+def get_antibac_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, output_csv: str, fams: List[str] = None):
     """
 
     :param taxa_metabolite_data: Dataframe with taxa in first column and metabolites in the rest of the columns
@@ -163,7 +163,7 @@ def get_antibac_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, out
     """
     antibac_metabolites = get_antibacterial_metabolites()
 
-    out_dict = {'Accepted_Name': [], 'knapsack_snippet': []}
+    out_dict = {'taxa': [], 'knapsack_snippet': []}
     for i in tqdm(range(len(taxa_metabolite_data['taxa'].values)), desc="Searching...", ascii=False, ncols=72):
         taxa = taxa_metabolite_data['taxa'].values[i]
 
@@ -177,13 +177,15 @@ def get_antibac_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, out
                 antibac_metabolites_in_taxa.append(metabolite)
 
         if len(antibac_metabolites_in_taxa) > 0:
-            out_dict['Accepted_Name'].append(taxa)
+            out_dict['taxa'].append(taxa)
 
             out_dict['knapsack_snippet'].append('"' + str(antibac_metabolites_in_taxa) + '"')
     out_df = pd.DataFrame(out_dict)
     out_df["Source"] = "KNApSAcK"
 
-    out_df.to_csv(output_csv)
+    acc_df = get_accepted_info_from_names_in_column(out_df, 'taxa', families_of_interest=fams)
+
+    acc_df.to_csv(output_csv)
 
 
 def get_alkaloids_from_metabolites(metabolites_to_check: List[str], output_csv: str):
@@ -192,23 +194,27 @@ def get_alkaloids_from_metabolites(metabolites_to_check: List[str], output_csv: 
     """
 
     alkaloid_metabolites = []
+    suffixes = ["ine-", "ine ", "ine+", "ine("]
+    known_non_alkaloids = []
     for i in tqdm(range(len(metabolites_to_check)), desc="Searching for alks", ascii=False, ncols=72):
         m = metabolites_to_check[i]
-        if "ine" in m:
-            formulas = get_formulas_for_metabolite(m)
-            if all("N" in f for f in formulas):
-                alkaloid_metabolites.append(m)
+        if m not in known_non_alkaloids:
+            if any(s in m for s in suffixes) or m.endswith('ine'):
+                formulas = get_formulas_for_metabolite(m)
+                if all("N" in f for f in formulas):
+                    alkaloid_metabolites.append(m)
     out_dict = {'alks': alkaloid_metabolites}
 
     out_df = pd.DataFrame(out_dict)
-    out_df["Reason"] = "Contains Nitrogen and ends in ine"
+    out_df["Reason"] = "Contains Nitrogen and ine at end of word"
     out_df["Source"] = "KNApSAcK"
     out_df.to_csv(output_csv)
 
     return out_df
 
 
-def get_alkaloid_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, alkaloid_df: pd.DataFrame, output_csv: str):
+def get_alkaloid_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, alkaloid_df: pd.DataFrame, output_csv: str,
+                               fams: List[str] = None):
     """
 
     :param taxa_metabolite_data: Dataframe with taxa in first column and metabolites in the rest of the columns
@@ -218,7 +224,7 @@ def get_alkaloid_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, alkaloid_df: 
     :return:
     """
     alks = alkaloid_df['alks'].values.tolist()
-    out_dict = {'Accepted_Name': [], 'knapsack_snippet': []}
+    out_dict = {'taxa': [], 'knapsack_snippet': []}
     for i in tqdm(range(len(taxa_metabolite_data['taxa'].values)), desc="Searching...", ascii=False, ncols=72):
         taxa = taxa_metabolite_data['taxa'].values[i]
 
@@ -232,18 +238,22 @@ def get_alkaloid_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, alkaloid_df: 
                 alk_metabolites_in_taxa.append(metabolite)
 
         if len(alk_metabolites_in_taxa) > 0:
-            out_dict['Accepted_Name'].append(taxa)
+            out_dict['taxa'].append(taxa)
 
             out_dict['knapsack_snippet'].append('"' + str(alk_metabolites_in_taxa) + '"')
     out_df = pd.DataFrame(out_dict)
     out_df["Source"] = "KNApSAcK"
 
-    out_df.to_csv(output_csv)
+    acc_df = get_accepted_info_from_names_in_column(out_df, 'taxa', families_of_interest=fams)
+
+    acc_df.to_csv(output_csv)
+    return acc_df
 
 
 def get_rub_apoc_antibac_metabolite_hits():
     all_metas_data = pd.read_csv(rubiaceae_apocynaceae_metabolites_output_csv)
-    get_antibac_metabolite_hits_for_taxa(all_metas_data, rub_apoc_antibac_metabolites_output_csv)
+    get_antibac_metabolite_hits_for_taxa(all_metas_data, rub_apoc_antibac_metabolites_output_csv,
+                                         fams=['Rubiaceae', 'Apocynaceae'])
 
 
 def get_rub_apoc_metabolites():
@@ -258,13 +268,14 @@ def get_rub_apoc_metabolites():
     get_metabolites_for_taxa(taxa_list, output_csv=rubiaceae_apocynaceae_metabolites_output_csv)
 
 
-def get_rub_apoc_alkaloids():
+def get_rub_apoc_alkaloid_hits():
     metabolites_to_check = pd.read_csv(rubiaceae_apocynaceae_metabolites_output_csv).columns.tolist()
 
     alks_df = get_alkaloids_from_metabolites(metabolites_to_check, rubiaceae_apocynaceae_alks_output_csv)
 
     rubs_apoc_metas_data = pd.read_csv(rubiaceae_apocynaceae_metabolites_output_csv)
-    get_alkaloid_hits_for_taxa(rubs_apoc_metas_data, alks_df, rub_apoc_alkaloid_hits_output_csv)
+    get_alkaloid_hits_for_taxa(rubs_apoc_metas_data, alks_df, rub_apoc_alkaloid_hits_output_csv,
+                               fams=['Rubiaceae', 'Apocynaceae'])
 
 
 def main():
@@ -272,9 +283,11 @@ def main():
     recheck_taxa()
     summarise_metabolites()
     get_rub_apoc_antibac_metabolite_hits()
+    get_rub_apoc_alkaloid_hits()
 
 
 if __name__ == '__main__':
-    # main()
-    # get_rub_apoc_antibac_metabolite_hits()
-    get_rub_apoc_alkaloids()
+    alks_df = pd.read_csv(rubiaceae_apocynaceae_alks_output_csv)
+    rubs_apoc_metas_data = pd.read_csv(rubiaceae_apocynaceae_metabolites_output_csv)
+    get_alkaloid_hits_for_taxa(rubs_apoc_metas_data, alks_df, rub_apoc_alkaloid_hits_output_csv,
+                               fams=['Rubiaceae', 'Apocynaceae'])
