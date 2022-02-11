@@ -3,6 +3,7 @@ import os
 import pandas as pd
 from pkg_resources import resource_filename
 
+from knapsack_search import rub_apoc_alkaloid_hits_output_csv
 from name_matching_cleaning import compile_hits
 from powo_searches import search_powo
 
@@ -31,7 +32,9 @@ def main():
         os.mkdir(_output_path)
     get_powo_alkaloids()
     powo_hits = pd.read_csv(_powo_search_temp_output_accepted_csv)
-    compile_hits([powo_hits], output_alkaloid_csv)
+    alk_hits = pd.read_csv(rub_apoc_alkaloid_hits_output_csv)
+
+    compile_hits([powo_hits, alk_hits], output_alkaloid_csv)
 
 
 if __name__ == '__main__':
