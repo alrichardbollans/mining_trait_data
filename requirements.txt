@@ -1,5 +1,5 @@
-setuptools~=60.5.0
-pandas==1.4.0
+setuptools==60.9.0
+pandas==1.4.1
 numpy~=1.22.1
 typing~=3.7.4.3
 requests~=2.27.1
