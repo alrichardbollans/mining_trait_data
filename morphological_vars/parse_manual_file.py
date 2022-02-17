@@ -3,7 +3,7 @@ import os
 import pandas as pd
 
 from morphological_vars import inputs_path, temp_outputs_path
-from name_matching_cleaning import remove_whitespace_at_beginning_and_end, get_accepted_info_from_names_in_column
+from automatchnames import remove_whitespace_at_beginning_and_end, get_accepted_info_from_names_in_column
 
 manual_morph_data_csv = os.path.join(inputs_path, 'manual_morphological_traits.csv')
 

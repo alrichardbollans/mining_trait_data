@@ -10,10 +10,8 @@ setup(
     # Needed to actually package something
     packages=find_packages(include=['alkaloid_vars', 'common_name_vars',
                                     'medicinal_usage_vars', 'morphological_vars',
-                                    'name_matching_cleaning', 'poison_vars', 'powo_searches''wikipedia_searches',
+                                    'cleaning', 'poison_vars', 'powo_searches''wikipedia_searches',
                                     'wikipedia_vars']),
-    # Needed for dependencies
-    install_requires=['requests', 'pandas', 'typing', 'Wikipedia-API'],
     # *strongly* suggested for sharing
     version='0.1',
     license='MIT',

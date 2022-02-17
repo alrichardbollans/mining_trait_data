@@ -6,7 +6,7 @@ from pkg_resources import resource_filename
 ### Inputs
 from morphological_vars import temp_outputs_path, try_spine_temp_output_accepted_csv, try_hair_temp_output_accepted_csv, \
     manual_data_accepted_clean_temp_output, try_no_spine_temp_output_accepted_csv
-from name_matching_cleaning import compile_hits
+from cleaning import compile_hits
 from powo_searches import search_powo, create_presence_absence_data
 
 spine_powo_search_temp_output_accepted_csv = os.path.join(temp_outputs_path, 'spines_powo' + '_accepted.csv')

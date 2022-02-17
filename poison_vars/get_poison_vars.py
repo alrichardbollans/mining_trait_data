@@ -3,7 +3,8 @@ import os
 import pandas as pd
 from pkg_resources import resource_filename
 
-from name_matching_cleaning import clean_urn_ids, compile_hits, get_accepted_info_from_names_in_column
+from cleaning import compile_hits
+from automatchnames import clean_urn_ids, get_accepted_info_from_names_in_column
 from powo_searches import search_powo
 
 ### Inputs

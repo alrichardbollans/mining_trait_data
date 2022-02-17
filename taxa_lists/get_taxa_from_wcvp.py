@@ -22,6 +22,9 @@ def capitalize_first_letter_of_rank(g: str):
 
 def get_all_taxa(families_of_interest=None,
                  accepted=False, version=None, output_csv=None) -> pd.DataFrame:
+    # TODO: Create/fill in various columns on loading, will make parsing later easier
+
+
     if output_csv is not None:
         if not os.path.isdir(os.path.dirname(output_csv)):
             os.mkdir(os.path.dirname(output_csv))

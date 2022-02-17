@@ -2,7 +2,8 @@ import os
 import pandas as pd
 from pkg_resources import resource_filename
 
-from name_matching_cleaning import compile_hits, get_accepted_info_from_names_in_column
+from cleaning import compile_hits
+from automatchnames import get_accepted_info_from_names_in_column
 from powo_searches import search_powo
 
 ### Inputs

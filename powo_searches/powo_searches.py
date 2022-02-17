@@ -6,7 +6,8 @@ import pandas as pd
 import pykew.powo as powo
 from pykew import powo_terms
 
-from name_matching_cleaning import COL_NAMES, clean_urn_ids, get_accepted_info_from_ids_in_column
+from cleaning import COL_NAMES
+from automatchnames import clean_urn_ids, get_accepted_info_from_ids_in_column
 
 
 def search_powo(search_terms: List[str], accepted_output_file: str, filters: List[str] = None,

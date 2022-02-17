@@ -9,7 +9,7 @@ from pkg_resources import resource_filename
 from tqdm import tqdm
 import wikipediaapi
 
-from name_matching_cleaning import get_accepted_info_from_names_in_column
+from automatchnames import get_accepted_info_from_names_in_column
 
 _temp_outputs_path = resource_filename(__name__, 'temp_outputs')
 

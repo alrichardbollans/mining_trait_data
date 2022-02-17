@@ -9,7 +9,7 @@ from typing import List
 from pkg_resources import resource_filename
 from tqdm import tqdm
 
-from name_matching_cleaning import get_accepted_info_from_names_in_column
+from automatchnames import get_accepted_info_from_names_in_column
 from taxa_lists import get_all_taxa
 
 _inputs_path = resource_filename(__name__, 'inputs')
@@ -22,7 +22,8 @@ rub_apoc_alkaloid_hits_output_csv = os.path.join(_outputs_path, 'rub_apocs_alkal
 rub_apoc_antibac_metabolites_output_csv = os.path.join(_outputs_path, 'rub_apocs_antibac_metabolites.csv')
 _check_output_csv = os.path.join(_outputs_path, 'rechecked_taxa.csv')
 
-
+alkaloids_not_ending_in_ine = ['Kopsanone']
+known_non_alkaloids = []
 def get_antibacterial_metabolites():
     antibac_table = pd.read_html(os.path.join(_inputs_path, 'antibacterialmetabolites.html'), flavor='html5lib')[0]
     antibac_table = antibac_table[antibac_table['Biological Activity (Function)'] != 'Antibacterial inactive']
@@ -195,10 +196,12 @@ def get_alkaloids_from_metabolites(metabolites_to_check: List[str], output_csv: 
 
     alkaloid_metabolites = []
     suffixes = ["ine-", "ine ", "ine+", "ine("]
-    known_non_alkaloids = []
+
     for i in tqdm(range(len(metabolites_to_check)), desc="Searching for alks", ascii=False, ncols=72):
         m = metabolites_to_check[i]
-        if m not in known_non_alkaloids:
+        if any(alk in m for alk in alkaloids_not_ending_in_ine):
+            alkaloid_metabolites.append(m)
+        elif m not in known_non_alkaloids:
             if any(s in m for s in suffixes) or m.endswith('ine'):
                 formulas = get_formulas_for_metabolite(m)
                 if all("N" in f for f in formulas):

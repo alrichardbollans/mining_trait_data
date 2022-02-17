@@ -11,8 +11,9 @@ from tqdm import tqdm
 import wikipedia_searches
 from pkg_resources import resource_filename
 
-from name_matching_cleaning import get_accepted_info_from_names_in_column, clean_urn_ids, \
-    compile_hits, get_accepted_info_from_ids_in_column
+from cleaning import compile_hits
+
+from automatchnames import get_accepted_info_from_names_in_column, clean_urn_ids, get_accepted_info_from_ids_in_column
 
 ### Inputs
 from taxa_lists.get_taxa_from_wcvp import get_all_taxa
@@ -192,7 +193,6 @@ def prepare_data():
 
 
 def main():
-
     if not os.path.isdir(_temp_outputs_path):
         os.mkdir(_temp_outputs_path)
     if not os.path.isdir(output_path):
