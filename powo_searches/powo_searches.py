@@ -9,7 +9,6 @@ from pykew import powo_terms
 from cleaning import COL_NAMES
 from automatchnames import clean_urn_ids, get_accepted_info_from_ids_in_column
 
-
 def search_powo(search_terms: List[str], accepted_output_file: str, filters: List[str] = None,
                 characteristics_to_search: List[str] = None, families_of_interest: List[str] = None):
     """
@@ -40,8 +39,10 @@ def search_powo(search_terms: List[str], accepted_output_file: str, filters: Lis
     :return:
     """
     if accepted_output_file is not None:
-        if not os.path.isdir(os.path.dirname(accepted_output_file)):
-            os.mkdir(os.path.dirname(accepted_output_file))
+        out_dir = os.path.dirname(accepted_output_file)
+        if not os.path.isdir(out_dir):
+            if out_dir != '':
+                os.mkdir(os.path.dirname(accepted_output_file))
 
     if characteristics_to_search is None:
         powocharacteristics_to_search = [powo_terms.Characteristic.characteristic, powo_terms.Characteristic.use,
@@ -105,5 +106,5 @@ def create_presence_absence_data(powo_hits: pd.DataFrame, terms_indicating_absen
 
 
 if __name__ == '__main__':
-    search_powo(['spine', 'thorn', 'spike'], 'test.csv', 'acc_test.csv')
+    search_powo(['spine', 'thorn', 'spike'], 'acc_test.csv')
     # search_powo(['hairy'], 'test.csv', 'acc_test.csv', families_of_interest=['Rubiaceae', 'Apocynaceae'])
