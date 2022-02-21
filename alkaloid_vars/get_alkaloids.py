@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from pkg_resources import resource_filename
 
-from knapsack_search import rub_apoc_alkaloid_hits_output_csv
+from metabolite_searches import rub_apoc_alkaloid_hits_output_csv
 from cleaning import compile_hits
 from powo_searches import search_powo
 
