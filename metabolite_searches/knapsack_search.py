@@ -24,8 +24,6 @@ rub_apoc_antibac_metabolites_output_csv = os.path.join(_outputs_path, 'rub_apocs
 _check_output_csv = os.path.join(_outputs_path, 'rechecked_taxa.csv')
 
 
-
-
 def get_metabolites_for_taxon(name: str):
     url_name_format = name.replace(' ', '%20')
 
@@ -162,10 +160,8 @@ def output_alkaloids_from_metabolites(metabolites_to_check: List[str], output_cs
 
     alkaloid_metabolites = get_alkaloids_from_metabolites(metabolites_to_check)
 
-    out_dict = {'alks': alkaloid_metabolites}
+    out_df = pd.DataFrame(alkaloid_metabolites)
 
-    out_df = pd.DataFrame(out_dict)
-    out_df["Reason"] = "Contains Nitrogen and ine at end of word"
     out_df["Source"] = "KNApSAcK"
     out_df.to_csv(output_csv)
 
@@ -184,7 +180,8 @@ def get_alkaloid_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, alkaloid_df: 
     """
     alks = alkaloid_df['alks'].values.tolist()
     out_dict = {'taxa': [], 'knapsack_snippet': []}
-    for i in tqdm(range(len(taxa_metabolite_data['taxa'].values)), desc="Searching...", ascii=False, ncols=72):
+    for i in tqdm(range(len(taxa_metabolite_data['taxa'].values)), desc="Adding alkaloid hits to taxa", ascii=False,
+                  ncols=80):
         taxa = taxa_metabolite_data['taxa'].values[i]
 
         taxa_record = taxa_metabolite_data[taxa_metabolite_data['taxa'] == taxa]

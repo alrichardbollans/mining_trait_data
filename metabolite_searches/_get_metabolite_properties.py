@@ -74,28 +74,31 @@ def get_alkaloids_from_kegg_brite():
 
 
 
-def get_alkaloids_from_metabolites(metabolites_to_check: List[str]) -> List[str]:
+def get_alkaloids_from_metabolites(metabolites_to_check: List[str]) -> dict:
     """ Ends in 'ine' usually indicates alkaloid
         Must contain nitrogen
     """
 
     known_alkaloids = get_alkaloids_from_kegg_brite()
 
-    alkaloid_metabolites = []
+    alkaloid_metabolites = {'alks':[],'Reason':[]}
     suffixes = ["ine-", "ine ", "ine+", "ine("]
 
     for i in tqdm(range(len(metabolites_to_check)), desc="Searching for alks", ascii=False, ncols=72):
         m = metabolites_to_check[i]
         if any(alk in m for alk in alkaloids_not_ending_in_ine):
-            alkaloid_metabolites.append(m)
+            alkaloid_metabolites['alks'].append(m)
+            alkaloid_metabolites['Reason'].append('manual')
         elif any(m in alk for alk in known_alkaloids):
-            alkaloid_metabolites.append(m)
+            alkaloid_metabolites['alks'].append(m)
+            alkaloid_metabolites['Reason'].append('Kegg Brite')
             # print(f'{m} added from known_alkaloids')
         elif m not in known_non_alkaloids:
             if any(s in m for s in suffixes) or m.endswith('ine'):
                 formulas = get_formulas_for_metabolite(m)
                 if all("N" in f for f in formulas):
-                    alkaloid_metabolites.append(m)
+                    alkaloid_metabolites['alks'].append(m)
+                    alkaloid_metabolites['Reason'].append('Contains Nitrogen and ine at end of word')
 
     return alkaloid_metabolites
 
