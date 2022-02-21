@@ -1,0 +1,9610 @@
+{
+	"name":"br08003",
+	"children":[
+	{
+		"name":"Alkaloids",
+		"children":[
+		{
+			"name":"Alkaloids derived from ornithine",
+			"children":[
+			{
+				"name":"Pyrrolidine alkaloids",
+				"children":[
+				{
+					"name":"C06179  Hygrine"
+				},
+				{
+					"name":"C11359  (-)-Hygrine"
+				},
+				{
+					"name":"C06521  Cuscohygrine"
+				},
+				{
+					"name":"C10152  (-)-Hygroline"
+				},
+				{
+					"name":"C10172  Stachydrine"
+				},
+				{
+					"name":"C08283  Homostachydrine"
+				},
+				{
+					"name":"C10151  3-Hydroxystachydrine"
+				}
+				]
+			},
+			{
+				"name":"Pyrrolizidine alkaloids",
+				"children":[
+				{
+					"name":"C10124  Alexine"
+				},
+				{
+					"name":"C10263  Amabiline"
+				},
+				{
+					"name":"C10132  Australine"
+				},
+				{
+					"name":"C10277  Anacrotine"
+				},
+				{
+					"name":"C10279  Angularine"
+				},
+				{
+					"name":"C10280  Auriculine"
+				},
+				{
+					"name":"C10282  Clivoline"
+				},
+				{
+					"name":"C10284  Crotanecine"
+				},
+				{
+					"name":"C10286  Doronine"
+				},
+				{
+					"name":"C10299  Echimidine"
+				},
+				{
+					"name":"C10301  Europine"
+				},
+				{
+					"name":"C10304  Fulvine"
+				},
+				{
+					"name":"C10319  Heliosupine"
+				},
+				{
+					"name":"C10321  Heliotridine"
+				},
+				{
+					"name":"C10278  O-7-Angelylheliotridine"
+				},
+				{
+					"name":"C10324  Heliotrine"
+				},
+				{
+					"name":"C10326  Indicine"
+				},
+				{
+					"name":"C10328  Integerrimine"
+				},
+				{
+					"name":"C10330  Intermedine"
+				},
+				{
+					"name":"C16750  Acetylintermedine"
+				},
+				{
+					"name":"C10339  Jacobine"
+				},
+				{
+					"name":"C10341  Lasiocarpine"
+				},
+				{
+					"name":"C10344  Latifoline"
+				},
+				{
+					"name":"C10347  Lycopsamine"
+				},
+				{
+					"name":"C16751  Acetyllycopsamine"
+				},
+				{
+					"name":"C10336  Isolycopsamine"
+				},
+				{
+					"name":"C10348  Macrophylline"
+				},
+				{
+					"name":"C10350  Monocrotaline"
+				},
+				{
+					"name":"C10353  Nemorensine"
+				},
+				{
+					"name":"C10356  Otonecine"
+				},
+				{
+					"name":"C10357  Parsonsine"
+				},
+				{
+					"name":"C10359  Petasitenine"
+				},
+				{
+					"name":"C10361  Phalaenopsine T"
+				},
+				{
+					"name":"C10363  Platyphylline"
+				},
+				{
+					"name":"C10364  Retrorsine"
+				},
+				{
+					"name":"C10375  Riddelline"
+				},
+				{
+					"name":"C10378  Rinderine"
+				},
+				{
+					"name":"C10380  Rosmarinine"
+				},
+				{
+					"name":"C06177  Retronecine"
+				},
+				{
+					"name":"C10383  Sarracine"
+				},
+				{
+					"name":"C06176  Senecionine"
+				},
+				{
+					"name":"C15612  Senecionine N-oxide"
+				},
+				{
+					"name":"C10391  Seneciphylline"
+				},
+				{
+					"name":"C10393  Senecivernine"
+				},
+				{
+					"name":"C10396  Senkirkine"
+				},
+				{
+					"name":"C10400  Supinidine"
+				},
+				{
+					"name":"C10403  Supinine"
+				},
+				{
+					"name":"C10408  Symlandine"
+				},
+				{
+					"name":"C10409  Symphytine"
+				},
+				{
+					"name":"C12440  Trachelanthamidine"
+				},
+				{
+					"name":"C10410  Triangularine"
+				},
+				{
+					"name":"C10411  Tussilagine"
+				},
+				{
+					"name":"C10412  Uplandicine"
+				},
+				{
+					"name":"C10413  Usaramine"
+				}
+				]
+			},
+			{
+				"name":"Tropane alkaloids",
+				"children":[
+				{
+					"name":"C10841  Anatoxin a"
+				},
+				{
+					"name":"C10842  Anisodamine"
+				},
+				{
+					"name":"C10844  Apohyoscine"
+				},
+				{
+					"name":"C01479  Atropine"
+				},
+				{
+					"name":"C10843  Apoatropine"
+				},
+				{
+					"name":"C10845  Belladonnine"
+				},
+				{
+					"name":"C10846  Bellendine"
+				},
+				{
+					"name":"C10849  Brugine"
+				},
+				{
+					"name":"C10850  Calystegin A3"
+				},
+				{
+					"name":"C10581  Cichorine"
+				},
+				{
+					"name":"C01416  Cocaine"
+				},
+				{
+					"name":"C10853  Cochlearine"
+				},
+				{
+					"name":"C10854  Convolamine"
+				},
+				{
+					"name":"C10856  Convolvine"
+				},
+				{
+					"name":"C10852  Cinnamoylcocaine"
+				},
+				{
+					"name":"C10857  Darlingine"
+				},
+				{
+					"name":"C10858  Ecgonine"
+				},
+				{
+					"name":"C12448  Ecgonine methyl ester"
+				},
+				{
+					"name":"C10847  Benzoylecgonine"
+				},
+				{
+					"name":"C12449  Pseudoecgonine"
+				},
+				{
+					"name":"C12450  Pseudoecgonyl-CoA"
+				},
+				{
+					"name":"C02046  L-Hyoscyamine"
+				},
+				{
+					"name":"C03325  (6S)-Hydroxyhyoscyamine"
+				},
+				{
+					"name":"C10862  Norhyoscyamine"
+				},
+				{
+					"name":"C10859  Knightinol"
+				},
+				{
+					"name":"C10860  Littorine"
+				},
+				{
+					"name":"C10861  Meteloidine"
+				},
+				{
+					"name":"C02066  Pseudotropine"
+				},
+				{
+					"name":"C10863  Phyllalbine"
+				},
+				{
+					"name":"C10864  Physoperuvine"
+				},
+				{
+					"name":"C01851  Scopolamine"
+				},
+				{
+					"name":"C10866  Scopoline"
+				},
+				{
+					"name":"C10867  Strobamine"
+				},
+				{
+					"name":"C10848  Tropacocaine"
+				},
+				{
+					"name":"C00729  Tropine"
+				},
+				{
+					"name":"C12453  Acetylpseudotropine"
+				},
+				{
+					"name":"C12452  Acetyltropine"
+				},
+				{
+					"name":"C00783  Tropinone"
+				},
+				{
+					"name":"C10868  Tigloidine"
+				},
+				{
+					"name":"C10869  Valeroidine"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Alkaloids derived from lysine",
+			"children":[
+			{
+				"name":"Indolizidine alkaloids",
+				"children":[
+				{
+					"name":"C02256  Castanospermine"
+				},
+				{
+					"name":"C10591  (+)-Elaeocarpine"
+				},
+				{
+					"name":"C10592  Elaeokanine C"
+				},
+				{
+					"name":"C10155  Lentiginosine"
+				},
+				{
+					"name":"C06185  Slaframine"
+				},
+				{
+					"name":"C10173  Swainsonine"
+				}
+				]
+			},
+			{
+				"name":"Quinolizidine alkaloids",
+				"children":[
+				{
+					"name":"C10747  Albine"
+				},
+				{
+					"name":"C10749  Ammothamnine"
+				},
+				{
+					"name":"C10750  Anagyrine"
+				},
+				{
+					"name":"C10751  Angustifoline"
+				},
+				{
+					"name":"C10753  Argentine"
+				},
+				{
+					"name":"C10752  Aphylline"
+				},
+				{
+					"name":"C10754  Argyrolobine"
+				},
+				{
+					"name":"C10755  Baptifoline"
+				},
+				{
+					"name":"C10758  Camoensine"
+				},
+				{
+					"name":"C10757  Calpurnine"
+				},
+				{
+					"name":"C09856  Carolinianine"
+				},
+				{
+					"name":"C10760  Caulophylline"
+				},
+				{
+					"name":"C09860  Cernuine"
+				},
+				{
+					"name":"C10762  Cinegalline"
+				},
+				{
+					"name":"C10763  Cytisine"
+				},
+				{
+					"name":"C09945  Deoxynupharidine"
+				},
+				{
+					"name":"C10767  Dimethamine"
+				},
+				{
+					"name":"C10769  Lamprolobine"
+				},
+				{
+					"name":"C10772  Lupanine"
+				},
+				{
+					"name":"C02621  13-Hydroxylupanine"
+				},
+				{
+					"name":"C04170  13-(2-Methylcrotonoyl)oxylupanine"
+				},
+				{
+					"name":"C10764  5,6-Dehydrolupanine"
+				},
+				{
+					"name":"C10773  Lupinine"
+				},
+				{
+					"name":"C09874  Lycocernuine"
+				},
+				{
+					"name":"C10774  Matrine"
+				},
+				{
+					"name":"C10776  Nuttalline"
+				},
+				{
+					"name":"C10780  Retamine"
+				},
+				{
+					"name":"C10781  Rhombifoline"
+				},
+				{
+					"name":"C10782  Sophoramine"
+				},
+				{
+					"name":"C10783  (-)-Sparteine"
+				},
+				{
+					"name":"C10789  Thermospine"
+				},
+				{
+					"name":"C10790  Tinctorine"
+				}
+				]
+			},
+			{
+				"name":"Piperidine alkaloids",
+				"children":[
+				{
+					"name":"C10123  Adenocarpine"
+				},
+				{
+					"name":"C10125  Ammodendrine"
+				},
+				{
+					"name":"C06183  L-(+)-Anaferine"
+				},
+				{
+					"name":"C11358  D-(-)-Anaferine"
+				},
+				{
+					"name":"C10127  Anibine"
+				},
+				{
+					"name":"C10130  Astrocasine"
+				},
+				{
+					"name":"C10131  Astrophylline"
+				},
+				{
+					"name":"C10134  Buchananine"
+				},
+				{
+					"name":"C10135  Carpaine"
+				},
+				{
+					"name":"C10136  Cassine"
+				},
+				{
+					"name":"C10139  Cryptophorine"
+				},
+				{
+					"name":"C10141  Deoxymannojirimycin"
+				},
+				{
+					"name":"C10142  Dioscorine"
+				},
+				{
+					"name":"C10144  Fagomine"
+				},
+				{
+					"name":"C10146  Fusaric acid"
+				},
+				{
+					"name":"C10148  Girgensonine"
+				},
+				{
+					"name":"C10150  Harzianopyridone"
+				},
+				{
+					"name":"C10156  Lobelanidine"
+				},
+				{
+					"name":"C10157  Lobelanine"
+				},
+				{
+					"name":"C07475  Lobeline"
+				},
+				{
+					"name":"C10153  Isolobinine"
+				},
+				{
+					"name":"C10158  Mearsine"
+				},
+				{
+					"name":"C10162  Nigrifactin"
+				},
+				{
+					"name":"C10163  Nitramine"
+				},
+				{
+					"name":"C10164  Picolinic acid"
+				},
+				{
+					"name":"C10166  Piplartine"
+				},
+				{
+					"name":"C06182  Pelletierine"
+				},
+				{
+					"name":"C06184  N-Methylpelletierine"
+				},
+				{
+					"name":"C10865  Pseudopelletierine"
+				},
+				{
+					"name":"C00408  L-Pipecolate"
+				},
+				{
+					"name":"C06181  Piperideine"
+				},
+				{
+					"name":"C03882  Piperine"
+				},
+				{
+					"name":"C10167  (+)-Prosopinine"
+				},
+				{
+					"name":"C10168  Pseudoconhydrine"
+				},
+				{
+					"name":"C10170  Santiaguine"
+				},
+				{
+					"name":"C10171  (-)-Sedamine"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Alkaloids derived from nicotinic acid",
+			"children":[
+			{
+				"name":"Pyridine alkaloids",
+				"children":[
+				{
+					"name":"C06180  Anabasine"
+				},
+				{
+					"name":"C11357  (-)-Anabasine"
+				},
+				{
+					"name":"C10126  Anatabine"
+				},
+				{
+					"name":"C10128  Arecaidine"
+				},
+				{
+					"name":"C10129  Arecoline"
+				},
+				{
+					"name":"C10149  Guvacine"
+				},
+				{
+					"name":"C10160  Myosmine"
+				},
+				{
+					"name":"C10161  Nicotyrine"
+				},
+				{
+					"name":"C00153  Nicotinamide"
+				},
+				{
+					"name":"C00253  Nicotinate"
+				},
+				{
+					"name":"C00745  Nicotine"
+				},
+				{
+					"name":"C01004  N-Methylnicotinate"
+				},
+				{
+					"name":"C01020  6-Hydroxynicotinate"
+				},
+				{
+					"name":"C01185  Nicotinate D-ribonucleotide"
+				},
+				{
+					"name":"C13051  Nicotinic acid adenine dinucleotide phosphate"
+				},
+				{
+					"name":"C06524  Nornicotine"
+				},
+				{
+					"name":"C11360  (+)-Nornicotine"
+				},
+				{
+					"name":"C01526  Ricinine"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Alkaloids derived from tyrosine",
+			"children":[
+			{
+				"name":"Isoquinoline alkaloids",
+				"children":[
+				{
+					"name":"C08514  3-Acetylnerbowdine"
+				},
+				{
+					"name":"C05322  7-O-Acetylsalutaridinol"
+				},
+				{
+					"name":"C09322  Actinodaphnine"
+				},
+				{
+					"name":"C09323  Adiantifoline"
+				},
+				{
+					"name":"C09324  (+)-Adlumine"
+				},
+				{
+					"name":"C09325  Aknadicine"
+				},
+				{
+					"name":"C09327  Alangicine"
+				},
+				{
+					"name":"C09328  Alangimarckine"
+				},
+				{
+					"name":"C09330  Alangiside"
+				},
+				{
+					"name":"C11813  Demethylalangiside"
+				},
+				{
+					"name":"C11814  Demethylisoalangiside"
+				},
+				{
+					"name":"C02134  Allocryptopine"
+				},
+				{
+					"name":"C08516  Amaryllisine"
+				},
+				{
+					"name":"C08517  Ambelline"
+				},
+				{
+					"name":"C09334  Amurine"
+				},
+				{
+					"name":"C09337  Ankorine"
+				},
+				{
+					"name":"C09338  Annolobine"
+				},
+				{
+					"name":"C09339  (-)-Annonaine"
+				},
+				{
+					"name":"C09340  (-)-Apoglaziovine"
+				},
+				{
+					"name":"C08469  Aristolochic acid"
+				},
+				{
+					"name":"C11141  (+)-Atherospermoline"
+				},
+				{
+					"name":"C16707  (S)-Autumnaline"
+				},
+				{
+					"name":"C09357  Berbamine"
+				},
+				{
+					"name":"C05177  Berbamunine"
+				},
+				{
+					"name":"C06512  2'-Norberbamunine"
+				},
+				{
+					"name":"C09352  (+)-Bebeerine"
+				},
+				{
+					"name":"C09360  Berberastine"
+				},
+				{
+					"name":"C00757  Berberine"
+				},
+				{
+					"name":"C05204  (S)-Tetrahydroprotoberberine"
+				},
+				{
+					"name":"C09364  Bicuculline"
+				},
+				{
+					"name":"C09365  Boldine"
+				},
+				{
+					"name":"C09541  (S)-Isoboldine"
+				},
+				{
+					"name":"C09366  Bracteoline"
+				},
+				{
+					"name":"C09367  Bulbocapnine"
+				},
+				{
+					"name":"C09368  (-)-Caaverine"
+				},
+				{
+					"name":"C09369  Calafatimine"
+				},
+				{
+					"name":"C11818  (R)-Canadine"
+				},
+				{
+					"name":"C03329  (S)-Canadine"
+				},
+				{
+					"name":"C09371  Capaurine"
+				},
+				{
+					"name":"C09372  Capnoidine"
+				},
+				{
+					"name":"C08521  Caranine"
+				},
+				{
+					"name":"C08513  Acetylcaranine"
+				},
+				{
+					"name":"C08522  Caribine"
+				},
+				{
+					"name":"C08523  Carinatine"
+				},
+				{
+					"name":"C09375  (+-)-Carnegine"
+				},
+				{
+					"name":"C09377  Caseadine"
+				},
+				{
+					"name":"C09380  Cassythine"
+				},
+				{
+					"name":"C08524  Cavinine"
+				},
+				{
+					"name":"C09389  (+)-Cassythicine"
+				},
+				{
+					"name":"C09390  Cephaeline"
+				},
+				{
+					"name":"C10580  Cephalotaxine"
+				},
+				{
+					"name":"C09391  Cepharanthine"
+				},
+				{
+					"name":"C05174  (S)-Cheilanthifoline"
+				},
+				{
+					"name":"C12242  Chelidonine"
+				},
+				{
+					"name":"C06327  Chelirubine"
+				},
+				{
+					"name":"C05193  12-Hydroxydihydrochelirubine"
+				},
+				{
+					"name":"C05194  Dihydrochelirubine"
+				},
+				{
+					"name":"C06161  (S)-Coclaurine"
+				},
+				{
+					"name":"C05243  (R)-N-Methylcoclaurine"
+				},
+				{
+					"name":"C05176  (S)-N-Methylcoclaurine"
+				},
+				{
+					"name":"C06160  (S)-Norcoclaurine"
+				},
+				{
+					"name":"C05202  3'-Hydroxy-N-methyl-(S)-coclaurine"
+				},
+				{
+					"name":"C06174  Codeine"
+				},
+				{
+					"name":"C06171  Codeinone"
+				},
+				{
+					"name":"C07592  Colchicine"
+				},
+				{
+					"name":"C01795  Columbamine"
+				},
+				{
+					"name":"C04118  (S)-Tetrahydrocolumbamine"
+				},
+				{
+					"name":"C09393  Corpaine"
+				},
+				{
+					"name":"C15530  Corydaline"
+				},
+				{
+					"name":"C17591  (S)-Corytuberine"
+				},
+				{
+					"name":"C08525  Crinamine"
+				},
+				{
+					"name":"C12162  Crinine"
+				},
+				{
+					"name":"C09415  Daphnandrine"
+				},
+				{
+					"name":"C09419  Dauricine"
+				},
+				{
+					"name":"C11250  Demecolcine"
+				},
+				{
+					"name":"C16710  N-Formyldemecolcine"
+				},
+				{
+					"name":"C17426  Dicentrine"
+				},
+				{
+					"name":"C19980  Domesticine"
+				},
+				{
+					"name":"C09421  Emetine"
+				},
+				{
+					"name":"C11816  Protoemetine"
+				},
+				{
+					"name":"C09420  Emetamine"
+				},
+				{
+					"name":"C09422  Erysonine"
+				},
+				{
+					"name":"C09423  Erysotrine"
+				},
+				{
+					"name":"C09424  Erythratidine"
+				},
+				{
+					"name":"C06531  alpha-Erythroidine"
+				},
+				{
+					"name":"C13682  Dihydro-beta-erythroidine"
+				},
+				{
+					"name":"C09430  Fagaridine"
+				},
+				{
+					"name":"C09438  Fagaronine"
+				},
+				{
+					"name":"C09441  Fetidine"
+				},
+				{
+					"name":"C16713  Floramultine"
+				},
+				{
+					"name":"C09444  Fumaricine"
+				},
+				{
+					"name":"C08526  Galanthamine"
+				},
+				{
+					"name":"C12173  Norgalanthamine"
+				},
+				{
+					"name":"C09445  Gigantine"
+				},
+				{
+					"name":"C09446  Glaucine"
+				},
+				{
+					"name":"C19981  Gloriosine"
+				},
+				{
+					"name":"C06511  Guattegaumerine"
+				},
+				{
+					"name":"C09458  Gyrocarpine"
+				},
+				{
+					"name":"C08527  Haemanthamine"
+				},
+				{
+					"name":"C10597  Harringtonine"
+				},
+				{
+					"name":"C09461  Hernandezine"
+				},
+				{
+					"name":"C09459  Hasubanonine"
+				},
+				{
+					"name":"C09460  Heliamine"
+				},
+				{
+					"name":"C09462  (-)-alpha-Hydrastine"
+				},
+				{
+					"name":"C13799  (+)-beta-Hydrastine"
+				},
+				{
+					"name":"C16708  Isoandrocymbine"
+				},
+				{
+					"name":"C16709  O-Methylandrocymbine"
+				},
+				{
+					"name":"C09464  Ipecoside"
+				},
+				{
+					"name":"C07304  Deacetylisoipecoside"
+				},
+				{
+					"name":"C07307  Deacetylipecoside"
+				},
+				{
+					"name":"C09543  Isochondrodendrine"
+				},
+				{
+					"name":"C09546  Isococculidine"
+				},
+				{
+					"name":"C09549  Isocorydine"
+				},
+				{
+					"name":"C09553  Jatrorrhizine"
+				},
+				{
+					"name":"C16714  Kreysigine"
+				},
+				{
+					"name":"C17592  Laudanine"
+				},
+				{
+					"name":"C09555  (-)-Laudanidine"
+				},
+				{
+					"name":"C09558  Laudanosine"
+				},
+				{
+					"name":"C02916  (S)-Norlaudanosoline"
+				},
+				{
+					"name":"C06517  (S)-6-O-Methylnorlaudanosoline"
+				},
+				{
+					"name":"C09573  Lophophorine"
+				},
+				{
+					"name":"C09571  Lophocerine"
+				},
+				{
+					"name":"C09575  (+)-Luguine"
+				},
+				{
+					"name":"C08532  Lycorine"
+				},
+				{
+					"name":"C09580  Macoline"
+				},
+				{
+					"name":"C09223  Mesembrenone"
+				},
+				{
+					"name":"C09224  Mesembrine"
+				},
+				{
+					"name":"C09225  Mesembrinol"
+				},
+				{
+					"name":"C06165  Macarpine"
+				},
+				{
+					"name":"C05316  Dihydromacarpine"
+				},
+				{
+					"name":"C09581  Magnoflorine"
+				},
+				{
+					"name":"C09589  (+)-Mecambroline"
+				},
+				{
+					"name":"C01516  Morphine"
+				},
+				{
+					"name":"C01735  Morphinone"
+				},
+				{
+					"name":"C19985  Nantenine"
+				},
+				{
+					"name":"C09591  Narceine"
+				},
+				{
+					"name":"C09592  alpha-Narcotine"
+				},
+				{
+					"name":"C09593  Narcotoline"
+				},
+				{
+					"name":"C08534  Narwedine"
+				},
+				{
+					"name":"C16703  N-Demethylnarwedine"
+				},
+				{
+					"name":"C09594  Neopine"
+				},
+				{
+					"name":"C06172  Neopinone"
+				},
+				{
+					"name":"C09595  Nitidine"
+				},
+				{
+					"name":"C06518  (S)-Nororientaline"
+				},
+				{
+					"name":"C09596  Obaberine"
+				},
+				{
+					"name":"C09597  Ochotensine"
+				},
+				{
+					"name":"C06175  Oripavine"
+				},
+				{
+					"name":"C09598  Oxyacanthine"
+				},
+				{
+					"name":"C05315  Palmatine"
+				},
+				{
+					"name":"C02890  Tetrahydropalmatine"
+				},
+				{
+					"name":"C06533  Papaverine"
+				},
+				{
+					"name":"C09599  Parfumine"
+				},
+				{
+					"name":"C09604  (-)-Pellotine"
+				},
+				{
+					"name":"C09608  Phaeantharine"
+				},
+				{
+					"name":"C05189  Protopine"
+				},
+				{
+					"name":"C05190  6-Hydroxyprotopine"
+				},
+				{
+					"name":"C09612  Psychotrine"
+				},
+				{
+					"name":"C09613  Pukateine"
+				},
+				{
+					"name":"C09615  Pycnamine"
+				},
+				{
+					"name":"C05178  (R)-Reticuline"
+				},
+				{
+					"name":"C02105  (S)-Reticuline"
+				},
+				{
+					"name":"C06516  (R)-Norreticuline"
+				},
+				{
+					"name":"C06520  (S)-Norreticuline"
+				},
+				{
+					"name":"C09624  Rodiasine"
+				},
+				{
+					"name":"C09642  (-)-Salsolinol"
+				},
+				{
+					"name":"C05179  Salutaridine"
+				},
+				{
+					"name":"C05220  Salutaridinol"
+				},
+				{
+					"name":"C06162  Sanguinarine"
+				},
+				{
+					"name":"C05191  Dihydrosanguinarine"
+				},
+				{
+					"name":"C05247  10-Hydroxydihydrosanguinarine"
+				},
+				{
+					"name":"C02106  (S)-Scoulerine"
+				},
+				{
+					"name":"C09643  Sinomenine"
+				},
+				{
+					"name":"C05175  Stylopine"
+				},
+				{
+					"name":"C06163  (S)-cis-N-methylstylopine"
+				},
+				{
+					"name":"C09654  (+)-Tetrandrine"
+				},
+				{
+					"name":"C09655  Thalicarpine"
+				},
+				{
+					"name":"C09656  Thalidasine"
+				},
+				{
+					"name":"C09590  Thalmidine"
+				},
+				{
+					"name":"C09659  Thalmine"
+				},
+				{
+					"name":"C09661  Thalsimine"
+				},
+				{
+					"name":"C06173  Thebaine"
+				},
+				{
+					"name":"C09550  Isothebaine"
+				},
+				{
+					"name":"C09667  Tiliacorine"
+				},
+				{
+					"name":"C07547  Tubocurarine"
+				},
+				{
+					"name":"C09248  Tubulosine"
+				},
+				{
+					"name":"C11817  Deoxytubulosine"
+				},
+				{
+					"name":"C09670  Xylopine"
+				},
+				{
+					"name":"C09671  Xylopinine"
+				}
+				]
+			},
+			{
+				"name":"Thiazole alkaloids",
+				"children":[
+				{
+					"name":"C04294  5-(2-Hydroxyethyl)-4-methylthiazole"
+				},
+				{
+					"name":"C04327  4-Methyl-5-(2-phosphoethyl)-thiazole"
+				}
+				]
+			},
+			{
+				"name":"Tyramine derivatives",
+				"children":[
+				{
+					"name":"C10575  Candicine"
+				},
+				{
+					"name":"C03758  Dopamine"
+				},
+				{
+					"name":"C06199  Hordenine"
+				},
+				{
+					"name":"C06546  Mescaline"
+				},
+				{
+					"name":"C08310  N-Methylmescaline"
+				},
+				{
+					"name":"C00483  Tyramine"
+				},
+				{
+					"name":"C02442  N-Methyltyramine"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Alkaloids derived from tryptophan and anthranilic acid",
+			"children":[
+			{
+				"name":"Acridone alkaloids",
+				"children":[
+				{
+					"name":"C10632  Acronycine"
+				},
+				{
+					"name":"C10643  Arborinine"
+				},
+				{
+					"name":"C10644  Atalanine"
+				},
+				{
+					"name":"C10645  Atalaphylline"
+				},
+				{
+					"name":"C10653  Buntanine"
+				},
+				{
+					"name":"C10666  Evoprenine"
+				},
+				{
+					"name":"C10668  Evoxanthidine"
+				},
+				{
+					"name":"C10681  Furofoline I"
+				},
+				{
+					"name":"C10685  Glycobismine A"
+				},
+				{
+					"name":"C10722  Melicopicine"
+				},
+				{
+					"name":"C10724  Melicopine"
+				},
+				{
+					"name":"C10738  Rutacridone"
+				},
+				{
+					"name":"C10739  Rutacridone epoxide"
+				}
+				]
+			},
+			{
+				"name":"Indole alkaloids",
+				"children":[
+				{
+					"name":"C09019  1-Acetylaspidoalbidine"
+				},
+				{
+					"name":"C09023  Agroclavine"
+				},
+				{
+					"name":"C09024  Ajmalicine"
+				},
+				{
+					"name":"C11683  19-epi-Ajmalicine"
+				},
+				{
+					"name":"C06542  Ajmaline"
+				},
+				{
+					"name":"C09025  Akuammicine"
+				},
+				{
+					"name":"C09028  Alstonine"
+				},
+				{
+					"name":"C11682  Tetrahydroalstonine"
+				},
+				{
+					"name":"C09034  Apodine"
+				},
+				{
+					"name":"C09035  Apovincamine"
+				},
+				{
+					"name":"C09037  Aricine"
+				},
+				{
+					"name":"C09040  Aspidofractine"
+				},
+				{
+					"name":"C09042  Aspidospermine"
+				},
+				{
+					"name":"C09045  Baloxine"
+				},
+				{
+					"name":"C09046  Bleekerine"
+				},
+				{
+					"name":"C09054  Borrerine"
+				},
+				{
+					"name":"C09083  Brevicolline"
+				},
+				{
+					"name":"C09084  Brucine"
+				},
+				{
+					"name":"C08299  Bufotenine"
+				},
+				{
+					"name":"C09107  Catharanthine"
+				},
+				{
+					"name":"C11680  Cathenamine"
+				},
+				{
+					"name":"C11681  19-epi-Cathenamine"
+				},
+				{
+					"name":"C09129  Catharine"
+				},
+				{
+					"name":"C10904  Cabucine"
+				},
+				{
+					"name":"C09097  Calycanthidine"
+				},
+				{
+					"name":"C09139  Coronaridine"
+				},
+				{
+					"name":"C09144  C-Curarine"
+				},
+				{
+					"name":"C11679  4,21-Dehydrocorynantheine aldehyde"
+				},
+				{
+					"name":"C06541  Deserpidine"
+				},
+				{
+					"name":"C11678  Dialdehyde"
+				},
+				{
+					"name":"C09146  Eburnamine"
+				},
+				{
+					"name":"C09149  Eburnamonine"
+				},
+				{
+					"name":"C11784  Echitovenine"
+				},
+				{
+					"name":"C09154  Ellipticine"
+				},
+				{
+					"name":"C09160  Ergine"
+				},
+				{
+					"name":"C07545  alpha-Ergocryptine"
+				},
+				{
+					"name":"C07543  Ergonovine"
+				},
+				{
+					"name":"C07544  Ergotamine"
+				},
+				{
+					"name":"C09162  Ergocornine"
+				},
+				{
+					"name":"C09164  Ergocristine"
+				},
+				{
+					"name":"C06068  Elymoclavine"
+				},
+				{
+					"name":"C09191  Fruticosonine"
+				},
+				{
+					"name":"C19982  Gelsedine"
+				},
+				{
+					"name":"C09203  Gelsemicine"
+				},
+				{
+					"name":"C09207  Gelsemine"
+				},
+				{
+					"name":"C02151  Geissoschizine"
+				},
+				{
+					"name":"C03677  4,21-Dehydrogeissoschizine"
+				},
+				{
+					"name":"C08304  Gramine"
+				},
+				{
+					"name":"C09209  Harman"
+				},
+				{
+					"name":"C06536  Harmaline"
+				},
+				{
+					"name":"C06538  Harmine"
+				},
+				{
+					"name":"C11677  Horhammericine"
+				},
+				{
+					"name":"C09243  Tetrahydroharmine"
+				},
+				{
+					"name":"C09211  Hodgkinsine"
+				},
+				{
+					"name":"C09214  Ibogaine"
+				},
+				{
+					"name":"C09215  Ibogamine"
+				},
+				{
+					"name":"C00954  Indole-3-acetate"
+				},
+				{
+					"name":"C09218  Leurosidine"
+				},
+				{
+					"name":"C09219  Leurosine"
+				},
+				{
+					"name":"C11676  Lochnericine"
+				},
+				{
+					"name":"C11812  Lochnerinine"
+				},
+				{
+					"name":"C07541  Lysergic acid"
+				},
+				{
+					"name":"C07542  Lysergic acid diethylamide"
+				},
+				{
+					"name":"C01598  Melatonin"
+				},
+				{
+					"name":"C11783  Minovincinine"
+				},
+				{
+					"name":"C11810  Norajmaline"
+				},
+				{
+					"name":"C11809  17-O-Acetylnorajmaline"
+				},
+				{
+					"name":"C09230  Olivacine"
+				},
+				{
+					"name":"C09231  Perlolyrine"
+				},
+				{
+					"name":"C09233  Psychotridine"
+				},
+				{
+					"name":"C11632  Polyneuridine aldehyde"
+				},
+				{
+					"name":"C09234  Quadrigemine A"
+				},
+				{
+					"name":"C06539  Reserpine"
+				},
+				{
+					"name":"C06540  Rescinnamine"
+				},
+				{
+					"name":"C02074  Raucaffricine"
+				},
+				{
+					"name":"C09240  Sempervirine"
+				},
+				{
+					"name":"C00780  Serotonin"
+				},
+				{
+					"name":"C09241  Serpentine"
+				},
+				{
+					"name":"C06522  Strychnine"
+				},
+				{
+					"name":"C16724  Strictosamide"
+				},
+				{
+					"name":"C11691  Stemmadenine"
+				},
+				{
+					"name":"C03470  3-alpha(S)-Strictosidine"
+				},
+				{
+					"name":"C09239  Sarpagine"
+				},
+				{
+					"name":"C11635  10-Deoxysarpagine"
+				},
+				{
+					"name":"C03309  Strictosidine aglycone"
+				},
+				{
+					"name":"C09274  Tabernanthine"
+				},
+				{
+					"name":"C09244  Tabersonine"
+				},
+				{
+					"name":"C04578  16-Methoxy-2,3-dihydro-3-hydroxytabersonine"
+				},
+				{
+					"name":"C11642  19-Hydroxytabersonine"
+				},
+				{
+					"name":"C11643  16-Hydroxytabersonine"
+				},
+				{
+					"name":"C11675  16-Methoxytabersonine"
+				},
+				{
+					"name":"C12179  Tazettine"
+				},
+				{
+					"name":"C09246  C-Toxiferine I"
+				},
+				{
+					"name":"C00398  Tryptamine"
+				},
+				{
+					"name":"C06213  N-Methyltryptamine"
+				},
+				{
+					"name":"C08302  N,N-Dimethyltryptamine"
+				},
+				{
+					"name":"C08309  N,N-Dimethyl-5-methoxytryptamine"
+				},
+				{
+					"name":"C11634  Vellosimine"
+				},
+				{
+					"name":"C11633  16-Epivellosimine"
+				},
+				{
+					"name":"C07201  Vinblastine"
+				},
+				{
+					"name":"C11641  3',4'-Anhydrovinblastine"
+				},
+				{
+					"name":"C09251  Vincamine"
+				},
+				{
+					"name":"C07204  Vincristine"
+				},
+				{
+					"name":"C01626  Vindoline"
+				},
+				{
+					"name":"C01091  Deacetylvindoline"
+				},
+				{
+					"name":"C02673  Desacetoxyvindoline"
+				},
+				{
+					"name":"C11807  Vinorine"
+				},
+				{
+					"name":"C09255  Vomicine"
+				},
+				{
+					"name":"C01761  Vomilenine"
+				},
+				{
+					"name":"C11808  1,2-Dihydrovomilenine"
+				},
+				{
+					"name":"C09256  Yohimbine"
+				}
+				]
+			},
+			{
+				"name":"Quinazoline alkaloids",
+				"children":[
+				{
+					"name":"C10635  Aniflorine"
+				},
+				{
+					"name":"C10637  Anisessine"
+				},
+				{
+					"name":"C10639  Anisotine"
+				},
+				{
+					"name":"C10642  Arborine"
+				},
+				{
+					"name":"C09187  Evodiamine"
+				},
+				{
+					"name":"C10677  Febrifugine"
+				},
+				{
+					"name":"C10687  Glycophymoline"
+				},
+				{
+					"name":"C10688  Glycosminine"
+				},
+				{
+					"name":"C10733  Peganine"
+				},
+				{
+					"name":"C10656  Deoxypeganine"
+				},
+				{
+					"name":"C09238  Rutecarpine"
+				},
+				{
+					"name":"C10742  Tryptanthrine"
+				},
+				{
+					"name":"C10743  Vasicinol"
+				},
+				{
+					"name":"C10744  Vasicinone"
+				}
+				]
+			},
+			{
+				"name":"Quinoline alkaloids",
+				"children":[
+				{
+					"name":"C10629  Acronidine"
+				},
+				{
+					"name":"C10631  Acronycidine"
+				},
+				{
+					"name":"C10634  Acrophylline"
+				},
+				{
+					"name":"C09032  Angustine"
+				},
+				{
+					"name":"C10641  Aurachin D"
+				},
+				{
+					"name":"C10660  Dictamnine"
+				},
+				{
+					"name":"C10697  Isodictamnine"
+				},
+				{
+					"name":"C10647  Balfourodine"
+				},
+				{
+					"name":"C10648  Balfourodinium"
+				},
+				{
+					"name":"C10649  Bucharaine"
+				},
+				{
+					"name":"C10652  Bucharidine"
+				},
+				{
+					"name":"C01897  Camptothecin"
+				},
+				{
+					"name":"C10654  Casimiroin"
+				},
+				{
+					"name":"C11379  Cinchonidine"
+				},
+				{
+					"name":"C06528  Cinchonine"
+				},
+				{
+					"name":"C10655  Cusparine"
+				},
+				{
+					"name":"C10661  Dubamine"
+				},
+				{
+					"name":"C10662  Dubinidine"
+				},
+				{
+					"name":"C10663  Echinopsine"
+				},
+				{
+					"name":"C10665  Echinorine"
+				},
+				{
+					"name":"C10670  Evoxine"
+				},
+				{
+					"name":"C10676  gamma-Fagarine"
+				},
+				{
+					"name":"C10678  Flindersiamine"
+				},
+				{
+					"name":"C10679  Flindersine"
+				},
+				{
+					"name":"C10731  N-Methylflindersine"
+				},
+				{
+					"name":"C10683  Galipine"
+				},
+				{
+					"name":"C10686  Glycoperine"
+				},
+				{
+					"name":"C10689  Graveoline"
+				},
+				{
+					"name":"C10691  Haplodimerine"
+				},
+				{
+					"name":"C10692  Haplophyllidine"
+				},
+				{
+					"name":"C10694  Haplopine"
+				},
+				{
+					"name":"C16641  Irinotecan"
+				},
+				{
+					"name":"C10699  Japonine"
+				},
+				{
+					"name":"C10701  Kokusaginine"
+				},
+				{
+					"name":"C10703  Leiokinine A"
+				},
+				{
+					"name":"C10705  Lemobiline"
+				},
+				{
+					"name":"C10710  Lunacridine"
+				},
+				{
+					"name":"C10711  Lunacrine"
+				},
+				{
+					"name":"C10713  Lunamarine"
+				},
+				{
+					"name":"C10714  Maculine"
+				},
+				{
+					"name":"C10716  Maculosidine"
+				},
+				{
+					"name":"C10718  Maculosine"
+				},
+				{
+					"name":"C10727  Melochinone"
+				},
+				{
+					"name":"C10732  O-Methylptelefolonium"
+				},
+				{
+					"name":"C10734  Pteleatine"
+				},
+				{
+					"name":"C10735  Ribalinium"
+				},
+				{
+					"name":"C06527  Quinidine"
+				},
+				{
+					"name":"C07344  3-Hydroxyquinine"
+				},
+				{
+					"name":"C10696  Hydroquinidine"
+				},
+				{
+					"name":"C10736  Robustine"
+				},
+				{
+					"name":"C10740  Skimmianine"
+				},
+				{
+					"name":"C10741  Swietenidin B"
+				},
+				{
+					"name":"C10745  Veprisinium"
+				}
+				]
+			},
+			{
+				"name":"Pyrroloindole alkaloids",
+				"children":[
+				{
+					"name":"C09133  (-)-Chimonanthine"
+				},
+				{
+					"name":"C09170  Eseramine"
+				},
+				{
+					"name":"C09176  Eseridine"
+				},
+				{
+					"name":"C06535  Physostigmine"
+				},
+				{
+					"name":"C09232  Physovenine"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Alkaloids derived from histidine",
+			"children":[
+			{
+				"name":"Imidazole alkaloids",
+				"children":[
+				{
+					"name":"C16696  Dolichotheline"
+				},
+				{
+					"name":"C07474  Pilocarpine"
+				},
+				{
+					"name":"C10610  Pilosine"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Alkaloids derived by amination reactions",
+			"children":[
+			{
+				"name":"Acetate derived alkaloids",
+				"children":[
+				{
+					"name":"C10138  gamma-Coniceine"
+				},
+				{
+					"name":"C06523  Coniine"
+				},
+				{
+					"name":"C10159  Methylconiine"
+				},
+				{
+					"name":"C10165  Pinidine"
+				},
+				{
+					"name":"C09335  Ancistrocladine"
+				},
+				{
+					"name":"C12340  Ancistrotectorine"
+				},
+				{
+					"name":"C12339  Dioncopeltine A"
+				},
+				{
+					"name":"C12336  Dioncophylline A"
+				},
+				{
+					"name":"C12337  Dioncophylline C"
+				},
+				{
+					"name":"C12338  Korupensamine A"
+				}
+				]
+			},
+			{
+				"name":"Phenylalanine derived alkaloids",
+				"children":[
+				{
+					"name":"C08300  D-Cathine"
+				},
+				{
+					"name":"C08301  D-Cathinone"
+				},
+				{
+					"name":"C01575  Ephedrine"
+				},
+				{
+					"name":"C02765  (+)-Pseudoephedrine"
+				}
+				]
+			},
+			{
+				"name":"Terpenoid alkaloids",
+				"children":[
+				{
+					"name":"C08655  Aconifine"
+				},
+				{
+					"name":"C19990  Aconine"
+				},
+				{
+					"name":"C06091  Aconitine"
+				},
+				{
+					"name":"C08654  Acetylbrowniine"
+				},
+				{
+					"name":"C08656  Ajaconine"
+				},
+				{
+					"name":"C08657  Anhwiedelphinine"
+				},
+				{
+					"name":"C08658  Anopterine"
+				},
+				{
+					"name":"C08660  Atisine"
+				},
+				{
+					"name":"C08661  Avadharidine"
+				},
+				{
+					"name":"C08662  Barbinine"
+				},
+				{
+					"name":"C08669  Cassaidine"
+				},
+				{
+					"name":"C08670  Cassaine"
+				},
+				{
+					"name":"C08667  Cardiopetalidine"
+				},
+				{
+					"name":"C08671  Condelphine"
+				},
+				{
+					"name":"C08672  Cuauchichicine"
+				},
+				{
+					"name":"C08674  Delavaine A"
+				},
+				{
+					"name":"C08675  Delcorine"
+				},
+				{
+					"name":"C08676  Delcosine"
+				},
+				{
+					"name":"C08677  Delphinine"
+				},
+				{
+					"name":"C08678  Delsoline"
+				},
+				{
+					"name":"C08679  Deltaline"
+				},
+				{
+					"name":"C08680  Denudatine"
+				},
+				{
+					"name":"C08681  Elatine"
+				},
+				{
+					"name":"C08682  Erythrophleguine"
+				},
+				{
+					"name":"C08683  Falaconitine"
+				},
+				{
+					"name":"C08684  Finaconitine"
+				},
+				{
+					"name":"C08685  Garryine"
+				},
+				{
+					"name":"C08687  Hetisine"
+				},
+				{
+					"name":"C08688  Hypaconitine"
+				},
+				{
+					"name":"C08659  Inuline"
+				},
+				{
+					"name":"C08689  Icaceine"
+				},
+				{
+					"name":"C08690  Icacine"
+				},
+				{
+					"name":"C08691  Indaconitine"
+				},
+				{
+					"name":"C08692  Jesaconitine"
+				},
+				{
+					"name":"C08693  Karakoline"
+				},
+				{
+					"name":"C08694  Lappaconitine"
+				},
+				{
+					"name":"C08695  Lindheimerine"
+				},
+				{
+					"name":"C08696  Lycaconitine"
+				},
+				{
+					"name":"C08697  Lycoctonine"
+				},
+				{
+					"name":"C08698  Mesaconitine"
+				},
+				{
+					"name":"C08699  Methyllycaconitine"
+				},
+				{
+					"name":"C08700  Napelline"
+				},
+				{
+					"name":"C08701  Norerythrostachaldine"
+				},
+				{
+					"name":"C08702  Nudicauline"
+				},
+				{
+					"name":"C08673  14-Deacetylnudicauline"
+				},
+				{
+					"name":"C08704  Pseudoaconitine"
+				},
+				{
+					"name":"C08705  Ryanodine"
+				},
+				{
+					"name":"C08668  Septentriodine"
+				},
+				{
+					"name":"C08706  Septentrionine"
+				},
+				{
+					"name":"C08707  Songorine"
+				},
+				{
+					"name":"C08708  Spiradine A"
+				},
+				{
+					"name":"C08709  Spiramine A"
+				},
+				{
+					"name":"C08710  Spirasine I"
+				},
+				{
+					"name":"C08711  Spiredine"
+				},
+				{
+					"name":"C08712  Staphidine"
+				},
+				{
+					"name":"C08713  Talatizamine"
+				},
+				{
+					"name":"C08714  Thalicsessine"
+				},
+				{
+					"name":"C08715  Tricornine"
+				},
+				{
+					"name":"C06092  Veatchine"
+				}
+				]
+			},
+			{
+				"name":"Steroid alkaloids",
+				"children":[
+				{
+					"name":"C06543  Solanidine"
+				},
+				{
+					"name":"C06545  Conessine"
+				},
+				{
+					"name":"C10795  Buxamine E"
+				},
+				{
+					"name":"C10796  alpha-Chaconine"
+				},
+				{
+					"name":"C10797  Cyclobuxine D"
+				},
+				{
+					"name":"C10798  Cyclopamine"
+				},
+				{
+					"name":"C10799  Cycloprotobuxine C"
+				},
+				{
+					"name":"C10801  Cyclovirobuxine C"
+				},
+				{
+					"name":"C10803  Demissine"
+				},
+				{
+					"name":"C10806  Funtumine"
+				},
+				{
+					"name":"C10807  Germine"
+				},
+				{
+					"name":"C10808  Imperialine"
+				},
+				{
+					"name":"C10810  Irehine"
+				},
+				{
+					"name":"C10811  Jervine"
+				},
+				{
+					"name":"C10813  Kurchessine"
+				},
+				{
+					"name":"C10814  Paravallarine"
+				},
+				{
+					"name":"C10830  Peimine"
+				},
+				{
+					"name":"C10815  Protoveratrine A"
+				},
+				{
+					"name":"C10816  Protoveratrine B"
+				},
+				{
+					"name":"C10817  Protoverine"
+				},
+				{
+					"name":"C10818  Solacapine"
+				},
+				{
+					"name":"C10819  Solamargine"
+				},
+				{
+					"name":"C10820  Solanine"
+				},
+				{
+					"name":"C10821  Solanocapsine"
+				},
+				{
+					"name":"C10822  Solasodine"
+				},
+				{
+					"name":"C10824  Solasonine"
+				},
+				{
+					"name":"C10825  Terminaline"
+				},
+				{
+					"name":"C10826  Tomatidine"
+				},
+				{
+					"name":"C10827  Tomatine"
+				},
+				{
+					"name":"C10828  Veracevine"
+				},
+				{
+					"name":"C10829  Veratramine"
+				},
+				{
+					"name":"C06544  Veratridine"
+				},
+				{
+					"name":"C10831  Zygadenine"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Others",
+			"children":[
+			{
+				"name":"Purine alkaloids",
+				"children":[
+				{
+					"name":"C07481  Caffeine"
+				},
+				{
+					"name":"C16359  1-Methyluric acid"
+				},
+				{
+					"name":"C16355  7-Methyluric acid"
+				},
+				{
+					"name":"C16356  1,7-Dimethyluric acid"
+				},
+				{
+					"name":"C16360  3,7-Dimethyluric acid"
+				},
+				{
+					"name":"C16361  1,3,7-Trimethyluric acid"
+				},
+				{
+					"name":"C07130  Theophylline"
+				},
+				{
+					"name":"C07480  Theobromine"
+				},
+				{
+					"name":"C00385  Xanthine"
+				},
+				{
+					"name":"C00262  Hypoxanthine"
+				},
+				{
+					"name":"C16358  1-Methylxanthine"
+				},
+				{
+					"name":"C16357  3-Methylxanthine"
+				},
+				{
+					"name":"C16353  7-Methylxanthine"
+				},
+				{
+					"name":"C13747  1,7-Dimethylxanthine"
+				},
+				{
+					"name":"C01762  Xanthosine"
+				},
+				{
+					"name":"C00655  Xanthosine 5'-phosphate"
+				},
+				{
+					"name":"C16352  7-Methylxanthosine"
+				}
+				]
+			},
+			{
+				"name":"Others",
+				"children":[
+				{
+					"name":"C10570  Annuloline"
+				},
+				{
+					"name":"C10573  Calycanthine"
+				},
+				{
+					"name":"C12227  Chelerythrine"
+				},
+				{
+					"name":"C10596  Halfordinol"
+				}
+				]
+			}
+			]
+		}
+		]
+	},
+	{
+		"name":"Flavonoids",
+		"children":[
+		{
+			"name":"Flavonoids",
+			"children":[
+			{
+				"name":"Aurones",
+				"children":[
+				{
+					"name":"C08576  Aureusidin"
+				},
+				{
+					"name":"C16409  Aureusidin 6-O-glucoside"
+				},
+				{
+					"name":"C08577  Bracteatin"
+				},
+				{
+					"name":"C16410  Bracteatin 6-O-glucoside"
+				},
+				{
+					"name":"C08644  Hispidol"
+				},
+				{
+					"name":"C08651  Leptosidin"
+				},
+				{
+					"name":"C08720  Maritimetin"
+				},
+				{
+					"name":"C08722  4,5-Methylenedioxy-6-hydroxyaurone"
+				}
+				]
+			},
+			{
+				"name":"Chalcones",
+				"children":[
+				{
+					"name":"C08573  Abyssinone VI"
+				},
+				{
+					"name":"C08578  Butein"
+				},
+				{
+					"name":"C08649  Isobutrin"
+				},
+				{
+					"name":"C08598  Carthamone"
+				},
+				{
+					"name":"C15525  Eriodictyol chalcone"
+				},
+				{
+					"name":"C16405  Homoeriodictyol chalcone"
+				},
+				{
+					"name":"C08648  Isobavachalcone"
+				},
+				{
+					"name":"C08650  Isoliquiritigenin"
+				},
+				{
+					"name":"C06561  Naringenin chalcone"
+				},
+				{
+					"name":"C08724  Okanin"
+				},
+				{
+					"name":"C15531  2'-O-Methylisoliquiritigenin"
+				},
+				{
+					"name":"C16404  Pinocembrin chalcone"
+				},
+				{
+					"name":"C16408  2',3,4,4',6'-Peptahydroxychalcone 4'-O-glucoside"
+				},
+				{
+					"name":"C16407  2',4,4',6'-Tetrahydroxychalcone 4'-O-glucoside"
+				},
+				{
+					"name":"C16417  Xanthohumol"
+				},
+				{
+					"name":"C16416  Desmethylxanthohumol"
+				}
+				]
+			},
+			{
+				"name":"Dihydrochalcones",
+				"children":[
+				{
+					"name":"C09471  Asebogenin"
+				},
+				{
+					"name":"C09618  Davidigenin"
+				},
+				{
+					"name":"C09644  2',6'-Dihydroxy-4'-methoxydihydrochalcone"
+				},
+				{
+					"name":"C09754  Glycyphyllin"
+				},
+				{
+					"name":"C09807  Odoratol"
+				},
+				{
+					"name":"C09774  2'-O-Methylodoratol"
+				},
+				{
+					"name":"C00774  Phloretin"
+				},
+				{
+					"name":"C01604  Phlorizin"
+				},
+				{
+					"name":"C09829  Piperaduncin B"
+				},
+				{
+					"name":"C09975  2',4',6'-Trihydroxy-3'-formyldihydrochalcone"
+				},
+				{
+					"name":"C09978  Uvaretin"
+				},
+				{
+					"name":"C09759  Isouvaretin"
+				}
+				]
+			},
+			{
+				"name":"Flavanones",
+				"children":[
+				{
+					"name":"C09318  Abyssinone I"
+				},
+				{
+					"name":"C09319  Abyssinone V"
+				},
+				{
+					"name":"C09479  Betagarin"
+				},
+				{
+					"name":"C09616  Butrin"
+				},
+				{
+					"name":"C15019  2,3-Dihydro-2-(4-hydroxyphenyl)-5,6,7-trimethoxy-4H-1-benzopyran-4-one"
+				},
+				{
+					"name":"C15118  2,3-Dihydro-2-(4-methoxyphenyl)-5,6,7-trimethoxy-4H-1-benzopyran-4-one"
+				},
+				{
+					"name":"C09732  Eriocitrin"
+				},
+				{
+					"name":"C09805  Neoeriocitrin"
+				},
+				{
+					"name":"C05631  Eriodictyol"
+				},
+				{
+					"name":"C09734  Farrerol"
+				},
+				{
+					"name":"C09752  Glabranin"
+				},
+				{
+					"name":"C01709  Hesperetin"
+				},
+				{
+					"name":"C16422  Hesperetin 7-O-glucoside"
+				},
+				{
+					"name":"C09755  Hesperidin"
+				},
+				{
+					"name":"C09806  Neohesperidin"
+				},
+				{
+					"name":"C09756  Homoeriodictyol"
+				},
+				{
+					"name":"C09831  5'-Prenylhomoeriodictyol"
+				},
+				{
+					"name":"C14290  7-Hydroxyflavanone"
+				},
+				{
+					"name":"C09724  Lonchocarpol A"
+				},
+				{
+					"name":"C09762  Liquiritigenin"
+				},
+				{
+					"name":"C00509  Naringenin"
+				},
+				{
+					"name":"C09099  Naringenin 7-O-beta-D-glucoside"
+				},
+				{
+					"name":"C16492  8-C-Glucosylnaringenin"
+				},
+				{
+					"name":"C09789  Naringin"
+				},
+				{
+					"name":"C09793  Narirutin"
+				},
+				{
+					"name":"C09827  Pinocembrin"
+				},
+				{
+					"name":"C09828  Pinocembrin 7-rhamnosylglucoside"
+				},
+				{
+					"name":"C16419  Pinostrobin"
+				},
+				{
+					"name":"C09830  Poncirin"
+				},
+				{
+					"name":"C09833  Sakuranetin"
+				},
+				{
+					"name":"C05334  Isosakuranetin"
+				},
+				{
+					"name":"C08600  Silandrin"
+				},
+				{
+					"name":"C08719  Sophoranone"
+				},
+				{
+					"name":"C09939  Strobopinin"
+				}
+				]
+			},
+			{
+				"name":"Flavones",
+				"children":[
+				{
+					"name":"C01470  Acacetin"
+				},
+				{
+					"name":"C09982  Acerosin"
+				},
+				{
+					"name":"C01477  Apigenin"
+				},
+				{
+					"name":"C04608  Apigenin 7-O-beta-D-glucoside"
+				},
+				{
+					"name":"C04858  Apigenin 7-O-[beta-D-apiosyl-(1->2)-beta-D-glucoside]"
+				},
+				{
+					"name":"C10019  Apigenin 7,4'-dimethyl ether"
+				},
+				{
+					"name":"C10020  Apigenin 7-(6''-malonylglucoside)"
+				},
+				{
+					"name":"C12627  Apigenin 7-O-neohesperidoside"
+				},
+				{
+					"name":"C10023  Baicalein"
+				},
+				{
+					"name":"C10024  Baicalein 5,6,7-trimethyl ether"
+				},
+				{
+					"name":"C10025  Baicalin"
+				},
+				{
+					"name":"C10026  Carlinoside"
+				},
+				{
+					"name":"C10028  Chrysin"
+				},
+				{
+					"name":"C11621  Tectochrysin"
+				},
+				{
+					"name":"C11325  8-(3,3-Dimethylallyl)chrysin"
+				},
+				{
+					"name":"C04293  Chrysoeriol"
+				},
+				{
+					"name":"C10032  Cirsilineol"
+				},
+				{
+					"name":"C10033  Cirsiliol"
+				},
+				{
+					"name":"C10072  6-Hydroxyluteolin"
+				},
+				{
+					"name":"C10104  6-Methoxyluteolin 7-rhamnoside"
+				},
+				{
+					"name":"C10079  Isoetin"
+				},
+				{
+					"name":"C01821  Isoorientin"
+				},
+				{
+					"name":"C03870  Isoorientin 2''-O-rhamnoside"
+				},
+				{
+					"name":"C05990  Isoscoparine"
+				},
+				{
+					"name":"C10035  Dasytrichone"
+				},
+				{
+					"name":"C10029  5,7-Dimethoxyflavone"
+				},
+				{
+					"name":"C10038  Diosmetin"
+				},
+				{
+					"name":"C10039  Diosmin"
+				},
+				{
+					"name":"C10040  Eupatilin"
+				},
+				{
+					"name":"C10594  Ficine"
+				},
+				{
+					"name":"C10601  Isoficine"
+				},
+				{
+					"name":"C15608  Flavone (generic compound)"
+				},
+				{
+					"name":"C10043  Flavone"
+				},
+				{
+					"name":"C14344  4',6-Dihydroxyflavone"
+				},
+				{
+					"name":"C12123  7,4'-Dihydroxyflavone"
+				},
+				{
+					"name":"C11264  7-Hydroxyflavone"
+				},
+				{
+					"name":"C15109  Gardenin B"
+				},
+				{
+					"name":"C10046  Genkwanin"
+				},
+				{
+					"name":"C10047  Geraldone"
+				},
+				{
+					"name":"C10058  Hispidulin"
+				},
+				{
+					"name":"C10078  Hypolaetin"
+				},
+				{
+					"name":"C10102  Lucenin-2"
+				},
+				{
+					"name":"C01514  Luteolin"
+				},
+				{
+					"name":"C03515  Luteolin 7-O-glucuronide"
+				},
+				{
+					"name":"C03951  Luteolin 7-O-beta-D-glucoside"
+				},
+				{
+					"name":"C04900  Luteolin 7-O-[beta-D-glucuronosyl-(1->2)-beta-D-glucuronide]-4'-O-beta-D-glucuronide"
+				},
+				{
+					"name":"C12632  Luteolin 7-O-[beta-D-glucuronosyl-(1->2)-beta-D-glucuronide]"
+				},
+				{
+					"name":"C10103  Luteolin 7-O-(6''-malonylglucoside)"
+				},
+				{
+					"name":"C05622  Malonylapiin"
+				},
+				{
+					"name":"C10109  Neocarlinoside"
+				},
+				{
+					"name":"C10110  Neoschaftoside"
+				},
+				{
+					"name":"C10111  Nevadensin"
+				},
+				{
+					"name":"C10112  Nobiletin"
+				},
+				{
+					"name":"C10113  Norwogonin"
+				},
+				{
+					"name":"C10114  Orientin"
+				},
+				{
+					"name":"C10119  Pedalitin"
+				},
+				{
+					"name":"C10609  Phyllospadine"
+				},
+				{
+					"name":"C10121  Primetin"
+				},
+				{
+					"name":"C08064  Saponarin"
+				},
+				{
+					"name":"C10181  Schaftoside"
+				},
+				{
+					"name":"C10183  Scullcapflavone II"
+				},
+				{
+					"name":"C10184  Scutellarein"
+				},
+				{
+					"name":"C10097  Isoscutellarein"
+				},
+				{
+					"name":"C10186  Sinensetin"
+				},
+				{
+					"name":"C10187  Swertiajaponin"
+				},
+				{
+					"name":"C10190  Tangeretin"
+				},
+				{
+					"name":"C10191  Thymonin"
+				},
+				{
+					"name":"C10192  Tricetin"
+				},
+				{
+					"name":"C10193  Tricin"
+				},
+				{
+					"name":"C12630  Scolymoside"
+				},
+				{
+					"name":"C12629  Isoswertisin 2''-rhamnoside"
+				},
+				{
+					"name":"C14472  4',5,6,7-Tetramethoxyflavone"
+				},
+				{
+					"name":"C14942  2-(2,4,5-Trimethoxyphenyl)-5,6,7,8-tetramethoxy-4H-1-benzopyran-4-one"
+				},
+				{
+					"name":"C14953  2-(3,4,5-Trimethoxyphenyl)-5,6,7,8-tetramethoxy-4H-1-benzopyran-4-one"
+				},
+				{
+					"name":"C14985  6-Hydroxy-2-(4-methoxyphenyl)-5,7-dimethoxy-4H-1-benzopyran-4-one"
+				},
+				{
+					"name":"C10195  Vicenin-2"
+				},
+				{
+					"name":"C10196  Violanthin"
+				},
+				{
+					"name":"C01460  Vitexin"
+				},
+				{
+					"name":"C04024  Vitexin 2''-O-beta-D-glucoside"
+				},
+				{
+					"name":"C12628  Vitexin 2''-O-beta-L-rhamnoside"
+				},
+				{
+					"name":"C01714  Isovitexin"
+				},
+				{
+					"name":"C10197  Wogonin"
+				}
+				]
+			},
+			{
+				"name":"Flavonols",
+				"children":[
+				{
+					"name":"C10021  Axillarin"
+				},
+				{
+					"name":"C10022  Azaleatin"
+				},
+				{
+					"name":"C10030  Chrysosplenetin"
+				},
+				{
+					"name":"C10031  Chrysosplenol C"
+				},
+				{
+					"name":"C04552  Chrysosplenol D"
+				},
+				{
+					"name":"C04527  Corniculatusin"
+				},
+				{
+					"name":"C10036  Datiscetin"
+				},
+				{
+					"name":"C11576  6-(3,3-DMA)galangin"
+				},
+				{
+					"name":"C10041  Fisetin"
+				},
+				{
+					"name":"C10049  Glepidotin A"
+				},
+				{
+					"name":"C04109  Gossypetin"
+				},
+				{
+					"name":"C10050  Gossypetin 8-rhamnoside"
+				},
+				{
+					"name":"C10073  Hyperin"
+				},
+				{
+					"name":"C10084  Isorhamnetin"
+				},
+				{
+					"name":"C05903  Kaempferol"
+				},
+				{
+					"name":"C12249  Kaempferol 3-O-glucoside"
+				},
+				{
+					"name":"C12626  Kaempferol-3-O-galactoside"
+				},
+				{
+					"name":"C12634  Kaempferol 3-O-beta-D-glucosyl-(1->2)-beta-D-glucoside"
+				},
+				{
+					"name":"C12635  Kaempferol 3-sophorotrioside"
+				},
+				{
+					"name":"C16490  Kaempferol 3-O-beta-D-glucosylgalactoside"
+				},
+				{
+					"name":"C10068  6-Hydroxykaempferol"
+				},
+				{
+					"name":"C02806  8-Hydroxykaempferol"
+				},
+				{
+					"name":"C10037  Resokaempherol"
+				},
+				{
+					"name":"C10098  Kaempferide"
+				},
+				{
+					"name":"C11580  8-(1,1-DMA)kaempferide"
+				},
+				{
+					"name":"C12633  Laricitrin"
+				},
+				{
+					"name":"C10602  Lilaline"
+				},
+				{
+					"name":"C05902  3-Methoxyapigenin"
+				},
+				{
+					"name":"C11577  3-Methylgalangin"
+				},
+				{
+					"name":"C10105  Morin"
+				},
+				{
+					"name":"C10107  Myricetin"
+				},
+				{
+					"name":"C10108  Myricitrin"
+				},
+				{
+					"name":"C10115  Oxyanin A"
+				},
+				{
+					"name":"C10116  Oxyanin B"
+				},
+				{
+					"name":"C10117  Pachypodol"
+				},
+				{
+					"name":"C10118  Patuletin"
+				},
+				{
+					"name":"C10120  Pinoquercetin"
+				},
+				{
+					"name":"C00389  Quercetin"
+				},
+				{
+					"name":"C05623  Quercetin 3-O-glucoside"
+				},
+				{
+					"name":"C03897  Quercetin 3,3',7-trissulfate"
+				},
+				{
+					"name":"C03898  Quercetin 3,4',7-trissulfate"
+				},
+				{
+					"name":"C00616  Quercetin 3-sulfate"
+				},
+				{
+					"name":"C01155  Quercetin 3,3'-bissulfate"
+				},
+				{
+					"name":"C01156  Quercetin 3,4'-bissulfate"
+				},
+				{
+					"name":"C10175  Quercetin 3-(2G-xylosylrutinoside)"
+				},
+				{
+					"name":"C12638  Quercetin 3-O-(6-O-malonyl-beta-D-glucoside)"
+				},
+				{
+					"name":"C12667  Quercetin 3-O-beta-D-glucosyl-(1->2)-beta-D-glucoside"
+				},
+				{
+					"name":"C12668  Quercetin 3-O-beta-D-glucosyl-(1->2)-beta-D-glucosyl-(1->2)-beta-D-glucoside"
+				},
+				{
+					"name":"C04443  3-O-Methylquercetin"
+				},
+				{
+					"name":"C01265  3,7-Di-O-methylquercetin"
+				},
+				{
+					"name":"C04444  3,7,4'-Tri-O-methylquercetin"
+				},
+				{
+					"name":"C10122  Quercetagetin"
+				},
+				{
+					"name":"C12639  Quercimeritrin"
+				},
+				{
+					"name":"C01750  Quercitrin"
+				},
+				{
+					"name":"C10176  Rhamnetin"
+				},
+				{
+					"name":"C10177  Robinetin"
+				},
+				{
+					"name":"C10178  Robinin"
+				},
+				{
+					"name":"C05625  Rutin"
+				},
+				{
+					"name":"C10180  Santin"
+				},
+				{
+					"name":"C10185  Sexangularetin"
+				},
+				{
+					"name":"C11620  Syringetin"
+				},
+				{
+					"name":"C10188  Tamarixetin"
+				},
+				{
+					"name":"C10189  Tambulin"
+				},
+				{
+					"name":"C04581  Tomentin"
+				},
+				{
+					"name":"C10045  3,5,7-Trimethoxyflavone"
+				},
+				{
+					"name":"C10194  Velloquercetin"
+				}
+				]
+			},
+			{
+				"name":"Dihyroflavonols",
+				"children":[
+				{
+					"name":"C00974  Dihydrokaempferol"
+				},
+				{
+					"name":"C01378  Fustin"
+				},
+				{
+					"name":"C09751  Garbanzol"
+				},
+				{
+					"name":"C09753  Glepidotin B"
+				},
+				{
+					"name":"C02906  Dihydromyricetin"
+				},
+				{
+					"name":"C09764  6-Methoxyaromadendrin 3-O-acetate"
+				},
+				{
+					"name":"C09803  Neoastilbin"
+				},
+				{
+					"name":"C09808  Phellamurin"
+				},
+				{
+					"name":"C09826  Pinobanksin"
+				},
+				{
+					"name":"C16418  Pinobanksin 3-O-acetate"
+				},
+				{
+					"name":"C08717  Silychristin"
+				},
+				{
+					"name":"C07610  Silymarin"
+				},
+				{
+					"name":"C01617  Taxifolin"
+				},
+				{
+					"name":"C09967  Taxifolin 3-O-acetate"
+				},
+				{
+					"name":"C09770  6-Methoxytaxifolin"
+				}
+				]
+			},
+			{
+				"name":"Flavans",
+				"children":[
+				{
+					"name":"C09478  Auriculoside"
+				},
+				{
+					"name":"C09505  Broussin"
+				},
+				{
+					"name":"C09636  Diffutin"
+				},
+				{
+					"name":"C09641  7,4'-Dihydroxyflavan"
+				},
+				{
+					"name":"C09646  7,3'-Dihydroxy-4'-methoxy-8-methylflavan"
+				},
+				{
+					"name":"C09650  7,4'-Dihydroxy-8-methylflavan"
+				},
+				{
+					"name":"C09757  7-Hydroxyflavan"
+				},
+				{
+					"name":"C09760  Kazinol A"
+				}
+				]
+			},
+			{
+				"name":"Flavan 3-ols",
+				"children":[
+				{
+					"name":"C09320  Afzelechin"
+				},
+				{
+					"name":"C12128  (-)-Epiafzelechin"
+				},
+				{
+					"name":"C06562  (+)-Catechin"
+				},
+				{
+					"name":"C14079  (-)-Catechin"
+				},
+				{
+					"name":"C09617  Catechin 7-O-beta-D-xyloside"
+				},
+				{
+					"name":"C09727  (-)-Epicatechin"
+				},
+				{
+					"name":"C09728  (+)-Epicatechin"
+				},
+				{
+					"name":"C12127  (+)-Gallocatechin"
+				},
+				{
+					"name":"C12136  (-)-Epigallocatechin"
+				},
+				{
+					"name":"C09731  Epigallocatechin 3-gallate"
+				},
+				{
+					"name":"C09735  Fisetinidol"
+				}
+				]
+			},
+			{
+				"name":"Flavan 4-ols",
+				"children":[
+				{
+					"name":"C12124  Apiforol"
+				},
+				{
+					"name":"C05907  Luteoforol"
+				},
+				{
+					"name":"C09970  Tephrowatsin A"
+				}
+				]
+			},
+			{
+				"name":"Flavan 3,4-diols",
+				"children":[
+				{
+					"name":"C05906  Leucocyanidin"
+				},
+				{
+					"name":"C09736  5-Deoxyleucocyanidin"
+				},
+				{
+					"name":"C05909  Leucodelphinidin"
+				},
+				{
+					"name":"C03648  cis-3,4-Leucopelargonidin"
+				},
+				{
+					"name":"C16415  5-Deoxyleucopelargonidin"
+				}
+				]
+			},
+			{
+				"name":"Anthocyanidins and anthocyanins",
+				"children":[
+				{
+					"name":"C16354  Albireodelphin"
+				},
+				{
+					"name":"C08574  Apigeninidin"
+				},
+				{
+					"name":"C08604  Chrysanthemin"
+				},
+				{
+					"name":"C05905  Cyanidin"
+				},
+				{
+					"name":"C04491  Cyanidin-3-rhamnoglucoside chloride"
+				},
+				{
+					"name":"C08620  Cyanidin 3-O-rutinoside"
+				},
+				{
+					"name":"C08647  Cyanidin 3-O-galactoside"
+				},
+				{
+					"name":"C08629  Cyanidin 3,5,3'-tri-O-glucoside"
+				},
+				{
+					"name":"C12095  Cyanidin 3-O-(6-O-p-coumaroyl)glucoside"
+				},
+				{
+					"name":"C12096  Cyanidin 3-O-(6-O-p-coumaroyl)glucoside-5-O-glucoside"
+				},
+				{
+					"name":"C12643  Cyanidin 3-O-(6-O-malonyl-beta-D-glucoside)"
+				},
+				{
+					"name":"C12646  Cyanidin 3-O-rutinoside 5-O-beta-D-glucoside"
+				},
+				{
+					"name":"C16289  Cyanidin 3-O-3'',6''-O-dimalonylglucoside"
+				},
+				{
+					"name":"C16306  Cyanidin 3-O-sophoroside"
+				},
+				{
+					"name":"C16350  Cyanidin 3-O-beta-D-glucoside 5-O-(6-coumaroyl-beta-D-glucoside)"
+				},
+				{
+					"name":"C16373  Cyanidin-3-O-(6''-O-malonyl-2''-O-glucuronyl)glucoside"
+				},
+				{
+					"name":"C16292  Cyanidin-3-(p-coumaroyl)-rutinoside-5-glucoside"
+				},
+				{
+					"name":"C16369  Cyanidin 3-(6-p-caffeoyl)glucoside"
+				},
+				{
+					"name":"C16372  Cyanidin 3-glucoside 5-caffeoylglucoside"
+				},
+				{
+					"name":"C16298  Cyanidin 5-O-glucoside"
+				},
+				{
+					"name":"C08639  Cyanin"
+				},
+				{
+					"name":"C16312  Delphin"
+				},
+				{
+					"name":"C16301  Delphinidin 3-O-(6''-O-malonyl-beta-D-glucoside)"
+				},
+				{
+					"name":"C12138  Delphinidin 3-O-glucoside"
+				},
+				{
+					"name":"C16313  Delphinidin 3-glucoside 5-caffoyl-glucoside"
+				},
+				{
+					"name":"C16351  Delphinidin 3-O-beta-D-glucoside 5-O-(6-coumaroyl-beta-D-glucoside)"
+				},
+				{
+					"name":"C16304  Delphinidin 3-O-(6''-O-malonyl)-beta-glucoside-3'-O-beta-glucoside"
+				},
+				{
+					"name":"C16307  Delphinidin 3-O-sophoroside"
+				},
+				{
+					"name":"C16367  Delphinidin 3-O-(6-caffeoyl-beta-D-glucoside)"
+				},
+				{
+					"name":"C16290  Delphinidin 3-O-3'',6''-O-dimalonylglucoside"
+				},
+				{
+					"name":"C16294  Delphinidin-3-(p-coumaroyl)-rutinoside-5-glucoside"
+				},
+				{
+					"name":"C16370  Delphinidin 3-(6-p-coumaroyl)glucoside"
+				},
+				{
+					"name":"C16314  Delphinidin 3,5,3'-triglucoside"
+				},
+				{
+					"name":"C08641  Gentiodelphin"
+				},
+				{
+					"name":"C08642  Heavenly blue anthocyanin"
+				},
+				{
+					"name":"C08652  Luteolinidin"
+				},
+				{
+					"name":"C08653  Malonylawobanin"
+				},
+				{
+					"name":"C16299  Malonylshisonin"
+				},
+				{
+					"name":"C08716  Malvidin"
+				},
+				{
+					"name":"C12140  Malvidin 3-O-glucoside"
+				},
+				{
+					"name":"C16296  Malvidin-3-(p-coumaroyl)-rutinoside-5-glucoside"
+				},
+				{
+					"name":"C08718  Malvin"
+				},
+				{
+					"name":"C08723  Monardaein"
+				},
+				{
+					"name":"C05904  Pelargonidin"
+				},
+				{
+					"name":"C12137  Pelargonidin 3-O-glucoside"
+				},
+				{
+					"name":"C12640  Pelargonidin 3-O-(6-caffeoyl-beta-D-glucoside) 5-O-beta-D-glucoside"
+				},
+				{
+					"name":"C12642  Pelargonidin 3-O-(6-O-malonyl-beta-D-glucoside)"
+				},
+				{
+					"name":"C12644  Pelargonidin 3-O-rutinoside"
+				},
+				{
+					"name":"C12645  Pelargonidin 3-O-rutinoside 5-O-beta-D-glucoside"
+				},
+				{
+					"name":"C16288  Pelargonidin 3-O-3'',6''-O-dimalonylglucoside"
+				},
+				{
+					"name":"C16297  Pelargonidin 3-O-(6-caffeoyl-beta-D-glucoside)"
+				},
+				{
+					"name":"C16305  Pelargonidin 3-O-sophoroside"
+				},
+				{
+					"name":"C16349  Pelargonidin 3-O-beta-D-glucoside 5-O-(6-coumaroyl-beta-D-glucoside)"
+				},
+				{
+					"name":"C16368  Pelargonidin 3-(6-p-coumaroyl)glucoside"
+				},
+				{
+					"name":"C16371  Pelargonidin 3-glucoside 5-caffeoylglucoside"
+				},
+				{
+					"name":"C12139  Petunidin 3-O-glucoside"
+				},
+				{
+					"name":"C16295  Petunidin-3-(p-coumaroyl)-rutinoside-5-glucoside"
+				},
+				{
+					"name":"C08725  Pelargonin"
+				},
+				{
+					"name":"C16293  Peonidin-3-(p-coumaroyl)-rutinoside-5-glucoside"
+				},
+				{
+					"name":"C08728  Riccionidin A"
+				},
+				{
+					"name":"C08729  Rosinidin"
+				},
+				{
+					"name":"C12647  Salvianin"
+				},
+				{
+					"name":"C12641  4'''-Demalonylsalvianin"
+				},
+				{
+					"name":"C16302  Ternatin A1"
+				},
+				{
+					"name":"C16303  Ternatin C5"
+				},
+				{
+					"name":"C16315  Tulipanin"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Isoflavonoids",
+			"children":[
+			{
+				"name":"Isoflavanes",
+				"children":[
+				{
+					"name":"C16187  7,2'-Dihydroxy-4'-methoxy-isoflavanol"
+				},
+				{
+					"name":"C14131  Equol"
+				},
+				{
+					"name":"C10421  Glabridin"
+				},
+				{
+					"name":"C10425  Hispaglabridin A"
+				},
+				{
+					"name":"C10495  Lotisoflavan"
+				},
+				{
+					"name":"C10507  Mucronulatol"
+				},
+				{
+					"name":"C10515  (-)-Phaseollinisoflavan"
+				},
+				{
+					"name":"C10526  (-)-Sativan"
+				},
+				{
+					"name":"C10540  Vestitol"
+				},
+				{
+					"name":"C16225  (-)-Vestitol"
+				}
+				]
+			},
+			{
+				"name":"Isoflavanones",
+				"children":[
+				{
+					"name":"C02675  Dihydrobiochanin A"
+				},
+				{
+					"name":"C10204  Cajanol"
+				},
+				{
+					"name":"C10207  Cyclokievitone"
+				},
+				{
+					"name":"C10415  (+-)-Dalbergioidin"
+				},
+				{
+					"name":"C10416  Dalpanin"
+				},
+				{
+					"name":"C10418  5-Deoxykievitone"
+				},
+				{
+					"name":"C16190  2,7-Dihydroxy-4'-methoxyisoflavanone"
+				},
+				{
+					"name":"C10419  Ferreirin"
+				},
+				{
+					"name":"C03567  2'-Hydroxydihydrodaidzein"
+				},
+				{
+					"name":"C12631  2-Hydroxy-2,3-dihydrogenistein"
+				},
+				{
+					"name":"C01590  Kievitone"
+				},
+				{
+					"name":"C02549  Kievitone hydrate"
+				},
+				{
+					"name":"C10530  Sophoraisoflavanone A"
+				},
+				{
+					"name":"C16227  (+)-Sophorol"
+				},
+				{
+					"name":"C16228  (-)-Sophorol"
+				},
+				{
+					"name":"C15567  2,7,4'-Trihydroxyisoflavanone"
+				},
+				{
+					"name":"C16233  2,6,7,4'-Tetrahydroxyisoflavanone"
+				},
+				{
+					"name":"C00786  (-)-Vestitone"
+				}
+				]
+			},
+			{
+				"name":"Isoflavones",
+				"children":[
+				{
+					"name":"C10199  Afrormosin"
+				},
+				{
+					"name":"C00814  Biochanin A"
+				},
+				{
+					"name":"C05376  Biochanin A-beta-D-glucoside"
+				},
+				{
+					"name":"C12625  Biochanin A 7-O-(6-O-malonyl-beta-D-glucoside)"
+				},
+				{
+					"name":"C10201  Betavulgarin"
+				},
+				{
+					"name":"C10202  Bowdichione"
+				},
+				{
+					"name":"C12135  2'-Hydroxybiochanin A"
+				},
+				{
+					"name":"C10203  Cajanin"
+				},
+				{
+					"name":"C01562  Calycosin"
+				},
+				{
+					"name":"C10216  Daidzin"
+				},
+				{
+					"name":"C10208  Daidzein"
+				},
+				{
+					"name":"C02495  2'-Hydroxydaidzein"
+				},
+				{
+					"name":"C16226  2',7-Dihydroxy-4',5'-methylenedioxyisoflavone"
+				},
+				{
+					"name":"C00858  Formononetin"
+				},
+				{
+					"name":"C16222  Formononetin 7-O-glucoside-6''-O-malonate"
+				},
+				{
+					"name":"C02920  2'-Hydroxyformononetin"
+				},
+				{
+					"name":"C12125  Isoformononetin"
+				},
+				{
+					"name":"C06563  Genistein"
+				},
+				{
+					"name":"C09126  Genistein 7-O-beta-D-glucoside"
+				},
+				{
+					"name":"C10420  Genistein 8-C-glucoside"
+				},
+				{
+					"name":"C12134  2'-Hydroxygenistein"
+				},
+				{
+					"name":"C16188  7-Hydroxy-2',4',5'-trimethoxyisoflavone"
+				},
+				{
+					"name":"C14536  Glycitein"
+				},
+				{
+					"name":"C16195  Glycitin"
+				},
+				{
+					"name":"C10465  Iridin"
+				},
+				{
+					"name":"C10467  Irilone"
+				},
+				{
+					"name":"C10471  Irisolidone"
+				},
+				{
+					"name":"C10498  Luteone"
+				},
+				{
+					"name":"C10486  Licoisoflavone A"
+				},
+				{
+					"name":"C07290  7-O-Methylluteone"
+				},
+				{
+					"name":"C16191  Malonyldaidzin"
+				},
+				{
+					"name":"C16192  Malonylgenistin"
+				},
+				{
+					"name":"C16197  Malonylglycitin"
+				},
+				{
+					"name":"C10509  Ononin"
+				},
+				{
+					"name":"C10510  Orobol"
+				},
+				{
+					"name":"C10513  Paniculatin"
+				},
+				{
+					"name":"C10518  Piscerythramine"
+				},
+				{
+					"name":"C10519  Pomiferin"
+				},
+				{
+					"name":"C10520  Pratensein"
+				},
+				{
+					"name":"C10521  Prunetin"
+				},
+				{
+					"name":"C10522  Pseudobaptigenin"
+				},
+				{
+					"name":"C10524  Puerarin"
+				},
+				{
+					"name":"C10527  Sayanedine"
+				},
+				{
+					"name":"C10533  Tectoridin"
+				},
+				{
+					"name":"C10534  Tectorigenin"
+				},
+				{
+					"name":"C10536  Texasin"
+				},
+				{
+					"name":"C14313  3',4',7-Trihydroxyisoflavone"
+				},
+				{
+					"name":"C10542  Wighteone"
+				}
+				]
+			},
+			{
+				"name":"3-Arylcoumarins",
+				"children":[
+				{
+					"name":"C10491  Lonchocarpenin"
+				}
+				]
+			},
+			{
+				"name":"Pterocarpans",
+				"children":[
+				{
+					"name":"C10198  (-)-Acanthocarpan"
+				},
+				{
+					"name":"C10200  Anhydroglycinol"
+				},
+				{
+					"name":"C10206  Cristacarpin"
+				},
+				{
+					"name":"C04271  3,9-Dihydroxypterocarpan"
+				},
+				{
+					"name":"C01263  3,6,9-Trihydroxypterocarpan"
+				},
+				{
+					"name":"C10461  4-Hydroxyhomopterocarpin"
+				},
+				{
+					"name":"C15509  Glyceocarpin"
+				},
+				{
+					"name":"C01701  (-)-Glyceollin I"
+				},
+				{
+					"name":"C10422  (-)-Glyceollin II"
+				},
+				{
+					"name":"C15511  Glyceollin III"
+				},
+				{
+					"name":"C15510  4-Glyceollidin"
+				},
+				{
+					"name":"C10424  Hildecarpin"
+				},
+				{
+					"name":"C16229  (+)-Maackiain"
+				},
+				{
+					"name":"C10502  (-)-Maackiain"
+				},
+				{
+					"name":"C16231  (-)-Maackiain-3-O-glucosyl-6''-O-malonate"
+				},
+				{
+					"name":"C16230  (+)-6a-Hydroxymaackiain"
+				},
+				{
+					"name":"C10503  (-)-Medicarpin"
+				},
+				{
+					"name":"C01729  (+)-Medicarpin"
+				},
+				{
+					"name":"C16224  Medicarpin 3-O-glucoside-6'-malonate"
+				},
+				{
+					"name":"C16223  (-)-Medicocarpin"
+				},
+				{
+					"name":"C10508  (-)-Nissolin"
+				},
+				{
+					"name":"C05230  Phaseollidin"
+				},
+				{
+					"name":"C10514  (-)-Phaseollin"
+				},
+				{
+					"name":"C10516  Pisatin"
+				},
+				{
+					"name":"C10531  (-)-Sparticarpin"
+				},
+				{
+					"name":"C10538  Trifolirhizin"
+				},
+				{
+					"name":"C10539  (-)-Variabilin"
+				}
+				]
+			},
+			{
+				"name":"Coumestanes",
+				"children":[
+				{
+					"name":"C10205  Coumestrol"
+				},
+				{
+					"name":"C10523  Psoralidin"
+				},
+				{
+					"name":"C10529  Sojagol"
+				},
+				{
+					"name":"C10541  Wedelolactone"
+				}
+				]
+			},
+			{
+				"name":"Rotenones",
+				"children":[
+				{
+					"name":"C10417  Deguelin"
+				},
+				{
+					"name":"C10506  Millettone"
+				},
+				{
+					"name":"C10512  Pachyrrhizone"
+				},
+				{
+					"name":"C07593  Rotenone"
+				},
+				{
+					"name":"C10525  Rotenonone"
+				},
+				{
+					"name":"C10464  12a-Hydroxyrotenone"
+				},
+				{
+					"name":"C10532  Sumatrol"
+				},
+				{
+					"name":"C10535  Tephrosin"
+				},
+				{
+					"name":"C10537  Toxicarol"
+				}
+				]
+			},
+			{
+				"name":"2-Arylbenzofurans",
+				"children":[
+				{
+					"name":"C08732  Albafuran A"
+				},
+				{
+					"name":"C08844  Moracin A"
+				},
+				{
+					"name":"C08846  Mulberrofuran A"
+				},
+				{
+					"name":"C08974  Sainfuran"
+				},
+				{
+					"name":"C08993  Vignafuran"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Complex flavonoids",
+			"children":[
+			{
+				"name":"Biflavonoids and polyflavonoids",
+				"children":[
+				{
+					"name":"C10017  Agathisflavone"
+				},
+				{
+					"name":"C10018  Amentoflavone"
+				},
+				{
+					"name":"C10034  Cupressuflavone"
+				},
+				{
+					"name":"C10048  Ginkgetin"
+				},
+				{
+					"name":"C10057  Hinokiflavone"
+				},
+				{
+					"name":"C09758  Isochamaejasmin"
+				},
+				{
+					"name":"C09761  Kolaflavanone"
+				},
+				{
+					"name":"C09763  Manniflavanone"
+				},
+				{
+					"name":"C10505  (R)-4-Methoxydalbergione"
+				},
+				{
+					"name":"C10179  Robustaflavone"
+				},
+				{
+					"name":"C10182  Sciadopitysin"
+				}
+				]
+			},
+			{
+				"name":"Proanthocyanidins",
+				"children":[
+				{
+					"name":"C10209  Afzelechin-(4alpha->8)-afzelechin"
+				},
+				{
+					"name":"C10222  Cinnamtannin A4"
+				},
+				{
+					"name":"C09726  Dracorubin"
+				},
+				{
+					"name":"C10221  Epicatechin-(4beta->8)-ent-epicatechin"
+				},
+				{
+					"name":"C10223  Epigallocatechin-(4beta->8)-epicatechin-3-O-gallate ester"
+				},
+				{
+					"name":"C10225  ent-Fisetinidol-(4beta->8)-catechin-(6->4beta)-ent-fisetinidol"
+				},
+				{
+					"name":"C10227  Gallocatechin-(4alpha->8)-epigallocatechin"
+				},
+				{
+					"name":"C10228  Gambiriin C"
+				},
+				{
+					"name":"C10231  Guibourtinidol-(4alpha->6)-catechin"
+				},
+				{
+					"name":"C10233  Kandelin A-1"
+				},
+				{
+					"name":"C10234  Mahuannin D"
+				},
+				{
+					"name":"C10237  Proanthocyanidin A2"
+				},
+				{
+					"name":"C10238  Procyanidin B4"
+				},
+				{
+					"name":"C10239  Robinetinidol-(4alpha->8)-catechin-(6->4alpha)-robinetinidol"
+				},
+				{
+					"name":"C09972  Theasinensin A"
+				}
+				]
+			},
+			{
+				"name":"Diels-Alder adduct of chalcone",
+				"children":[
+				{
+					"name":"C10099  Kuwanone G"
+				},
+				{
+					"name":"C10100  Kuwanone H"
+				},
+				{
+					"name":"C08928  Mulberrofuran C"
+				},
+				{
+					"name":"C09834  Sanggenon C"
+				},
+				{
+					"name":"C09835  Sanggenon D"
+				}
+				]
+			}
+			]
+		}
+		]
+	},
+	{
+		"name":"Phenylpropanoids",
+		"children":[
+		{
+			"name":"Monolignols",
+			"children":[
+			{
+				"name":"Caffeate derivatives",
+				"children":[
+				{
+					"name":"C01197  Caffeate"
+				},
+				{
+					"name":"C12206  Caffeyl alcohol"
+				},
+				{
+					"name":"C10945  Caffeic aldehyde"
+				},
+				{
+					"name":"C00323  Caffeoyl-CoA"
+				},
+				{
+					"name":"C00852  Chlorogenate"
+				},
+				{
+					"name":"C10468  Isochlorogenic acid b"
+				},
+				{
+					"name":"C17147  Neochlorogenic acid"
+				},
+				{
+					"name":"C06224  3,4-Dihydroxystyrene"
+				},
+				{
+					"name":"C10434  5-O-Caffeoylshikimic acid"
+				}
+				]
+			},
+			{
+				"name":"Coniferyl alcohol derivatives",
+				"children":[
+				{
+					"name":"C00590  Coniferyl alcohol"
+				},
+				{
+					"name":"C02666  Coniferyl aldehyde"
+				},
+				{
+					"name":"C00761  Coniferin"
+				},
+				{
+					"name":"C10448  Dihydroconiferyl alcohol"
+				},
+				{
+					"name":"C01494  Ferulate"
+				},
+				{
+					"name":"C00406  Feruloyl-CoA"
+				},
+				{
+					"name":"C05619  5-Hydroxyferulate"
+				},
+				{
+					"name":"C12203  5-Hydroxyferuloyl-CoA"
+				},
+				{
+					"name":"C17855  Coniferyl ferulate"
+				}
+				]
+			},
+			{
+				"name":"Paracoumaryl alcohol derivatives",
+				"children":[
+				{
+					"name":"C02646  4-Coumaryl alcohol"
+				},
+				{
+					"name":"C00811  4-Coumarate"
+				},
+				{
+					"name":"C00223  p-Coumaroyl-CoA"
+				},
+				{
+					"name":"C02947  4-Coumaroylshikimate"
+				},
+				{
+					"name":"C05608  4-Hydroxycinnamyl aldehyde"
+				},
+				{
+					"name":"C05855  4-Hydroxycinnamyl alcohol 4-D-glucoside"
+				}
+				]
+			},
+			{
+				"name":"Sinapate derivatives",
+				"children":[
+				{
+					"name":"C00482  Sinapate"
+				},
+				{
+					"name":"C00933  Sinapine"
+				},
+				{
+					"name":"C02325  Sinapyl alcohol"
+				},
+				{
+					"name":"C00411  Sinapoyl-CoA"
+				},
+				{
+					"name":"C01175  1-O-Sinapoyl-beta-D-glucose"
+				},
+				{
+					"name":"C01533  Syringin"
+				},
+				{
+					"name":"C02887  Sinapoyl malate"
+				},
+				{
+					"name":"C05610  Sinapoyl aldehyde"
+				},
+				{
+					"name":"C12204  5-Hydroxyconiferaldehyde"
+				},
+				{
+					"name":"C12205  5-Hydroxyconiferyl alcohol"
+				}
+				]
+			},
+			{
+				"name":"Others",
+				"children":[
+				{
+					"name":"C10428  Anethole"
+				},
+				{
+					"name":"C16930  Chavicol"
+				},
+				{
+					"name":"C10426  1'-Acetoxychavicol acetate"
+				},
+				{
+					"name":"C00423  trans-Cinnamate"
+				},
+				{
+					"name":"C00540  Cinnamoyl-CoA"
+				},
+				{
+					"name":"C00903  Cinnamaldehyde"
+				},
+				{
+					"name":"C01772  trans-2-Hydroxycinnamate"
+				},
+				{
+					"name":"C05158  trans-beta-D-Glucosyl-2-hydroxycinnamate"
+				},
+				{
+					"name":"C05838  cis-2-Hydroxycinnamate"
+				},
+				{
+					"name":"C05839  cis-beta-D-Glucosyl-2-hydroxycinnamate"
+				},
+				{
+					"name":"C10451  Elemicin"
+				},
+				{
+					"name":"C10452  Estragole"
+				},
+				{
+					"name":"C10453  Eugenol"
+				},
+				{
+					"name":"C10480  Myristicin"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Lignans",
+			"children":[
+			{
+				"name":"Lignans",
+				"children":[
+				{
+					"name":"C10544  1-Acetoxypinoresinol"
+				},
+				{
+					"name":"C10545  Arctigenin"
+				},
+				{
+					"name":"C10546  Austrobailignan 1"
+				},
+				{
+					"name":"C10547  Burseran"
+				},
+				{
+					"name":"C17808  Clemaphenol A"
+				},
+				{
+					"name":"C10552  4'-Demethyldeoxypodophyllotoxin"
+				},
+				{
+					"name":"C10553  4'-Demethylpodophyllotoxin"
+				},
+				{
+					"name":"C10555  Deoxygomisin A"
+				},
+				{
+					"name":"C10556  Deoxypodophyllotoxin"
+				},
+				{
+					"name":"C10557  Dihydroanhydropodorhizol"
+				},
+				{
+					"name":"C10558  Dihydrocubebin"
+				},
+				{
+					"name":"C10559  Diphyllin"
+				},
+				{
+					"name":"C10561  (+)-Eudesmin"
+				},
+				{
+					"name":"C16957  Fargesin"
+				},
+				{
+					"name":"C10616  (+)-Galbacin"
+				},
+				{
+					"name":"C17814  Gomisin B"
+				},
+				{
+					"name":"C10621  Gomisin L1 methyl ether"
+				},
+				{
+					"name":"C10622  Grandisin"
+				},
+				{
+					"name":"C10627  Hinokinin"
+				},
+				{
+					"name":"C10633  Justicidin A"
+				},
+				{
+					"name":"C10636  Justicidin B"
+				},
+				{
+					"name":"C10646  (+)-Lariciresinol"
+				},
+				{
+					"name":"C20454  (-)-Lariciresinol"
+				},
+				{
+					"name":"C10657  Magnosalicin"
+				},
+				{
+					"name":"C10658  Magnoshinin"
+				},
+				{
+					"name":"C10682  Matairesinol"
+				},
+				{
+					"name":"C10551  Morelensin"
+				},
+				{
+					"name":"C10707  Neoisostegane"
+				},
+				{
+					"name":"C10719  Nordihydroguaiaretic acid"
+				},
+				{
+					"name":"C10725  Nortrachelogenin"
+				},
+				{
+					"name":"C10728  Otobain"
+				},
+				{
+					"name":"C10729  alpha-Peltatin"
+				},
+				{
+					"name":"C10730  beta-Peltatin A methyl ether"
+				},
+				{
+					"name":"C10737  Phrymarolin I"
+				},
+				{
+					"name":"C10746  Phyllanthin"
+				},
+				{
+					"name":"C10871  Picropodophyllin"
+				},
+				{
+					"name":"C05366  (+)-Pinoresinol"
+				},
+				{
+					"name":"C20455  (-)-Pinoresinol"
+				},
+				{
+					"name":"C10873  Plicatic acid"
+				},
+				{
+					"name":"C10874  Podophyllotoxin"
+				},
+				{
+					"name":"C10875  Podophyllotoxone"
+				},
+				{
+					"name":"C10877  Prostalidin A"
+				},
+				{
+					"name":"C10879  Saucernetin"
+				},
+				{
+					"name":"C10880  Savinin"
+				},
+				{
+					"name":"C10881  Schisantherin A"
+				},
+				{
+					"name":"C10893  Schizandrin C"
+				},
+				{
+					"name":"C20456  (+)-Secoisolariciresinol"
+				},
+				{
+					"name":"C18167  (-)-Secoisolariciresinol"
+				},
+				{
+					"name":"C10882  Sesamin"
+				},
+				{
+					"name":"C10883  Sesamolinol"
+				},
+				{
+					"name":"C10884  Sesartemin"
+				},
+				{
+					"name":"C10886  Steganacin"
+				},
+				{
+					"name":"C10887  Styraxin"
+				},
+				{
+					"name":"C10889  (+)-Syringaresinol"
+				},
+				{
+					"name":"C10891  Trachelogenin"
+				},
+				{
+					"name":"C10892  (+)-Veraguensin"
+				},
+				{
+					"name":"C10894  Yangambin"
+				}
+				]
+			},
+			{
+				"name":"Lignan glycosides",
+				"children":[
+				{
+					"name":"C16915  Arctiin"
+				},
+				{
+					"name":"C10548  Cleistanthin A"
+				},
+				{
+					"name":"C10560  Eucommin A"
+				},
+				{
+					"name":"C17048  Forsythin"
+				},
+				{
+					"name":"C10870  Phyllanthostatin A"
+				},
+				{
+					"name":"C17529  (-)-Pinoresinol glucoside"
+				},
+				{
+					"name":"C10876  Podorhizol beta-D-glucoside"
+				},
+				{
+					"name":"C10885  Simplexoside"
+				},
+				{
+					"name":"C10890  (+)-Syringaresinol O-beta-D-glucoside"
+				}
+				]
+			},
+			{
+				"name":"Neolignans",
+				"children":[
+				{
+					"name":"C10550  Dehydrodieugenol"
+				},
+				{
+					"name":"C10554  Denudatin B"
+				},
+				{
+					"name":"C10446  Diferulic acid"
+				},
+				{
+					"name":"C10562  Eudesobovatol A"
+				},
+				{
+					"name":"C10563  Fargesone A"
+				},
+				{
+					"name":"C10574  Futoquinol"
+				},
+				{
+					"name":"C10630  Honokiol"
+				},
+				{
+					"name":"C10638  Kadsurenone"
+				},
+				{
+					"name":"C10640  Kadsurin A"
+				},
+				{
+					"name":"C10650  Licarin A"
+				},
+				{
+					"name":"C10651  Magnolol"
+				},
+				{
+					"name":"C10690  Megaphone"
+				},
+				{
+					"name":"C10878  Randainol"
+				},
+				{
+					"name":"C10888  Surinamensin"
+				}
+				]
+			},
+			{
+				"name":"Norlignans",
+				"children":[
+				{
+					"name":"C10628  cis-Hinokiresinol"
+				},
+				{
+					"name":"C20133  Sugiresinol"
+				}
+				]
+			},
+			{
+				"name":"Sesquilignans and dilignans"
+			}
+			]
+		},
+		{
+			"name":"Coumarins",
+			"children":[
+			{
+				"name":"Coumarins",
+				"children":[
+				{
+					"name":"C09056  Ammoresinol"
+				},
+				{
+					"name":"C05851  Coumarin"
+				},
+				{
+					"name":"C09147  Calanolide A"
+				},
+				{
+					"name":"C09206  Cichoriin"
+				},
+				{
+					"name":"C09216  Daphnoretin"
+				},
+				{
+					"name":"C09258  Decursin"
+				},
+				{
+					"name":"C09260  Dihydrosamidin"
+				},
+				{
+					"name":"C09261  Disenecionyl cis-khellactone"
+				},
+				{
+					"name":"C00796  Dicumarol"
+				},
+				{
+					"name":"C09262  (3'R,4'R)-3'-Epoxyangeloyloxy-4'-acetoxy-3',4'-dihydroseselin"
+				},
+				{
+					"name":"C09263  Esculetin"
+				},
+				{
+					"name":"C09264  Esculin"
+				},
+				{
+					"name":"C09265  Fraxetin"
+				},
+				{
+					"name":"C09266  Fraxin"
+				},
+				{
+					"name":"C03093  7,8-Dihydroxycoumarin"
+				},
+				{
+					"name":"C09268  Herniarin"
+				},
+				{
+					"name":"C09270  Isosamidin"
+				},
+				{
+					"name":"C09271  Leptodactylone"
+				},
+				{
+					"name":"C09273  Luvangetin"
+				},
+				{
+					"name":"C09277  Micromelin"
+				},
+				{
+					"name":"C09280  Osthol"
+				},
+				{
+					"name":"C09281  Ostruthin"
+				},
+				{
+					"name":"C09307  Pteryxin"
+				},
+				{
+					"name":"C09310  Samidin"
+				},
+				{
+					"name":"C09311  Scoparone"
+				},
+				{
+					"name":"C01527  Scopolin"
+				},
+				{
+					"name":"C01752  Scopoletin"
+				},
+				{
+					"name":"C09312  Seselin"
+				},
+				{
+					"name":"C09313  5,6,7-Trimethoxycoumarin"
+				},
+				{
+					"name":"C09315  Umbelliferone"
+				},
+				{
+					"name":"C09316  Visnadin"
+				},
+				{
+					"name":"C09317  Xanthyletin"
+				}
+				]
+			},
+			{
+				"name":"Furanocoumarins",
+				"children":[
+				{
+					"name":"C09053  Alloimperatorin"
+				},
+				{
+					"name":"C09060  Angelicin"
+				},
+				{
+					"name":"C09116  Archangelicin"
+				},
+				{
+					"name":"C09123  Athamantin"
+				},
+				{
+					"name":"C00758  Bergaptol"
+				},
+				{
+					"name":"C01557  Bergapten"
+				},
+				{
+					"name":"C09141  Byakangelicin"
+				},
+				{
+					"name":"C09165  Chalepensin"
+				},
+				{
+					"name":"C09210  (R)-Columbianetin"
+				},
+				{
+					"name":"C09257  Decuroside III"
+				},
+				{
+					"name":"C09267  Heliettin"
+				},
+				{
+					"name":"C09269  Imperatorin"
+				},
+				{
+					"name":"C02162  Isopimpinellin"
+				},
+				{
+					"name":"C09272  Libanorin"
+				},
+				{
+					"name":"C09276  Marmesin"
+				},
+				{
+					"name":"C09278  Nodakenetin"
+				},
+				{
+					"name":"C09279  Nodakenin"
+				},
+				{
+					"name":"C09282  Oxypeucedanin"
+				},
+				{
+					"name":"C09283  Peucedanin"
+				},
+				{
+					"name":"C09284  Peucenidin"
+				},
+				{
+					"name":"C09285  Pimpinellin"
+				},
+				{
+					"name":"C09305  Psoralen"
+				},
+				{
+					"name":"C09308  Rutamarin"
+				},
+				{
+					"name":"C09309  Rutarin"
+				},
+				{
+					"name":"C09314  Trioxsalen"
+				},
+				{
+					"name":"C00841  Xanthotoxol"
+				},
+				{
+					"name":"C01864  Xanthotoxin"
+				}
+				]
+			}
+			]
+		}
+		]
+	},
+	{
+		"name":"Shikimate \/ acetate-malonate pathway derived compounds",
+		"children":[
+		{
+			"name":"Stilbenoids",
+			"children":[
+			{
+				"name":"Stilbenes",
+				"children":[
+				{
+					"name":"C10245  Astringin"
+				},
+				{
+					"name":"C10250  Chlorophorin"
+				},
+				{
+					"name":"C10264  3-Hydroxy-5-methoxy-6-prenylstilbene-2-carboxylic acid"
+				},
+				{
+					"name":"C10266  Isorhapontin"
+				},
+				{
+					"name":"C05901  Piceatannol"
+				},
+				{
+					"name":"C10275  Piceid"
+				},
+				{
+					"name":"C01745  Pinosylvin"
+				},
+				{
+					"name":"C10276  Pinosylvin methyl ether"
+				},
+				{
+					"name":"C10285  4-Prenylresveratrol"
+				},
+				{
+					"name":"C10287  Pterostilbene"
+				},
+				{
+					"name":"C03582  Resveratrol"
+				},
+				{
+					"name":"C10273  Oxyresveratrol"
+				},
+				{
+					"name":"C10288  Rhaponticin"
+				}
+				]
+			},
+			{
+				"name":"Bibenzyls",
+				"children":[
+				{
+					"name":"C10247  Batatasin IV"
+				},
+				{
+					"name":"C10253  Demethylbatatasin IV"
+				},
+				{
+					"name":"C10254  Dihydropinosylvin"
+				},
+				{
+					"name":"C10255  Dihydroresveratrol"
+				},
+				{
+					"name":"C10256  4,4'-Dihydroxy-3,5-dimethoxydihydrostilbene"
+				},
+				{
+					"name":"C10259  Glepidotin C"
+				},
+				{
+					"name":"C10268  Lunularic acid"
+				},
+				{
+					"name":"C10269  Lunularin"
+				},
+				{
+					"name":"C10271  3'-O-Methylbatatasin III"
+				},
+				{
+					"name":"C10281  4-Prenyldihydropinosylvin"
+				}
+				]
+			},
+			{
+				"name":"Phenanthrenes",
+				"children":[
+				{
+					"name":"C10244  Agrostophyllin"
+				},
+				{
+					"name":"C10246  Batatasin I"
+				},
+				{
+					"name":"C10265  Isobatatasin I"
+				}
+				]
+			},
+			{
+				"name":"Dihydrophenanthrenes",
+				"children":[
+				{
+					"name":"C10251  Coelogin"
+				},
+				{
+					"name":"C10258  Flavidin"
+				},
+				{
+					"name":"C10267  Loroglossol"
+				},
+				{
+					"name":"C10272  Orchinol"
+				}
+				]
+			},
+			{
+				"name":"Miscellaneous stilbenoids",
+				"children":[
+				{
+					"name":"C10262  Hydrangenol"
+				},
+				{
+					"name":"C10274  Phyllodulcin"
+				}
+				]
+			},
+			{
+				"name":"Stilbenoid dimers, stilbenoid oligomers and bis(bibenzyl)s",
+				"children":[
+				{
+					"name":"C10248  Blestriarene B"
+				},
+				{
+					"name":"C10249  Canaliculatol"
+				},
+				{
+					"name":"C10252  Copalliferol B"
+				},
+				{
+					"name":"C10260  Gnetin A"
+				},
+				{
+					"name":"C10270  Marchantin A"
+				},
+				{
+					"name":"C10289  epsilon-Viniferin"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Others",
+			"children":[
+			{
+				"name":"Diarylheptanoids",
+				"children":[
+				{
+					"name":"C10443  Curcumin"
+				},
+				{
+					"name":"C20211  Yakuchinone A"
+				}
+				]
+			},
+			{
+				"name":"Zingiber derived compounds",
+				"children":[
+				{
+					"name":"C10462  [6]-Gingerol"
+				},
+				{
+					"name":"C17495  [8]-Gingerol"
+				},
+				{
+					"name":"C10482  6-Paradol"
+				},
+				{
+					"name":"C10494  [6]-Shogaol"
+				},
+				{
+					"name":"C17497  Zingerone"
+				}
+				]
+			}
+			]
+		}
+		]
+	},
+	{
+		"name":"Terpenoids",
+		"children":[
+		{
+			"name":"Hemiterpenoids (C5)",
+			"children":[
+			{
+				"name":"C16521  Isoprene"
+			}
+			]
+		},
+		{
+			"name":"Monoterpenoids (C10)",
+			"children":[
+			{
+				"name":"Linear monoterpenes",
+				"children":[
+				{
+					"name":"C09847  cis-Citral"
+				},
+				{
+					"name":"C09848  (R)-(+)-Citronellal"
+				},
+				{
+					"name":"C11384  (S)-(-)-Citronellal"
+				},
+				{
+					"name":"C09849  beta-Citronellol"
+				},
+				{
+					"name":"C11386  (-)-Citronellol"
+				},
+				{
+					"name":"C01500  Geraniol"
+				},
+				{
+					"name":"C01499  Geranial"
+				},
+				{
+					"name":"C00341  Geranyl diphosphate"
+				},
+				{
+					"name":"C09861  Geranyl acetate"
+				},
+				{
+					"name":"C17621  10-Hydroxygeraniol"
+				},
+				{
+					"name":"C17622  10-Oxogeranial"
+				},
+				{
+					"name":"C03985  Linalool"
+				},
+				{
+					"name":"C11389  (+)-Linalool"
+				},
+				{
+					"name":"C11388  (-)-Linalool"
+				},
+				{
+					"name":"C09863  Linalyl acetate"
+				},
+				{
+					"name":"C05308  Linalyl diphosphate"
+				},
+				{
+					"name":"C06074  Myrcene"
+				},
+				{
+					"name":"C09871  Nerol"
+				},
+				{
+					"name":"C02569  Neryl diphosphate"
+				},
+				{
+					"name":"C09873  beta-Ocimene"
+				}
+				]
+			},
+			{
+				"name":"Cyclic monoterpenes",
+				"children":[
+				{
+					"name":"C09836  Ascaridole"
+				},
+				{
+					"name":"C01411  Borneol"
+				},
+				{
+					"name":"C01765  (+)-Borneol"
+				},
+				{
+					"name":"C01766  (-)-Borneol"
+				},
+				{
+					"name":"C11338  (1R,2S,4R)-(+)-Bornyl acetate"
+				},
+				{
+					"name":"C09837  (1S,2R,4S)-(-)-Bornyl acetate"
+				},
+				{
+					"name":"C03190  (+)-Bornyl-diphosphate"
+				},
+				{
+					"name":"C06076  Camphene"
+				},
+				{
+					"name":"C06304  (+)-Camphene"
+				},
+				{
+					"name":"C06305  (-)-Camphene"
+				},
+				{
+					"name":"C18369  dl-Camphor"
+				},
+				{
+					"name":"C00808  (+)-Camphor"
+				},
+				{
+					"name":"C00809  (-)-Camphor"
+				},
+				{
+					"name":"C11382  (+)-3-Carene"
+				},
+				{
+					"name":"C09839  (-)-3-Carene"
+				},
+				{
+					"name":"C09840  Carvacrol"
+				},
+				{
+					"name":"C11409  (+)-trans-Carveol"
+				},
+				{
+					"name":"C00964  (-)-trans-Carveol"
+				},
+				{
+					"name":"C11395  (4R,6R)-cis-Carveol"
+				},
+				{
+					"name":"C11408  (4S,6S)-cis-Carveol"
+				},
+				{
+					"name":"C11396  (1R,2R,4R)-Dihydrocarveol"
+				},
+				{
+					"name":"C11413  (1S,2S,4S)-Dihydrocarveol"
+				},
+				{
+					"name":"C11399  (1S,2S,4R)-Iso-dihydrocarveol"
+				},
+				{
+					"name":"C11397  (1R,2S,4R)-Neo-dihydrocarveol"
+				},
+				{
+					"name":"C11416  (1S,2R,4S)-Neo-dihydrocarveol"
+				},
+				{
+					"name":"C11400  (1S,2R,4R)-Neoiso-dihydrocarveol"
+				},
+				{
+					"name":"C01767  (-)-Carvone"
+				},
+				{
+					"name":"C11383  (+)-(S)-Carvone"
+				},
+				{
+					"name":"C09841  Carvone oxide"
+				},
+				{
+					"name":"C09843  Chrysanthenone"
+				},
+				{
+					"name":"C11394  (+)-Chrysanthenone"
+				},
+				{
+					"name":"C16909  1,4-Cineole"
+				},
+				{
+					"name":"C09844  1,8-Cineole"
+				},
+				{
+					"name":"C06575  p-Cymene"
+				},
+				{
+					"name":"C06576  p-Cumic alcohol"
+				},
+				{
+					"name":"C06577  p-Cumic aldehyde"
+				},
+				{
+					"name":"C09854  Diosphenol"
+				},
+				{
+					"name":"C09858  Evodone"
+				},
+				{
+					"name":"C09859  (1R,4S)-(-)-Fenchone"
+				},
+				{
+					"name":"C11387  (1S,4R)-(+)-Fenchone"
+				},
+				{
+					"name":"C02344  Fenchyl alcohol"
+				},
+				{
+					"name":"C06078  Limonene"
+				},
+				{
+					"name":"C06099  (+)-Limonene"
+				},
+				{
+					"name":"C00521  (-)-Limonene"
+				},
+				{
+					"name":"C07271  Limonene-1,2-epoxide"
+				},
+				{
+					"name":"C00400  (-)-Menthol"
+				},
+				{
+					"name":"C00553  (+)-Neomenthol"
+				},
+				{
+					"name":"C02904  p-Menthane-3,8-diol"
+				},
+				{
+					"name":"C09868  Menthofuran"
+				},
+				{
+					"name":"C11390  (+)-Menthone"
+				},
+				{
+					"name":"C00843  (-)-Menthone"
+				},
+				{
+					"name":"C11952  (+)-Isomenthone"
+				},
+				{
+					"name":"C09870  (-)-Menthyl acetate"
+				},
+				{
+					"name":"C16825  Neomenthyl acetate"
+				},
+				{
+					"name":"C11940  Myrtenic acid"
+				},
+				{
+					"name":"C11938  Myrtenol"
+				},
+				{
+					"name":"C11939  Myrtenal"
+				},
+				{
+					"name":"C11924  Perillic acid"
+				},
+				{
+					"name":"C02452  Perillyl alcohol"
+				},
+				{
+					"name":"C02576  Perillyl aldehyde"
+				},
+				{
+					"name":"C09875  (R)-(-)-alpha-Phellandrene"
+				},
+				{
+					"name":"C11391  (S)-(+)-alpha-Phellandrene"
+				},
+				{
+					"name":"C09877  (+)-beta-Phellandrene"
+				},
+				{
+					"name":"C11392  (-)-beta-Phellandrene"
+				},
+				{
+					"name":"C06077  Pinene"
+				},
+				{
+					"name":"C09880  alpha-Pinene"
+				},
+				{
+					"name":"C06306  (+)-alpha-Pinene"
+				},
+				{
+					"name":"C06308  (-)-alpha-Pinene"
+				},
+				{
+					"name":"C02759  alpha-Pinene-oxide"
+				},
+				{
+					"name":"C09882  beta-Pinene"
+				},
+				{
+					"name":"C06307  (-)-beta-Pinene"
+				},
+				{
+					"name":"C09898  alpha-Terpinene"
+				},
+				{
+					"name":"C09900  gamma-Terpinene"
+				},
+				{
+					"name":"C11941  Pinocarveol"
+				},
+				{
+					"name":"C09884  Pinocarvone"
+				},
+				{
+					"name":"C09887  Piquerol A"
+				},
+				{
+					"name":"C01951  Piperitenone"
+				},
+				{
+					"name":"C02289  Isopiperitenone"
+				},
+				{
+					"name":"C02485  (-)-Isopiperitenone"
+				},
+				{
+					"name":"C03039  (+)-trans-Piperitenol"
+				},
+				{
+					"name":"C01123  (-)-trans-Isopiperitenol"
+				},
+				{
+					"name":"C09885  (+)-Piperitone"
+				},
+				{
+					"name":"C09893  (+)-Pulegone"
+				},
+				{
+					"name":"C17623  (-)-Pulegone"
+				},
+				{
+					"name":"C11951  (+)-cis-Isopulegone"
+				},
+				{
+					"name":"C09896  Rotundifolone"
+				},
+				{
+					"name":"C16777  Sabinene"
+				},
+				{
+					"name":"C01868  (+)-Sabinone"
+				},
+				{
+					"name":"C02213  (+)-trans-Sabinol"
+				},
+				{
+					"name":"C02462  Sabinene hydrate"
+				},
+				{
+					"name":"C16772  alpha-Terpineol"
+				},
+				{
+					"name":"C09902  (R)-(+)-alpha-Terpineol"
+				},
+				{
+					"name":"C11393  (-)-alpha-Terpineol"
+				},
+				{
+					"name":"C12300  alpha-Terpinyl acetate"
+				},
+				{
+					"name":"C12301  beta-Terpinyl acetate"
+				},
+				{
+					"name":"C12302  gamma-Terpinyl acetate"
+				},
+				{
+					"name":"C09904  beta-Thujaplicin"
+				},
+				{
+					"name":"C09905  gamma-Thujaplicin"
+				},
+				{
+					"name":"C09908  Thymol"
+				},
+				{
+					"name":"C09909  Thymyl acetate"
+				},
+				{
+					"name":"C09906  Thujone"
+				},
+				{
+					"name":"C09911  Umbellulone"
+				},
+				{
+					"name":"C09913  Verbenone"
+				}
+				]
+			},
+			{
+				"name":"Iridoids",
+				"children":[
+				{
+					"name":"C06069  Iridodial"
+				},
+				{
+					"name":"C09804  cis-trans-Nepetalactol"
+				},
+				{
+					"name":"C09785  (+)-Iridodial"
+				},
+				{
+					"name":"C06070  Iridotrial"
+				},
+				{
+					"name":"C09777  Dolichodial"
+				},
+				{
+					"name":"C11645  Lamioside"
+				},
+				{
+					"name":"C11671  Deutzioside"
+				},
+				{
+					"name":"C01433  Loganin"
+				},
+				{
+					"name":"C01512  Loganate"
+				},
+				{
+					"name":"C11636  7-Deoxyloganate"
+				},
+				{
+					"name":"C06071  Deoxyloganin"
+				},
+				{
+					"name":"C11673  Geniposidic acid"
+				},
+				{
+					"name":"C11672  10-Deoxygeniposidic acid"
+				},
+				{
+					"name":"C09765  Agnuside"
+				},
+				{
+					"name":"C09766  Allamandin"
+				},
+				{
+					"name":"C09768  Antirrhinoside"
+				},
+				{
+					"name":"C09769  Asperuloside"
+				},
+				{
+					"name":"C09771  Aucubin"
+				},
+				{
+					"name":"C09772  Boschnialactone"
+				},
+				{
+					"name":"C09773  Catalpol"
+				},
+				{
+					"name":"C09775  Catalposide"
+				},
+				{
+					"name":"C09776  Didrovaltratum"
+				},
+				{
+					"name":"C09778  Fulvoplumierin"
+				},
+				{
+					"name":"C09779  Gardenoside"
+				},
+				{
+					"name":"C09780  Genipin"
+				},
+				{
+					"name":"C09781  Geniposide"
+				},
+				{
+					"name":"C09783  Harpagoside"
+				},
+				{
+					"name":"C09784  Ipolamiide"
+				},
+				{
+					"name":"C09786  Iridomyrmecin"
+				},
+				{
+					"name":"C09787  Isoplumericin"
+				},
+				{
+					"name":"C09788  Monotropein"
+				},
+				{
+					"name":"C09790  (+)-Neomatatabiol"
+				},
+				{
+					"name":"C09791  Nepetalactone cis-trans-form"
+				},
+				{
+					"name":"C09792  Nepetalactone trans-cis-form"
+				},
+				{
+					"name":"C09795  Paederoside"
+				},
+				{
+					"name":"C09796  Plumericin"
+				},
+				{
+					"name":"C09797  Plumieride"
+				},
+				{
+					"name":"C09798  Scandoside methyl ester"
+				},
+				{
+					"name":"C09799  Specionin"
+				},
+				{
+					"name":"C09801  Valtratum"
+				},
+				{
+					"name":"C09802  Verbenalin"
+				}
+				]
+			},
+			{
+				"name":"Secoiridoids",
+				"children":[
+				{
+					"name":"C09782  Gentiopicrin"
+				},
+				{
+					"name":"C01957  Secologanate"
+				},
+				{
+					"name":"C01852  Secologanin"
+				},
+				{
+					"name":"C09800  Swertiamarin"
+				}
+				]
+			},
+			{
+				"name":"Others",
+				"children":[
+				{
+					"name":"C09845  Cinerin I"
+				},
+				{
+					"name":"C09846  Cinerin II"
+				},
+				{
+					"name":"C09842  Chrysanthemic acid"
+				},
+				{
+					"name":"C07594  Pyrethrin I"
+				},
+				{
+					"name":"C09894  Pyrethrin II"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Sesquiterpenoids (C15)",
+			"children":[
+			{
+				"name":"Farnesenes",
+				"children":[
+				{
+					"name":"C09626  Canellal"
+				},
+				{
+					"name":"C09660  Dehydrongaione"
+				},
+				{
+					"name":"C16779  Dendrolasin"
+				},
+				{
+					"name":"C09665  alpha-Farnesene"
+				},
+				{
+					"name":"C09666  beta-Farnesene"
+				},
+				{
+					"name":"C01493  Farnesol"
+				},
+				{
+					"name":"C00448  Farnesyl diphosphate"
+				},
+				{
+					"name":"C19760  (2Z,6Z)-Farnesyl diphosphate"
+				},
+				{
+					"name":"C01126  trans-Farnesol"
+				},
+				{
+					"name":"C03220  2-cis,6-trans-Farnesol"
+				},
+				{
+					"name":"C03461  2-trans,6-trans-Farnesal"
+				},
+				{
+					"name":"C09704  Nerolidol"
+				},
+				{
+					"name":"C19746  (3R,6E)-Nerolidol"
+				},
+				{
+					"name":"C06111  Nerolidyl diphosphate"
+				},
+				{
+					"name":"C09689  Ipomeamarone"
+				},
+				{
+					"name":"C09694  Juvenile hormone III"
+				},
+				{
+					"name":"C09702  Mukaadial"
+				},
+				{
+					"name":"C09150  17-Oxogrindelic acid"
+				},
+				{
+					"name":"C09712  Polygodial"
+				},
+				{
+					"name":"C09748  Warburganal"
+				}
+				]
+			},
+			{
+				"name":"Germacrenes",
+				"children":[
+				{
+					"name":"C09290  Alatolide"
+				},
+				{
+					"name":"C09297  Arctiopicrin"
+				},
+				{
+					"name":"C02004  Aristolochene"
+				},
+				{
+					"name":"C09304  Artemisiifolin"
+				},
+				{
+					"name":"C09349  Baileyin"
+				},
+				{
+					"name":"C09351  Budlein A"
+				},
+				{
+					"name":"C09353  Calaxin"
+				},
+				{
+					"name":"C09627  Capsidiol"
+				},
+				{
+					"name":"C09355  Chamissonin"
+				},
+				{
+					"name":"C09356  Chamissonin diacetate"
+				},
+				{
+					"name":"C09361  Chromolaenide"
+				},
+				{
+					"name":"C09362  Cnicin"
+				},
+				{
+					"name":"C09382  Costunolide"
+				},
+				{
+					"name":"C09388  Deoxyelephantopin"
+				},
+				{
+					"name":"C09395  Deacetyleupaserrin"
+				},
+				{
+					"name":"C19708  5-Epiaristolochene"
+				},
+				{
+					"name":"C09401  Eleganin"
+				},
+				{
+					"name":"C09402  Elephantin"
+				},
+				{
+					"name":"C09403  Elephantopin"
+				},
+				{
+					"name":"C09405  Enhydrin"
+				},
+				{
+					"name":"C09407  Eremantholide A"
+				},
+				{
+					"name":"C09412  Erioflorin acetate"
+				},
+				{
+					"name":"C09413  Erioflorin methacrylate"
+				},
+				{
+					"name":"C09427  Eupacunin"
+				},
+				{
+					"name":"C09428  Eupacunolin"
+				},
+				{
+					"name":"C09429  Eupacunoxin"
+				},
+				{
+					"name":"C09431  Eupaformonin"
+				},
+				{
+					"name":"C09432  Eupaformosanin"
+				},
+				{
+					"name":"C09433  Eupahyssopin"
+				},
+				{
+					"name":"C09436  Eupaserrin"
+				},
+				{
+					"name":"C09437  Eupatocunin"
+				},
+				{
+					"name":"C09439  Eupatocunoxin"
+				},
+				{
+					"name":"C09440  Eupatolide"
+				},
+				{
+					"name":"C09442  Eupatoriopicrin"
+				},
+				{
+					"name":"C16141  (+)-Germacrene A"
+				},
+				{
+					"name":"C19678  Germacrene A acid"
+				},
+				{
+					"name":"C09672  Germacrene B"
+				},
+				{
+					"name":"C19747  Germacrene C"
+				},
+				{
+					"name":"C19619  (+)-Germacrene D"
+				},
+				{
+					"name":"C16142  (-)-Germacrene D"
+				},
+				{
+					"name":"C16143  Germacradienol"
+				},
+				{
+					"name":"C19676  Germacra-1(10),4,11(13)-trien-12-ol"
+				},
+				{
+					"name":"C19677  Germacra-1(10),4,11(13)-trien-12-al"
+				},
+				{
+					"name":"C16286  Geosmin"
+				},
+				{
+					"name":"C09463  Glaucolide A"
+				},
+				{
+					"name":"C09465  Glaucolide B"
+				},
+				{
+					"name":"C09466  Glechomanolide"
+				},
+				{
+					"name":"C09467  Goyazensolide"
+				},
+				{
+					"name":"C09474  Heliangin"
+				},
+				{
+					"name":"C09475  Hiyodorilactone A"
+				},
+				{
+					"name":"C09477  Hydroxyvernolide"
+				},
+				{
+					"name":"C09497  Lipiferolide"
+				},
+				{
+					"name":"C09491  Laserolide sesqui"
+				},
+				{
+					"name":"C09492  Laurenobiolide sesqui"
+				},
+				{
+					"name":"C09493  Liatrin sesqui"
+				},
+				{
+					"name":"C09495  Linderane sesqui"
+				},
+				{
+					"name":"C09500  Melampodin A sesqui"
+				},
+				{
+					"name":"C09501  Melampodinin sesqui"
+				},
+				{
+					"name":"C09506  Michelenolide"
+				},
+				{
+					"name":"C09511  Mikanolide"
+				},
+				{
+					"name":"C09397  Dihydromikanolide"
+				},
+				{
+					"name":"C09512  Molephantin"
+				},
+				{
+					"name":"C09513  Molephantinin"
+				},
+				{
+					"name":"C09517  Niveusin C"
+				},
+				{
+					"name":"C09518  Nobilin"
+				},
+				{
+					"name":"C09520  Onopordopicrin"
+				},
+				{
+					"name":"C09521  Orizabin"
+				},
+				{
+					"name":"C09522  Ovatifolin"
+				},
+				{
+					"name":"C09536  Pyrethrosin"
+				},
+				{
+					"name":"C07609  Parthenolide"
+				},
+				{
+					"name":"C09526  1-Peroxyferolide"
+				},
+				{
+					"name":"C09527  Phantomolin"
+				},
+				{
+					"name":"C09533  Provincialin"
+				},
+				{
+					"name":"C09535  Pycnolide"
+				},
+				{
+					"name":"C09540  Ridentin"
+				},
+				{
+					"name":"C09542  Salonitenolide"
+				},
+				{
+					"name":"C09548  Scorpioidin"
+				},
+				{
+					"name":"C09554  Tagitinin F"
+				},
+				{
+					"name":"C09556  Tamaulipin A"
+				},
+				{
+					"name":"C09564  Tulipinolide"
+				},
+				{
+					"name":"C09566  epi-Tulipinolide"
+				},
+				{
+					"name":"C09568  epi-Tulipinolide diepoxide"
+				},
+				{
+					"name":"C09572  Ursiniolide A"
+				},
+				{
+					"name":"C09583  Vernolide"
+				},
+				{
+					"name":"C09585  Vernomygdin"
+				},
+				{
+					"name":"C09586  Viguiestenin"
+				}
+				]
+			},
+			{
+				"name":"Bisabolanes",
+				"children":[
+				{
+					"name":"C17954  Albaflavenone"
+				},
+				{
+					"name":"C17953  (5S)-Albaflavenol"
+				},
+				{
+					"name":"C17955  (5R)-Albaflavenol"
+				},
+				{
+					"name":"C16028  Amorpha-4,11-diene"
+				},
+				{
+					"name":"C09621  (-)-alpha-Bisabolol"
+				},
+				{
+					"name":"C20479  (+)-epi-alpha-Bisabolol"
+				},
+				{
+					"name":"C19749  (E)-alpha-Bisabolene"
+				},
+				{
+					"name":"C16775  (S)-beta-Bisabolene"
+				},
+				{
+					"name":"C16814  gamma-Bisabolene"
+				},
+				{
+					"name":"C19748  (E)-gamma-Bisabolene"
+				},
+				{
+					"name":"C17088  alpha-Bergamotene"
+				},
+				{
+					"name":"C19735  (-)-endo-alpha-Bergamotene"
+				},
+				{
+					"name":"C19737  (+)-endo-beta-Bergamotene"
+				},
+				{
+					"name":"C09631  alpha-Cedrol"
+				},
+				{
+					"name":"C18245  8-epi-Cedrol"
+				},
+				{
+					"name":"C09630  alpha-Cedrene"
+				},
+				{
+					"name":"C16269  (+)-epi-Isozizaene"
+				},
+				{
+					"name":"C09693  Juvabione"
+				},
+				{
+					"name":"C09657  Dehydrojuvabione"
+				},
+				{
+					"name":"C19752  (S)-beta-Macrocarpene"
+				},
+				{
+					"name":"C19755  Patchoulol"
+				},
+				{
+					"name":"C09705  Patchouli alcohol"
+				},
+				{
+					"name":"C09718  beta-Santalene"
+				},
+				{
+					"name":"C19736  (+)-alpha-Santalene"
+				},
+				{
+					"name":"C17277  (+)-Valencene"
+				},
+				{
+					"name":"C12142  Vetispiradiene"
+				},
+				{
+					"name":"C17065  Sesquicarene"
+				},
+				{
+					"name":"C19711  Solavetivol"
+				},
+				{
+					"name":"C09737  Solavetivone"
+				},
+				{
+					"name":"C09723  beta-Selinene"
+				},
+				{
+					"name":"C19742  (+)-delta-Selinene"
+				},
+				{
+					"name":"C01860  Trichodiene"
+				}
+				]
+			},
+			{
+				"name":"Humulenes",
+				"children":[
+				{
+					"name":"C09623  Buddledin A"
+				},
+				{
+					"name":"C09629  beta-Caryophyllene"
+				},
+				{
+					"name":"C19973  (+)-beta-Caryophyllene"
+				},
+				{
+					"name":"C09691  Isocaryophyllene"
+				},
+				{
+					"name":"C09684  Humulene"
+				},
+				{
+					"name":"C16829  gamma-Humulene"
+				},
+				{
+					"name":"C09699  Longifolene"
+				},
+				{
+					"name":"C01841  Pentalenene"
+				},
+				{
+					"name":"C19939  Pentalen-13-al"
+				}
+				]
+			},
+			{
+				"name":"Cadinanes",
+				"children":[
+				{
+					"name":"C09625  beta-Cadinene"
+				},
+				{
+					"name":"C19738  (-)-gamma-Cadinene"
+				},
+				{
+					"name":"C06394  delta-Cadinene"
+				},
+				{
+					"name":"C19741  (+)-Cubenene"
+				},
+				{
+					"name":"C07667  Gossypol"
+				},
+				{
+					"name":"C19753  cis-Muurola-3,5-diene"
+				},
+				{
+					"name":"C19754  cis-Muurola-4(14),5-diene"
+				}
+				]
+			},
+			{
+				"name":"Eudesmanes",
+				"children":[
+				{
+					"name":"C09289  Alantolactone"
+				},
+				{
+					"name":"C09484  Isoalantolactone"
+				},
+				{
+					"name":"C09344  Artemisin"
+				},
+				{
+					"name":"C09383  alpha-Cyclocostunolide"
+				},
+				{
+					"name":"C09384  beta-Cyclocostunolide"
+				},
+				{
+					"name":"C09404  Encelin"
+				},
+				{
+					"name":"C09414  Eriolangin"
+				},
+				{
+					"name":"C09663  alpha-Eudesmol"
+				},
+				{
+					"name":"C09664  beta-Eudesmol"
+				},
+				{
+					"name":"C17124  gamma-Eudesmol"
+				},
+				{
+					"name":"C09651  Cycloeudesmol"
+				},
+				{
+					"name":"C19893  10-epi-gamma-Eudesmol"
+				},
+				{
+					"name":"C09450  Farinosin"
+				},
+				{
+					"name":"C09454  Frullanolide"
+				},
+				{
+					"name":"C09470  Granilin"
+				},
+				{
+					"name":"C09675  Guaiazulene"
+				},
+				{
+					"name":"C20174  delta-Guaiene"
+				},
+				{
+					"name":"C09676  Guaiol"
+				},
+				{
+					"name":"C20161  alpha-Guaiene"
+				},
+				{
+					"name":"C09488  Ivalin"
+				},
+				{
+					"name":"C09498  Ludovicin A"
+				},
+				{
+					"name":"C09544  Santamarin"
+				},
+				{
+					"name":"C02206  alpha-Santonin"
+				},
+				{
+					"name":"C09545  beta-Santonin"
+				},
+				{
+					"name":"C02771  1,2-Dihydrosantonin"
+				},
+				{
+					"name":"C09600  Vulgarin"
+				}
+				]
+			},
+			{
+				"name":"Guaianolide",
+				"children":[
+				{
+					"name":"C09286  Absinthin"
+				},
+				{
+					"name":"C09287  Achillin"
+				},
+				{
+					"name":"C09288  Acroptilin"
+				},
+				{
+					"name":"C09296  Archangelolide"
+				},
+				{
+					"name":"C09298  Arctolide"
+				},
+				{
+					"name":"C09301  Artabsin"
+				},
+				{
+					"name":"C09302  Artecanin"
+				},
+				{
+					"name":"C09303  Arteglasin A"
+				},
+				{
+					"name":"C09354  Canin"
+				},
+				{
+					"name":"C09358  Chlorochrymorin"
+				},
+				{
+					"name":"C09359  Chlorohyssopifolin A"
+				},
+				{
+					"name":"C09385  Cynaropicrin"
+				},
+				{
+					"name":"C09387  Dehydrocostus lactone"
+				},
+				{
+					"name":"C09392  8-Deoxylactucin"
+				},
+				{
+					"name":"C09394  Desacetoxymatricarin"
+				},
+				{
+					"name":"C09396  Dihydrogriesenin"
+				},
+				{
+					"name":"C09406  Eremanthin"
+				},
+				{
+					"name":"C09416  Eupachlorin"
+				},
+				{
+					"name":"C09417  Eupachlorin acetate"
+				},
+				{
+					"name":"C09425  Eupachloroxin"
+				},
+				{
+					"name":"C09434  Euparotin"
+				},
+				{
+					"name":"C09435  Euparotin acetate"
+				},
+				{
+					"name":"C09443  Eupatoroxin"
+				},
+				{
+					"name":"C09447  10-epi-Eupatoroxin"
+				},
+				{
+					"name":"C09448  Eupatundin"
+				},
+				{
+					"name":"C09449  Euponin"
+				},
+				{
+					"name":"C09453  Florilenalin"
+				},
+				{
+					"name":"C09455  Gaillardin"
+				},
+				{
+					"name":"C09456  Geigerin"
+				},
+				{
+					"name":"C09468  Gradolide"
+				},
+				{
+					"name":"C09469  Graminiliatrin"
+				},
+				{
+					"name":"C09472  Grosshemin"
+				},
+				{
+					"name":"C09476  7alpha-Hydroxydehydrocostus lactone"
+				},
+				{
+					"name":"C09486  Isomontanolide"
+				},
+				{
+					"name":"C09489  Lactucin"
+				},
+				{
+					"name":"C09490  Lactupicrin"
+				},
+				{
+					"name":"C09507  Micheliolide"
+				},
+				{
+					"name":"C09530  Pleniradin"
+				},
+				{
+					"name":"C09532  Polhovolide"
+				},
+				{
+					"name":"C09534  Pseudoivalin"
+				},
+				{
+					"name":"C09547  Saupirin"
+				},
+				{
+					"name":"C09551  Spicatin"
+				},
+				{
+					"name":"C09561  Thapsigargin"
+				},
+				{
+					"name":"C09562  Tomentosin"
+				},
+				{
+					"name":"C09563  Trilobolide"
+				},
+				{
+					"name":"C09578  Vernoflexin"
+				},
+				{
+					"name":"C09579  Vernoflexuoside"
+				},
+				{
+					"name":"C09587  Viscidulin B"
+				},
+				{
+					"name":"C09601  Xanthatin"
+				},
+				{
+					"name":"C09602  Xanthinin"
+				},
+				{
+					"name":"C09603  Xanthumin"
+				},
+				{
+					"name":"C09605  Xerantholide"
+				},
+				{
+					"name":"C09606  Zaluzanin C"
+				}
+				]
+			},
+			{
+				"name":"Pseudoguaianolide",
+				"children":[
+				{
+					"name":"C09291  Amaralin"
+				},
+				{
+					"name":"C09292  Ambrosin"
+				},
+				{
+					"name":"C09293  Angustibalin"
+				},
+				{
+					"name":"C09299  Arnicolide A"
+				},
+				{
+					"name":"C09300  Aromaticin"
+				},
+				{
+					"name":"C09346  Autumnolide"
+				},
+				{
+					"name":"C09363  Conchosin A"
+				},
+				{
+					"name":"C09373  Conchosin B"
+				},
+				{
+					"name":"C09378  Confertin"
+				},
+				{
+					"name":"C09381  Coronopilin"
+				},
+				{
+					"name":"C09386  Damsin"
+				},
+				{
+					"name":"C09451  Fastigilin B"
+				},
+				{
+					"name":"C09452  Fastigilin C"
+				},
+				{
+					"name":"C09473  Helenalin"
+				},
+				{
+					"name":"C09480  Hymenoflorin"
+				},
+				{
+					"name":"C09481  Hymenolin"
+				},
+				{
+					"name":"C09482  Hymenoxon"
+				},
+				{
+					"name":"C09483  Inulicin"
+				},
+				{
+					"name":"C09485  Isohelenol"
+				},
+				{
+					"name":"C09487  Isotenulin"
+				},
+				{
+					"name":"C09494  Ligulatin B"
+				},
+				{
+					"name":"C09496  Linifolin A"
+				},
+				{
+					"name":"C09503  Mexicanin E"
+				},
+				{
+					"name":"C09504  Mexicanin I"
+				},
+				{
+					"name":"C09510  Microlenin"
+				},
+				{
+					"name":"C09514  Multigilin"
+				},
+				{
+					"name":"C09515  Multiradiatin"
+				},
+				{
+					"name":"C09516  Multistatin"
+				},
+				{
+					"name":"C09523  Parthenin"
+				},
+				{
+					"name":"C09525  Paucin"
+				},
+				{
+					"name":"C09531  Plenolin"
+				},
+				{
+					"name":"C09539  Radiatin"
+				},
+				{
+					"name":"C09552  Stramonin B"
+				},
+				{
+					"name":"C09557  Tenulin"
+				},
+				{
+					"name":"C09559  Tetraneurin A"
+				},
+				{
+					"name":"C09560  Tetraneurin E"
+				},
+				{
+					"name":"C09574  Vermeerin"
+				}
+				]
+			},
+			{
+				"name":"Tutinolide",
+				"children":[
+				{
+					"name":"C09379  Coriamyrtin"
+				},
+				{
+					"name":"C09570  Tutin"
+				}
+				]
+			},
+			{
+				"name":"Others",
+				"children":[
+				{
+					"name":"C09059  Alectrol"
+				},
+				{
+					"name":"C09294  Anisatin"
+				},
+				{
+					"name":"C09295  Arbusculin A"
+				},
+				{
+					"name":"C09538  Artemisinin"
+				},
+				{
+					"name":"C09345  Artemorin"
+				},
+				{
+					"name":"C20181  Avermitilol"
+				},
+				{
+					"name":"C09350  Bakkenolide A"
+				},
+				{
+					"name":"C19740  (+)-alpha-Barbatene"
+				},
+				{
+					"name":"C09628  Carotol"
+				},
+				{
+					"name":"C09632  Centarol"
+				},
+				{
+					"name":"C09633  Chamazulene"
+				},
+				{
+					"name":"C09635  alpha-Chamigrene"
+				},
+				{
+					"name":"C09637  beta-Chamigrene"
+				},
+				{
+					"name":"C09638  Cinnamodial"
+				},
+				{
+					"name":"C09374  Confertiflorin"
+				},
+				{
+					"name":"C09376  Confertifolin"
+				},
+				{
+					"name":"C09639  alpha-Copaene"
+				},
+				{
+					"name":"C09645  Cuauhtemone"
+				},
+				{
+					"name":"C09647  alpha-Cubebene"
+				},
+				{
+					"name":"C09648  beta-Cubebene"
+				},
+				{
+					"name":"C09649  alpha-Curcumene"
+				},
+				{
+					"name":"C20179  gamma-Curcumene"
+				},
+				{
+					"name":"C09652  Daucol"
+				},
+				{
+					"name":"C09653  Debneyol"
+				},
+				{
+					"name":"C09658  Dehydromyodesmone"
+				},
+				{
+					"name":"C09673  Glutinosone"
+				},
+				{
+					"name":"C19734  (-)-alpha-Gurjunene"
+				},
+				{
+					"name":"C09677  Helminthosporal"
+				},
+				{
+					"name":"C09678  Helminthosporol"
+				},
+				{
+					"name":"C09679  Helminthosporoside A"
+				},
+				{
+					"name":"C09680  Hemigossypol"
+				},
+				{
+					"name":"C09681  Hernandulcin"
+				},
+				{
+					"name":"C09682  Himachalol"
+				},
+				{
+					"name":"C09686  Hydroxyisopatchoulenone"
+				},
+				{
+					"name":"C09685  10beta-Hydroxy-6beta-isobutyrylfuranoeremophilane"
+				},
+				{
+					"name":"C09399  Drimenin"
+				},
+				{
+					"name":"C19743  Drimenol"
+				},
+				{
+					"name":"C19744  (+)-Epicubenol"
+				},
+				{
+					"name":"C09408  Eremofrullanolide"
+				},
+				{
+					"name":"C09409  Eremophilenolide"
+				},
+				{
+					"name":"C09690  alpha-Irone"
+				},
+				{
+					"name":"C11350  (+)-trans-alpha-Irone"
+				},
+				{
+					"name":"C09695  Lacinilene C 7-methyl ether"
+				},
+				{
+					"name":"C09697  Laserpitin"
+				},
+				{
+					"name":"C09698  Ledol"
+				},
+				{
+					"name":"C09700  Lubimin"
+				},
+				{
+					"name":"C09508  Microhelenin A"
+				},
+				{
+					"name":"C09509  Microhelenin C"
+				},
+				{
+					"name":"C09499  Matricin"
+				},
+				{
+					"name":"C09502  Mellitoxin"
+				},
+				{
+					"name":"C09706  Petasin"
+				},
+				{
+					"name":"C09707  Phaseic acid"
+				},
+				{
+					"name":"C09708  Phomenone"
+				},
+				{
+					"name":"C09709  Phytuberin"
+				},
+				{
+					"name":"C09528  Picrotin"
+				},
+				{
+					"name":"C09529  Picrotoxinin"
+				},
+				{
+					"name":"C09710  Pinguisone"
+				},
+				{
+					"name":"C19756  Presilphiperfolan-8beta-ol"
+				},
+				{
+					"name":"C09714  Rhipocephalin"
+				},
+				{
+					"name":"C09715  Rishitin"
+				},
+				{
+					"name":"C09717  Rugosal A"
+				},
+				{
+					"name":"C09719  alpha-Santalol"
+				},
+				{
+					"name":"C09720  beta-Santalol"
+				},
+				{
+					"name":"C09722  Seiricardine A"
+				},
+				{
+					"name":"C09725  Shiromodiol diacetate"
+				},
+				{
+					"name":"C09729  alpha-Sinensal"
+				},
+				{
+					"name":"C09730  beta-Sinensal"
+				},
+				{
+					"name":"C09739  Tetradymol"
+				},
+				{
+					"name":"C09740  Thujopsene"
+				},
+				{
+					"name":"C09743  Valerenic acid"
+				},
+				{
+					"name":"C09744  alpha-Vetivone"
+				},
+				{
+					"name":"C09745  beta-Vetivone"
+				},
+				{
+					"name":"C09576  Vernodalin"
+				},
+				{
+					"name":"C09577  Vernodalol"
+				},
+				{
+					"name":"C09582  Vernolepin"
+				},
+				{
+					"name":"C09584  Vernomenin"
+				},
+				{
+					"name":"C09749  alpha-Ylangene"
+				},
+				{
+					"name":"C09750  Zingiberene"
+				},
+				{
+					"name":"C09607  Zexbrevin B"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Diterpenoids (C20)",
+			"children":[
+			{
+				"name":"Linear diterpenes",
+				"children":[
+				{
+					"name":"C09094  Geranylgeraniol"
+				},
+				{
+					"name":"C00353  Geranylgeranyl diphosphate"
+				},
+				{
+					"name":"C11356  trans,trans,cis-Geranylgeranyl diphosphate"
+				},
+				{
+					"name":"C01389  Phytol"
+				},
+				{
+					"name":"C05427  Phytyl diphosphate"
+				}
+				]
+			},
+			{
+				"name":"Abietanes",
+				"children":[
+				{
+					"name":"C06087  Abietate"
+				},
+				{
+					"name":"C11878  (-)-Abietadiene"
+				},
+				{
+					"name":"C09069  Carnosol"
+				},
+				{
+					"name":"C09092  Ferruginol"
+				},
+				{
+					"name":"C11879  Levopimaradiene"
+				},
+				{
+					"name":"C11880  Neoabietadiene"
+				},
+				{
+					"name":"C11889  Neoabietic acid"
+				},
+				{
+					"name":"C09182  Royleanone"
+				},
+				{
+					"name":"C09194  Taxodione"
+				},
+				{
+					"name":"C09196  Taxodone"
+				}
+				]
+			},
+			{
+				"name":"Aphidicolane",
+				"children":[
+				{
+					"name":"C11890  Aphidicolan-16beta-ol"
+				},
+				{
+					"name":"C11892  Aphidicol-15-ene"
+				},
+				{
+					"name":"C11891  Aphidicol-16-ene"
+				},
+				{
+					"name":"C06088  Aphidicolin"
+				}
+				]
+			},
+			{
+				"name":"Cembrenes",
+				"children":[
+				{
+					"name":"C01414  Casbene"
+				},
+				{
+					"name":"C11893  Cembrene"
+				},
+				{
+					"name":"C09140  Neocembrene"
+				},
+				{
+					"name":"C09072  2,7,11-Cembratrien-4,6-diol"
+				}
+				]
+			},
+			{
+				"name":"Clerodanes",
+				"children":[
+				{
+					"name":"C09055  6-Acetylpicropolin"
+				},
+				{
+					"name":"C09058  Ajugarin I"
+				},
+				{
+					"name":"C09067  Callicarpone"
+				},
+				{
+					"name":"C09070  Caryoptin"
+				},
+				{
+					"name":"C09071  Cascarillin"
+				},
+				{
+					"name":"C09073  Chasmanthin"
+				},
+				{
+					"name":"C09075  Clerodin"
+				},
+				{
+					"name":"C09074  Clerodendrin A"
+				},
+				{
+					"name":"C09077  Columbin"
+				},
+				{
+					"name":"C17508  Isocolumbin"
+				},
+				{
+					"name":"C09136  Montanin A"
+				},
+				{
+					"name":"C09166  Plaunol B"
+				},
+				{
+					"name":"C09168  Plaunol D"
+				},
+				{
+					"name":"C09151  Palmarin"
+				},
+				{
+					"name":"C17507  Palmatoside G"
+				},
+				{
+					"name":"C20196  Salvinorin A"
+				},
+				{
+					"name":"C20205  Tanabalin"
+				}
+				]
+			},
+			{
+				"name":"Daphnanes",
+				"children":[
+				{
+					"name":"C09080  Daphnetoxin"
+				},
+				{
+					"name":"C09108  Huratoxin"
+				},
+				{
+					"name":"C09095  Gnidicin"
+				},
+				{
+					"name":"C09096  Gnididin"
+				},
+				{
+					"name":"C09102  Gniditrin"
+				},
+				{
+					"name":"C09101  Gnididilatin"
+				},
+				{
+					"name":"C09134  Mezerein"
+				},
+				{
+					"name":"C09161  Pimelea factor P2"
+				},
+				{
+					"name":"C09179  Resiniferatoxin"
+				},
+				{
+					"name":"C09185  Simplexin"
+				},
+				{
+					"name":"C09192  Synaptolepis factor K1"
+				},
+				{
+					"name":"C09198  Terpenoid EA-I"
+				},
+				{
+					"name":"C09201  Tinyatoxin"
+				}
+				]
+			},
+			{
+				"name":"Gibberellins",
+				"children":[
+				{
+					"name":"C09062  Antheridic acid"
+				},
+				{
+					"name":"C00859  Gibberellin A1"
+				},
+				{
+					"name":"C01699  Gibberellin A3"
+				},
+				{
+					"name":"C11864  Gibberellin A4"
+				},
+				{
+					"name":"C11871  Gibberellin A5"
+				},
+				{
+					"name":"C11856  Gibberellin A6"
+				},
+				{
+					"name":"C11867  Gibberellin A7"
+				},
+				{
+					"name":"C03579  Gibberellin A8"
+				},
+				{
+					"name":"C11870  Gibberellin A8-catabolite"
+				},
+				{
+					"name":"C11863  Gibberellin A9"
+				},
+				{
+					"name":"C11866  2,3-Dehydro-gibberellin A9"
+				},
+				{
+					"name":"C11857  Gibberellin A12"
+				},
+				{
+					"name":"C06093  Gibberellin A12 aldehyde"
+				},
+				{
+					"name":"C11858  Gibberellin A14"
+				},
+				{
+					"name":"C11853  Gibberellin A14 aldehyde"
+				},
+				{
+					"name":"C14162  Gibberellin A15"
+				},
+				{
+					"name":"C11860  Gibberellin A15 open lactone"
+				},
+				{
+					"name":"C02034  Gibberellin A19"
+				},
+				{
+					"name":"C02035  Gibberellin A20"
+				},
+				{
+					"name":"C11861  Gibberellin A24"
+				},
+				{
+					"name":"C06096  Gibberellin A29"
+				},
+				{
+					"name":"C11855  Gibberellin A29-catabolite"
+				},
+				{
+					"name":"C11868  Gibberellin A34"
+				},
+				{
+					"name":"C11869  Gibberellin A34-catabolite"
+				},
+				{
+					"name":"C11862  Gibberellin A36"
+				},
+				{
+					"name":"C14161  Gibberellin A37"
+				},
+				{
+					"name":"C11859  Gibberellin A37 open lactone"
+				},
+				{
+					"name":"C12308  Gibberellin A44"
+				},
+				{
+					"name":"C06095  Gibberellin A44 diacid"
+				},
+				{
+					"name":"C11865  Gibberellin A51"
+				},
+				{
+					"name":"C11854  Gibberellin A51-catabolite"
+				},
+				{
+					"name":"C06094  Gibberellin A53"
+				},
+				{
+					"name":"C11905  Gibberellin A53 aldehyde"
+				}
+				]
+			},
+			{
+				"name":"Ginkgolides",
+				"children":[
+				{
+					"name":"C07605  Bilobalide"
+				},
+				{
+					"name":"C07601  Ginkgolide A"
+				},
+				{
+					"name":"C07602  Ginkgolide B"
+				},
+				{
+					"name":"C07603  Ginkgolide C"
+				},
+				{
+					"name":"C07604  Ginkgolide J"
+				},
+				{
+					"name":"C16816  Ginkgolide M"
+				}
+				]
+			},
+			{
+				"name":"Grayanoids",
+				"children":[
+				{
+					"name":"C09063  Asebotoxin II"
+				},
+				{
+					"name":"C09103  Grayanotoxin I"
+				},
+				{
+					"name":"C19992  Rhodojaponin I"
+				},
+				{
+					"name":"C09180  Rhodojaponin IV"
+				}
+				]
+			},
+			{
+				"name":"Kaurenes",
+				"children":[
+				{
+					"name":"C11876  6beta,7beta-Dihydroxykaurenoic acid"
+				},
+				{
+					"name":"C09081  7beta,12alpha-Dihydroxykaurenolide"
+				},
+				{
+					"name":"C11875  ent-7alpha-Hydroxykaur-16-en-19-oic acid"
+				},
+				{
+					"name":"C09111  Inflexin"
+				},
+				{
+					"name":"C09115  Isodomedin"
+				},
+				{
+					"name":"C06090  ent-Kaurene"
+				},
+				{
+					"name":"C11872  Kaur-16-en-18-ol"
+				},
+				{
+					"name":"C11873  Kaur-16-en-18-al"
+				},
+				{
+					"name":"C11874  Kaurenoic acid"
+				},
+				{
+					"name":"C09184  Shikodonin"
+				},
+				{
+					"name":"C20212  Steviol"
+				},
+				{
+					"name":"C09189  Stevioside"
+				}
+				]
+			},
+			{
+				"name":"Labdanes",
+				"children":[
+				{
+					"name":"C20214  Andrographolide"
+				},
+				{
+					"name":"C11901  Copalyl diphosphate"
+				},
+				{
+					"name":"C11902  9alpha-Copalyl diphosphate"
+				},
+				{
+					"name":"C06089  ent-Copalyl diphosphate"
+				},
+				{
+					"name":"C17498  Galanolactone"
+				},
+				{
+					"name":"C09124  2-Ketoepimanool"
+				},
+				{
+					"name":"C09183  Sclareol"
+				}
+				]
+			},
+			{
+				"name":"Mesotricyclic diterpenoids",
+				"children":[
+				{
+					"name":"C09119  Jatrophatrione"
+				},
+				{
+					"name":"C09120  Jatrophone"
+				}
+				]
+			},
+			{
+				"name":"Pimaranes",
+				"children":[
+				{
+					"name":"C09148  Oryzalexin A"
+				},
+				{
+					"name":"C06086  Pimaradiene"
+				},
+				{
+					"name":"C09159  (+)-Pimaric acid"
+				},
+				{
+					"name":"C09118  Isopimaric acid"
+				},
+				{
+					"name":"C11888  Levopimaric acid"
+				},
+				{
+					"name":"C11877  (+)-Sandaracopimaradiene"
+				}
+				]
+			},
+			{
+				"name":"Podocarpanes",
+				"children":[
+				{
+					"name":"C12078  Dehydroabietic acid"
+				},
+				{
+					"name":"C09171  Podocarpic acid"
+				}
+				]
+			},
+			{
+				"name":"Taxanes",
+				"children":[
+				{
+					"name":"C11900  Baccatin III"
+				},
+				{
+					"name":"C11700  10-Deacetylbaccatin III"
+				},
+				{
+					"name":"C10579  Cephalomannine"
+				},
+				{
+					"name":"C16524  3'-N-Debenzoyltaxol"
+				},
+				{
+					"name":"C16523  3'-N-Debenzoyl-2'-deoxytaxol"
+				},
+				{
+					"name":"C07394  Paclitaxel"
+				},
+				{
+					"name":"C10619  Taxine A"
+				},
+				{
+					"name":"C19989  Taxine B"
+				},
+				{
+					"name":"C11894  Taxa-4(5),11(12)-diene"
+				}
+				]
+			},
+			{
+				"name":"Tiglianes",
+				"children":[
+				{
+					"name":"C09068  Candletoxin A"
+				},
+				{
+					"name":"C09086  Diterpenoid EF-D"
+				},
+				{
+					"name":"C09087  Diterpenoid SP-II"
+				},
+				{
+					"name":"C09091  Euphorbia factor Ti2"
+				},
+				{
+					"name":"C09127  Mancinellin"
+				},
+				{
+					"name":"C09153  12-O-Palmitoyl-16-hydroxyphorbol 13-acetate"
+				},
+				{
+					"name":"C09143  Pedilstatin"
+				},
+				{
+					"name":"C09155  Phorbol"
+				},
+				{
+					"name":"C09157  Phorbol 12-tiglate 13-decanoate"
+				},
+				{
+					"name":"C05151  12-O-Tetradecanoylphorbol 13-acetate"
+				},
+				{
+					"name":"C20197  Prostratin"
+				},
+				{
+					"name":"C09178  Resiniferonol"
+				}
+				]
+			},
+			{
+				"name":"Others",
+				"children":[
+				{
+					"name":"C09057  Acutilol A"
+				},
+				{
+					"name":"C09064  Atractyloside"
+				},
+				{
+					"name":"C09065  Baliospermin"
+				},
+				{
+					"name":"C09066  Cafestol"
+				},
+				{
+					"name":"C09076  Coleonol"
+				},
+				{
+					"name":"C09078  Cotylenin F"
+				},
+				{
+					"name":"C09090  Enmein"
+				},
+				{
+					"name":"C19991  Euphornin"
+				},
+				{
+					"name":"C09093  Fusicoccin H"
+				},
+				{
+					"name":"C09104  Hallactone A"
+				},
+				{
+					"name":"C09105  Hallactone B"
+				},
+				{
+					"name":"C09109  Hymatoxin A"
+				},
+				{
+					"name":"C09112  Ingenol"
+				},
+				{
+					"name":"C09113  Ingenol 3,20-dibenzoate"
+				},
+				{
+					"name":"C09110  Ineketone"
+				},
+				{
+					"name":"C09114  Inumakilactone A glycoside"
+				},
+				{
+					"name":"C09117  Isodonal"
+				},
+				{
+					"name":"C09121  Jodrellin A"
+				},
+				{
+					"name":"C09122  Kansuinine B"
+				},
+				{
+					"name":"C09125  Lathyrol"
+				},
+				{
+					"name":"C09128  Marrubiin"
+				},
+				{
+					"name":"C09132  Mascaroside"
+				},
+				{
+					"name":"C09135  Montanin"
+				},
+				{
+					"name":"C09137  Montanol"
+				},
+				{
+					"name":"C09138  Nagilactone C"
+				},
+				{
+					"name":"C09163  Pisiferic acid"
+				},
+				{
+					"name":"C09174  Ponalactone A"
+				},
+				{
+					"name":"C09172  Podolactone B"
+				},
+				{
+					"name":"C09173  Podolide"
+				},
+				{
+					"name":"C09175  Portulal"
+				},
+				{
+					"name":"C09177  Premarrubiin"
+				},
+				{
+					"name":"C09188  Spruceanol"
+				},
+				{
+					"name":"C09202  Tripdiolide"
+				},
+				{
+					"name":"C09204  Triptolide"
+				},
+				{
+					"name":"C09205  Zoapatanol"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Sesterterpenoids (C25)"
+		},
+		{
+			"name":"Triterpenoids (C30)",
+			"children":[
+			{
+				"name":"Liner triterpenes",
+				"children":[
+				{
+					"name":"C19835  Camelliol C"
+				},
+				{
+					"name":"C01054  (S)-2,3-Epoxysqualene"
+				},
+				{
+					"name":"C06428  (5Z,8Z,11Z,14Z,17Z)-Icosapentaenoic acid"
+				},
+				{
+					"name":"C00751  Squalene"
+				}
+				]
+			},
+			{
+				"name":"Cucurbitanes",
+				"children":[
+				{
+					"name":"C01901  Cucurbitacin"
+				},
+				{
+					"name":"C08793  Cucurbitacin A"
+				},
+				{
+					"name":"C08794  Cucurbitacin B"
+				},
+				{
+					"name":"C08795  Cucurbitacin C"
+				},
+				{
+					"name":"C08796  Cucurbitacin D"
+				},
+				{
+					"name":"C08797  Cucurbitacin E"
+				},
+				{
+					"name":"C08798  Cucurbitacin F"
+				},
+				{
+					"name":"C08799  Cucurbitacin H"
+				},
+				{
+					"name":"C08800  Cucurbitacin I"
+				},
+				{
+					"name":"C08801  Cucurbitacin J"
+				},
+				{
+					"name":"C08802  Cucurbitacin L"
+				},
+				{
+					"name":"C08803  Cucurbitacin O"
+				},
+				{
+					"name":"C08804  Cucurbitacin P"
+				},
+				{
+					"name":"C08805  Cucurbitacin Q"
+				},
+				{
+					"name":"C08806  Cucurbitacin S"
+				},
+				{
+					"name":"C08807  11-Deoxocucurbitacin I"
+				},
+				{
+					"name":"C20787  23,24-Dihydrocucurbitacin B"
+				}
+				]
+			},
+			{
+				"name":"Dammarenes",
+				"children":[
+				{
+					"name":"C08746  Ailanthinone"
+				},
+				{
+					"name":"C08747  Ailanthone"
+				},
+				{
+					"name":"C15274  Allobetulinol"
+				},
+				{
+					"name":"C08751  Bruceine B"
+				},
+				{
+					"name":"C08769  Isobrucein A"
+				},
+				{
+					"name":"C08770  Isobrucein B"
+				},
+				{
+					"name":"C08752  Bruceine D"
+				},
+				{
+					"name":"C08753  Bruceoside A"
+				},
+				{
+					"name":"C08754  Brusatol"
+				},
+				{
+					"name":"C08749  Bruceantin"
+				},
+				{
+					"name":"C08750  Bruceantinol"
+				},
+				{
+					"name":"C08755  Castelanone"
+				},
+				{
+					"name":"C08756  Chaparrin"
+				},
+				{
+					"name":"C08757  Chaparrinone"
+				},
+				{
+					"name":"C08758  Chaparrolide"
+				},
+				{
+					"name":"C17539  Chikusetsusaponin III"
+				},
+				{
+					"name":"C17544  Chikusetsusaponin Ia"
+				},
+				{
+					"name":"C08621  Dammarenediol-I"
+				},
+				{
+					"name":"C19829  Dammarenediol II"
+				},
+				{
+					"name":"C19834  Dammara-20,24-diene"
+				},
+				{
+					"name":"C08622  Dipterocarpol"
+				},
+				{
+					"name":"C08942  Echinocystic acid"
+				},
+				{
+					"name":"C08623  alpha-Elemolic acid"
+				},
+				{
+					"name":"C08624  Euphol"
+				},
+				{
+					"name":"C19833  Germanicol"
+				},
+				{
+					"name":"C08944  Ginsenoside Re"
+				},
+				{
+					"name":"C08945  Ginsenoside Rf"
+				},
+				{
+					"name":"C08946  Ginsenoside Rg1"
+				},
+				{
+					"name":"C08760  Glaucarubin"
+				},
+				{
+					"name":"C08763  Glaucarubinone"
+				},
+				{
+					"name":"C08764  Glaucarubolone"
+				},
+				{
+					"name":"C08947  Gymnemic acid I"
+				},
+				{
+					"name":"C08631  Messagenin"
+				},
+				{
+					"name":"C17012  Nigakilactone A"
+				},
+				{
+					"name":"C17013  Nigakilactone B"
+				},
+				{
+					"name":"C17029  Nigakilactone C"
+				},
+				{
+					"name":"C08778  Nigakilactone D"
+				},
+				{
+					"name":"C17049  Nigakilactone G"
+				},
+				{
+					"name":"C17030  Nigakilactone E"
+				},
+				{
+					"name":"C17031  Nigakilactone F"
+				},
+				{
+					"name":"C17032  Nigakilactone H"
+				},
+				{
+					"name":"C17050  Nigakilactone I"
+				},
+				{
+					"name":"C17033  Nigakilactone K"
+				},
+				{
+					"name":"C17034  Nigakilactone L"
+				},
+				{
+					"name":"C17035  Nigakilactone M"
+				},
+				{
+					"name":"C17036  Nigakilactone N"
+				},
+				{
+					"name":"C08776  Nigakilactone J"
+				},
+				{
+					"name":"C08771  Neoquassin"
+				},
+				{
+					"name":"C08772  Nigakihemiacetal A"
+				},
+				{
+					"name":"C08961  Notoginsenoside R1"
+				},
+				{
+					"name":"C19801  Isomultiflorenol"
+				},
+				{
+					"name":"C17417  Onjisaponin F"
+				},
+				{
+					"name":"C19918  Parkeol"
+				},
+				{
+					"name":"C08632  Papyriferic acid"
+				},
+				{
+					"name":"C17443  Platycodin A"
+				},
+				{
+					"name":"C17487  Platycodin C"
+				},
+				{
+					"name":"C17410  Platycodin D"
+				},
+				{
+					"name":"C17441  Polygalacin D"
+				},
+				{
+					"name":"C17051  Picrasin D"
+				},
+				{
+					"name":"C17052  Picrasin E"
+				},
+				{
+					"name":"C17053  Picrasin F"
+				},
+				{
+					"name":"C17054  Picrasin G"
+				},
+				{
+					"name":"C08633  Pristimerin"
+				},
+				{
+					"name":"C08777  Quassimarin"
+				},
+				{
+					"name":"C08982  Soyasaponin A1"
+				},
+				{
+					"name":"C08980  Soyasapogenol B"
+				},
+				{
+					"name":"C08983  Soyasaponin I"
+				},
+				{
+					"name":"C12081  Soyasaponin II"
+				},
+				{
+					"name":"C19865  Soyasaponin III"
+				},
+				{
+					"name":"C13837  Dehydrosoyasaponin I"
+				},
+				{
+					"name":"C08975  Saikosaponin A"
+				},
+				{
+					"name":"C08976  Saikosaponin BK1"
+				},
+				{
+					"name":"C08977  Saponoside D"
+				},
+				{
+					"name":"C08782  Sergeolide"
+				},
+				{
+					"name":"C08978  Senegin II"
+				},
+				{
+					"name":"C17760  Senegin III"
+				},
+				{
+					"name":"C17761  Senegin IV"
+				},
+				{
+					"name":"C08783  Simalikilactone D"
+				},
+				{
+					"name":"C08784  Soularubinone"
+				},
+				{
+					"name":"C08636  Taraxasterol"
+				},
+				{
+					"name":"C08637  Taraxerol"
+				},
+				{
+					"name":"C08638  Tingenone"
+				},
+				{
+					"name":"C08787  Undulatone"
+				}
+				]
+			},
+			{
+				"name":"Hopanes",
+				"children":[
+				{
+					"name":"C08625  Fernene"
+				},
+				{
+					"name":"C08626  Friedelin"
+				},
+				{
+					"name":"C08627  Hopane-29-acetate"
+				},
+				{
+					"name":"C06083  Tetrahymanol"
+				}
+				]
+			},
+			{
+				"name":"Limonoids",
+				"children":[
+				{
+					"name":"C11047  Azadirachtinin"
+				},
+				{
+					"name":"C06740  Glucosyl-limonin"
+				},
+				{
+					"name":"C03514  Limonin"
+				},
+				{
+					"name":"C08775  Obacunone"
+				},
+				{
+					"name":"C08780  Salannin"
+				},
+				{
+					"name":"C08785  Toonacilin"
+				},
+				{
+					"name":"C08786  Trichilin A"
+				}
+				]
+			},
+			{
+				"name":"Lupanes",
+				"children":[
+				{
+					"name":"C08618  Betulin"
+				},
+				{
+					"name":"C08619  Betulinic acid"
+				},
+				{
+					"name":"C08628  Lupeol"
+				},
+				{
+					"name":"C08630  Lupeol acetate"
+				},
+				{
+					"name":"C19863  Lupan-3beta,20-diol"
+				}
+				]
+			},
+			{
+				"name":"Oleananes",
+				"children":[
+				{
+					"name":"C08616  beta-Amyrin"
+				},
+				{
+					"name":"C19732  24-Hydroxy-beta-amyrin"
+				},
+				{
+					"name":"C08931  Barringtogenol C"
+				},
+				{
+					"name":"C17545  Chikusetsusaponin Ib"
+				},
+				{
+					"name":"C17540  Chikusetsusaponin IV"
+				},
+				{
+					"name":"C17543  Chikusetsusaponin V"
+				},
+				{
+					"name":"C08943  Flaccidin B"
+				},
+				{
+					"name":"C02283  Glycyrrhetinate"
+				},
+				{
+					"name":"C02284  Glycyrrhizinate"
+				},
+				{
+					"name":"C08954  alpha-Hederin"
+				},
+				{
+					"name":"C08955  beta-Hederin"
+				},
+				{
+					"name":"C17148  Oleanolic acid"
+				},
+				{
+					"name":"C08962  Olaxoside"
+				},
+				{
+					"name":"C08963  Oleanoglycotoxin-A"
+				},
+				{
+					"name":"C08964  Oleanoic acid 3-O-glucuronide"
+				},
+				{
+					"name":"C08971  Propapyriogenin A2"
+				},
+				{
+					"name":"C08972  Quillaic acid"
+				},
+				{
+					"name":"C08973  Rotundioside B"
+				},
+				{
+					"name":"C08984  Spinasaponin A"
+				},
+				{
+					"name":"C08990  Yiamoloside B"
+				}
+				]
+			},
+			{
+				"name":"Protostanes",
+				"children":[
+				{
+					"name":"C08920  Abrusoside A"
+				},
+				{
+					"name":"C17459  Alisol A"
+				},
+				{
+					"name":"C17460  Alisol B"
+				},
+				{
+					"name":"C17461  Alisol C"
+				},
+				{
+					"name":"C08924  Astragaloside III"
+				},
+				{
+					"name":"C08925  Astrasieversianin XVI"
+				},
+				{
+					"name":"C17797  Astragaloside I"
+				},
+				{
+					"name":"C17798  Astragaloside II"
+				},
+				{
+					"name":"C17799  Astragaloside IV"
+				},
+				{
+					"name":"C17800  Astragaloside V"
+				},
+				{
+					"name":"C17801  Astragaloside VI"
+				},
+				{
+					"name":"C17802  Astragaloside VII"
+				},
+				{
+					"name":"C17538  Cimigenol"
+				},
+				{
+					"name":"C17793  Isoastragaloside I"
+				},
+				{
+					"name":"C17794  Isoastragaloside II"
+				}
+				]
+			},
+			{
+				"name":"Ursanes",
+				"children":[
+				{
+					"name":"C08615  alpha-Amyrin"
+				},
+				{
+					"name":"C08617  Asiatic acid"
+				},
+				{
+					"name":"C16939  Crataegolic acid"
+				},
+				{
+					"name":"C08950  Gypsogenin"
+				},
+				{
+					"name":"C17890  Euscaphic acid"
+				},
+				{
+					"name":"C08957  Ilexolide A"
+				},
+				{
+					"name":"C08988  Ursolic acid"
+				}
+				]
+			},
+			{
+				"name":"Others",
+				"children":[
+				{
+					"name":"C08921  Aescin"
+				},
+				{
+					"name":"C08922  Aridanin"
+				},
+				{
+					"name":"C08923  Arvensoside A"
+				},
+				{
+					"name":"C08926  Avenacin A-1"
+				},
+				{
+					"name":"C08927  Avenacin B-2"
+				},
+				{
+					"name":"C08930  Azukisaponin III"
+				},
+				{
+					"name":"C08932  Bayogenin 3-O-cellobioside"
+				},
+				{
+					"name":"C08789  Bryodulcosigenin"
+				},
+				{
+					"name":"C08933  Camellidin I"
+				},
+				{
+					"name":"C08934  Camellidin II"
+				},
+				{
+					"name":"C08790  Carnosifloside I"
+				},
+				{
+					"name":"C08791  Carnosifloside III"
+				},
+				{
+					"name":"C08792  Carnosifloside VI"
+				},
+				{
+					"name":"C08935  Cimicifugoside"
+				},
+				{
+					"name":"C08936  Colubrin"
+				},
+				{
+					"name":"C08937  Colubrinoside"
+				},
+				{
+					"name":"C08938  Cyclamin"
+				},
+				{
+					"name":"C08940  Desglucomusennin"
+				},
+				{
+					"name":"C08941  Dianoside A"
+				},
+				{
+					"name":"C08759  Eurycomalactone"
+				},
+				{
+					"name":"C08765  Glycinoeclepin A"
+				},
+				{
+					"name":"C08808  Gratiogenin"
+				},
+				{
+					"name":"C08949  Gypenoside XXV"
+				},
+				{
+					"name":"C08952  Gypsogenin 3-O-rhamnosylglucuronide"
+				},
+				{
+					"name":"C08953  Hederagenin 3-O-arabinoside"
+				},
+				{
+					"name":"C08766  Harrisonin"
+				},
+				{
+					"name":"C08956  Helianthoside A"
+				},
+				{
+					"name":"C08767  12alpha-Hydroxyamoorstatin"
+				},
+				{
+					"name":"C08768  Ichangin"
+				},
+				{
+					"name":"C08958  Lemmatoxin"
+				},
+				{
+					"name":"C08959  Medicagenic acid 3-O-triglucoside"
+				},
+				{
+					"name":"C08960  Musennin"
+				},
+				{
+					"name":"C08773  Nomilin"
+				},
+				{
+					"name":"C08965  Pfaffic acid"
+				},
+				{
+					"name":"C08966  Pfaffoside A"
+				},
+				{
+					"name":"C08967  Phaseoloside D"
+				},
+				{
+					"name":"C08968  Phytolaccoside B"
+				},
+				{
+					"name":"C08969  Pittoside A"
+				},
+				{
+					"name":"C08970  Primulasaponin"
+				},
+				{
+					"name":"C08779  Rutaevin"
+				},
+				{
+					"name":"C08781  Samaderin A"
+				},
+				{
+					"name":"C08634  Sapelin A"
+				},
+				{
+					"name":"C17067  Siaresinol"
+				},
+				{
+					"name":"C08809  Spinoside A"
+				},
+				{
+					"name":"C08635  Taccalonolide A"
+				},
+				{
+					"name":"C19832  Thalianol"
+				},
+				{
+					"name":"C08985  Thalicoside A"
+				},
+				{
+					"name":"C08986  Theasaponin"
+				},
+				{
+					"name":"C08987  Tubeimoside I"
+				},
+				{
+					"name":"C08989  Virgaureasaponin I"
+				},
+				{
+					"name":"C08788  Zapoterin"
+				},
+				{
+					"name":"C08991  Ziziphin"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Steroids",
+			"children":[
+			{
+				"name":"Estrane",
+				"children":[
+				{
+					"name":"C00468  Estrone"
+				}
+				]
+			},
+			{
+				"name":"Androstane",
+				"children":[
+				{
+					"name":"C00280  Androstenedione"
+				},
+				{
+					"name":"C00535  Testosterone"
+				}
+				]
+			},
+			{
+				"name":"Pregnane",
+				"children":[
+				{
+					"name":"C08837  Poststerone"
+				}
+				]
+			},
+			{
+				"name":"Cardanolide",
+				"children":[
+				{
+					"name":"C08845  Adynerin"
+				},
+				{
+					"name":"C08843  Adonitoxin"
+				},
+				{
+					"name":"C08847  alpha-Antiarin"
+				},
+				{
+					"name":"C08848  Antioside"
+				},
+				{
+					"name":"C08849  Asclepin"
+				},
+				{
+					"name":"C08850  Aspecioside"
+				},
+				{
+					"name":"C08851  Bipindoside"
+				},
+				{
+					"name":"C08854  Calactin"
+				},
+				{
+					"name":"C08855  Calotropin"
+				},
+				{
+					"name":"C19984  Cerberin"
+				},
+				{
+					"name":"C08857  Cerbertin"
+				},
+				{
+					"name":"C08858  Convallatoxin"
+				},
+				{
+					"name":"C19986  Convalloside"
+				},
+				{
+					"name":"C08859  Cymarin"
+				},
+				{
+					"name":"C08860  Decoside"
+				},
+				{
+					"name":"C08861  Diginatin"
+				},
+				{
+					"name":"C06955  Digitoxin"
+				},
+				{
+					"name":"C08862  Digitalin"
+				},
+				{
+					"name":"C06956  Digoxin"
+				},
+				{
+					"name":"C08863  Divaricoside"
+				},
+				{
+					"name":"C08864  Divostroside"
+				},
+				{
+					"name":"C08865  Eriocarpin"
+				},
+				{
+					"name":"C08866  Gitoxin"
+				},
+				{
+					"name":"C08869  Helveticoside"
+				},
+				{
+					"name":"C08870  Labriformidin"
+				},
+				{
+					"name":"C08871  Labriformin"
+				},
+				{
+					"name":"C08874  Lokundjoside"
+				},
+				{
+					"name":"C08875  Musaroside"
+				},
+				{
+					"name":"C08876  Neriifolin"
+				},
+				{
+					"name":"C19987  Oleandrin"
+				},
+				{
+					"name":"C01443  Ouabain"
+				},
+				{
+					"name":"C08877  Rhodexin A"
+				},
+				{
+					"name":"C08878  Sarmentoloside"
+				},
+				{
+					"name":"C08881  k-Strophanthoside"
+				},
+				{
+					"name":"C19988  Strophanthidin"
+				},
+				{
+					"name":"C08882  Thevetin A"
+				},
+				{
+					"name":"C08856  Thevetin B"
+				},
+				{
+					"name":"C08883  Uscharidin"
+				},
+				{
+					"name":"C08884  Vernadigin"
+				}
+				]
+			},
+			{
+				"name":"Bufanolide",
+				"children":[
+				{
+					"name":"C08852  Bryophyllin A"
+				},
+				{
+					"name":"C08853  Bryotoxin A"
+				},
+				{
+					"name":"C08867  Hellebrigenin 3-acetate"
+				},
+				{
+					"name":"C08868  Hellebrin"
+				},
+				{
+					"name":"C08872  Lanceotoxin A"
+				},
+				{
+					"name":"C08873  Lanceotoxin B"
+				},
+				{
+					"name":"C08879  Scillaren A"
+				},
+				{
+					"name":"C08880  Scilliroside"
+				}
+				]
+			},
+			{
+				"name":"Cholestane",
+				"children":[
+				{
+					"name":"C08811  Ajugasterone C"
+				},
+				{
+					"name":"C00187  Cholesterol"
+				},
+				{
+					"name":"C00477  Ecdysone"
+				},
+				{
+					"name":"C02633  20-Hydroxyecdysone"
+				},
+				{
+					"name":"C08819  Inokosterone"
+				},
+				{
+					"name":"C08825  Lophenol"
+				},
+				{
+					"name":"C08905  Osladin"
+				},
+				{
+					"name":"C08835  Ponasterone A"
+				},
+				{
+					"name":"C08832  Podecdysone B"
+				},
+				{
+					"name":"C08834  Polypodine B"
+				},
+				{
+					"name":"C08833  Pollinastanol"
+				},
+				{
+					"name":"C08838  Pterosterone"
+				}
+				]
+			},
+			{
+				"name":"Spirostan",
+				"children":[
+				{
+					"name":"C08886  Asparagoside A"
+				},
+				{
+					"name":"C08885  Agavoside A"
+				},
+				{
+					"name":"C08890  Convallagenin A"
+				},
+				{
+					"name":"C08891  Convallamarogenin"
+				},
+				{
+					"name":"C08893  Convallasaponin A"
+				},
+				{
+					"name":"C08894  Deltonin"
+				},
+				{
+					"name":"C00765  Digitonin"
+				},
+				{
+					"name":"C08896  Digitogenin"
+				},
+				{
+					"name":"C08897  Dioscin"
+				},
+				{
+					"name":"C08898  Diosgenin"
+				},
+				{
+					"name":"C08899  Gitogenin"
+				},
+				{
+					"name":"C16819  Neotigogenin"
+				},
+				{
+					"name":"C08900  Gitonin"
+				},
+				{
+					"name":"C08902  Hecogenin"
+				},
+				{
+					"name":"C17003  Neogitogenin"
+				},
+				{
+					"name":"C04715  Nuatigenin"
+				},
+				{
+					"name":"C08906  Parillin"
+				},
+				{
+					"name":"C08909  Ruscogenin"
+				},
+				{
+					"name":"C03963  Sarsasapogenin"
+				},
+				{
+					"name":"C08912  Sarsasapogenin 3-O-4G-rhamnosylsophoroside"
+				},
+				{
+					"name":"C08913  Smilagenin"
+				},
+				{
+					"name":"C08915  Tigonin"
+				},
+				{
+					"name":"C08914  Tigogenin"
+				},
+				{
+					"name":"C17074  Timosaponin A-I"
+				},
+				{
+					"name":"C08916  Tokoronin"
+				},
+				{
+					"name":"C08918  Yamogenin"
+				},
+				{
+					"name":"C08919  Yamogenin 3-O-neohesperidoside"
+				}
+				]
+			},
+			{
+				"name":"Furostan",
+				"children":[
+				{
+					"name":"C08887  Avenacoside A"
+				},
+				{
+					"name":"C08888  Avenacoside B"
+				},
+				{
+					"name":"C08889  Capsicoside A"
+				},
+				{
+					"name":"C08892  Convallamaroside"
+				},
+				{
+					"name":"C08895  Deltoside"
+				},
+				{
+					"name":"C08901  Gracillin"
+				},
+				{
+					"name":"C08908  Protogracillin"
+				},
+				{
+					"name":"C08904  Officinalisnin I"
+				},
+				{
+					"name":"C08907  Protodioscin"
+				},
+				{
+					"name":"C17468  Methylprotodioscin"
+				},
+				{
+					"name":"C17469  Pseudoprotodioscin"
+				},
+				{
+					"name":"C08910  Ruscoside"
+				},
+				{
+					"name":"C08911  Sarsaparilloside"
+				},
+				{
+					"name":"C08917  Trigonelloside C"
+				}
+				]
+			},
+			{
+				"name":"Ergostane",
+				"children":[
+				{
+					"name":"C08813  Brassicasterol"
+				},
+				{
+					"name":"C08814  Brassinolide"
+				},
+				{
+					"name":"C11049  24-epi-Brassinolide"
+				},
+				{
+					"name":"C11050  25-Hydroxy-24-epi-brassinolide"
+				},
+				{
+					"name":"C01789  Campesterol"
+				},
+				{
+					"name":"C15789  6-Oxocampestanol"
+				},
+				{
+					"name":"C15795  22alpha-Hydroxy-campesterol"
+				},
+				{
+					"name":"C15794  Castasterone"
+				},
+				{
+					"name":"C15790  Cathasterone"
+				},
+				{
+					"name":"C08829  Makisterone B"
+				},
+				{
+					"name":"C15793  Typhasterol"
+				}
+				]
+			},
+			{
+				"name":"Stigmastane",
+				"children":[
+				{
+					"name":"C08810  Ajugalactone"
+				},
+				{
+					"name":"C08816  Cyasterone"
+				},
+				{
+					"name":"C08817  Fucosterol"
+				},
+				{
+					"name":"C08821  Isofucosterol"
+				},
+				{
+					"name":"C08836  Poriferasterol"
+				},
+				{
+					"name":"C08839  Schottenol"
+				},
+				{
+					"name":"C08840  alpha-Spinasterol"
+				},
+				{
+					"name":"C01753  beta-Sitosterol"
+				},
+				{
+					"name":"C05442  Stigmasterol"
+				},
+				{
+					"name":"C19654  gamma-Sitosterol"
+				}
+				]
+			},
+			{
+				"name":"Cycloartane",
+				"children":[
+				{
+					"name":"C01902  Cycloartenol"
+				},
+				{
+					"name":"C08830  24-Methylenecycloartanol"
+				}
+				]
+			},
+			{
+				"name":"Others",
+				"children":[
+				{
+					"name":"C08831  Miroestrol"
+				},
+				{
+					"name":"C18164  Deoxymiroestrol"
+				},
+				{
+					"name":"C08841  Withaferin A"
+				},
+				{
+					"name":"C08842  Withanolide D"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Carotenoids and apocarotenoids",
+			"children":[
+			{
+				"name":"Carotenoids",
+				"children":[
+				{
+					"name":"C08579  Antheraxanthin"
+				},
+				{
+					"name":"C08580  Astaxanthin"
+				},
+				{
+					"name":"C08583  Canthaxanthin"
+				},
+				{
+					"name":"C08584  Capsanthin"
+				},
+				{
+					"name":"C08585  Capsorubin"
+				},
+				{
+					"name":"C05433  alpha-Carotene"
+				},
+				{
+					"name":"C02094  beta-Carotene"
+				},
+				{
+					"name":"C08587  beta-Carotene 5,6-epoxide"
+				},
+				{
+					"name":"C05435  gamma-Carotene"
+				},
+				{
+					"name":"C08586  delta-Carotene"
+				},
+				{
+					"name":"C16276  epsilon-Carotene"
+				},
+				{
+					"name":"C05430  all-trans-zeta-Carotene"
+				},
+				{
+					"name":"C08605  Citroxanthin"
+				},
+				{
+					"name":"C15981  alpha-Cryptoxanthin"
+				},
+				{
+					"name":"C08591  beta-Cryptoxanthin"
+				},
+				{
+					"name":"C08593  Eschscholtzxanthin"
+				},
+				{
+					"name":"C08594  Flavoxanthin"
+				},
+				{
+					"name":"C08596  Fucoxanthin"
+				},
+				{
+					"name":"C08599  Lactucaxanthin"
+				},
+				{
+					"name":"C08601  Lutein"
+				},
+				{
+					"name":"C08602  Lutein 5,6-epoxide"
+				},
+				{
+					"name":"C05432  Lycopene"
+				},
+				{
+					"name":"C08603  Lycoxanthin"
+				},
+				{
+					"name":"C08606  Neoxanthin"
+				},
+				{
+					"name":"C13431  9'-cis-Neoxanthin"
+				},
+				{
+					"name":"C05413  Phytoene"
+				},
+				{
+					"name":"C05421  15-cis-Phytoene"
+				},
+				{
+					"name":"C05414  all-trans-Phytofluene"
+				},
+				{
+					"name":"C08610  Rhodoxanthin"
+				},
+				{
+					"name":"C08611  Rubixanthin"
+				},
+				{
+					"name":"C08614  Violaxanthin"
+				},
+				{
+					"name":"C13433  9-cis-Violaxanthin"
+				},
+				{
+					"name":"C14146  alpha-Zeacarotene"
+				},
+				{
+					"name":"C06098  Zeaxanthin"
+				},
+				{
+					"name":"C08590  Zeinoxanthin"
+				}
+				]
+			},
+			{
+				"name":"Apocarotenoids",
+				"children":[
+				{
+					"name":"C06082  Abscisate"
+				},
+				{
+					"name":"C08582  Bixin"
+				},
+				{
+					"name":"C08589  Crocin"
+				},
+				{
+					"name":"C08588  Crocetin"
+				},
+				{
+					"name":"C19867  beta-D-Glucosyl crocetin"
+				},
+				{
+					"name":"C17513  beta-D-Gentiobiosyl beta-D-glucosyl crocetin"
+				},
+				{
+					"name":"C20425  beta-Cyclocitral"
+				},
+				{
+					"name":"C12286  alpha-Ionone"
+				},
+				{
+					"name":"C12287  beta-Ionone"
+				},
+				{
+					"name":"C20426  Mycorradicin"
+				},
+				{
+					"name":"C17055  Picrocrocin"
+				},
+				{
+					"name":"C17062  Safranal"
+				},
+				{
+					"name":"C09186  Sorgolactone"
+				},
+				{
+					"name":"C09190  Strigol"
+				},
+				{
+					"name":"C18037  5-Deoxystrigol"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Others",
+			"children":[
+			{
+				"name":"Polyterpenoids",
+				"children":[
+				{
+					"name":"C04217  all-trans-Pentaprenyl diphosphate"
+				},
+				{
+					"name":"C01230  all-trans-Hexaprenyl diphosphate"
+				},
+				{
+					"name":"C04216  all-trans-Heptaprenyl diphosphate"
+				},
+				{
+					"name":"C04146  all-trans-Octaprenyl diphosphate"
+				},
+				{
+					"name":"C04145  all-trans-Nonaprenyl diphosphate"
+				},
+				{
+					"name":"C17432  all-trans-Decaprenyl diphosphate"
+				},
+				{
+					"name":"C04574  di-trans,poly-cis-Undecaprenyl diphosphate"
+				},
+				{
+					"name":"C02321  Rubber particle"
+				}
+				]
+			}
+			]
+		}
+		]
+	},
+	{
+		"name":"Polyketides",
+		"children":[
+		{
+			"name":"Anthraquinones",
+			"children":[
+			{
+				"name":"Anthrone type",
+				"children":[
+				{
+					"name":"C16760  Aloe emodin anthrone"
+				},
+				{
+					"name":"C10305  Barbaloin"
+				},
+				{
+					"name":"C17778  Isobarbaloin"
+				},
+				{
+					"name":"C10307  Cascaroside A"
+				},
+				{
+					"name":"C16799  Cascaroside B"
+				},
+				{
+					"name":"C16801  Cascaroside C"
+				},
+				{
+					"name":"C16800  Cascaroside D"
+				},
+				{
+					"name":"C10314  Chrysarobin"
+				},
+				{
+					"name":"C07606  Hypericin"
+				},
+				{
+					"name":"C10404  Sennoside A"
+				},
+				{
+					"name":"C13526  Sennoside B"
+				},
+				{
+					"name":"C16797  Sennoside C"
+				},
+				{
+					"name":"C16798  Sennoside D"
+				}
+				]
+			},
+			{
+				"name":"Anthraquinone type",
+				"children":[
+				{
+					"name":"C10294  Aloe-emodin"
+				},
+				{
+					"name":"C01474  Alizarin"
+				},
+				{
+					"name":"C10291  Alizarin 2-methyl ether"
+				},
+				{
+					"name":"C10297  Anthragallol"
+				},
+				{
+					"name":"C17670  Aurantio-obtusin"
+				},
+				{
+					"name":"C10303  Aurantio-obtusin beta-D-glucoside"
+				},
+				{
+					"name":"C10308  Cassiamin C"
+				},
+				{
+					"name":"C10315  Chrysophanol"
+				},
+				{
+					"name":"C10316  Chrysophanol 8-O-beta-D-glucoside"
+				},
+				{
+					"name":"C10312  Danthron"
+				},
+				{
+					"name":"C10327  Digiferrugineol"
+				},
+				{
+					"name":"C10334  Dothistromin"
+				},
+				{
+					"name":"C10343  Emodin"
+				},
+				{
+					"name":"C10345  Emodin 8-glucoside"
+				},
+				{
+					"name":"C10311  7-Chloroemodin"
+				},
+				{
+					"name":"C10360  2-Isoprenylemodin"
+				},
+				{
+					"name":"C10346  Frangulin A"
+				},
+				{
+					"name":"C10349  Frangulin B"
+				},
+				{
+					"name":"C16802  Glucofrangulin A"
+				},
+				{
+					"name":"C16803  Glucofrangulin B"
+				},
+				{
+					"name":"C10354  2-Hydroxymethylanthraquinone"
+				},
+				{
+					"name":"C10329  1,4-Dihydroxy-2-methylanthraquinone"
+				},
+				{
+					"name":"C10365  Knipholone"
+				},
+				{
+					"name":"C10369  Lucidin"
+				},
+				{
+					"name":"C10370  Lucidin omega-methyl ether"
+				},
+				{
+					"name":"C17040  Obtusin"
+				},
+				{
+					"name":"C17039  Obtusifolin"
+				},
+				{
+					"name":"C10381  Obtusifolin 2-glucoside"
+				},
+				{
+					"name":"C17669  Chryso-obtusin"
+				},
+				{
+					"name":"C10313  Chryso-obtusin glucoside"
+				},
+				{
+					"name":"C10374  Morindaparvin A"
+				},
+				{
+					"name":"C10376  Morindone"
+				},
+				{
+					"name":"C10379  Norobtusifolin"
+				},
+				{
+					"name":"C17045  Physcion"
+				},
+				{
+					"name":"C10382  Physcion 8-gentiobioside"
+				},
+				{
+					"name":"C10384  Physcion 8-glucoside"
+				},
+				{
+					"name":"C10395  Purpurin"
+				},
+				{
+					"name":"C10397  Purpurin 1-methyl ether"
+				},
+				{
+					"name":"C10394  Pseudopurpurin"
+				},
+				{
+					"name":"C01448  Questin"
+				},
+				{
+					"name":"C17811  Questinol"
+				},
+				{
+					"name":"C10401  Rhein"
+				},
+				{
+					"name":"C10402  Rubiadin"
+				},
+				{
+					"name":"C10405  Tectoquinone"
+				},
+				{
+					"name":"C10407  Ventinone A"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Pyrones",
+			"children":[
+			{
+				"name":"alpha-Pyrones",
+				"children":[
+				{
+					"name":"C09952  Methysticin"
+				},
+				{
+					"name":"C09926  Dihydromethysticin"
+				},
+				{
+					"name":"C09947  Kawain"
+				},
+				{
+					"name":"C09925  5,6-Dehydrokawain"
+				},
+				{
+					"name":"C09980  Yangonin"
+				}
+				]
+			},
+			{
+				"name":"Monocyclic gamma-pyrones",
+				"children":[
+				{
+					"name":"C08476  Chelidonic acid"
+				},
+				{
+					"name":"C11918  Maltol"
+				},
+				{
+					"name":"C20209  Meconic acid"
+				}
+				]
+			},
+			{
+				"name":"Chromones",
+				"children":[
+				{
+					"name":"C08994  Aloesin"
+				},
+				{
+					"name":"C08996  Biflorin"
+				},
+				{
+					"name":"C08999  Capillarisin"
+				},
+				{
+					"name":"C09000  Cimifugin"
+				},
+				{
+					"name":"C09002  8-(3,3-Dimethylallyl)spatheliachromene"
+				},
+				{
+					"name":"C20210  Eugenin"
+				},
+				{
+					"name":"C17483  Hamaudol"
+				},
+				{
+					"name":"C09010  Khellin"
+				},
+				{
+					"name":"C09011  Khellol glucoside"
+				},
+				{
+					"name":"C09012  Lathodoratin"
+				},
+				{
+					"name":"C08485  2-(4-Methoxyphenethyl)chromone"
+				},
+				{
+					"name":"C09014  5-O-Methylalloptaeroxylin"
+				},
+				{
+					"name":"C09016  5-O-Methylvisamminol"
+				},
+				{
+					"name":"C09029  Ptaerochromenol"
+				},
+				{
+					"name":"C09030  Ptaeroglycol"
+				},
+				{
+					"name":"C09031  Pulverochromenol"
+				},
+				{
+					"name":"C09048  Spathelia bischromene"
+				},
+				{
+					"name":"C09049  Visnagin"
+				}
+				]
+			},
+			{
+				"name":"Naphthopyrones",
+				"children":[
+				{
+					"name":"C08995  Aurasperone D"
+				},
+				{
+					"name":"C10306  Bikaverin"
+				},
+				{
+					"name":"C09044  Quinquangulin"
+				},
+				{
+					"name":"C09047  Rubrofusarin"
+				}
+				]
+			},
+			{
+				"name":"Xanthenes",
+				"children":[
+				{
+					"name":"C10052  Athyriol"
+				},
+				{
+					"name":"C10069  Isoathyriol"
+				},
+				{
+					"name":"C10053  Bellidifolin"
+				},
+				{
+					"name":"C10054  Calophyllin B"
+				},
+				{
+					"name":"C10055  Dehydrocycloguanandin"
+				},
+				{
+					"name":"C10056  Demethylbellidifolin"
+				},
+				{
+					"name":"C10059  6-Deoxyjacareubin"
+				},
+				{
+					"name":"C10060  3,5-Dimethoxy-1,6-dihydroxyxanthone"
+				},
+				{
+					"name":"C10061  Euxanthone"
+				},
+				{
+					"name":"C10063  Gartanin"
+				},
+				{
+					"name":"C10064  Gentiacaulein"
+				},
+				{
+					"name":"C10065  Gentisein"
+				},
+				{
+					"name":"C10070  Isogentisin"
+				},
+				{
+					"name":"C10067  Irisxanthone"
+				},
+				{
+					"name":"C10071  1-Isomangostin"
+				},
+				{
+					"name":"C10074  Jacareubin"
+				},
+				{
+					"name":"C10075  Lancerin"
+				},
+				{
+					"name":"C10076  Macluraxanthone"
+				},
+				{
+					"name":"C10077  Mangiferin"
+				},
+				{
+					"name":"C10080  Mangostin"
+				},
+				{
+					"name":"C10081  Mesuaxanthone A"
+				},
+				{
+					"name":"C10082  Mesuaxanthone B"
+				},
+				{
+					"name":"C10083  2-O-Methylswertianin"
+				},
+				{
+					"name":"C10086  Norathyriol"
+				},
+				{
+					"name":"C10087  Norlichexanthone"
+				},
+				{
+					"name":"C10088  Norswertianin"
+				},
+				{
+					"name":"C10089  Norswertianolin"
+				},
+				{
+					"name":"C10090  Psorospermin"
+				},
+				{
+					"name":"C10091  Swerchirin"
+				},
+				{
+					"name":"C10092  Swertianin"
+				},
+				{
+					"name":"C10093  Swertianolin"
+				},
+				{
+					"name":"C10094  1,3,5-Trihydroxyxanthone"
+				},
+				{
+					"name":"C10095  Tripteroside"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Others",
+			"children":[
+			{
+				"name":"Cannabinoids",
+				"children":[
+				{
+					"name":"C07578  Cannabidiol"
+				},
+				{
+					"name":"C20217  Cannabidivarin"
+				},
+				{
+					"name":"C20218  Cannabielsoin"
+				},
+				{
+					"name":"C20219  Cannabigerol"
+				},
+				{
+					"name":"C07580  Cannabinol"
+				},
+				{
+					"name":"C08998  Cannabichromene"
+				},
+				{
+					"name":"C06972  Tetrahydrocannabinol"
+				}
+				]
+			},
+			{
+				"name":"Phloroglucinols",
+				"children":[
+				{
+					"name":"C20206  Albaspidin BB"
+				},
+				{
+					"name":"C10672  Aspidin"
+				},
+				{
+					"name":"C10673  Aspidinol"
+				},
+				{
+					"name":"C20207  Grandinol"
+				},
+				{
+					"name":"C10695  Humulone"
+				},
+				{
+					"name":"C10704  alpha-Kosin"
+				},
+				{
+					"name":"C10706  Lupulone"
+				},
+				{
+					"name":"C10721  Rottlerin"
+				}
+				]
+			}
+			]
+		}
+		]
+	},
+	{
+		"name":"Fatty acids related compounds",
+		"children":[
+		{
+			"name":"Fatty acids",
+			"children":[
+			{
+				"name":"Saturated fatty acids",
+				"children":[
+				{
+					"name":"C06425  Arachidic acid"
+				},
+				{
+					"name":"C08281  Behenic acid"
+				},
+				{
+					"name":"C00246  Butyric acid"
+				},
+				{
+					"name":"C01585  Caproic acid"
+				},
+				{
+					"name":"C01571  Capric acid"
+				},
+				{
+					"name":"C02679  Lauric acid"
+				},
+				{
+					"name":"C06424  Myristic acid"
+				},
+				{
+					"name":"C06423  Octanoic acid"
+				},
+				{
+					"name":"C00249  Palmitic acid"
+				},
+				{
+					"name":"C01530  Stearic acid"
+				}
+				]
+			},
+			{
+				"name":"Unsaturated fatty acids",
+				"children":[
+				{
+					"name":"C08316  Erucic acid"
+				},
+				{
+					"name":"C01595  Linoleic acid"
+				},
+				{
+					"name":"C06426  gamma-Linolenic acid"
+				},
+				{
+					"name":"C08322  Myristoleic acid"
+				},
+				{
+					"name":"C00712  Oleic acid"
+				},
+				{
+					"name":"C08362  Palmitoleic acid"
+				},
+				{
+					"name":"C08364  Punicic acid"
+				},
+				{
+					"name":"C08365  Ricinoleic acid"
+				},
+				{
+					"name":"C08367  Vaccenic acid"
+				}
+				]
+			},
+			{
+				"name":"Polyynes",
+				"children":[
+				{
+					"name":"C08402  Cicutoxin"
+				},
+				{
+					"name":"C20044  Enanthotoxin"
+				},
+				{
+					"name":"C08450  Falcarinol"
+				},
+				{
+					"name":"C16792  Panaxytriol"
+				},
+				{
+					"name":"C08461  Thiarubrine A"
+				},
+				{
+					"name":"C08462  Thiarubrine B"
+				},
+				{
+					"name":"C19993  Virol A"
+				},
+				{
+					"name":"C19994  Virol B"
+				},
+				{
+					"name":"C08465  Wyerone"
+				}
+				]
+			},
+			{
+				"name":"Others",
+				"children":[
+				{
+					"name":"C20213  Annonacin"
+				},
+				{
+					"name":"C08467  Asimicin"
+				},
+				{
+					"name":"C08282  Chaulmoogric acid"
+				},
+				{
+					"name":"C16795  Hydnocarpic acid"
+				},
+				{
+					"name":"C08491  Jasmonate"
+				},
+				{
+					"name":"C08321  Malvalic acid"
+				},
+				{
+					"name":"C08366  Sterculic acid"
+				},
+				{
+					"name":"C08572  Uvaricin"
+				},
+				{
+					"name":"C08368  Vernolic acid"
+				}
+				]
+			}
+			]
+		}
+		]
+	},
+	{
+		"name":"Amino acid related compounds",
+		"children":[
+		{
+			"name":"Betalains",
+			"children":[
+			{
+				"name":"Betacyanins",
+				"children":[
+				{
+					"name":"C08537  Amaranthin"
+				},
+				{
+					"name":"C08539  Betanidin"
+				},
+				{
+					"name":"C08540  Betanin"
+				},
+				{
+					"name":"C08541  Bougainvillein-r-I"
+				},
+				{
+					"name":"C08542  Celosianin II"
+				},
+				{
+					"name":"C17757  2-Descarboxy-betanidin"
+				},
+				{
+					"name":"C08544  Gomphrenin-I"
+				},
+				{
+					"name":"C08547  Gomphrenin-V"
+				},
+				{
+					"name":"C08550  Iresinin I"
+				},
+				{
+					"name":"C08551  Isobetanin"
+				},
+				{
+					"name":"C08567  Prebetanin"
+				}
+				]
+			},
+			{
+				"name":"Betaxanthins",
+				"children":[
+				{
+					"name":"C08543  Dopaxanthin"
+				},
+				{
+					"name":"C08548  Humilixanthin"
+				},
+				{
+					"name":"C08549  Indicaxanthin"
+				},
+				{
+					"name":"C17754  3-Methoxytyramine-betaxanthin"
+				},
+				{
+					"name":"C08554  Miraxanthin-I"
+				},
+				{
+					"name":"C08555  Miraxanthin-II"
+				},
+				{
+					"name":"C08556  Miraxanthin-III"
+				},
+				{
+					"name":"C08557  Miraxanthin-V"
+				},
+				{
+					"name":"C08559  Musca-aurin-I"
+				},
+				{
+					"name":"C08560  Musca-aurin-II"
+				},
+				{
+					"name":"C08562  Musca-aurin-VII"
+				},
+				{
+					"name":"C08564  Portulacaxanthin I"
+				},
+				{
+					"name":"C08565  Portulacaxanthin II"
+				},
+				{
+					"name":"C08566  Portulacaxanthin III"
+				},
+				{
+					"name":"C08568  Vulgaxanthin-I"
+				},
+				{
+					"name":"C08569  Vulgaxanthin-II"
+				}
+				]
+			},
+			{
+				"name":"Others",
+				"children":[
+				{
+					"name":"C08538  Betalamic acid"
+				},
+				{
+					"name":"C08563  Muscapurpurin"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Cyanogenic glucosides",
+			"children":[
+			{
+				"name":"Cyanogenic glucosides derived from phenylalanine",
+				"children":[
+				{
+					"name":"C08325  Amygdalin"
+				},
+				{
+					"name":"C08326  Anthemis glycoside A"
+				},
+				{
+					"name":"C08327  Anthemis glycoside B"
+				},
+				{
+					"name":"C08335  Lucumin"
+				},
+				{
+					"name":"C00844  Prunasin"
+				},
+				{
+					"name":"C01870  (R)-Vicianin"
+				},
+				{
+					"name":"C08345  Zierin"
+				}
+				]
+			},
+			{
+				"name":"Cyanogenic glucosides derived from thyrosine",
+				"children":[
+				{
+					"name":"C05143  Dhurrin"
+				},
+				{
+					"name":"C08330  p-Glucosyloxymandelonitrile"
+				},
+				{
+					"name":"C08339  Proteacin"
+				},
+				{
+					"name":"C01855  Taxiphyllin"
+				},
+				{
+					"name":"C08342  Triglochinin"
+				}
+				]
+			},
+			{
+				"name":"Cyanogenic glucosides derived from valine or isoleucine",
+				"children":[
+				{
+					"name":"C01594  Linamarin"
+				},
+				{
+					"name":"C08333  Linustatin"
+				},
+				{
+					"name":"C08334  Lotaustralin"
+				},
+				{
+					"name":"C08336  Neolinustatin"
+				},
+				{
+					"name":"C08340  Sarmentosin"
+				}
+				]
+			},
+			{
+				"name":"Cyanogenic glucosides derived from leucine",
+				"children":[
+				{
+					"name":"C08328  Cardiospermin"
+				},
+				{
+					"name":"C08332  Heterodendrin"
+				},
+				{
+					"name":"C08337  Proacaciberin"
+				},
+				{
+					"name":"C08338  Proacacipetalin"
+				}
+				]
+			},
+			{
+				"name":"Cyanogenic glucosides derived from nonprotein amino acid",
+				"children":[
+				{
+					"name":"C08329  Deidaclin"
+				},
+				{
+					"name":"C08331  Gynocardin"
+				},
+				{
+					"name":"C08344  Volkenin"
+				}
+				]
+			},
+			{
+				"name":"Cyanogenic glucosides derived from other origin",
+				"children":[
+				{
+					"name":"C08324  Acalyphin"
+				}
+				]
+			},
+			{
+				"name":"Others",
+				"children":[
+				{
+					"name":"C01418  Cycasin"
+				},
+				{
+					"name":"C08512  Ranunculin"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Glucosinolates",
+			"children":[
+			{
+				"name":"Glucosinolates derived from methionine",
+				"children":[
+				{
+					"name":"C08412  3-Methylthiopropyl glucosinolate"
+				},
+				{
+					"name":"C08409  4-Methylthiobutyl glucosinolate"
+				},
+				{
+					"name":"C08420  4-Methylsufinyl-3-butenyl glucosinolate"
+				},
+				{
+					"name":"C08410  4-Methylsulfonylbutyl glucosinolate"
+				},
+				{
+					"name":"C08401  5-Methylthiopentyl glucosinolate"
+				},
+				{
+					"name":"C17250  6-Methylthiohexyl glucosinolate"
+				},
+				{
+					"name":"C17252  7-Methylthioheptyl glucosinolate"
+				},
+				{
+					"name":"C08411  3-Methylsulfinylpropyl glucosinolate"
+				},
+				{
+					"name":"C08405  3-Methylsufonylpropyl glucosinolate"
+				},
+				{
+					"name":"C08419  4-Methylsulfinylbutyl glucosinolate"
+				},
+				{
+					"name":"C08400  5-Methylsulfinylpentyl glucosinolate"
+				},
+				{
+					"name":"C17271  8-Methylsulfinyloctyl glucosinolate"
+				},
+				{
+					"name":"C17272  9-Methylsulfinylnonyl glucosinolate"
+				},
+				{
+					"name":"C08427  2-Propenyl glucosinolate"
+				},
+				{
+					"name":"C08415  3-Butenyl glucosinolate"
+				},
+				{
+					"name":"C08403  4-Pentenyl glucosinolate"
+				},
+				{
+					"name":"C08425  2(R)-2-Hydroxy-3-butenyl glucosinolate"
+				},
+				{
+					"name":"C08416  2-Hydroxy-4-pentenyl glucosinolate"
+				}
+				]
+			},
+			{
+				"name":"Glucosinolates derived from leucine",
+				"children":[
+				{
+					"name":"C08408  Glucoconringiin"
+				},
+				{
+					"name":"C17256  2-Methylpropyl glucosinolate"
+				}
+				]
+			},
+			{
+				"name":"Glucosinolates derived from isoleucine",
+				"children":[
+				{
+					"name":"C08407  1-Methylpropyl glucosinolate"
+				},
+				{
+					"name":"C17257  2-Methylbutyl glucosinolate"
+				},
+				{
+					"name":"C08406  2-Hydroxy-2-methylbutyl glucosinolate"
+				}
+				]
+			},
+			{
+				"name":"Glucosinolates derived from valine",
+				"children":[
+				{
+					"name":"C08418  Glucoputranjivin"
+				},
+				{
+					"name":"C17275  Glucosisymbrin"
+				}
+				]
+			},
+			{
+				"name":"Glucosinolates derived from alanine",
+				"children":[
+				{
+					"name":"C08404  Methyl glucosinolate"
+				},
+				{
+					"name":"C08413  Ethyl glucosinolate"
+				}
+				]
+			},
+			{
+				"name":"Glucosinolates derived from phenylalanine",
+				"children":[
+				{
+					"name":"C02153  Benzyl glucosinolate"
+				},
+				{
+					"name":"C08417  2-Phenylethyl glucosinolate"
+				},
+				{
+					"name":"C17274  2(R)-Hydroxy-2-phenylethyl glucosinolate"
+				}
+				]
+			},
+			{
+				"name":"Glucosinolates derived from tyrosine",
+				"children":[
+				{
+					"name":"C08426  p-Hydroxybenzyl glucosinolate"
+				},
+				{
+					"name":"C17273  4-Methoxybenzyl glucosinolate"
+				}
+				]
+			},
+			{
+				"name":"Glucosinolates derived from tryptophan",
+				"children":[
+				{
+					"name":"C05837  Glucobrassicin"
+				},
+				{
+					"name":"C08424  Neoglucobrassicin"
+				},
+				{
+					"name":"C08428  (N-Sulfoindol-3-yl)methylglucosinolate"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Others",
+			"children":[
+			{
+				"name":"Amines",
+				"children":[
+				{
+					"name":"C00179  Agmatine"
+				},
+				{
+					"name":"C00436  N-Carbamoylputrescine"
+				},
+				{
+					"name":"C08303  Galegine"
+				},
+				{
+					"name":"C08307  Hordatine A"
+				},
+				{
+					"name":"C08308  Hordatine B"
+				}
+				]
+			},
+			{
+				"name":"Amides",
+				"children":[
+				{
+					"name":"C20204  Entadamide A"
+				},
+				{
+					"name":"C17091  alpha-Sanshool"
+				},
+				{
+					"name":"C17827  Hydroxy-gamma-sanshool"
+				}
+				]
+			},
+			{
+				"name":"Capsaicinoids and derivatives",
+				"children":[
+				{
+					"name":"C06866  Capsaicin"
+				},
+				{
+					"name":"C20203  Capsiate"
+				},
+				{
+					"name":"C16952  Dihydrocapsaicin"
+				},
+				{
+					"name":"C20215  Homocapsaicin"
+				},
+				{
+					"name":"C20216  Nordihydrocapsaicin"
+				}
+				]
+			}
+			]
+		}
+		]
+	},
+	{
+		"name":"Others",
+		"children":[
+		{
+			"name":"Naphthoquinones",
+			"children":[
+			{
+				"name":"alpha-Naphthoquinones",
+				"children":[
+				{
+					"name":"C10368  Lawsone"
+				},
+				{
+					"name":"C03840  Juglone"
+				},
+				{
+					"name":"C10366  Lapachol"
+				},
+				{
+					"name":"C10325  Deoxylapachol"
+				},
+				{
+					"name":"C10335  Droserone"
+				},
+				{
+					"name":"C10398  Ramentaceone"
+				},
+				{
+					"name":"C17412  Shikonin"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Tannins and galloyl derivatives",
+			"children":[
+			{
+				"name":"Galloyl derivatives",
+				"children":[
+				{
+					"name":"C10788  Ellagic acid"
+				},
+				{
+					"name":"C01424  Gallate"
+				}
+				]
+			},
+			{
+				"name":"Gallotannins",
+				"children":[
+				{
+					"name":"C01108  Pyrogallol"
+				}
+				]
+			},
+			{
+				"name":"Ellagitannins",
+				"children":[
+				{
+					"name":"C10210  Agrimoniin"
+				},
+				{
+					"name":"C10211  Alnusiin"
+				},
+				{
+					"name":"C10212  Casuarictin"
+				},
+				{
+					"name":"C10213  Casuarinin"
+				},
+				{
+					"name":"C10214  Chebulagic acid"
+				},
+				{
+					"name":"C10215  Chebulinic acid"
+				},
+				{
+					"name":"C10219  Corilagin"
+				},
+				{
+					"name":"C10218  Coriariin A"
+				},
+				{
+					"name":"C10224  Eugeniin"
+				},
+				{
+					"name":"C10220  3,5-Di-O-galloyl-4-O-digalloylquinic acid"
+				},
+				{
+					"name":"C10229  Gemin A"
+				},
+				{
+					"name":"C10230  Geraniin"
+				},
+				{
+					"name":"C10232  Isoterchebin"
+				},
+				{
+					"name":"C10235  Mallotusinic acid"
+				},
+				{
+					"name":"C10236  Pedunculagin"
+				},
+				{
+					"name":"C04576  Pentagalloylglucose"
+				},
+				{
+					"name":"C10240  Rugosin D"
+				},
+				{
+					"name":"C10241  Tellimagrandin I"
+				},
+				{
+					"name":"C10243  1,2,3,4-Tetragalloyl-alpha-D-glucose"
+				},
+				{
+					"name":"C10836  3,4,3'-Tri-O-methylellagic acid"
+				}
+				]
+			},
+			{
+				"name":"Miscellaneous galloyl derivatives",
+				"children":[
+				{
+					"name":"C10242  Terminalin"
+				}
+				]
+			}
+			]
+		},
+		{
+			"name":"Others",
+			"children":[
+			{
+				"name":"Neoflavonoids",
+				"children":[
+				{
+					"name":"C09158  Calophyllolide"
+				},
+				{
+					"name":"C10414  Dalbergin"
+				},
+				{
+					"name":"C09275  Mammeisin"
+				},
+				{
+					"name":"C10504  Melannin"
+				}
+				]
+			},
+			{
+				"name":"Others",
+				"children":[
+				{
+					"name":"C16913  Anemonin"
+				},
+				{
+					"name":"C19515  Braxin C"
+				},
+				{
+					"name":"C07090  Protoanemonin"
+				},
+				{
+					"name":"C08287  Hypoglycin"
+				},
+				{
+					"name":"C08280  Hypoglycin B"
+				},
+				{
+					"name":"C10839  Urushiol III"
+				}
+				]
+			}
+			]
+		}
+		]
+	}
+	]
+}
+

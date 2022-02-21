@@ -1,7 +1,6 @@
 import hashlib
 import os
 
-import numpy as np
 import pandas as pd
 import requests
 from typing import List
@@ -11,6 +10,8 @@ from tqdm import tqdm
 
 from automatchnames import get_accepted_info_from_names_in_column
 from taxa_lists import get_all_taxa
+
+from metabolite_searches import get_antibacterial_metabolites, get_alkaloids_from_metabolites
 
 _inputs_path = resource_filename(__name__, 'inputs')
 _temp_outputs_path = resource_filename(__name__, 'temp_outputs')
@@ -22,42 +23,7 @@ rub_apoc_alkaloid_hits_output_csv = os.path.join(_outputs_path, 'rub_apocs_alkal
 rub_apoc_antibac_metabolites_output_csv = os.path.join(_outputs_path, 'rub_apocs_antibac_metabolites.csv')
 _check_output_csv = os.path.join(_outputs_path, 'rechecked_taxa.csv')
 
-alkaloids_not_ending_in_ine = ['Kopsanone']
-known_non_alkaloids = []
-def get_antibacterial_metabolites():
-    antibac_table = pd.read_html(os.path.join(_inputs_path, 'antibacterialmetabolites.html'), flavor='html5lib')[0]
-    antibac_table = antibac_table[antibac_table['Biological Activity (Function)'] != 'Antibacterial inactive']
-    antibac_table = antibac_table.dropna(subset=['Metabolite Name'])
-    return antibac_table['Metabolite Name'].unique().tolist()
 
-
-def get_antimalarial_metabolites():
-    antimal_table = pd.read_html(os.path.join(_inputs_path, 'antimalarialmetabolites.html'), flavor='html5lib')[0]
-    antimal_table = antimal_table[antimal_table['Biological Activity (Function)'] != 'Antimalarial inactive']
-    antimal_table = antimal_table.dropna(subset=['Metabolite Name'])
-    return antimal_table['Metabolite Name'].unique().tolist()
-
-
-def get_formulas_for_metabolite(metabolite: str):
-    url_name_format = metabolite.replace(' ', '%20')
-    url_name_format = url_name_format.replace('+', 'plus')
-    url = f'http://www.knapsackfamily.com/knapsack_core/result.php?sname=metabolite&word={url_name_format}'
-    try:
-
-        tables = pd.read_html(url, flavor='html5lib')
-
-    except UnicodeEncodeError:
-        response = requests.get(url)
-        decoded = response.content.decode()
-        tables = pd.read_html(decoded, flavor='html5lib')
-    meta_table = tables[0]
-    try:
-        formulas = meta_table['Molecular formula'].values.tolist()
-
-        return formulas
-    except (KeyError, IndexError):
-        print(f'Warning: No info found for {metabolite}')
-        return []
 
 
 def get_metabolites_for_taxon(name: str):
@@ -189,23 +155,13 @@ def get_antibac_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, out
     acc_df.to_csv(output_csv)
 
 
-def get_alkaloids_from_metabolites(metabolites_to_check: List[str], output_csv: str):
+def output_alkaloids_from_metabolites(metabolites_to_check: List[str], output_csv: str):
     """ Ends in 'ine' usually indicates alkaloid
         Must contain nitrogen
     """
 
-    alkaloid_metabolites = []
-    suffixes = ["ine-", "ine ", "ine+", "ine("]
+    alkaloid_metabolites = get_alkaloids_from_metabolites(metabolites_to_check)
 
-    for i in tqdm(range(len(metabolites_to_check)), desc="Searching for alks", ascii=False, ncols=72):
-        m = metabolites_to_check[i]
-        if any(alk in m for alk in alkaloids_not_ending_in_ine):
-            alkaloid_metabolites.append(m)
-        elif m not in known_non_alkaloids:
-            if any(s in m for s in suffixes) or m.endswith('ine'):
-                formulas = get_formulas_for_metabolite(m)
-                if all("N" in f for f in formulas):
-                    alkaloid_metabolites.append(m)
     out_dict = {'alks': alkaloid_metabolites}
 
     out_df = pd.DataFrame(out_dict)
@@ -274,7 +230,7 @@ def get_rub_apoc_metabolites():
 def get_rub_apoc_alkaloid_hits():
     metabolites_to_check = pd.read_csv(rubiaceae_apocynaceae_metabolites_output_csv).columns.tolist()
 
-    alks_df = get_alkaloids_from_metabolites(metabolites_to_check, rubiaceae_apocynaceae_alks_output_csv)
+    alks_df = output_alkaloids_from_metabolites(metabolites_to_check, rubiaceae_apocynaceae_alks_output_csv)
 
     rubs_apoc_metas_data = pd.read_csv(rubiaceae_apocynaceae_metabolites_output_csv)
     get_alkaloid_hits_for_taxa(rubs_apoc_metas_data, alks_df, rub_apoc_alkaloid_hits_output_csv,
@@ -290,7 +246,5 @@ def main():
 
 
 if __name__ == '__main__':
-    alks_df = pd.read_csv(rubiaceae_apocynaceae_alks_output_csv)
-    rubs_apoc_metas_data = pd.read_csv(rubiaceae_apocynaceae_metabolites_output_csv)
-    get_alkaloid_hits_for_taxa(rubs_apoc_metas_data, alks_df, rub_apoc_alkaloid_hits_output_csv,
-                               fams=['Rubiaceae', 'Apocynaceae'])
+    main()
+    # get_rub_apoc_alkaloid_hits()
