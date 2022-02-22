@@ -16,3 +16,7 @@ Accessed XX/XX/XXXX
 Cornell College of Agriculture and Life Sciences
 http://poisonousplants.ansci.cornell.edu
 Accessed XX/XX/XXXX
+
+California Poison Control System
+https://calpoison.org/topics/plant
+Accessed XX/XX/XXXX

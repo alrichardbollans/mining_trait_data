@@ -16,6 +16,7 @@ _input_species_csv = os.path.join(_inputs_path, 'clean.csv')
 
 _useful_plants_file = os.path.join(_inputs_path, 'useful_plant_processed_db.txt')
 _cornell_file = os.path.join(_inputs_path, 'Plants Poisonous to Livestock Cornell University.html')
+_CPCS_file = os.path.join(_inputs_path, 'California Poison Control System (CPCS).html')
 
 ### Temp outputs
 _temp_outputs_path = resource_filename(__name__, 'temp_outputs')
@@ -25,10 +26,13 @@ _powo_search_temp_output_accepted_csv = os.path.join(_temp_outputs_path, 'powo_p
 _wiki_search_temp_output_csv = os.path.join(_temp_outputs_path, 'wiki_poisons.csv')
 _wiki_search_temp_output_accepted_csv = os.path.join(_temp_outputs_path, 'wiki_poisons_accepted.csv')
 _cornell_temp_accepted_csv = os.path.join(_temp_outputs_path, 'cornell_accepted.csv')
+_CPCS_toxic_temp_accepted_csv = os.path.join(_temp_outputs_path, 'CPCS_toxic_accepted.csv')
+_CPCS_nontoxic_temp_accepted_csv = os.path.join(_temp_outputs_path, 'CPCS_nontoxic_accepted.csv')
 
 ### Outputs
 _output_path = resource_filename(__name__, 'outputs')
 output_poison_csv = os.path.join(_output_path, 'list_of_poisonous_plants.csv')
+output_nonpoison_csv = os.path.join(_output_path, 'list_of_nonpoisonous_plants.csv')
 
 
 def prepare_cornell_data() -> pd.DataFrame:
@@ -37,6 +41,23 @@ def prepare_cornell_data() -> pd.DataFrame:
     db_acc = get_accepted_info_from_names_in_column(tables[0], 'Scientific Name')
     db_acc.to_csv(_cornell_temp_accepted_csv)
     return db_acc
+
+
+def prepare_CPCS_data():
+    tables = pd.read_html(_CPCS_file)
+
+    non_toxic_db = tables[1]
+    # Remove letter headers
+    non_toxic_db = non_toxic_db[~non_toxic_db['Latin or scientific name'].str.contains('^[A-Z]$', regex=True)]
+    acc_non_toxic = get_accepted_info_from_names_in_column(non_toxic_db, 'Latin or scientific name')
+    acc_non_toxic['Source'] = 'CAL'
+    acc_non_toxic.to_csv(_CPCS_nontoxic_temp_accepted_csv)
+
+    toxic_db = tables[4]
+    toxic_db = toxic_db[~toxic_db['Latin or scientific name'].str.contains('^[A-Z]$', regex=True)]
+    acc_toxic = get_accepted_info_from_names_in_column(toxic_db, 'Latin or scientific name')
+    acc_toxic['Source'] = 'CAL'
+    acc_toxic.to_csv(_CPCS_toxic_temp_accepted_csv)
 
 
 def prepare_useful_plants_poisons() -> pd.DataFrame:
@@ -87,17 +108,32 @@ def get_wiki_poisons():
     return acc_wiki_df
 
 
-def main():
+def get_nonpoison_hits():
     if not os.path.isdir(_temp_outputs_path):
         os.mkdir(_temp_outputs_path)
     if not os.path.isdir(_output_path):
         os.mkdir(_output_path)
 
-    # get_wiki_poisons()
-    # get_powo_poisons()
-    # prepare_littox_poisons()
-    # prepare_useful_plants_poisons()
+    prepare_CPCS_data()
+    CPCS_hits = pd.read_csv(_CPCS_nontoxic_temp_accepted_csv)
+
+    compile_hits([CPCS_hits], output_nonpoison_csv)
+
+
+def get_poison_hits():
+    if not os.path.isdir(_temp_outputs_path):
+        os.mkdir(_temp_outputs_path)
+    if not os.path.isdir(_output_path):
+        os.mkdir(_output_path)
+
+    get_wiki_poisons()
+    get_powo_poisons()
+    prepare_littox_poisons()
+    prepare_useful_plants_poisons()
+
     prepare_cornell_data()
+    prepare_CPCS_data()
+    CPCS_hits = pd.read_csv(_CPCS_toxic_temp_accepted_csv)
     cornell_hits = pd.read_csv(_cornell_temp_accepted_csv)
     wiki_hits = pd.read_csv(_wiki_search_temp_output_accepted_csv)
     powo_hits = pd.read_csv(_powo_search_temp_output_accepted_csv)
@@ -105,9 +141,9 @@ def main():
     littox_hits['Source'] = 'LITTOX'
     useful_hits = pd.read_csv(_useful_temp_output_accepted_csv)
     useful_hits['Accepted_Species_ID'] = useful_hits['Accepted_ID']
-    compile_hits([useful_hits, powo_hits, littox_hits, wiki_hits, cornell_hits], output_poison_csv)
+    compile_hits([useful_hits, powo_hits, littox_hits, wiki_hits, cornell_hits, CPCS_hits], output_poison_csv)
 
 
 if __name__ == '__main__':
-    main()
-    # prepare_cornell_data()
+    get_poison_hits()
+    get_nonpoison_hits()
