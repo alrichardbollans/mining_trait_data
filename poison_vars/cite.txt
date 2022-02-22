@@ -12,3 +12,7 @@ LITTOX
 Wikipedia, The Free Encyclopedia
 https://en.wikipedia.org/
 Accessed XX/XX/XXXX
+
+Cornell College of Agriculture and Life Sciences
+http://poisonousplants.ansci.cornell.edu
+Accessed XX/XX/XXXX
