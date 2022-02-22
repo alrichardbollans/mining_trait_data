@@ -39,16 +39,17 @@ def search_for_poisons(output_csv: str) -> pd.DataFrame:
     # First get english data
     en_tables = pd.read_html('https://en.wikipedia.org/wiki/List_of_poisonous_plants')
     scientific_names = {'name': [], 'Source': []}
-    def append_to_scientific_names(values:List[str],source:str):
+
+    def append_to_scientific_names(values: List[str], source: str):
         for x in values:
             if x not in scientific_names['name']:
                 scientific_names['name'].append(x)
                 scientific_names['Source'].append(source)
             else:
                 i = scientific_names['name'].index(x)
-                scientific_names['Source'][i]+=':'+source
+                scientific_names['Source'][i] += ':' + source
 
-    append_to_scientific_names(en_tables[0]['Scientific name'].values.tolist(),'en_wiki')
+    append_to_scientific_names(en_tables[0]['Scientific name'].values.tolist(), 'en_wiki')
     append_to_scientific_names(en_tables[1]['Scientific name'].values.tolist(), 'en_wiki')
 
     en_wiki = wikipediaapi.Wikipedia('en')
@@ -65,7 +66,7 @@ def search_for_poisons(output_csv: str) -> pd.DataFrame:
 
     for l in langs_to_check:
         if l in table_info:
-            print(l)
+
             url = get_page_url_from_title(l, langs_to_check[l].title)
 
             r = requests.get(url)
@@ -74,10 +75,9 @@ def search_for_poisons(output_csv: str) -> pd.DataFrame:
             for pair in table_info[l]:
                 append_to_scientific_names(tables[pair[0]][pair[1]].values.tolist(), l + '_wiki')
 
-    print(scientific_names)
     wiki_poisons_df = pd.DataFrame(scientific_names)
     dup_names = wiki_poisons_df[wiki_poisons_df.duplicated(subset=['name'])]
-    if len(dup_names.index)>0:
+    if len(dup_names.index) > 0:
         print(dup_names)
         raise ValueError('Incorrectly merged wiki name')
     wiki_poisons_df.to_csv(output_csv)
