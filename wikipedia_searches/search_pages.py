@@ -30,11 +30,64 @@ def get_all_page_text(lang, pagename):
     return text
 
 
+def get_page_url_from_title(lang: str, title: str):
+    t = title.replace(' ', '_')
+    return 'https://' + lang + '.wikipedia.org/wiki/' + t
+
+
+def search_for_poisons(output_csv: str) -> pd.DataFrame:
+    # First get english data
+    en_tables = pd.read_html('https://en.wikipedia.org/wiki/List_of_poisonous_plants')
+    scientific_names = {'name': [], 'Source': []}
+    def append_to_scientific_names(values:List[str],source:str):
+        for x in values:
+            if x not in scientific_names['name']:
+                scientific_names['name'].append(x)
+                scientific_names['Source'].append(source)
+            else:
+                i = scientific_names['name'].index(x)
+                scientific_names['Source'][i]+=':'+source
+
+    append_to_scientific_names(en_tables[0]['Scientific name'].values.tolist(),'en_wiki')
+    append_to_scientific_names(en_tables[1]['Scientific name'].values.tolist(), 'en_wiki')
+
+    en_wiki = wikipediaapi.Wikipedia('en')
+    p = en_wiki.page('List_of_poisonous_plants')
+
+    # Then check linked languages
+    langs_to_check = p.langlinks
+
+    # Info on which tables from the page to use and the column name of the scientific name
+    # Not this misses some pages which aren't easily parsed
+    table_info = {'an': [[0, 'বৈজ্ঞানিক নাম']], 'bn': [[0, 'বৈজ্ঞানিক নাম']], 'cs': [[0, 'Český název']],
+                  'de': [[0, 'Wissenschaftlicher Name']], 'fr': [[0, 'Nom scientifique']],
+                  'hr': [[0, 'Znanstveni naziv']], 'hu': [[2, 'Latin név']]}
+
+    for l in langs_to_check:
+        if l in table_info:
+            print(l)
+            url = get_page_url_from_title(l, langs_to_check[l].title)
+
+            r = requests.get(url)
+            website = r.text
+            tables = pd.read_html(website, encoding='utf-8')
+            for pair in table_info[l]:
+                append_to_scientific_names(tables[pair[0]][pair[1]].values.tolist(), l + '_wiki')
+
+    print(scientific_names)
+    wiki_poisons_df = pd.DataFrame(scientific_names)
+    dup_names = wiki_poisons_df[wiki_poisons_df.duplicated(subset=['name'])]
+    if len(dup_names.index)>0:
+        print(dup_names)
+        raise ValueError('Incorrectly merged wiki name')
+    wiki_poisons_df.to_csv(output_csv)
+    return wiki_poisons_df
+
+
 def search_for_common_names(taxa_list: List[str], output_csv: str) -> pd.DataFrame:
     if output_csv is not None:
         if not os.path.isdir(os.path.dirname(output_csv)):
             os.mkdir(os.path.dirname(output_csv))
-    # TODO: also look for synonyms
     # Swedish list is split across the alphabet
     swedish_root_page = 'Lista_över_växter'
     swedish_alphabet = list(string.ascii_uppercase) + ['Å', 'Ä', 'Ö']
@@ -143,3 +196,7 @@ def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_sea
 
     acc_df.to_csv(output_csv)
     return acc_df
+
+
+if __name__ == '__main__':
+    search_for_poisons('test.csv')
