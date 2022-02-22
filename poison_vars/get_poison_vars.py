@@ -17,6 +17,8 @@ _input_species_csv = os.path.join(_inputs_path, 'clean.csv')
 _useful_plants_file = os.path.join(_inputs_path, 'useful_plant_processed_db.txt')
 _cornell_file = os.path.join(_inputs_path, 'Plants Poisonous to Livestock Cornell University.html')
 _CPCS_file = os.path.join(_inputs_path, 'California Poison Control System (CPCS).html')
+_UCANR_toxic_file = os.path.join(_inputs_path, 'UCANR_toxic.html')
+_UCANR_nontoxic_file = os.path.join(_inputs_path, 'UCANR_nontoxic.html')
 
 ### Temp outputs
 _temp_outputs_path = resource_filename(__name__, 'temp_outputs')
@@ -28,7 +30,8 @@ _wiki_search_temp_output_accepted_csv = os.path.join(_temp_outputs_path, 'wiki_p
 _cornell_temp_accepted_csv = os.path.join(_temp_outputs_path, 'cornell_accepted.csv')
 _CPCS_toxic_temp_accepted_csv = os.path.join(_temp_outputs_path, 'CPCS_toxic_accepted.csv')
 _CPCS_nontoxic_temp_accepted_csv = os.path.join(_temp_outputs_path, 'CPCS_nontoxic_accepted.csv')
-
+_UCANR_toxic_temp_accepted_csv = os.path.join(_temp_outputs_path, 'UCANR_toxic_accepted.csv')
+_UCANR_nontoxic_temp_accepted_csv = os.path.join(_temp_outputs_path, 'UCANR_nontoxic_accepted.csv')
 ### Outputs
 _output_path = resource_filename(__name__, 'outputs')
 output_poison_csv = os.path.join(_output_path, 'list_of_poisonous_plants.csv')
@@ -50,15 +53,31 @@ def prepare_CPCS_data():
     # Remove letter headers
     non_toxic_db = non_toxic_db[~non_toxic_db['Latin or scientific name'].str.contains('^[A-Z]$', regex=True)]
     acc_non_toxic = get_accepted_info_from_names_in_column(non_toxic_db, 'Latin or scientific name')
-    acc_non_toxic['Source'] = 'CAL'
+    acc_non_toxic['Source'] = 'CPCS'
     acc_non_toxic.to_csv(_CPCS_nontoxic_temp_accepted_csv)
 
     toxic_db = tables[4]
     toxic_db = toxic_db[~toxic_db['Latin or scientific name'].str.contains('^[A-Z]$', regex=True)]
     acc_toxic = get_accepted_info_from_names_in_column(toxic_db, 'Latin or scientific name')
-    acc_toxic['Source'] = 'CAL'
+    acc_toxic['Source'] = 'CPCS'
     acc_toxic.to_csv(_CPCS_toxic_temp_accepted_csv)
 
+
+def prepare_toxic_UCANR_data():
+    toxic_tables = pd.read_html(_UCANR_toxic_file,header=0)
+
+    toxic_db = toxic_tables[0]
+    acc_toxic = get_accepted_info_from_names_in_column(toxic_db, 'Toxic plants: Scientific name')
+    acc_toxic['Source'] = 'UCANR'
+    acc_toxic.to_csv(_UCANR_toxic_temp_accepted_csv)
+
+def prepare_nontoxic_UCANR_data():
+    nontoxic_tables = pd.read_html(_UCANR_nontoxic_file,header=0)
+
+    nontoxic_db = nontoxic_tables[0]
+    acc_nontoxic = get_accepted_info_from_names_in_column(nontoxic_db, 'Safe plants: Scientific name')
+    acc_nontoxic['Source'] = 'UCANR'
+    acc_nontoxic.to_csv(_UCANR_nontoxic_temp_accepted_csv)
 
 def prepare_useful_plants_poisons() -> pd.DataFrame:
     useful_db = pd.read_csv(_useful_plants_file, encoding='latin_1', sep='\t')
@@ -115,9 +134,11 @@ def get_nonpoison_hits():
         os.mkdir(_output_path)
 
     prepare_CPCS_data()
+    prepare_nontoxic_UCANR_data()
+    ucanr_hits = pd.read_csv(_UCANR_nontoxic_temp_accepted_csv)
     CPCS_hits = pd.read_csv(_CPCS_nontoxic_temp_accepted_csv)
 
-    compile_hits([CPCS_hits], output_nonpoison_csv)
+    compile_hits([CPCS_hits, ucanr_hits], output_nonpoison_csv)
 
 
 def get_poison_hits():
@@ -133,6 +154,8 @@ def get_poison_hits():
 
     prepare_cornell_data()
     prepare_CPCS_data()
+    prepare_toxic_UCANR_data()
+    ucanr_hits = pd.read_csv(_UCANR_toxic_temp_accepted_csv)
     CPCS_hits = pd.read_csv(_CPCS_toxic_temp_accepted_csv)
     cornell_hits = pd.read_csv(_cornell_temp_accepted_csv)
     wiki_hits = pd.read_csv(_wiki_search_temp_output_accepted_csv)
@@ -141,7 +164,8 @@ def get_poison_hits():
     littox_hits['Source'] = 'LITTOX'
     useful_hits = pd.read_csv(_useful_temp_output_accepted_csv)
     useful_hits['Accepted_Species_ID'] = useful_hits['Accepted_ID']
-    compile_hits([useful_hits, powo_hits, littox_hits, wiki_hits, cornell_hits, CPCS_hits], output_poison_csv)
+    compile_hits([useful_hits, powo_hits, littox_hits, wiki_hits, cornell_hits, CPCS_hits, ucanr_hits],
+                 output_poison_csv)
 
 
 if __name__ == '__main__':
