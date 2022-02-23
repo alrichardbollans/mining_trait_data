@@ -6,12 +6,14 @@ from urllib.error import HTTPError
 import pandas as pd
 from typing import List
 
+from poison_vars import cornell_poison_file, CPCS_poison_file, UCANR_toxic_file, UCANR_nontoxic_file, usda_toxic_file, \
+    tppt_toxic_file
 from tqdm import tqdm
 
 import wikipedia_searches
 from pkg_resources import resource_filename
 
-from cleaning import compile_hits
+from cleaning import compile_hits, generic_prepare_data, get_tempout_csv
 
 from automatchnames import get_accepted_info_from_names_in_column, clean_urn_ids, get_accepted_info_from_ids_in_column
 
@@ -38,6 +40,7 @@ _wiki_common_names_temp_output_accepted_csv = os.path.join(_temp_outputs_path, '
 _powo_common_names_temp_output_accepted_csv = os.path.join(_temp_outputs_path, 'powo_common_name_hits_accepted.csv')
 _cleaned_USDA_accepted_csv = os.path.join(_temp_outputs_path, 'USDA Plants Database_cleaned_accepted.csv')
 _cleaned_MPNS_accepted_csv = os.path.join(_temp_outputs_path, 'MPNS Data_cleaned_accepted.csv')
+
 ### Outputs
 output_path = resource_filename(__name__, 'outputs')
 output_common_names_csv = os.path.join(output_path, 'list_of_plants_with_common_names.csv')
@@ -163,8 +166,8 @@ def get_powo_common_names(species_names: List[str], species_ids: List[str],
     return acc_df
 
 
-def get_wiki_common_names(species_names: List[str], families_of_interest: List[str] = None):
-    wiki_df = wikipedia_searches.search_for_common_names(species_names, _wiki_common_names_temp_output_csv)
+def get_wiki_common_names(taxa_list: List[str], families_of_interest: List[str] = None):
+    wiki_df = wikipedia_searches.search_for_common_names(taxa_list, _wiki_common_names_temp_output_csv)
     acc_wiki_df = get_accepted_info_from_names_in_column(wiki_df, 'Name',
                                                          families_of_interest=families_of_interest)
     acc_wiki_df.to_csv(_wiki_common_names_temp_output_accepted_csv)
@@ -172,24 +175,84 @@ def get_wiki_common_names(species_names: List[str], families_of_interest: List[s
     return acc_wiki_df
 
 
+def prepare_cornell_data():
+    tables = pd.read_html(cornell_poison_file)
+    toxic_df = tables[0]
+    generic_prepare_data('Cornell CALS', _temp_outputs_path, toxic_df, 'Scientific Name', dropifna=['Common Name(s)'])
+
+
+def prepare_CPCS_data():
+    tables = pd.read_html(CPCS_poison_file)
+
+    non_toxic_db = tables[1]
+    # Remove letter headers
+    non_toxic_db = non_toxic_db[~non_toxic_db['Latin or scientific name'].str.contains('^[A-Z]$', regex=True)]
+    generic_prepare_data('CPCS nontoxic', _temp_outputs_path, non_toxic_db, 'Latin or scientific name',
+                         dropifna=['Common name'])
+
+    toxic_db = tables[4]
+    toxic_db = toxic_db[~toxic_db['Latin or scientific name'].str.contains('^[A-Z]$', regex=True)]
+    generic_prepare_data('CPCS toxic', _temp_outputs_path, toxic_db, 'Latin or scientific name',
+                         dropifna=['Common name'])
+
+
+def prepare_toxic_UCANR_data():
+    toxic_tables = pd.read_html(UCANR_toxic_file, header=0)
+    toxic_db = toxic_tables[0]
+    generic_prepare_data('UCANR Toxic', _temp_outputs_path, toxic_db, 'Toxic plants: Scientific name',
+                         dropifna=['Common name'])
+
+
+def prepare_nontoxic_UCANR_data():
+    nontoxic_tables = pd.read_html(UCANR_nontoxic_file, header=0)
+    nontoxic_db = nontoxic_tables[0]
+    generic_prepare_data('UCANR NonToxic', _temp_outputs_path, nontoxic_db, 'Safe plants: Scientific name',
+                         dropifna=['Common name'])
+
+
+def prepare_duke_usda_data():
+    cmmn_names = pd.read_csv(os.path.join(_inputs_path, 'COMMON_NAMES.csv'))
+    taxa_codes = pd.read_csv(os.path.join(_inputs_path, 'FNFTAX.csv'))
+    merged = pd.merge(cmmn_names, taxa_codes, on='FNFNUM')
+    merged.dropna(subset=['CNNAM'], inplace=True)
+
+    merged['Common names'] = merged.groupby(['TAXON'])['CNNAM'].transform(lambda x: ':'.join(x))
+    merged = merged.drop_duplicates(subset=['TAXON'])
+
+    generic_prepare_data('USDA(Duke)', _temp_outputs_path, merged, 'TAXON')
+
+
+def prepare_TPPT_data():
+    toxic_db = pd.read_csv(tppt_toxic_file)
+    toxic_db.dropna(subset=['German_plant_name', 'English_plant_name'], how='all', inplace=True)
+    generic_prepare_data('TPPT', _temp_outputs_path, toxic_db, 'Latin_plant_name',
+                         families_of_interest=toxic_db['Plant_family'].unique().tolist())
+
+
 def prepare_data():
     accepted_data = get_all_taxa(families_of_interest=['Apocynaceae', 'Rubiaceae'], accepted=True)
 
     ranks_to_use = ["Species", "Variety", "Subspecies"]
 
-    accepted_taxa = accepted_data.loc[accepted_data["rank"].isin(ranks_to_use)]
+    accepted_taxa_df = accepted_data.loc[accepted_data["rank"].isin(ranks_to_use)]
 
-    species_list = accepted_taxa["taxon_name"].values
-    species_ids = accepted_taxa["kew_id"].values
+    accepted_taxa = accepted_taxa_df["taxon_name"].values
+    accepted_taxa_ids = accepted_taxa_df["kew_id"].values
 
     # Get lists
-    get_wiki_common_names(species_list, families_of_interest=['Apocynaceae', 'Rubiaceae'])
+    get_wiki_common_names(accepted_taxa, families_of_interest=['Apocynaceae', 'Rubiaceae'])
     # # print('Finished getting wiki names')
-    get_powo_common_names(species_list, species_ids, families_of_interest=['Apocynaceae', 'Rubiaceae'])
+    get_powo_common_names(accepted_taxa, accepted_taxa_ids, families_of_interest=['Apocynaceae', 'Rubiaceae'])
 
     prepare_usda_common_names(families_of_interest=['Apocynaceae', 'Rubiaceae'])
     prepare_common_names_spp_ppa()
     prepare_MPNS_common_names(families_of_interest=['Apocynaceae', 'Rubiaceae'])
+
+    prepare_cornell_data()
+    prepare_CPCS_data()
+    prepare_toxic_UCANR_data()
+    prepare_duke_usda_data()
+    prepare_TPPT_data()
 
 
 def main():
@@ -201,16 +264,24 @@ def main():
     # TODO: Note powo, wikipedia and USDA data is specific to our study
     # prepare_data()
 
+    cornell_hits = pd.read_csv(get_tempout_csv('Cornell CALS', _temp_outputs_path))
+    cpcs_hits = pd.read_csv(get_tempout_csv('CPCS nontoxic', _temp_outputs_path))
+    cpcs_toxic_hits = pd.read_csv(get_tempout_csv('CPCS toxic', _temp_outputs_path))
+    ucantoxic_hits = pd.read_csv(get_tempout_csv('UCANR Toxic', _temp_outputs_path))
+    ucannontoxic_hits = pd.read_csv(get_tempout_csv('UCANR NonToxic', _temp_outputs_path))
+    duke_hits = pd.read_csv(get_tempout_csv('USDA(Duke)', _temp_outputs_path))
+    tppt_hits = pd.read_csv(get_tempout_csv('TPPT', _temp_outputs_path))
+
     usda_hits = pd.read_csv(_cleaned_USDA_accepted_csv)
     spp_ppa_df = pd.read_csv(_spp_ppa_common_names_temp_output_accepted_csv)
     powo_hits = pd.read_csv(_powo_common_names_temp_output_accepted_csv)
     wiki_hits = pd.read_csv(_wiki_common_names_temp_output_accepted_csv)
     mpns_hits = pd.read_csv(_cleaned_MPNS_accepted_csv)
 
-    all_dfs = [mpns_hits, usda_hits, powo_hits, wiki_hits, spp_ppa_df]
+    all_dfs = [mpns_hits, usda_hits, powo_hits, wiki_hits, spp_ppa_df, cornell_hits, cpcs_hits, cpcs_toxic_hits,
+               ucantoxic_hits, ucannontoxic_hits, duke_hits, tppt_hits]
     compile_hits(all_dfs, output_common_names_csv)
 
 
 if __name__ == '__main__':
-    # prepare_usda_common_names(families_of_interest=['Apocynaceae', 'Rubiaceae'])
     main()
