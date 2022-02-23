@@ -197,9 +197,9 @@ def get_nonpoison_hits():
     if not os.path.isdir(_output_path):
         os.mkdir(_output_path)
 
-    # prepare_CPCS_data()
-    # prepare_nontoxic_UCANR_data()
-    # prepare_nontoxic_clinitox_data()
+    prepare_CPCS_data()
+    prepare_nontoxic_UCANR_data()
+    prepare_nontoxic_clinitox_data()
     clinitox_hits = pd.read_csv(_clinitox_nontoxic_temp_accepted_csv)
     ucanr_hits = pd.read_csv(_UCANR_nontoxic_temp_accepted_csv)
     CPCS_hits = pd.read_csv(_CPCS_nontoxic_temp_accepted_csv)
@@ -213,17 +213,17 @@ def get_poison_hits():
     if not os.path.isdir(_output_path):
         os.mkdir(_output_path)
 
-    # get_wiki_poisons()
-    # get_powo_poisons()
-    # prepare_littox_poisons()
-    # prepare_useful_plants_poisons()
-    #
-    # prepare_cornell_data()
-    # prepare_CPCS_data()
-    # prepare_toxic_UCANR_data()
-    # prepare_usda_data()
-    # prepare_TPPT_data()
-    # prepare_toxic_clinitox_data()
+    get_wiki_poisons()
+    get_powo_poisons()
+    prepare_littox_poisons()
+    prepare_useful_plants_poisons()
+
+    prepare_cornell_data()
+    prepare_CPCS_data()
+    prepare_toxic_UCANR_data()
+    prepare_usda_data()
+    prepare_TPPT_data()
+    prepare_toxic_clinitox_data()
     clinitox_hits = pd.read_csv(_clinitox_toxic_temp_accepted_csv)
     tppt_hits = pd.read_csv(_tppt_toxic_temp_accepted_csv)
     usda_hits = pd.read_csv(_usda_toxic_temp_accepted_csv)
@@ -243,6 +243,6 @@ def get_poison_hits():
 
 
 if __name__ == '__main__':
-    prepare_toxic_clinitox_data()
+
     get_poison_hits()
     get_nonpoison_hits()
