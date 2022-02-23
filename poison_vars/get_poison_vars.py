@@ -15,12 +15,12 @@ _inputs_path = resource_filename(__name__, 'inputs')
 _input_species_csv = os.path.join(_inputs_path, 'clean.csv')
 
 _useful_plants_file = os.path.join(_inputs_path, 'useful_plant_processed_db.txt')
-_cornell_file = os.path.join(_inputs_path, 'Plants Poisonous to Livestock Cornell University.html')
-_CPCS_file = os.path.join(_inputs_path, 'California Poison Control System (CPCS).html')
-_UCANR_toxic_file = os.path.join(_inputs_path, 'UCANR_toxic.html')
-_UCANR_nontoxic_file = os.path.join(_inputs_path, 'UCANR_nontoxic.html')
-_usda_toxic_file = os.path.join(_inputs_path, 'USDA_Toxic.csv')
-_tppt_toxic_file = os.path.join(_inputs_path, 'TPPT_database.csv')
+cornell_poison_file = os.path.join(_inputs_path, 'Plants Poisonous to Livestock Cornell University.html')
+CPCS_poison_file = os.path.join(_inputs_path, 'California Poison Control System (CPCS).html')
+UCANR_toxic_file = os.path.join(_inputs_path, 'UCANR_toxic.html')
+UCANR_nontoxic_file = os.path.join(_inputs_path, 'UCANR_nontoxic.html')
+usda_toxic_file = os.path.join(_inputs_path, 'USDA_Toxic.csv')
+tppt_toxic_file = os.path.join(_inputs_path, 'TPPT_database.csv')
 _clinitox_nontoxic_file = os.path.join(_inputs_path, 'CliniTox Toxicity Level - Non-Toxic.htm')
 _clinitox_toxic_filenames = ['CliniTox Toxicity Level - Toxic.htm', 'CliniTox Toxicity Level - Highly Toxic.htm',
                              'CliniTox Toxicity Level - Very Highly Toxic.htm']
@@ -49,7 +49,7 @@ output_nonpoison_csv = os.path.join(_output_path, 'list_of_nonpoisonous_plants.c
 
 
 def prepare_cornell_data() -> pd.DataFrame:
-    tables = pd.read_html(_cornell_file)
+    tables = pd.read_html(cornell_poison_file)
     tables[0]['Source'] = 'Cornell CALS'
     db_acc = get_accepted_info_from_names_in_column(tables[0], 'Scientific Name')
     db_acc.to_csv(_cornell_temp_accepted_csv)
@@ -57,7 +57,7 @@ def prepare_cornell_data() -> pd.DataFrame:
 
 
 def prepare_CPCS_data():
-    tables = pd.read_html(_CPCS_file)
+    tables = pd.read_html(CPCS_poison_file)
 
     non_toxic_db = tables[1]
     # Remove letter headers
@@ -74,7 +74,7 @@ def prepare_CPCS_data():
 
 
 def prepare_toxic_UCANR_data():
-    toxic_tables = pd.read_html(_UCANR_toxic_file, header=0)
+    toxic_tables = pd.read_html(UCANR_toxic_file, header=0)
 
     toxic_db = toxic_tables[0]
     acc_toxic = get_accepted_info_from_names_in_column(toxic_db, 'Toxic plants: Scientific name')
@@ -83,14 +83,14 @@ def prepare_toxic_UCANR_data():
 
 
 def prepare_usda_data():
-    toxic_db = pd.read_csv(_usda_toxic_file)
+    toxic_db = pd.read_csv(usda_toxic_file)
     acc_toxic = get_accepted_info_from_names_in_column(toxic_db, 'Plants with Activity Synergy')
     acc_toxic['Source'] = 'USDA(Duke)'
     acc_toxic.to_csv(_usda_toxic_temp_accepted_csv)
 
 
 def prepare_TPPT_data():
-    toxic_db = pd.read_csv(_tppt_toxic_file)
+    toxic_db = pd.read_csv(tppt_toxic_file)
     toxic_db = toxic_db[~(toxic_db['Human_toxicity'] == 'unknown')]
     acc_toxic = get_accepted_info_from_names_in_column(toxic_db, 'Latin_plant_name',
                                                        families_of_interest=toxic_db['Plant_family'].unique().tolist())
@@ -99,7 +99,7 @@ def prepare_TPPT_data():
 
 
 def prepare_nontoxic_UCANR_data():
-    nontoxic_tables = pd.read_html(_UCANR_nontoxic_file, header=0)
+    nontoxic_tables = pd.read_html(UCANR_nontoxic_file, header=0)
 
     nontoxic_db = nontoxic_tables[0]
     acc_nontoxic = get_accepted_info_from_names_in_column(nontoxic_db, 'Safe plants: Scientific name')
