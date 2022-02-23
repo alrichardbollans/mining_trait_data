@@ -33,3 +33,11 @@ Duke, James A. 1992. Handbook of phytochemical constituents of GRAS herbs and ot
 Boca Raton, FL. CRC Press
 Available online: https://phytochem.nal.usda.gov/phytochem/search/list
 Accessed XX/XX/XXXX
+
+Günthardt, B.F., Hollender, J., Hungerbühler, K., Scheringer, M., Bucheli, T.D.* 2018: Comprehensive Toxic Plants–Phytotoxins Database and Its Application in Assessing Aquatic Micropollution Potential. J. Agric. Food Chem.
+doi/10.1021/acs.jafc.8b01639
+Accessed XX/XX/XXXX
+
+CliniPharm CliniTox
+https://www.vetpharm.uzh.ch/perldocs/toxsyqry.htm
+Accessed XX/XX/XXXX

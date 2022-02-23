@@ -20,6 +20,10 @@ _CPCS_file = os.path.join(_inputs_path, 'California Poison Control System (CPCS)
 _UCANR_toxic_file = os.path.join(_inputs_path, 'UCANR_toxic.html')
 _UCANR_nontoxic_file = os.path.join(_inputs_path, 'UCANR_nontoxic.html')
 _usda_toxic_file = os.path.join(_inputs_path, 'USDA_Toxic.csv')
+_tppt_toxic_file = os.path.join(_inputs_path, 'TPPT_database.csv')
+_clinitox_nontoxic_file = os.path.join(_inputs_path, 'CliniTox Toxicity Level - Non-Toxic.htm')
+_clinitox_toxic_filenames = ['CliniTox Toxicity Level - Toxic.htm', 'CliniTox Toxicity Level - Highly Toxic.htm',
+                             'CliniTox Toxicity Level - Very Highly Toxic.htm']
 
 ### Temp outputs
 _temp_outputs_path = resource_filename(__name__, 'temp_outputs')
@@ -34,6 +38,10 @@ _CPCS_nontoxic_temp_accepted_csv = os.path.join(_temp_outputs_path, 'CPCS_nontox
 _UCANR_toxic_temp_accepted_csv = os.path.join(_temp_outputs_path, 'UCANR_toxic_accepted.csv')
 _UCANR_nontoxic_temp_accepted_csv = os.path.join(_temp_outputs_path, 'UCANR_nontoxic_accepted.csv')
 _usda_toxic_temp_accepted_csv = os.path.join(_temp_outputs_path, 'usda_toxic_accepted.csv')
+_tppt_toxic_temp_accepted_csv = os.path.join(_temp_outputs_path, 'tppt_toxic_accepted.csv')
+_clinitox_nontoxic_temp_accepted_csv = os.path.join(_temp_outputs_path, 'clinitox_nontoxic_accepted.csv')
+_clinitox_toxic_temp_accepted_csv = os.path.join(_temp_outputs_path, 'clinitox_toxic_accepted.csv')
+
 ### Outputs
 _output_path = resource_filename(__name__, 'outputs')
 output_poison_csv = os.path.join(_output_path, 'list_of_poisonous_plants.csv')
@@ -81,6 +89,15 @@ def prepare_usda_data():
     acc_toxic.to_csv(_usda_toxic_temp_accepted_csv)
 
 
+def prepare_TPPT_data():
+    toxic_db = pd.read_csv(_tppt_toxic_file)
+    toxic_db = toxic_db[~(toxic_db['Human_toxicity'] == 'unknown')]
+    acc_toxic = get_accepted_info_from_names_in_column(toxic_db, 'Latin_plant_name',
+                                                       families_of_interest=toxic_db['Plant_family'].unique().tolist())
+    acc_toxic['Source'] = 'TPPT'
+    acc_toxic.to_csv(_tppt_toxic_temp_accepted_csv)
+
+
 def prepare_nontoxic_UCANR_data():
     nontoxic_tables = pd.read_html(_UCANR_nontoxic_file, header=0)
 
@@ -88,6 +105,42 @@ def prepare_nontoxic_UCANR_data():
     acc_nontoxic = get_accepted_info_from_names_in_column(nontoxic_db, 'Safe plants: Scientific name')
     acc_nontoxic['Source'] = 'UCANR'
     acc_nontoxic.to_csv(_UCANR_nontoxic_temp_accepted_csv)
+
+
+def prepare_nontoxic_clinitox_data():
+    from bs4 import BeautifulSoup
+
+    with open(_clinitox_nontoxic_file, 'r') as f:
+        contents = f.read()
+        list_elements = []
+        soup = BeautifulSoup(contents, features="html.parser")
+        for tag in soup.find_all('li'):
+            list_elements.append(tag.text)
+    out_dict = {'Safe plants: Scientific name': list_elements}
+    nontoxic_db = pd.DataFrame(out_dict)
+    acc_nontoxic = get_accepted_info_from_names_in_column(nontoxic_db, 'Safe plants: Scientific name')
+    acc_nontoxic['Source'] = 'CliniTox'
+    acc_nontoxic.to_csv(_clinitox_nontoxic_temp_accepted_csv)
+
+
+def prepare_toxic_clinitox_data():
+    list_elements = []
+
+    from bs4 import BeautifulSoup
+
+    for fname in _clinitox_toxic_filenames:
+        clin_file = os.path.join(_inputs_path, fname)
+        with open(clin_file, 'r') as f:
+            contents = f.read()
+
+            soup = BeautifulSoup(contents, features="html.parser")
+            for tag in soup.find_all('li'):
+                list_elements.append(tag.text)
+    out_dict = {'Toxic plants: Scientific name': list_elements}
+    nontoxic_db = pd.DataFrame(out_dict)
+    acc_nontoxic = get_accepted_info_from_names_in_column(nontoxic_db, 'Toxic plants: Scientific name')
+    acc_nontoxic['Source'] = 'CliniTox'
+    acc_nontoxic.to_csv(_clinitox_toxic_temp_accepted_csv)
 
 
 def prepare_useful_plants_poisons() -> pd.DataFrame:
@@ -146,10 +199,12 @@ def get_nonpoison_hits():
 
     # prepare_CPCS_data()
     # prepare_nontoxic_UCANR_data()
+    # prepare_nontoxic_clinitox_data()
+    clinitox_hits = pd.read_csv(_clinitox_nontoxic_temp_accepted_csv)
     ucanr_hits = pd.read_csv(_UCANR_nontoxic_temp_accepted_csv)
     CPCS_hits = pd.read_csv(_CPCS_nontoxic_temp_accepted_csv)
 
-    compile_hits([CPCS_hits, ucanr_hits], output_nonpoison_csv)
+    compile_hits([CPCS_hits, ucanr_hits, clinitox_hits], output_nonpoison_csv)
 
 
 def get_poison_hits():
@@ -167,6 +222,10 @@ def get_poison_hits():
     # prepare_CPCS_data()
     # prepare_toxic_UCANR_data()
     # prepare_usda_data()
+    # prepare_TPPT_data()
+    # prepare_toxic_clinitox_data()
+    clinitox_hits = pd.read_csv(_clinitox_toxic_temp_accepted_csv)
+    tppt_hits = pd.read_csv(_tppt_toxic_temp_accepted_csv)
     usda_hits = pd.read_csv(_usda_toxic_temp_accepted_csv)
     ucanr_hits = pd.read_csv(_UCANR_toxic_temp_accepted_csv)
     CPCS_hits = pd.read_csv(_CPCS_toxic_temp_accepted_csv)
@@ -177,11 +236,13 @@ def get_poison_hits():
     littox_hits['Source'] = 'LITTOX'
     useful_hits = pd.read_csv(_useful_temp_output_accepted_csv)
     useful_hits['Accepted_Species_ID'] = useful_hits['Accepted_ID']
-    compile_hits([useful_hits, powo_hits, littox_hits, wiki_hits, cornell_hits, CPCS_hits, ucanr_hits, usda_hits],
-                 output_poison_csv)
+    compile_hits(
+        [useful_hits, powo_hits, littox_hits, wiki_hits, cornell_hits, CPCS_hits, ucanr_hits, usda_hits, tppt_hits,
+         clinitox_hits],
+        output_poison_csv)
 
 
 if __name__ == '__main__':
-    prepare_usda_data()
+    prepare_toxic_clinitox_data()
     get_poison_hits()
     get_nonpoison_hits()
