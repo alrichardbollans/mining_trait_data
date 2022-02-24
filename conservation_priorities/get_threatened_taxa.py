@@ -6,10 +6,12 @@ import pandas as pd
 from pkg_resources import resource_filename
 
 from taxa_lists import get_all_taxa
+from automatchnames import get_accepted_info_from_names_in_column
 from tqdm import tqdm
 
 _outputs_path = resource_filename(__name__, 'outputs')
 rub_apoc_threatened_csv = os.path.join(_outputs_path, 'rub_apocs_threatened.csv')
+rub_apoc_accepted_threatened_csv = os.path.join(_outputs_path, 'rub_apocs_accepted_threatened.csv')
 
 
 def get_threatened_taxa_in_genus(genus, family: str = '') -> pd.DataFrame:
@@ -31,8 +33,16 @@ def get_threatened_taxa_in_family(families: List[str]) -> pd.DataFrame:
     return pd.concat(genera_dfs)
 
 
+def get_accepted_info_for_taxa_in_csv(in_csv: str, output_csv: str, families=None):
+    threatened = pd.read_csv(in_csv)
+    db_acc = get_accepted_info_from_names_in_column(threatened, 'Plant Name', families_of_interest=families)
+    db_acc.to_csv(output_csv)
+
+
 def main():
-    get_threatened_taxa_in_family(['Apocynaceae', 'Rubiaceae']).to_csv(rub_apoc_threatened_csv)
+    fams = ['Apocynaceae', 'Rubiaceae']
+    # get_threatened_taxa_in_family(fams).to_csv(rub_apoc_threatened_csv)
+    get_accepted_info_for_taxa_in_csv(rub_apoc_threatened_csv, rub_apoc_accepted_threatened_csv, families=fams)
 
 
 if __name__ == '__main__':
