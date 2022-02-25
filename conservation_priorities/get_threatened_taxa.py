@@ -30,7 +30,10 @@ def get_threatened_taxa_in_family(families: List[str]) -> pd.DataFrame:
         genus = taxa['genus'].unique().tolist()[i]
         genera_dfs.append(get_threatened_taxa_in_genus(genus))
 
-    return pd.concat(genera_dfs)
+    all_genera_df = pd.concat(genera_dfs)
+    all_genera_df = all_genera_df[all_genera_df['Family'].isin(families) | all_genera_df['Family'].isna()]
+
+    return all_genera_df
 
 
 def get_accepted_info_for_taxa_in_csv(in_csv: str, output_csv: str, families=None):
@@ -41,7 +44,7 @@ def get_accepted_info_for_taxa_in_csv(in_csv: str, output_csv: str, families=Non
 
 def main():
     fams = ['Apocynaceae', 'Rubiaceae']
-    # get_threatened_taxa_in_family(fams).to_csv(rub_apoc_threatened_csv)
+    get_threatened_taxa_in_family(fams).to_csv(rub_apoc_threatened_csv)
     get_accepted_info_for_taxa_in_csv(rub_apoc_threatened_csv, rub_apoc_accepted_threatened_csv, families=fams)
 
 
