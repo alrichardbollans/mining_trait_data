@@ -1,0 +1,40 @@
+,taxa,knapsack_snippet,Source,Accepted_Name,Accepted_Species,Accepted_Species_ID,Accepted_ID,Accepted_Rank
+0,Catharanthus roseus,"""['Ajmalicine', 'Gallic acid', 'Quercetin']""",KNApSAcK,Catharanthus roseus,Catharanthus roseus,77880-1,77880-1,Species
+1,Nerium oleander,"""['Quercetin']""",KNApSAcK,Nerium oleander,Nerium oleander,80460-1,80460-1,Species
+2,Ochrosia moorei,"""['Desoxycordifoline']""",KNApSAcK,Ochrosia moorei,Ochrosia moorei,80527-1,80527-1,Species
+3,Rauvolfia serpentina,"""['Ajmalicine']""",KNApSAcK,Rauvolfia serpentina,Rauvolfia serpentina,81648-1,81648-1,Species
+4,Rauvolfia verticillata,"""['Robinin']""",KNApSAcK,Rauvolfia verticillata,Rauvolfia verticillata,81667-1,81667-1,Species
+5,Rhazya stricta,"""['Robinin']""",KNApSAcK,Rhazya stricta,Rhazya stricta,81712-1,81712-1,Species
+6,Tabernaemontana arborea,"""['Voacamine']""",KNApSAcK,Tabernaemontana arborea,Tabernaemontana arborea,248839-2,248839-2,Species
+7,Tabernaemontana oppositifolia,"""['Voacamine']""",KNApSAcK,Tabernaemontana oppositifolia,Tabernaemontana oppositifolia,248887-2,248887-2,Species
+8,Tabernaemontana pachysiphon,"""['Voacamine']""",KNApSAcK,Tabernaemontana pachysiphon,Tabernaemontana pachysiphon,82263-1,82263-1,Species
+9,Voacanga africana,"""['Voacamine']""",KNApSAcK,Voacanga africana,Voacanga africana,82719-1,82719-1,Species
+10,Voacanga globosa,"""['Voacamine']""",KNApSAcK,Voacanga globosa,Voacanga globosa,82738-1,82738-1,Species
+11,Voacanga thouarsii,"""['Voacamine']""",KNApSAcK,Voacanga thouarsii,Voacanga thouarsii,82760-1,82760-1,Species
+12,Adina cordifolia,"""['Cadambine']""",KNApSAcK,Adina cordifolia,Adina cordifolia,742903-1,742903-1,Species
+13,Chimarrhis turbinata,"""['Desoxycordifoline']""",KNApSAcK,Chimarrhis turbinata,Chimarrhis turbinata,308173-2,308173-2,Species
+14,Coelospermum reticulatum,"""['Lucidin']""",KNApSAcK,Coelospermum reticulatum,Coelospermum reticulatum,747019-1,747019-1,Species
+15,Coffea arabica,"""['Caffeic acid', 'Acetic acid']""",KNApSAcK,Coffea arabica,Coffea arabica,747038-1,747038-1,Species
+16,Coffea canephora,"""['Acetic acid']""",KNApSAcK,Coffea canephora,Coffea canephora,747068-1,747068-1,Species
+17,Coprosma propinqua,"""['Scopoletin']""",KNApSAcK,Coprosma propinqua,Coprosma propinqua,747476-1,747476-1,Species
+18,Coprosma robusta,"""['Scopoletin']""",KNApSAcK,Coprosma robusta,Coprosma robusta,747499-1,747499-1,Species
+19,Coprosma rotundifolia,"""['Lucidin', 'Scopoletin']""",KNApSAcK,Coprosma rotundifolia,Coprosma rotundifolia,747500-1,747500-1,Species
+20,Coprosma tenuicaulis,"""['Scopoletin']""",KNApSAcK,Coprosma tenuicaulis,Coprosma tenuicaulis,747520-1,747520-1,Species
+21,Coussarea macrophylla,"""['Scopoletin']""",KNApSAcK,Coussarea macrophylla,Coussarea macrophylla,747706-1,747706-1,Species
+22,Cruciata taurica,"""['Quercetin', 'Scopoletin']""",KNApSAcK,Cruciata taurica,Cruciata taurica,747968-1,747968-1,Species
+23,Mitragyna inermis,"""['Quercetin']""",KNApSAcK,Mitragyna inermis,Mitragyna inermis,756296-1,756296-1,Species
+24,Mitragyna rotundifolia,"""['Caffeic acid']""",KNApSAcK,Mitragyna rotundifolia,Mitragyna rotundifolia,756301-1,756301-1,Species
+25,Mitragyna speciosa,"""['Quercetin', 'Caffeic acid']""",KNApSAcK,Mitragyna speciosa,Mitragyna speciosa,756303-1,756303-1,Species
+26,Morinda citrifolia,"""['Lucidin', 'Scopoletin', 'Alizarin']""",KNApSAcK,Morinda citrifolia,Morinda citrifolia,756359-1,756359-1,Species
+27,Morinda morindoides,"""['Quercetin']""",KNApSAcK,Morinda morindoides,Morinda morindoides,756428-1,756428-1,Species
+28,Nauclea diderrichii,"""['Desoxycordifoline', 'Desoxycordifolinic acid']""",KNApSAcK,Nauclea diderrichii,Nauclea diderrichii,757089-1,757089-1,Species
+29,Nauclea latifolia,"""['17-Epinaucleidinal', '18,19-Dihydroangustine']""",KNApSAcK,Nauclea latifolia,Nauclea latifolia,757144-1,757144-1,Species
+30,Rubia cordifolia,"""['Alizarin']""",KNApSAcK,Rubia cordifolia,Rubia cordifolia,765218-1,765218-1,Species
+31,Rubia tinctorum,"""['Lucidin', 'Alizarin']""",KNApSAcK,Rubia tinctorum,Rubia tinctorum,765369-1,765369-1,Species
+32,Rubia wallichiana,"""['Lucidin', 'Scopoletin']""",KNApSAcK,Rubia wallichiana,Rubia wallichiana,765383-1,765383-1,Species
+33,Uncaria africana,"""['Ajmalicine']""",KNApSAcK,Uncaria africana,Uncaria africana,768207-1,768207-1,Species
+34,Uncaria elliptica,"""['Ajmalicine']""",KNApSAcK,Uncaria elliptica,Uncaria elliptica,768231-1,768231-1,Species
+35,Uncaria gambir,"""['Gallic acid']""",KNApSAcK,Uncaria gambir,Uncaria gambir,60458896-2,60458896-2,Species
+36,Uncaria orientalis,"""['Ajmalicine']""",KNApSAcK,Uncaria orientalis,Uncaria orientalis,768281-1,768281-1,Species
+37,Uncaria rhynchophylla,"""['Cadambine', '3alpha-Dihydrocadambine', 'Angustidine']""",KNApSAcK,Uncaria rhynchophylla,Uncaria rhynchophylla,768297-1,768297-1,Species
+38,Uncaria sinensis,"""['Caffeic acid', 'Scopoletin', '3alpha-Dihydrocadambine']""",KNApSAcK,Uncaria sinensis,Uncaria sinensis,768314-1,768314-1,Species
