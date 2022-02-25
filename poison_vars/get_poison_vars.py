@@ -185,6 +185,7 @@ def get_powo_poisons():
 
 def get_wiki_poisons():
     wiki_df = wikipedia_searches.search_for_poisons(_wiki_search_temp_output_csv)
+    # wiki_df = pd.read_csv(_wiki_search_temp_output_csv,index=0)
     acc_wiki_df = get_accepted_info_from_names_in_column(wiki_df, 'name')
     acc_wiki_df.to_csv(_wiki_search_temp_output_accepted_csv)
 
@@ -243,6 +244,5 @@ def get_poison_hits():
 
 
 if __name__ == '__main__':
-
     get_poison_hits()
     get_nonpoison_hits()
