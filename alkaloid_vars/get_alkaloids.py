@@ -3,8 +3,8 @@ import os
 import pandas as pd
 from pkg_resources import resource_filename
 
-from metabolite_searches import rub_apoc_alkaloid_hits_output_csv
 from cleaning import compile_hits
+from metabolite_vars import rub_apoc_alkaloid_hits_output_csv
 from powo_searches import search_powo
 
 ### Inputs
@@ -38,4 +38,5 @@ def main():
 
 
 if __name__ == '__main__':
+
     main()
