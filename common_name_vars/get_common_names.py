@@ -168,6 +168,7 @@ def get_powo_common_names(species_names: List[str], species_ids: List[str],
 
 def get_wiki_common_names(taxa_list: List[str], families_of_interest: List[str] = None):
     wiki_df = wikipedia_searches.search_for_common_names(taxa_list, _wiki_common_names_temp_output_csv)
+    # wiki_df=pd.read_csv(_wiki_common_names_temp_output_csv)
     acc_wiki_df = get_accepted_info_from_names_in_column(wiki_df, 'Name',
                                                          families_of_interest=families_of_interest)
     acc_wiki_df.to_csv(_wiki_common_names_temp_output_accepted_csv)
@@ -262,7 +263,7 @@ def main():
         os.mkdir(output_path)
 
     # TODO: Note powo, wikipedia and USDA data is specific to our study
-    # prepare_data()
+    prepare_data()
 
     cornell_hits = pd.read_csv(get_tempout_csv('Cornell CALS', _temp_outputs_path))
     cpcs_hits = pd.read_csv(get_tempout_csv('CPCS nontoxic', _temp_outputs_path))
