@@ -162,7 +162,7 @@ def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_sea
     unchecked_taxa_due_to_timeout = []
     if os.path.isfile(temp_output_wiki_page_csv) and not force_new_search:
 
-        df = pd.read_csv(temp_output_wiki_page_csv)
+        df = pd.read_csv(temp_output_wiki_page_csv, index_col=0)
     else:
 
         for i in tqdm(range(len(taxa_list)), desc="Searching for Wiki Pages…", ascii=False, ncols=72):
