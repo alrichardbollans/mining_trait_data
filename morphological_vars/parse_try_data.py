@@ -172,11 +172,11 @@ def clean_try_hits(df: pd.DataFrame, traits_to_drop: List[str]) -> pd.DataFrame:
     return df
 
 
-def main():
+def prepare_try_data():
     clean_try_db()
     get_accepted_info_try_hair_hits()
     get_accepted_try_info_spine_hits()
 
 
 if __name__ == '__main__':
-    main()
+    prepare_try_data()

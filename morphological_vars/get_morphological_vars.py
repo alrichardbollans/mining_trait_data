@@ -5,7 +5,8 @@ from pkg_resources import resource_filename
 
 ### Inputs
 from morphological_vars import temp_outputs_path, try_spine_temp_output_accepted_csv, try_hair_temp_output_accepted_csv, \
-    manual_data_accepted_clean_temp_output, try_no_spine_temp_output_accepted_csv
+    manual_data_accepted_clean_temp_output, try_no_spine_temp_output_accepted_csv, prepare_manually_collected_data, \
+    prepare_try_data
 from cleaning import compile_hits
 from powo_searches import search_powo, create_presence_absence_data
 
@@ -125,6 +126,8 @@ def main():
     if not os.path.isdir(output_path):
         os.mkdir(output_path)
     get_powo_hairs_and_spines()
+    prepare_manually_collected_data()
+    prepare_try_data()
     output_compiled_data()
 
 
