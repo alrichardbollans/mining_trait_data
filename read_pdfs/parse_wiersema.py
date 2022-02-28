@@ -65,7 +65,7 @@ def common_names_from_wiersema(output_csv: str):
     right_handscripts_arab = range(1283, 1289)
     right_handscripts_hebrew = range(1309, 1313)
     for i in tqdm(
-            range(1284, len(all_pages)), desc="Searching pages", ascii=False,
+            range(775, len(all_pages)), desc="Searching pages", ascii=False,
             ncols=72):
         content = all_pages[i]
         _buffer = StringIO()
