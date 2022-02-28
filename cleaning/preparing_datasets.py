@@ -5,6 +5,8 @@ import pandas as pd
 from automatchnames import get_accepted_info_from_names_in_column
 from typing import List
 
+from tqdm import tqdm
+
 
 def get_tempout_csv(dataset_name: str, temp_output_path: str):
     return os.path.join(temp_output_path, dataset_name + '_accepted.csv')
@@ -20,8 +22,9 @@ def generic_prepare_data(dataset_name: str, temp_output_path: str, df: pd.DataFr
         n = int(len(df.index)/ 1000)+1
         list_df = np.array_split(df, n)
         acc_dfs = []
-        for split_df in list_df:
-            print(split_df)
+
+        for i in tqdm(range(len(list_df)), desc="Finding names", ascii=False, ncols=72):
+            split_df = list_df[i]
             acc_dfs.append(
                 get_accepted_info_from_names_in_column(split_df, name_col, families_of_interest=families_of_interest))
         db_acc = pd.concat(acc_dfs)
