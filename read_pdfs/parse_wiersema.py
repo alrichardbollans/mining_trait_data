@@ -1,8 +1,13 @@
+from io import StringIO
+
 import pandas as pd
 # import parser object from tike
+from bs4 import BeautifulSoup
 from tika import parser
 
 from pkg_resources import resource_filename
+from tqdm import tqdm
+
 from read_pdfs import wiersema_input
 
 # _inputs_path = resource_filename(__name__, 'inputs')
@@ -14,28 +19,75 @@ parenthesised_words = ['fiber', 'wood', 'sugar', 'ornamental', 'shade/shelter', 
                        'vegetable']
 
 
-def common_names_from_wiersema(output_csv: str):
-    # opening pdf file
-    parsed_pdf = parser.from_file(wiersema_input)
-    all_text = parsed_pdf['content']
-    intro_to_common_names = "Common names in the following languages are indexed here: Afrikaans, Czech, Danish, Dutch, English, French, German,"
-    index_of_common_names_text = all_text.index(intro_to_common_names)
-    common_names_text = all_text[index_of_common_names_text:]
+def compress_lines_into_names(all_text_lines):
+    """
+    Takes list of lines in pdf and concatenate those lines which are names spread over multiple lines
+    :param all_text_lines:
+    :return:
+    """
+    new_lines = []
+    iterable = iter(range(len(all_text_lines)))
+    for i in iterable:
+        line = all_text_lines[i]
+        if line == '' or line == ' ':
+            continue
+        elif ' -' in line:
+            new_line = line
+            count = 0
+            for l in range(i + 1, len(all_text_lines)):
+                next_line = all_text_lines[l]
+                if ' -' not in next_line:
+                    new_line += next_line
+                    count += 1
+                else:
+                    break
+            new_lines.append(new_line)
+            [next(iterable) for x in range(count)]
+        else:
+            new_lines.append(line)
 
-    common_names_lines = common_names_text.split('\n')
+    return new_lines
+
+
+def common_names_from_wiersema(output_csv: str):
+    # opening pdf file with xml content
+    parsed_pdf = parser.from_file(wiersema_input, xmlContent=True)
+    all_text = parsed_pdf['content']
 
     common_names = []
     scientific_names = []
-    for line in common_names_lines:
-        try:
-            common_name = line[0:line.index(' -')]
-            scientific_name = line[line.index(' -') + 3:-1]
-            common_names.append(common_name)
-            scientific_names.append(scientific_name)
-        except ValueError:
-            print(line)
-            pass
+
+    # Parse xml content to get distinct pages
+    xhtml_data = BeautifulSoup(all_text)
+    all_pages = xhtml_data.find_all('div', attrs={'class': 'page'})
+    _buffer = StringIO()
+    for i in tqdm(
+            range(775, len(all_pages)), desc="Searching pages", ascii=False,
+            ncols=72):
+        content = all_pages[i]
+        _buffer.write(str(content))
+        parsed_content = parser.from_buffer(_buffer.getvalue())
+        _buffer.truncate()
+
+        # Get useful lines
+        common_names_lines = compress_lines_into_names(parsed_content['content'].split('\n'))
+
+        # Get common and scientific names from lines
+        for line in common_names_lines:
+            try:
+                common_name = line[0:line.index(' -')]
+                scientific_name = line[line.index(' -') + 3:-1]
+                common_names.append(common_name)
+                scientific_names.append(scientific_name)
+            except ValueError:
+                # print(line)
+                pass
     out_df = pd.DataFrame({'name': scientific_names, 'common_names': common_names})
+    out_df['WEP_snippet'] = out_df.groupby(['name'])['common_names'].transform(lambda x: ':'.join(x))
+    out_df.drop(columns=['common_names'], inplace=True)
+    out_df.dropna(subset=['name'], inplace=True)
+    out_df = out_df.drop_duplicates(subset=['name'])
+
     out_df['Source'] = 'WEP (Wiersema 2013)'
     out_df.to_csv(output_csv)
     return out_df
