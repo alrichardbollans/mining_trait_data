@@ -60,14 +60,14 @@ def common_names_from_wiersema(output_csv: str):
     # Parse xml content to get distinct pages
     xhtml_data = BeautifulSoup(all_text)
     all_pages = xhtml_data.find_all('div', attrs={'class': 'page'})
-    _buffer = StringIO()
+
     for i in tqdm(
             range(775, len(all_pages)), desc="Searching pages", ascii=False,
             ncols=72):
         content = all_pages[i]
+        _buffer = StringIO()
         _buffer.write(str(content))
         parsed_content = parser.from_buffer(_buffer.getvalue())
-        _buffer.truncate()
 
         # Get useful lines
         common_names_lines = compress_lines_into_names(parsed_content['content'].split('\n'))
