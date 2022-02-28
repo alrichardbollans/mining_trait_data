@@ -20,6 +20,8 @@ from automatchnames import get_accepted_info_from_names_in_column, clean_urn_ids
 ### Inputs
 from taxa_lists.get_taxa_from_wcvp import get_all_taxa
 
+from read_pdfs import common_names_from_wiersema
+
 _inputs_path = resource_filename(__name__, 'inputs')
 _inputs_species_path = resource_filename(__name__, '../inputs')
 _input_species_csv = os.path.join(_inputs_species_path, 'standardised_order.csv')
@@ -33,6 +35,7 @@ _temp_outputs_path = resource_filename(__name__, 'temp_outputs')
 
 _wiki_common_names_temp_output_csv = os.path.join(_temp_outputs_path, 'wiki_common_name_hits.csv')
 _powo_common_names_temp_output_csv = os.path.join(_temp_outputs_path, 'powo_common_name_hits.csv')
+_wiersema_common_names_temp_output_csv = os.path.join(_temp_outputs_path, 'wiersema_common_name_hits.csv')
 
 # Standardised versions
 _spp_ppa_common_names_temp_output_accepted_csv = os.path.join(_temp_outputs_path, 'spp_ppa_common_names_accepted.csv')
@@ -230,6 +233,12 @@ def prepare_TPPT_data():
                          families_of_interest=toxic_db['Plant_family'].unique().tolist())
 
 
+def prepare_wiersema_data():
+    w = common_names_from_wiersema(_wiersema_common_names_temp_output_csv)
+    # w = pd.read_csv(_wiersema_common_names_temp_output_csv, index_col=0)
+    generic_prepare_data('WEP (Wiersema 2013)', _temp_outputs_path, w, 'name', batch=True)
+
+
 def prepare_data():
     accepted_data = get_all_taxa(families_of_interest=['Apocynaceae', 'Rubiaceae'], accepted=True)
 
@@ -254,6 +263,7 @@ def prepare_data():
     prepare_toxic_UCANR_data()
     prepare_duke_usda_data()
     prepare_TPPT_data()
+    prepare_wiersema_data()
 
 
 def main():
@@ -265,13 +275,14 @@ def main():
     # TODO: Note powo, wikipedia and USDA data is specific to our study
     prepare_data()
 
-    cornell_hits = pd.read_csv(get_tempout_csv('Cornell CALS', _temp_outputs_path))
-    cpcs_hits = pd.read_csv(get_tempout_csv('CPCS nontoxic', _temp_outputs_path))
-    cpcs_toxic_hits = pd.read_csv(get_tempout_csv('CPCS toxic', _temp_outputs_path))
-    ucantoxic_hits = pd.read_csv(get_tempout_csv('UCANR Toxic', _temp_outputs_path))
-    ucannontoxic_hits = pd.read_csv(get_tempout_csv('UCANR NonToxic', _temp_outputs_path))
-    duke_hits = pd.read_csv(get_tempout_csv('USDA(Duke)', _temp_outputs_path))
-    tppt_hits = pd.read_csv(get_tempout_csv('TPPT', _temp_outputs_path))
+    cornell_hits = pd.read_csv(get_tempout_csv('Cornell CALS', _temp_outputs_path), index_col=0)
+    cpcs_hits = pd.read_csv(get_tempout_csv('CPCS nontoxic', _temp_outputs_path), index_col=0)
+    cpcs_toxic_hits = pd.read_csv(get_tempout_csv('CPCS toxic', _temp_outputs_path), index_col=0)
+    ucantoxic_hits = pd.read_csv(get_tempout_csv('UCANR Toxic', _temp_outputs_path), index_col=0)
+    ucannontoxic_hits = pd.read_csv(get_tempout_csv('UCANR NonToxic', _temp_outputs_path), index_col=0)
+    duke_hits = pd.read_csv(get_tempout_csv('USDA(Duke)', _temp_outputs_path), index_col=0)
+    tppt_hits = pd.read_csv(get_tempout_csv('TPPT', _temp_outputs_path), index_col=0)
+    wiersema_hits = pd.read_csv(get_tempout_csv('WEP (Wiersema 2013)', _temp_outputs_path), index_col=0)
 
     usda_hits = pd.read_csv(_cleaned_USDA_accepted_csv)
     spp_ppa_df = pd.read_csv(_spp_ppa_common_names_temp_output_accepted_csv)
@@ -280,9 +291,10 @@ def main():
     mpns_hits = pd.read_csv(_cleaned_MPNS_accepted_csv)
 
     all_dfs = [mpns_hits, usda_hits, powo_hits, wiki_hits, spp_ppa_df, cornell_hits, cpcs_hits, cpcs_toxic_hits,
-               ucantoxic_hits, ucannontoxic_hits, duke_hits, tppt_hits]
+               ucantoxic_hits, ucannontoxic_hits, duke_hits, tppt_hits,wiersema_hits]
     compile_hits(all_dfs, output_common_names_csv)
 
 
 if __name__ == '__main__':
+    # prepare_wiersema_data()
     main()
