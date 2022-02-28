@@ -60,9 +60,12 @@ def common_names_from_wiersema(output_csv: str):
     # Parse xml content to get distinct pages
     xhtml_data = BeautifulSoup(all_text)
     all_pages = xhtml_data.find_all('div', attrs={'class': 'page'})
-
+    # right hand script common names appear on rhs of scientific names
+    # This catches most of these cases but it is not critical if we miss some
+    right_handscripts_arab = range(1283, 1289)
+    right_handscripts_hebrew = range(1309, 1313)
     for i in tqdm(
-            range(775, len(all_pages)), desc="Searching pages", ascii=False,
+            range(1284, len(all_pages)), desc="Searching pages", ascii=False,
             ncols=72):
         content = all_pages[i]
         _buffer = StringIO()
@@ -75,8 +78,12 @@ def common_names_from_wiersema(output_csv: str):
         # Get common and scientific names from lines
         for line in common_names_lines:
             try:
-                common_name = line[0:line.index(' -')]
-                scientific_name = line[line.index(' -') + 3:-1]
+                if i in right_handscripts_arab or i in right_handscripts_hebrew:
+                    scientific_name = line[1:line.index(' -')]
+                    common_name = line[line.index(' -') + 3:-1]
+                else:
+                    common_name = line[0:line.index(' -')]
+                    scientific_name = line[line.index(' -') + 3:-1]
                 common_names.append(common_name)
                 scientific_names.append(scientific_name)
             except ValueError:
@@ -165,6 +172,10 @@ def poisons_from_wiersema():
 def get_traditional_medicines_from_wiersema():
     medicines = get_scientific_names_from_property('ECON', 'Medic. (folklore)')
     return medicines
+
+
+if __name__ == '__main__':
+    common_names_from_wiersema('x.csv')
 
 # if __name__ == '__main__':
 #     common_names_from_wiersema('commonnames.csv')
