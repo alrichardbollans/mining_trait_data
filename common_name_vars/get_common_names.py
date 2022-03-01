@@ -291,7 +291,7 @@ def main():
     mpns_hits = pd.read_csv(_cleaned_MPNS_accepted_csv)
 
     all_dfs = [mpns_hits, usda_hits, powo_hits, wiki_hits, spp_ppa_df, cornell_hits, cpcs_hits, cpcs_toxic_hits,
-               ucantoxic_hits, ucannontoxic_hits, duke_hits, tppt_hits,wiersema_hits]
+               ucantoxic_hits, ucannontoxic_hits, duke_hits, tppt_hits, wiersema_hits]
     compile_hits(all_dfs, output_common_names_csv)
 
 
