@@ -15,7 +15,8 @@ from pkg_resources import resource_filename
 
 from cleaning import compile_hits, generic_prepare_data, get_tempout_csv
 
-from automatchnames import get_accepted_info_from_names_in_column, clean_urn_ids, get_accepted_info_from_ids_in_column
+from automatchnames import get_accepted_info_from_names_in_column, clean_urn_ids, get_accepted_info_from_ids_in_column, \
+    COL_NAMES
 
 ### Inputs
 from taxa_lists.get_taxa_from_wcvp import get_all_taxa
@@ -235,8 +236,14 @@ def prepare_TPPT_data():
 
 def prepare_wiersema_data():
     w = common_names_from_wiersema(_wiersema_common_names_temp_output_csv)
-    # w = pd.read_csv(_wiersema_common_names_temp_output_csv, index_col=0)
+    # # w = pd.read_csv(_wiersema_common_names_temp_output_csv, index_col=0)
     generic_prepare_data('WEP (Wiersema 2013)', _temp_outputs_path, w, 'name', batch=True)
+    c = get_tempout_csv('WEP (Wiersema 2013)', _temp_outputs_path)
+    out_df = pd.read_csv(c, index_col=0)
+    out_df['WEP_snippet'] = out_df.groupby([COL_NAMES['acc_id']])['WEP_snippet'].transform(lambda x: ':'.join(x))
+    out_df.dropna(subset=['WEP_snippet'], inplace=True)
+    out_df = out_df.drop_duplicates(subset=[COL_NAMES['acc_id']])
+    out_df.to_csv(c)
 
 
 def prepare_data():
@@ -273,7 +280,7 @@ def main():
         os.mkdir(output_path)
 
     # TODO: Note powo, wikipedia and USDA data is specific to our study
-    prepare_data()
+    # prepare_data()
 
     cornell_hits = pd.read_csv(get_tempout_csv('Cornell CALS', _temp_outputs_path), index_col=0)
     cpcs_hits = pd.read_csv(get_tempout_csv('CPCS nontoxic', _temp_outputs_path), index_col=0)
