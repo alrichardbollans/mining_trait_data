@@ -4,6 +4,7 @@
 #*.xlsx
 #*.docx
 #*.png
+*.secrets
 
 ### Pycharm
 .idea/
