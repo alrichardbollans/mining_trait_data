@@ -5,6 +5,7 @@
 #*.docx
 #*.png
 *.secrets
+*collaborators.txt
 
 ### Pycharm
 .idea/
