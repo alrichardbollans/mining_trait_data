@@ -1,0 +1,292 @@
+,species,fullname,decimalLongitude,decimalLatitude,countryCode,coordinateUncertaintyInMeters,year,individualCount,gbifID,basisOfRecord,institutionCode,establishmentMeans,is_cultivated_observation,sourceID,nitrogen
+0,Acokanthera laevigata,Acokanthera laevigata,35.333333,-8.5,TZA,,1987.0,,2515813608,PRESERVED_SPECIMEN,,,,GBIF,157.0
+1,Acokanthera laevigata,Acokanthera laevigata,35.316667,-8.5,TZA,,1987.0,9.0,1261120788,PRESERVED_SPECIMEN,MO,,,GBIF,152.0
+2,Acokanthera laevigata,Acokanthera laevigata,36.25,-7.5,TZA,,1987.0,5.0,1261120863,PRESERVED_SPECIMEN,MO,,,GBIF,142.0
+3,Acokanthera laevigata,Acokanthera laevigata,35.33333,-8.5,TZA,,1987.0,4.0,1261120958,PRESERVED_SPECIMEN,MO,,,GBIF,157.0
+4,Acokanthera laevigata,Acokanthera laevigata,35.333333,-8.5,TZA,,1987.0,,2516077507,PRESERVED_SPECIMEN,,,,GBIF,157.0
+5,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,39.666667,-3.533333,KEN,,1980.0,,2515799126,PRESERVED_SPECIMEN,,,,GBIF,182.0
+6,Agathisanthemum bojeri,Agathisanthemum bojeri,32.51,-25.56,MOZ,,1981.0,,2517529986,PRESERVED_SPECIMEN,,,,GBIF,147.0
+7,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. angolense,30.601389,-13.556944,ZMB,,1994.0,,2515687264,PRESERVED_SPECIMEN,,,,GBIF,142.0
+8,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,38.81833,-4.74916,TZA,,1999.0,6.0,1258742146,PRESERVED_SPECIMEN,MO,,,GBIF,309.0
+9,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,39.26222,-8.58416,TZA,,2003.0,3.0,1259184521,PRESERVED_SPECIMEN,MO,,,GBIF,142.0
+10,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. angolense,30.60138,-13.55694,ZMB,,1994.0,6.0,1261245328,PRESERVED_SPECIMEN,MO,,,GBIF,142.0
+11,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,39.07694,-6.89416,TZA,,2003.0,3.0,1259210003,PRESERVED_SPECIMEN,MO,,,GBIF,151.0
+12,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,38.96083,-8.31583,TZA,,1997.0,6.0,1258775219,PRESERVED_SPECIMEN,MO,,,GBIF,197.0
+13,Agathisanthemum bojeri,Agathisanthemum bojeri,36.45,-7.75,TZA,,1999.0,1.0,1258776844,PRESERVED_SPECIMEN,MO,,,GBIF,296.0
+14,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,39.80083,-4.96388,TZA,,2002.0,2.0,1259391867,PRESERVED_SPECIMEN,MO,,,GBIF,
+15,Agathisanthemum bojeri,Agathisanthemum bojeri,38.96722,-4.97888,TZA,,2000.0,6.0,1258798538,PRESERVED_SPECIMEN,MO,,,GBIF,319.0
+16,Agathisanthemum bojeri,Agathisanthemum bojeri,38.6,-6.15,TZA,,1990.0,,1261223084,PRESERVED_SPECIMEN,MO,,,GBIF,221.0
+17,Agathisanthemum bojeri,Agathisanthemum bojeri,28.287,-12.5475,ZMB,,1971.0,,2514523200,PRESERVED_SPECIMEN,,,,GBIF,185.0
+18,Agathisanthemum bojeri,Agathisanthemum bojeri,28.45,-14.433333,ZMB,,1967.0,,2515794943,PRESERVED_SPECIMEN,,,,GBIF,98.0
+19,Agathisanthemum bojeri,Agathisanthemum bojeri,32.683333,-25.733333,MOZ,,1964.0,,2517508907,PRESERVED_SPECIMEN,,,,GBIF,
+20,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.72072,-24.243692,ZAF,7.0,2021.0,,3314159430,HUMAN_OBSERVATION,iNaturalist,,,GBIF,130.0
+21,Agathisanthemum bojeri,Agathisanthemum bojeri,30.94834,-24.362673,ZAF,,2022.0,,3455913333,HUMAN_OBSERVATION,iNaturalist,,,GBIF,118.0
+22,Agathisanthemum bojeri,Agathisanthemum bojeri,32.375,-21.125,MOZ,,1999.0,,1989823172,PRESERVED_SPECIMEN,,,,GBIF,108.0
+23,Agathisanthemum bojeri,Agathisanthemum bojeri,32.625,-19.125,ZWE,,1980.0,,1989823224,PRESERVED_SPECIMEN,,,,GBIF,138.0
+24,Agathisanthemum bojeri,Agathisanthemum bojeri,25.625,-18.375,ZWE,,1985.0,,1989823221,PRESERVED_SPECIMEN,,,,GBIF,144.0
+25,Agathisanthemum bojeri,Agathisanthemum bojeri,32.625,-19.125,ZWE,,1957.0,,1989823081,PRESERVED_SPECIMEN,,,,GBIF,138.0
+26,Agathisanthemum bojeri,Agathisanthemum bojeri,32.625,-20.125,ZWE,,1975.0,,1989823077,PRESERVED_SPECIMEN,,,,GBIF,183.0
+27,Agathisanthemum bojeri,Agathisanthemum bojeri,32.625,-19.125,ZWE,,1946.0,,1989823160,PRESERVED_SPECIMEN,,,,GBIF,138.0
+28,Agathisanthemum bojeri,Agathisanthemum bojeri,32.625,-20.125,ZWE,,1948.0,,1989823154,PRESERVED_SPECIMEN,,,,GBIF,183.0
+29,Agathisanthemum bojeri,Agathisanthemum bojeri,32.625,-19.125,ZWE,,1982.0,,1989823155,PRESERVED_SPECIMEN,,,,GBIF,138.0
+30,Agathisanthemum bojeri,Agathisanthemum bojeri,25.625,-18.375,ZWE,,1972.0,,1989823157,PRESERVED_SPECIMEN,,,,GBIF,144.0
+31,Agathisanthemum bojeri,Agathisanthemum bojeri,32.875,-19.875,ZWE,,1958.0,,1989823151,PRESERVED_SPECIMEN,,,,GBIF,297.0
+32,Agathisanthemum bojeri,Agathisanthemum bojeri,32.625,-20.125,ZWE,,1950.0,,1989823152,PRESERVED_SPECIMEN,,,,GBIF,183.0
+33,Agathisanthemum bojeri,Agathisanthemum bojeri,31.483333,-26.5,SWZ,,1977.0,,2517729880,PRESERVED_SPECIMEN,,,,GBIF,159.0
+34,Agathisanthemum bojeri,Agathisanthemum bojeri,28.45,-14.433333,ZMB,,1967.0,,2515529814,PRESERVED_SPECIMEN,,,,GBIF,98.0
+35,Agathisanthemum bojeri,Agathisanthemum bojeri,39.08,-6.71,TZA,,2002.0,,2618408589,PRESERVED_SPECIMEN,S,,,GBIF,162.0
+36,Agathisanthemum bojeri,Agathisanthemum bojeri,41.483333,-1.066667,SOM,,1987.0,,1840282390,PRESERVED_SPECIMEN,BR,,,GBIF,123.0
+37,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.289547,-21.115413,ZWE,30.0,2015.0,,3470247137,PRESERVED_SPECIMEN,BR,,,GBIF,110.0
+38,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.682199,-18.808979,ZWE,,2011.0,,1840902176,PRESERVED_SPECIMEN,BR,,,GBIF,211.0
+39,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,39.216388,-8.809722,TZA,,2003.0,,2243151515,PRESERVED_SPECIMEN,BR,,,GBIF,145.0
+40,Agathisanthemum bojeri,Agathisanthemum bojeri,28.747958,-20.437388,ZWE,,2014.0,,3033586695,PRESERVED_SPECIMEN,BR,,,GBIF,137.0
+41,Agathisanthemum bojeri,Agathisanthemum bojeri,38.491666,-5.103055,TZA,,1999.0,,1839555598,PRESERVED_SPECIMEN,BR,,,GBIF,265.0
+42,Agathisanthemum bojeri,Agathisanthemum bojeri,39.95,-3.3,KEN,,1974.0,,2517657634,PRESERVED_SPECIMEN,,,,GBIF,197.0
+43,Agathisanthemum bojeri,Agathisanthemum bojeri,39.366667,-4.316667,KEN,,1968.0,,2517646651,PRESERVED_SPECIMEN,,,,GBIF,281.0
+44,Agathisanthemum bojeri,Agathisanthemum bojeri,38.56666,-6.28333,TZA,,1999.0,8.0,1258681694,PRESERVED_SPECIMEN,MO,,,GBIF,163.0
+45,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,39.21638,-8.80972,TZA,,2003.0,4.0,1259279415,PRESERVED_SPECIMEN,MO,,,GBIF,145.0
+46,Agathisanthemum bojeri,Agathisanthemum bojeri,32.466667,-25.966667,MOZ,,1980.0,,2517350307,PRESERVED_SPECIMEN,,,,GBIF,
+47,Agathisanthemum bojeri,Agathisanthemum bojeri,39.383333,-4.233333,KEN,,1970.0,,2515547936,PRESERVED_SPECIMEN,,,,GBIF,306.0
+48,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. australe,28.7,-24.65,ZAF,,1976.0,,2517372335,PRESERVED_SPECIMEN,,,,GBIF,127.0
+49,Agathisanthemum bojeri,Agathisanthemum bojeri,29.266667,-17.583333,ZWE,,2000.0,,2517773944,PRESERVED_SPECIMEN,,,,GBIF,103.0
+50,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,38.53333,-6.81666,TZA,,1984.0,6.0,1261251400,PRESERVED_SPECIMEN,MO,,,GBIF,134.0
+51,Agathisanthemum bojeri,Agathisanthemum bojeri,38.61666,-5.15,TZA,,2000.0,5.0,1258743368,PRESERVED_SPECIMEN,MO,,,GBIF,370.0
+52,Agathisanthemum bojeri,Agathisanthemum bojeri,45.169722,-12.867222,COM,,2000.0,1.0,3329357323,PRESERVED_SPECIMEN,MO,,,GBIF,337.0
+53,Agathisanthemum bojeri,Agathisanthemum bojeri,38.49166,-5.10305,TZA,,1999.0,6.0,1258664080,PRESERVED_SPECIMEN,MO,,,GBIF,265.0
+54,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,38.42222,-5.06833,TZA,,1999.0,6.0,1258567770,PRESERVED_SPECIMEN,MO,,,GBIF,384.0
+55,Agathisanthemum bojeri,Agathisanthemum bojeri,39.57,-6.28,TZA,,1999.0,,1096839688,PRESERVED_SPECIMEN,S,,,GBIF,
+56,Agathisanthemum bojeri,Agathisanthemum bojeri,32.683333,-25.733333,MOZ,,1964.0,,2517333199,PRESERVED_SPECIMEN,,,,GBIF,
+57,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.625,-26.375,MOZ,,2001.0,,616229689,PRESERVED_SPECIMEN,SANBI,,,GBIF,145.0
+58,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.625,-27.125,ZAF,,1996.0,,616229687,PRESERVED_SPECIMEN,SANBI,,,GBIF,183.0
+59,Agathisanthemum bojeri,Agathisanthemum bojeri,30.666667,-6.3,TZA,,2000.0,,1839543648,PRESERVED_SPECIMEN,BR,,,GBIF,183.0
+60,Agathisanthemum bojeri,Agathisanthemum bojeri,38.771666,-4.851111,TZA,,1999.0,,1839551810,PRESERVED_SPECIMEN,BR,,,GBIF,504.0
+61,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. angolense,30.150888,-9.145138,ZMB,30.0,2004.0,,1839424504,PRESERVED_SPECIMEN,BR,,,GBIF,146.0
+62,Agathisanthemum bojeri,Agathisanthemum bojeri,38.967222,-4.978888,TZA,,2000.0,,2243150683,PRESERVED_SPECIMEN,BR,,,GBIF,319.0
+63,Agathisanthemum bojeri,Agathisanthemum bojeri,38.566667,-6.283333,TZA,,1999.0,,1839555059,PRESERVED_SPECIMEN,BR,,,GBIF,163.0
+64,Agathisanthemum bojeri,Agathisanthemum bojeri,38.633333,-5.05,TZA,,1998.0,,1839549901,PRESERVED_SPECIMEN,BR,,,GBIF,379.0
+65,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,38.422222,-5.068333,TZA,,1999.0,,1839550389,PRESERVED_SPECIMEN,BR,,,GBIF,384.0
+66,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,39.445277,-4.172222,KEN,,1998.0,,1840282517,PRESERVED_SPECIMEN,BR,,,GBIF,286.0
+67,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,39.666667,-3.533333,KEN,,1980.0,,1840282375,PRESERVED_SPECIMEN,BR,,,GBIF,182.0
+68,Agathisanthemum bojeri,Agathisanthemum bojeri,38.423888,-5.067222,TZA,,1999.0,,1839555120,PRESERVED_SPECIMEN,BR,,,GBIF,371.0
+69,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,34.156999,-18.943449,MOZ,30.0,2007.0,,1839839506,PRESERVED_SPECIMEN,BR,,,GBIF,114.0
+70,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,39.076944,-6.894166,TZA,,2003.0,,1839555776,PRESERVED_SPECIMEN,BR,,,GBIF,151.0
+71,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.7,-24.65,ZAF,,1976.0,,1840282465,PRESERVED_SPECIMEN,BR,,,GBIF,127.0
+72,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,38.960833,-8.315833,TZA,,1997.0,,1839561114,PRESERVED_SPECIMEN,BR,,,GBIF,197.0
+73,Agathisanthemum bojeri,Agathisanthemum bojeri,32.466667,-25.966667,MOZ,,,,1840282452,PRESERVED_SPECIMEN,BR,,,GBIF,
+74,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,39.933333,-30.3,KEN,,1972.0,,1840282444,PRESERVED_SPECIMEN,BR,,,GBIF,
+75,Agathisanthemum bojeri,Agathisanthemum bojeri,29.266667,-17.583333,ZWE,,2000.0,,1839540224,PRESERVED_SPECIMEN,BR,,,GBIF,103.0
+76,Agathisanthemum bojeri,Agathisanthemum bojeri,34.177238,-18.955138,MOZ,,2014.0,,3033589627,PRESERVED_SPECIMEN,BR,,,GBIF,141.0
+77,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,45.17279,-12.76447,MYT,5000.0,2011.0,,3310667368,HUMAN_OBSERVATION,UMS PatriNat,,,GBIF,318.0
+78,Agathisanthemum bojeri,Agathisanthemum bojeri,45.17279,-12.76447,MYT,5000.0,2011.0,,3310562262,HUMAN_OBSERVATION,UMS PatriNat,,,GBIF,318.0
+79,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,45.15794,-12.87556,MYT,5000.0,2012.0,,3073401833,HUMAN_OBSERVATION,UMS PatriNat,,,GBIF,361.0
+80,Agathisanthemum bojeri,Agathisanthemum bojeri,39.08333,-6.9,TZA,,1970.0,1.0,3383720622,PRESERVED_SPECIMEN,UDSM,,,GBIF,189.0
+81,Agathisanthemum bojeri,Agathisanthemum bojeri,38.5,-4.75,TZA,,1967.0,1.0,3383721947,PRESERVED_SPECIMEN,UDSM,,,GBIF,291.0
+82,Agathisanthemum bojeri,Agathisanthemum bojeri,38.5,-4.75,TZA,,1967.0,1.0,3383721987,PRESERVED_SPECIMEN,UDSM,,,GBIF,291.0
+83,Agathisanthemum bojeri,Agathisanthemum bojeri,39.25583,-5.87667,TZA,,1974.0,1.0,3383722219,PRESERVED_SPECIMEN,UDSM,,,GBIF,289.0
+84,Agathisanthemum bojeri,Agathisanthemum bojeri,38.45309,-5.15465,TZA,,1970.0,1.0,3383722575,PRESERVED_SPECIMEN,UDSM,,,GBIF,
+85,Agathisanthemum bojeri,Agathisanthemum bojeri,38.39501,-5.02686,TZA,,1963.0,1.0,3383722798,PRESERVED_SPECIMEN,UDSM,,,GBIF,346.0
+86,Agathisanthemum bojeri,Agathisanthemum bojeri,38.39501,-5.02686,TZA,,1962.0,1.0,3383722885,PRESERVED_SPECIMEN,UDSM,,,GBIF,346.0
+87,Agathisanthemum bojeri,Agathisanthemum bojeri,38.39501,-5.02686,TZA,,1962.0,1.0,3383723011,PRESERVED_SPECIMEN,UDSM,,,GBIF,346.0
+88,Agathisanthemum bojeri,Agathisanthemum bojeri,39.13843,-6.59066,TZA,,1969.0,1.0,3383723521,PRESERVED_SPECIMEN,UDSM,,,GBIF,208.0
+89,Agathisanthemum bojeri,Agathisanthemum bojeri,39.06667,-5.08333,TZA,,1970.0,1.0,3383723679,PRESERVED_SPECIMEN,UDSM,,,GBIF,244.0
+90,Agathisanthemum bojeri,Agathisanthemum bojeri,33.56667,-5.21667,TZA,,1971.0,1.0,3383723786,PRESERVED_SPECIMEN,UDSM,,,GBIF,109.0
+91,Agathisanthemum bojeri,Agathisanthemum bojeri,31.263652,-24.430376,ZAF,8.0,2022.0,,3456964445,HUMAN_OBSERVATION,iNaturalist,,,GBIF,119.0
+92,Agathisanthemum bojeri,Agathisanthemum bojeri,31.57803,-25.018764,ZAF,364.0,2021.0,,3455708000,HUMAN_OBSERVATION,iNaturalist,,,GBIF,127.0
+93,Agathisanthemum bojeri,Agathisanthemum bojeri,38.025,-5.433333,TZA,,1973.0,,2515738930,PRESERVED_SPECIMEN,,,,GBIF,174.0
+94,Agathisanthemum bojeri,Agathisanthemum bojeri,32.51,-25.56,MOZ,,1981.0,,2517516883,PRESERVED_SPECIMEN,,,,GBIF,147.0
+95,Agathisanthemum bojeri,Agathisanthemum bojeri,38.6,-6.15,TZA,,1990.0,,2515650351,PRESERVED_SPECIMEN,,,,GBIF,221.0
+96,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.332222,-23.856111,ZAF,,2004.0,,2515986747,PRESERVED_SPECIMEN,,,,GBIF,118.0
+97,Agathisanthemum bojeri,Agathisanthemum bojeri,38.9,-6.96666,TZA,,1991.0,,1261239883,PRESERVED_SPECIMEN,MO,,,GBIF,152.0
+98,Agathisanthemum bojeri,Agathisanthemum bojeri,39.205833,-6.179722,TZA,,2019.0,2.0,2902149311,PRESERVED_SPECIMEN,MO,,,GBIF,177.0
+99,Agathisanthemum bojeri,Agathisanthemum bojeri,38.42388,-5.06722,TZA,,1999.0,6.0,1258664006,PRESERVED_SPECIMEN,MO,,,GBIF,371.0
+100,Agathisanthemum bojeri,Agathisanthemum bojeri,38.6,-6.15,TZA,,1991.0,,1261226381,PRESERVED_SPECIMEN,MO,,,GBIF,221.0
+101,Agathisanthemum bojeri,Agathisanthemum bojeri,30.954698,-25.676789,ZAF,1.0,2012.0,,1838307001,HUMAN_OBSERVATION,iNaturalist,,,GBIF,195.0
+102,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,38.77166,-4.85111,TZA,,1999.0,6.0,1258741134,PRESERVED_SPECIMEN,MO,,,GBIF,504.0
+103,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,39.07944,-6.71361,TZA,,2002.0,6.0,1259012792,PRESERVED_SPECIMEN,MO,,,GBIF,174.0
+104,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,39.08333,-6.7,TZA,,1989.0,6.0,1261218986,PRESERVED_SPECIMEN,MO,,,GBIF,146.0
+105,Agathisanthemum bojeri,Agathisanthemum bojeri,38.83666,-6.92777,TZA,,2001.0,6.0,1258943770,PRESERVED_SPECIMEN,MO,,,GBIF,113.0
+106,Agathisanthemum bojeri,Agathisanthemum bojeri,38.63333,-5.05,TZA,,1998.0,6.0,1258740867,PRESERVED_SPECIMEN,MO,,,GBIF,379.0
+107,Agathisanthemum bojeri,Agathisanthemum bojeri var. bojeri,38.422222,-5.068333,TZA,,1999.0,,2859470191,PRESERVED_SPECIMEN,CM,,,GBIF,384.0
+108,Agathisanthemum bojeri,Agathisanthemum bojeri var. bojeri,38.771667,-4.851111,TZA,,1999.0,,2859236217,PRESERVED_SPECIMEN,CM,,,GBIF,504.0
+109,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,45.15895,-12.80954,MYT,5000.0,2013.0,,3072827781,HUMAN_OBSERVATION,UMS PatriNat,,,GBIF,289.0
+110,Agathisanthemum bojeri,Agathisanthemum bojeri,45.10795,-12.83189,MYT,5000.0,2012.0,,3073288450,HUMAN_OBSERVATION,UMS PatriNat,,,GBIF,240.0
+111,Agathisanthemum bojeri,Agathisanthemum bojeri,45.16972,-12.86722,MYT,,2000.0,,438972124,PRESERVED_SPECIMEN,MNHN,,,GBIF,337.0
+112,Agathisanthemum bojeri,Agathisanthemum bojeri,28.358319,-23.868334,ZAF,,2022.0,,3466192042,HUMAN_OBSERVATION,iNaturalist,,,GBIF,110.0
+113,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.196425,-24.574122,ZAF,8.0,2019.0,,3097017328,HUMAN_OBSERVATION,iNaturalist,,,GBIF,135.0
+114,Agathisanthemum bojeri,Agathisanthemum bojeri,28.355344,-23.815403,ZAF,,2022.0,,3466026097,HUMAN_OBSERVATION,iNaturalist,,,GBIF,126.0
+115,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,45.16626,-12.87102,MYT,5000.0,2012.0,,3072880474,HUMAN_OBSERVATION,UMS PatriNat,,,GBIF,354.0
+116,Agathisanthemum bojeri,Agathisanthemum bojeri,45.16626,-12.87102,MYT,5000.0,2012.0,,3072855893,HUMAN_OBSERVATION,UMS PatriNat,,,GBIF,354.0
+117,Agathisanthemum bojeri,Agathisanthemum bojeri,39.079444,-6.713611,TZA,,2002.0,,1839554955,PRESERVED_SPECIMEN,BR,,,GBIF,174.0
+118,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.682199,-18.808979,ZWE,,2011.0,,1839421347,PRESERVED_SPECIMEN,BR,,,GBIF,211.0
+119,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.316069,-21.224608,ZWE,30.0,2015.0,,3470249017,PRESERVED_SPECIMEN,BR,,,GBIF,139.0
+120,Agathisanthemum bojeri,Agathisanthemum bojeri,30.740108,-20.044958,ZWE,,2014.0,,3033579591,PRESERVED_SPECIMEN,BR,,,GBIF,90.0
+121,Agathisanthemum bojeri,Agathisanthemum bojeri,32.133599,-18.439558,ZWE,,2013.0,,3470240909,PRESERVED_SPECIMEN,BR,,,GBIF,122.0
+122,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,39.440277,-4.169999,KEN,,1998.0,,1839487563,PRESERVED_SPECIMEN,BR,,,GBIF,279.0
+123,Agathisanthemum bojeri,Agathisanthemum bojeri,35.460038,-18.671769,MOZ,,2016.0,,3470242861,PRESERVED_SPECIMEN,BR,,,GBIF,162.0
+124,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,34.787619,-18.972427,MOZ,,2013.0,,3470254731,PRESERVED_SPECIMEN,BR,,,GBIF,169.0
+125,Agathisanthemum bojeri,Agathisanthemum bojeri,28.512158,-20.406238,ZWE,,2014.0,,3033580746,PRESERVED_SPECIMEN,BR,,,GBIF,102.0
+126,Agathisanthemum bojeri,Agathisanthemum bojeri,33.060955,-19.752481,MOZ,,2011.0,,3470255900,PRESERVED_SPECIMEN,BR,,,GBIF,258.0
+127,Agathisanthemum bojeri,Agathisanthemum bojeri,28.756111,-24.065556,ZAF,,2012.0,,2005475295,PRESERVED_SPECIMEN,,,,GBIF,163.0
+128,Agathisanthemum bojeri,Agathisanthemum bojeri,29.932778,-25.688611,ZAF,,2010.0,,2005448636,PRESERVED_SPECIMEN,,,,GBIF,173.0
+129,Agathisanthemum bojeri,Agathisanthemum bojeri,32.125,-28.375,ZAF,,2003.0,,2005467377,PRESERVED_SPECIMEN,,,,GBIF,237.0
+130,Agathisanthemum bojeri,Agathisanthemum bojeri,31.499167,-25.629444,ZAF,,2010.0,,2005497416,PRESERVED_SPECIMEN,,,,GBIF,223.0
+131,Agathisanthemum bojeri,Agathisanthemum bojeri,29.279167,-23.751944,ZAF,,2010.0,,2005499903,PRESERVED_SPECIMEN,,,,GBIF,122.0
+132,Agathisanthemum bojeri,Agathisanthemum bojeri var. bojeri,31.170833,-25.573611,ZAF,,2010.0,,2610083811,PRESERVED_SPECIMEN,RSA,,,GBIF,203.0
+133,Agathisanthemum bojeri,Agathisanthemum bojeri var. bojeri,38.818333,-4.749167,TZA,,1999.0,,2859210243,PRESERVED_SPECIMEN,CM,,,GBIF,309.0
+134,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.375,-24.875,ZAF,,1962.0,,461595342,PRESERVED_SPECIMEN,SANBI,,,GBIF,111.0
+135,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.125,-28.125,ZAF,,1971.0,,461595360,PRESERVED_SPECIMEN,SANBI,,,GBIF,242.0
+136,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,29.125,-24.125,ZAF,,1946.0,,461595405,PRESERVED_SPECIMEN,SANBI,,,GBIF,173.0
+137,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.125,-23.125,ZAF,,1978.0,,461595423,PRESERVED_SPECIMEN,SANBI,,,GBIF,153.0
+138,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.625,-22.625,ZAF,,1980.0,,461595441,PRESERVED_SPECIMEN,SANBI,,,GBIF,182.0
+139,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.875,-24.375,ZAF,,1996.0,,461595478,PRESERVED_SPECIMEN,SANBI,,,GBIF,157.0
+140,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.375,-23.875,ZAF,,2004.0,,453139991,PRESERVED_SPECIMEN,SANBI,,,GBIF,117.0
+141,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.125,-25.375,ZAF,,1967.0,,461595343,PRESERVED_SPECIMEN,SANBI,,,GBIF,180.0
+142,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.125,-28.125,ZAF,,1971.0,,461595361,PRESERVED_SPECIMEN,SANBI,,,GBIF,242.0
+143,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,29.375,-23.875,ZAF,,1979.0,,461595424,PRESERVED_SPECIMEN,SANBI,,,GBIF,105.0
+144,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.625,-27.125,ZAF,,1985.0,,461595442,PRESERVED_SPECIMEN,SANBI,,,GBIF,183.0
+145,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.625,-24.625,ZAF,,1984.0,,461595460,PRESERVED_SPECIMEN,SANBI,,,GBIF,128.0
+146,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.625,-24.375,ZAF,,1996.0,,461595479,PRESERVED_SPECIMEN,SANBI,,,GBIF,210.0
+147,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.125,-23.125,ZAF,,2004.0,,453139992,PRESERVED_SPECIMEN,SANBI,,,GBIF,102.0
+148,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.625,-24.375,ZAF,,1959.0,,461595344,PRESERVED_SPECIMEN,SANBI,,,GBIF,210.0
+149,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.125,-25.125,ZAF,,1952.0,,461595399,PRESERVED_SPECIMEN,SANBI,,,GBIF,184.0
+150,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.625,-25.875,SWZ,,1969.0,,461595425,PRESERVED_SPECIMEN,SANBI,,,GBIF,165.0
+151,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.125,-25.375,ZAF,,1984.0,,461595443,PRESERVED_SPECIMEN,SANBI,,,GBIF,133.0
+152,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.625,-24.875,ZAF,,1981.0,,461595461,PRESERVED_SPECIMEN,SANBI,,,GBIF,175.0
+153,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.375,-23.875,ZAF,,2004.0,,453139993,PRESERVED_SPECIMEN,SANBI,,,GBIF,117.0
+154,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.625,-23.875,ZAF,,1966.0,,461595345,PRESERVED_SPECIMEN,SANBI,,,GBIF,114.0
+155,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.125,-28.875,ZAF,,1968.0,,461595363,PRESERVED_SPECIMEN,SANBI,,,GBIF,216.0
+156,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.625,-24.375,ZAF,,1975.0,,461595408,PRESERVED_SPECIMEN,SANBI,,,GBIF,118.0
+157,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.125,-26.125,SWZ,,1978.0,,461595426,PRESERVED_SPECIMEN,SANBI,,,GBIF,190.0
+158,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.625,-24.625,ZAF,,1984.0,,461595444,PRESERVED_SPECIMEN,SANBI,,,GBIF,128.0
+159,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.125,-22.875,ZAF,,1997.0,,461595480,PRESERVED_SPECIMEN,SANBI,,,GBIF,179.0
+160,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.125,-24.125,ZAF,,2003.0,,453139994,PRESERVED_SPECIMEN,SANBI,,,GBIF,97.0
+161,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.375,-24.375,ZAF,,1965.0,,461595346,PRESERVED_SPECIMEN,SANBI,,,GBIF,130.0
+162,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.125,-23.625,ZAF,,1964.0,,461595382,PRESERVED_SPECIMEN,SANBI,,,GBIF,160.0
+163,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.125,-26.125,SWZ,,1978.0,,461595427,PRESERVED_SPECIMEN,SANBI,,,GBIF,190.0
+164,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.375,-24.125,ZAF,,1985.0,,461595445,PRESERVED_SPECIMEN,SANBI,,,GBIF,150.0
+165,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.125,-28.625,ZAF,,1996.0,,461595481,PRESERVED_SPECIMEN,SANBI,,,GBIF,246.0
+166,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.875,-25.375,ZAF,,2005.0,,453139999,PRESERVED_SPECIMEN,SANBI,,,GBIF,193.0
+167,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.625,-23.625,ZAF,,1970.0,,461595332,PRESERVED_SPECIMEN,SANBI,,,GBIF,142.0
+168,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.625,-24.375,ZAF,,1977.0,,461595413,PRESERVED_SPECIMEN,SANBI,,,GBIF,210.0
+169,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.125,-25.375,ZAF,,1980.0,,461595431,PRESERVED_SPECIMEN,SANBI,,,GBIF,180.0
+170,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.875,-24.625,ZAF,,2000.0,,461595486,PRESERVED_SPECIMEN,SANBI,,,GBIF,235.0
+171,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,29.375,-25.375,ZAF,,1969.0,,461595341,PRESERVED_SPECIMEN,SANBI,,,GBIF,165.0
+172,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.875,-25.125,ZAF,,1978.0,,461595422,PRESERVED_SPECIMEN,SANBI,,,GBIF,112.0
+173,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.875,-22.625,ZAF,,1980.0,,461595440,PRESERVED_SPECIMEN,SANBI,,,GBIF,149.0
+174,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.875,-22.625,ZAF,,1980.0,,461595459,PRESERVED_SPECIMEN,SANBI,,,GBIF,149.0
+175,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.125,-23.625,ZAF,,1960.0,,461595477,PRESERVED_SPECIMEN,SANBI,,,GBIF,160.0
+176,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,33.125,-24.875,MOZ,,2001.0,,461595495,PRESERVED_SPECIMEN,SANBI,,,GBIF,148.0
+177,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.625,-26.375,SWZ,,1964.0,,461595358,PRESERVED_SPECIMEN,SANBI,,,GBIF,162.0
+178,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.875,-25.125,ZAF,,1972.0,,461595402,PRESERVED_SPECIMEN,SANBI,,,GBIF,237.0
+179,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,29.375,-24.875,ZAF,,1978.0,,461595420,PRESERVED_SPECIMEN,SANBI,,,GBIF,122.0
+180,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.125,-24.375,ZAF,,1979.0,,461595439,PRESERVED_SPECIMEN,SANBI,,,GBIF,162.0
+181,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.375,-24.125,ZAF,,1976.0,,461595457,PRESERVED_SPECIMEN,SANBI,,,GBIF,150.0
+182,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.375,-24.875,ZAF,,1959.0,,461595475,PRESERVED_SPECIMEN,SANBI,,,GBIF,111.0
+183,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.625,-24.625,ZAF,,2000.0,,461595493,PRESERVED_SPECIMEN,SANBI,,,GBIF,205.0
+184,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.125,-27.125,ZAF,,2006.0,,685185517,PRESERVED_SPECIMEN,SANBI,,,GBIF,205.0
+185,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.625,-25.875,SWZ,,1970.0,,461595357,PRESERVED_SPECIMEN,SANBI,,,GBIF,165.0
+186,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.125,-28.125,ZAF,,1965.0,,461595375,PRESERVED_SPECIMEN,SANBI,,,GBIF,278.0
+187,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.125,-25.625,ZAF,,1948.0,,461595401,PRESERVED_SPECIMEN,SANBI,,,GBIF,187.0
+188,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.625,-25.625,ZAF,,1984.0,,461595438,PRESERVED_SPECIMEN,SANBI,,,GBIF,171.0
+189,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.125,-23.875,ZAF,,1986.0,,461595456,PRESERVED_SPECIMEN,SANBI,,,GBIF,118.0
+190,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.125,-25.625,ZAF,,1984.0,,461595474,PRESERVED_SPECIMEN,SANBI,,,GBIF,183.0
+191,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.375,-23.875,ZAF,,2004.0,,461595492,PRESERVED_SPECIMEN,SANBI,,,GBIF,117.0
+192,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,29.375,-23.875,ZAF,,2007.0,,685185516,PRESERVED_SPECIMEN,SANBI,,,GBIF,105.0
+193,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,29.875,-23.125,ZAF,,1954.0,,461595336,PRESERVED_SPECIMEN,SANBI,,,GBIF,137.0
+194,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.625,-27.375,ZAF,,1965.0,,461595372,PRESERVED_SPECIMEN,SANBI,,,GBIF,205.0
+195,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,29.375,-25.375,ZAF,,1967.0,,461595390,PRESERVED_SPECIMEN,SANBI,,,GBIF,165.0
+196,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.625,-24.375,ZAF,,1978.0,,461595417,PRESERVED_SPECIMEN,SANBI,,,GBIF,210.0
+197,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.875,-25.375,ZAF,,1981.0,,461595435,PRESERVED_SPECIMEN,SANBI,,,GBIF,129.0
+198,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.375,-25.875,SWZ,,1958.0,,461595453,PRESERVED_SPECIMEN,SANBI,,,GBIF,196.0
+199,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.375,-24.125,ZAF,,1993.0,,461595471,PRESERVED_SPECIMEN,SANBI,,,GBIF,136.0
+200,Agathisanthemum bojeri,Agathisanthemum bojeri,40.533333,-2.383333,KEN,,1973.0,,2517636653,PRESERVED_SPECIMEN,,,,GBIF,177.0
+201,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.625,-23.625,ZAF,,2004.0,,453139996,PRESERVED_SPECIMEN,SANBI,,,GBIF,99.0
+202,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.625,-24.375,ZAF,,1962.0,,461595337,PRESERVED_SPECIMEN,SANBI,,,GBIF,118.0
+203,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.125,-25.125,ZAF,,1952.0,,461595355,PRESERVED_SPECIMEN,SANBI,,,GBIF,184.0
+204,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.125,-28.125,ZAF,,1962.0,,461595373,PRESERVED_SPECIMEN,SANBI,,,GBIF,278.0
+205,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,29.375,-25.375,ZAF,,1976.0,,461595418,PRESERVED_SPECIMEN,SANBI,,,GBIF,165.0
+206,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,29.125,-25.375,ZAF,,1981.0,,461595436,PRESERVED_SPECIMEN,SANBI,,,GBIF,150.0
+207,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.625,-24.375,ZAF,,1986.0,,461595454,PRESERVED_SPECIMEN,SANBI,,,GBIF,210.0
+208,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.375,-23.875,ZAF,,2004.0,,461595490,PRESERVED_SPECIMEN,SANBI,,,GBIF,117.0
+209,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,29.375,-23.875,ZAF,,1962.0,,461595348,PRESERVED_SPECIMEN,SANBI,,,GBIF,105.0
+210,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.125,-28.875,ZAF,,1960.0,,461595366,PRESERVED_SPECIMEN,SANBI,,,GBIF,
+211,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.625,-25.875,SWZ,,1971.0,,461595410,PRESERVED_SPECIMEN,SANBI,,,GBIF,165.0
+212,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.125,-24.125,ZAF,,1980.0,,461595429,PRESERVED_SPECIMEN,SANBI,,,GBIF,118.0
+213,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.625,-27.125,ZAF,,1985.0,,461595447,PRESERVED_SPECIMEN,SANBI,,,GBIF,183.0
+214,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.875,-24.375,ZAF,,1996.0,,461595483,PRESERVED_SPECIMEN,SANBI,,,GBIF,157.0
+215,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.625,-25.375,ZAF,,2004.0,,453139998,PRESERVED_SPECIMEN,SANBI,,,GBIF,240.0
+216,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.125,-25.625,ZAF,,1946.0,,461595340,PRESERVED_SPECIMEN,SANBI,,,GBIF,187.0
+217,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,29.125,-24.125,ZAF,,1955.0,,461595377,PRESERVED_SPECIMEN,SANBI,,,GBIF,173.0
+218,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.875,-25.375,ZAF,,1971.0,,461595403,PRESERVED_SPECIMEN,SANBI,,,GBIF,193.0
+219,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.625,-24.375,ZAF,,1978.0,,461595421,PRESERVED_SPECIMEN,SANBI,,,GBIF,119.0
+220,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.125,-25.625,ZAF,,1987.0,,461595458,PRESERVED_SPECIMEN,SANBI,,,GBIF,183.0
+221,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.625,-24.375,ZAF,,1960.0,,461595476,PRESERVED_SPECIMEN,SANBI,,,GBIF,119.0
+222,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.375,-26.125,SWZ,,2000.0,,461595494,PRESERVED_SPECIMEN,SANBI,,,GBIF,186.0
+223,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. australe,27.625,-25.375,ZAF,,2006.0,,461595313,PRESERVED_SPECIMEN,SANBI,,,GBIF,106.0
+224,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.125,-23.625,ZAF,,1960.0,,461595331,PRESERVED_SPECIMEN,SANBI,,,GBIF,160.0
+225,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.125,-28.125,ZAF,,1953.0,,461595368,PRESERVED_SPECIMEN,SANBI,,,GBIF,278.0
+226,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.625,-24.625,ZAF,,1976.0,,461595412,PRESERVED_SPECIMEN,SANBI,,,GBIF,117.0
+227,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.625,-24.875,ZAF,,1981.0,,461595430,PRESERVED_SPECIMEN,SANBI,,,GBIF,175.0
+228,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.125,-22.875,ZAF,,1997.0,,461595485,PRESERVED_SPECIMEN,SANBI,,,GBIF,179.0
+229,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.125,-31.125,ZAF,,2005.0,,685185518,PRESERVED_SPECIMEN,SANBI,,,GBIF,264.0
+230,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.375,-24.125,ZAF,,1949.0,,461595335,PRESERVED_SPECIMEN,SANBI,,,GBIF,150.0
+231,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.375,-24.125,ZAF,,1952.0,,461595353,PRESERVED_SPECIMEN,SANBI,,,GBIF,150.0
+232,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.625,-27.125,ZAF,,1969.0,,461595371,PRESERVED_SPECIMEN,SANBI,,,GBIF,159.0
+233,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.375,-26.875,SWZ,,1956.0,,461595452,PRESERVED_SPECIMEN,SANBI,,,GBIF,192.0
+234,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.875,-24.875,ZAF,,1991.0,,461595470,PRESERVED_SPECIMEN,SANBI,,,GBIF,100.0
+235,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.375,-23.875,ZAF,,2004.0,,461595489,PRESERVED_SPECIMEN,SANBI,,,GBIF,117.0
+236,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,17.125,-20.875,NAM,,1960.0,,461595333,PRESERVED_SPECIMEN,SANBI,,,GBIF,66.0
+237,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.625,-24.375,ZAF,,1962.0,,461595351,PRESERVED_SPECIMEN,SANBI,,,GBIF,118.0
+238,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.125,-26.125,SWZ,,1977.0,,461595414,PRESERVED_SPECIMEN,SANBI,,,GBIF,190.0
+239,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.875,-25.375,ZAF,,1979.0,,461595432,PRESERVED_SPECIMEN,SANBI,,,GBIF,193.0
+240,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.875,-24.625,ZAF,,1986.0,,461595450,PRESERVED_SPECIMEN,SANBI,,,GBIF,118.0
+241,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.375,-27.125,ZAF,,2000.0,,461595487,PRESERVED_SPECIMEN,SANBI,,,GBIF,148.0
+242,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.125,-24.375,ZAF,,2004.0,,453139995,PRESERVED_SPECIMEN,SANBI,,,GBIF,162.0
+243,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,29.375,-25.125,ZAF,,1963.0,,461595347,PRESERVED_SPECIMEN,SANBI,,,GBIF,136.0
+244,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.125,-27.625,ZAF,,1978.0,,461595428,PRESERVED_SPECIMEN,SANBI,,,GBIF,195.0
+245,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.625,-27.125,ZAF,,1985.0,,461595446,PRESERVED_SPECIMEN,SANBI,,,GBIF,183.0
+246,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.125,-28.625,ZAF,,1996.0,,461595482,PRESERVED_SPECIMEN,SANBI,,,GBIF,246.0
+247,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,29.125,-24.125,ZAF,,1968.0,,461595334,PRESERVED_SPECIMEN,SANBI,,,GBIF,173.0
+248,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.125,-25.375,ZAF,,1953.0,,461595352,PRESERVED_SPECIMEN,SANBI,,,GBIF,180.0
+249,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.375,-29.375,ZAF,,1965.0,,461595370,PRESERVED_SPECIMEN,SANBI,,,GBIF,
+250,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,29.375,-25.375,ZAF,,1967.0,,461595389,PRESERVED_SPECIMEN,SANBI,,,GBIF,165.0
+251,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.625,-24.375,ZAF,,1977.0,,461595415,PRESERVED_SPECIMEN,SANBI,,,GBIF,210.0
+252,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.875,-23.875,ZAF,,1981.0,,461595433,PRESERVED_SPECIMEN,SANBI,,,GBIF,165.0
+253,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.375,-26.375,SWZ,,1959.0,,461595451,PRESERVED_SPECIMEN,SANBI,,,GBIF,204.0
+254,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.875,-24.625,ZAF,,2000.0,,461595488,PRESERVED_SPECIMEN,SANBI,,,GBIF,235.0
+255,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.875,-24.875,ZAF,,2004.0,,453139997,PRESERVED_SPECIMEN,SANBI,,,GBIF,100.0
+256,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.125,-23.625,ZAF,,1960.0,,461595330,PRESERVED_SPECIMEN,SANBI,,,GBIF,160.0
+257,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.625,-24.625,ZAF,,1960.0,,461595349,PRESERVED_SPECIMEN,SANBI,,,GBIF,205.0
+258,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.625,-27.875,ZAF,,1956.0,,461595367,PRESERVED_SPECIMEN,SANBI,,,GBIF,235.0
+259,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.625,-24.625,ZAF,,1976.0,,461595411,PRESERVED_SPECIMEN,SANBI,,,GBIF,117.0
+260,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.375,-24.125,ZAF,,1986.0,,461595448,PRESERVED_SPECIMEN,SANBI,,,GBIF,150.0
+261,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.125,-25.125,ZAF,,1990.0,,461595466,PRESERVED_SPECIMEN,SANBI,,,GBIF,140.0
+262,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.625,-24.625,ZAF,,2000.0,,461595484,PRESERVED_SPECIMEN,SANBI,,,GBIF,205.0
+263,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.625,-28.125,ZAF,,1962.0,,461595374,PRESERVED_SPECIMEN,SANBI,,,GBIF,
+264,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.375,-24.875,ZAF,,1948.0,,461595400,PRESERVED_SPECIMEN,SANBI,,,GBIF,111.0
+265,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,26.625,-25.125,ZAF,,1977.0,,461595419,PRESERVED_SPECIMEN,SANBI,,,GBIF,116.0
+266,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,29.625,-25.125,ZAF,,1986.0,,461595455,PRESERVED_SPECIMEN,SANBI,,,GBIF,177.0
+267,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.625,-28.125,ZAF,,1983.0,,461595473,PRESERVED_SPECIMEN,SANBI,,,GBIF,
+268,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,28.375,-23.875,ZAF,,2004.0,,461595491,PRESERVED_SPECIMEN,SANBI,,,GBIF,117.0
+269,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.875,-28.875,ZAF,,1997.0,,685185515,PRESERVED_SPECIMEN,SANBI,,,GBIF,254.0
+270,Agathisanthemum bojeri,Agathisanthemum bojeri,39.041111,-7.906944,TZA,,2007.0,3.0,1257540182,PRESERVED_SPECIMEN,MO,,,GBIF,169.0
+271,Agathisanthemum bojeri,Agathisanthemum bojeri,45.17528,-12.89806,MYT,,1999.0,,437639899,PRESERVED_SPECIMEN,MNHN,,,GBIF,262.0
+272,Agathisanthemum bojeri,Agathisanthemum bojeri,35.142781,-16.278128,MWI,,2018.0,1.0,1890518516,HUMAN_OBSERVATION,,,,GBIF,206.0
+273,Agathisanthemum bojeri,Agathisanthemum bojeri,40.48804,-2.35469,KEN,,2021.0,,3460329560,HUMAN_OBSERVATION,,,,GBIF,137.0
+274,Agathisanthemum bojeri,Agathisanthemum bojeri,40.43301,-2.39378,KEN,,2021.0,,3460329554,HUMAN_OBSERVATION,,,,GBIF,179.0
+275,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,31.713388,-25.987279,SWZ,1.0,2005.0,,1838340845,HUMAN_OBSERVATION,iNaturalist,,,GBIF,167.0
+276,Agathisanthemum bojeri,Agathisanthemum bojeri,32.46667,-25.96667,MOZ,1000.0,1980.0,,1144598541,PRESERVED_SPECIMEN,G,,,GBIF,
+277,Agathisanthemum bojeri,Agathisanthemum bojeri,39.8,-3.816667,KEN,,1981.0,,2515740102,PRESERVED_SPECIMEN,,,,GBIF,207.0
+278,Agathisanthemum bojeri,Agathisanthemum bojeri,28.356367,-23.83718,ZAF,6.0,2021.0,,3466116678,HUMAN_OBSERVATION,iNaturalist,,,GBIF,117.0
+279,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.024444,-22.948611,ZAF,,1997.0,,2243151402,PRESERVED_SPECIMEN,BR,,,GBIF,270.0
+280,Agathisanthemum bojeri,Agathisanthemum bojeri,39.262222,-8.584166,TZA,,2003.0,,2243152490,PRESERVED_SPECIMEN,BR,,,GBIF,142.0
+281,Agathisanthemum bojeri,Agathisanthemum bojeri,39.95,-3.3,KEN,,1974.0,,2517637650,PRESERVED_SPECIMEN,,,,GBIF,197.0
+282,Agathisanthemum bojeri,Agathisanthemum bojeri,35.266667,-13.266667,MOZ,,1983.0,,2517779981,PRESERVED_SPECIMEN,,,,GBIF,109.0
+283,Agathisanthemum bojeri,Agathisanthemum bojeri,39.383333,-4.233333,KEN,,1970.0,,2515627168,PRESERVED_SPECIMEN,,,,GBIF,306.0
+284,Agathisanthemum bojeri,Agathisanthemum bojeri,39.8,-3.816667,KEN,,1981.0,,2515788162,PRESERVED_SPECIMEN,,,,GBIF,207.0
+285,Agathisanthemum bojeri,Agathisanthemum bojeri,38.966667,-5.266667,TZA,,1956.0,,2515796044,PRESERVED_SPECIMEN,,,,GBIF,358.0
+286,Agathisanthemum bojeri,Agathisanthemum bojeri var. bojeri,33.848471,-19.045723,MOZ,,1948.0,,813403727,PRESERVED_SPECIMEN,IICT,,,GBIF,144.0
+287,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,32.741765,-25.569571,MOZ,,1948.0,,813403733,PRESERVED_SPECIMEN,IICT,,,GBIF,173.0
+288,Agathisanthemum bojeri,Agathisanthemum bojeri var. bojeri,33.848471,-19.045723,MOZ,,1948.0,,813403412,PRESERVED_SPECIMEN,IICT,,,GBIF,144.0
+289,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,27.875,-24.875,ZAF,,2004.0,,329091031,PRESERVED_SPECIMEN,SANBI,,,GBIF,100.0
+290,Agathisanthemum bojeri,Agathisanthemum bojeri subsp. bojeri,30.875,-25.375,ZAF,,2005.0,,329091032,PRESERVED_SPECIMEN,SANBI,,,GBIF,193.0
