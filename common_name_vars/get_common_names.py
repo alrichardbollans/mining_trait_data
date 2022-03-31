@@ -24,8 +24,6 @@ from taxa_lists.get_taxa_from_wcvp import get_all_taxa
 from read_pdfs import common_names_from_wiersema
 
 _inputs_path = resource_filename(__name__, 'inputs')
-_inputs_species_path = resource_filename(__name__, '../inputs')
-_input_species_csv = os.path.join(_inputs_species_path, 'standardised_order.csv')
 _initial_USDA_csv = os.path.join(_inputs_path, 'USDA Plants Database.csv')
 _initial_MPNS_csv = os.path.join(_inputs_path, 'MPNS V11 subset Apocynaceae + Rubiaceae.csv')
 _ppa_africa_csv = os.path.join(_inputs_path, 'PPAfrica-botswana-commonnames', 'vernacularname.txt')
