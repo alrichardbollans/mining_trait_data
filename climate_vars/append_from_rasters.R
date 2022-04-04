@@ -18,4 +18,3 @@ species_df = read.csv(file.path('inputs','cleaned_species_occurences.csv'))
 bioclim_df <- species_df
 
 bioclim_df<-append_var_to_df(bioclim_df,'SoilpH.tif')
-bioclim_df<-append_var_to_df(bioclim_df,'SoilpH.tif')
