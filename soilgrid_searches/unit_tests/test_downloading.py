@@ -3,7 +3,7 @@ import unittest
 
 import pandas as pd
 
-from soil_vars import add_property_means
+from soilgrid_searches import add_property_means
 
 
 class MyTestCase(unittest.TestCase):
