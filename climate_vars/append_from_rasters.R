@@ -1,7 +1,7 @@
 library(raster)
 
 import_raster <- function(filename){
-  str_name<-paste('inputs/environmental_variables/',filename,sep='')
+  str_name<-paste('/home/atp/Downloads/rasters/',filename,sep='')
   imported_raster=raster(str_name)
   return(imported_raster)
 }
@@ -17,4 +17,4 @@ append_var_to_df <- function(df,var_name){
 species_df = read.csv(file.path('inputs','cleaned_species_occurences.csv'))
 bioclim_df <- species_df
 
-bioclim_df<-append_var_to_df(bioclim_df,'SoilpH.tif')
+bioclim_df<-append_var_to_df(bioclim_df,'CHELSA_bio1_1981-2010_V.2.1.tif')
