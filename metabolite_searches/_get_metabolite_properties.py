@@ -51,6 +51,7 @@ def get_formulas_for_metabolite(metabolite: str):
 
 
 def get_alkaloids_from_kegg_brite():
+    # See e.g. https://www.genome.jp/kegg-bin/get_htext#A1
     input_json = os.path.join(_inputs_path, 'br08003.json')
     alks = []
     # JSON file
