@@ -20,6 +20,14 @@ def summarise():
     out_df = pd.DataFrame(out_dict)
     out_df.to_csv(summary_output_csv)
 
+def plot_sp_map():
+    # Note package issue: https://github.com/gbif/pygbif/issues/86
+    from pygbif import maps
+    out = maps.map(taxonKey=1)
+    print(out.response)
+    print(out.path)
+    print(out.img)
+    out.plot()
 
 def main():
     summarise()
