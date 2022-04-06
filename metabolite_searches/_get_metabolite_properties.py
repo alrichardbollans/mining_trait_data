@@ -13,6 +13,10 @@ _inputs_path = resource_filename(__name__, 'inputs')
 alkaloids_not_ending_in_ine = ['Kopsanone']
 known_non_alkaloids = []
 
+known_cardenolides_not_in_keggbrite = ['Acetyldigitoxin','Acetyldigoxin','Deslanoside','Digitoxigenin',
+                                       'Digoxigenin','Gitoformate','Lanatoside C','Metildigoxin','Neoconvalloside',
+                                       'k-Strophanthidin','Metildigoxin']
+
 
 def get_antibacterial_metabolites():
     antibac_table = pd.read_html(os.path.join(_inputs_path, 'antibacterialmetabolites.html'), flavor='html5lib')[0]
@@ -85,6 +89,7 @@ def get_steroids_from_kegg_brite():
     return steroids
 
 def get_cardenolides_from_kegg_brite():
+    # Note cardenolides are misspelt as Cardanolides in keggbrite
     # See e.g. https://www.genome.jp/brite/br08003
     input_json = os.path.join(_inputs_path, 'br08003.json')
     cards = []
@@ -129,7 +134,7 @@ def get_alkaloids_from_metabolites(metabolites_to_check: List[str]) -> dict:
 def get_steroids_from_metabolites(metabolites_to_check: List[str]) -> dict:
 
 
-    known_steroids = get_steroids_from_kegg_brite()
+    known_steroids = get_steroids_from_kegg_brite() + known_cardenolides_not_in_keggbrite
 
     steroid_metabolites = {'steroids':[],'Reason':[]}
 
@@ -144,8 +149,7 @@ def get_steroids_from_metabolites(metabolites_to_check: List[str]) -> dict:
 
 def get_cardenolides_from_metabolites(metabolites_to_check: List[str]) -> dict:
 
-
-    known_cards = get_cardenolides_from_kegg_brite()
+    known_cards = get_cardenolides_from_kegg_brite() + known_cardenolides_not_in_keggbrite
 
     cardenolide_metabolites = {'cardenolides':[],'Reason':[]}
 
