@@ -11,7 +11,8 @@ from tqdm import tqdm
 from automatchnames import get_accepted_info_from_names_in_column
 from taxa_lists import get_all_taxa
 
-from metabolite_searches import get_antibacterial_metabolites, get_alkaloids_from_metabolites
+from metabolite_searches import get_antibacterial_metabolites, get_alkaloids_from_metabolites, \
+    get_steroids_from_metabolites, get_cardenolides_from_metabolites
 
 _inputs_path = resource_filename(__name__, 'inputs')
 _temp_outputs_path = resource_filename(__name__, 'temp_outputs')
@@ -154,8 +155,29 @@ def output_alkaloids_from_metabolites(metabolites_to_check: List[str], output_cs
 
     return out_df
 
+def output_steroids_from_metabolites(metabolites_to_check: List[str], output_csv: str):
 
-def get_alkaloid_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, alkaloid_df: pd.DataFrame, output_csv: str,
+    steroid_metabolites = get_steroids_from_metabolites(metabolites_to_check)
+
+    out_df = pd.DataFrame(steroid_metabolites)
+
+    out_df["Source"] = "KNApSAcK"
+    out_df.to_csv(output_csv)
+
+    return out_df
+
+def output_cardenolides_from_metabolites(metabolites_to_check: List[str], output_csv: str):
+
+    cardenolides_metabolites = get_cardenolides_from_metabolites(metabolites_to_check)
+
+    out_df = pd.DataFrame(cardenolides_metabolites)
+
+    out_df["Source"] = "KNApSAcK"
+    out_df.to_csv(output_csv)
+
+    return out_df
+
+def get_compound_hits_for_taxa(compound_abbv:str,taxa_metabolite_data: pd.DataFrame, compound_df: pd.DataFrame, output_csv: str,
                                fams: List[str] = None):
     """
 
@@ -165,9 +187,9 @@ def get_alkaloid_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, alkaloid_df: 
     :param output_csv:
     :return:
     """
-    alks = alkaloid_df['alks'].values.tolist()
+    compound = compound_df[compound_abbv].values.tolist()
     out_dict = {'taxa': [], 'knapsack_snippet': []}
-    for i in tqdm(range(len(taxa_metabolite_data['taxa'].values)), desc="Adding alkaloid hits to taxa", ascii=False,
+    for i in tqdm(range(len(taxa_metabolite_data['taxa'].values)), desc="Adding compound hits to taxa", ascii=False,
                   ncols=80):
         taxa = taxa_metabolite_data['taxa'].values[i]
 
@@ -175,15 +197,15 @@ def get_alkaloid_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, alkaloid_df: 
         # print(taxa_record.columns)
         metabolites_in_taxa = [x for x in taxa_record.columns if taxa_record[x].iloc[0] == 1]
 
-        alk_metabolites_in_taxa = []
+        compound_metabolites_in_taxa = []
         for metabolite in metabolites_in_taxa:
-            if metabolite in alks:
-                alk_metabolites_in_taxa.append(metabolite)
+            if metabolite in compound:
+                compound_metabolites_in_taxa.append(metabolite)
 
-        if len(alk_metabolites_in_taxa) > 0:
+        if len(compound_metabolites_in_taxa) > 0:
             out_dict['taxa'].append(taxa)
 
-            out_dict['knapsack_snippet'].append('"' + str(alk_metabolites_in_taxa) + '"')
+            out_dict['knapsack_snippet'].append('"' + str(compound_metabolites_in_taxa) + '"')
     out_df = pd.DataFrame(out_dict)
     out_df["Source"] = "KNApSAcK"
 
@@ -191,7 +213,6 @@ def get_alkaloid_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, alkaloid_df: 
 
     acc_df.to_csv(output_csv)
     return acc_df
-
 
 def main():
     pass
