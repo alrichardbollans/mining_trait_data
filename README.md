@@ -23,9 +23,7 @@ Run:
 
 ### Requirements
 
-Developed on Linux and needs testing for Windows/Mac.
-
-Python requirements are given in requirements.txt
+Given in requirements.txt
 
 ## Notes on Data in Repository
 

@@ -1,5 +1,0 @@
-Cleaned occurence data come from the R package TDWG from Ian Ondo.
-
-CHELSA (Climatoglogies 1981-2010)
-
-SOILGRIDS
