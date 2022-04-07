@@ -89,7 +89,7 @@ def main():
     ## Add elevation
     clean_occ_df = pd.read_csv(spec_occurence_input,
                                usecols=['species', 'fullname', 'decimalLongitude', 'decimalLatitude', 'gbifID'])
-    batch_append_elevation(clean_occ_df)
+    batch_append_elevation(clean_occ_df,start_from=44)
 
 
 if __name__ == '__main__':

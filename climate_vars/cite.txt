@@ -1,1 +1,0 @@
-Cleaned occurence data come from the R package TDWG from Ian Ondo.
