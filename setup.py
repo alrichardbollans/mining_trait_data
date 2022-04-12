@@ -6,12 +6,13 @@ setup(
     name='miningtraitdata',
     url='https://github.com/alrichardbollans/mining_trait_data',
     author='Adam Richard-Bollans',
-    author_email='adamrb@protonmail.com',
+    author_email='38588335+alrichardbollans@users.noreply.github.com',
     # Needed to actually package something
-    packages=find_packages(include=['alkaloid_vars', 'common_name_vars',
-                                    'medicinal_usage_vars', 'morphological_vars',
-                                    'cleaning', 'poison_vars', 'powo_searches''wikipedia_searches',
-                                    'wikipedia_vars']),
+    packages=find_packages(include=['cleaning', 'common_name_vars',
+                                    'conservation_priorities', 'metabolite_searches',
+                                    'poison_vars', 'read_pdfs', 'powo_searches', 'soilgrid_searches',
+                                    'unit_test_methods',
+                                    'wikipedia_searches']),
     # *strongly* suggested for sharing
     version='0.1',
     license='MIT',
