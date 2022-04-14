@@ -1,5 +1,6 @@
 import hashlib
 import os
+import urllib.parse
 import string
 import pandas as pd
 import requests
@@ -31,7 +32,7 @@ def get_all_page_text(lang, pagename):
 
 
 def get_page_url_from_title(lang: str, title: str):
-    t = title.replace(' ', '_')
+    t = urllib.parse.quote(title)
     return 'https://' + lang + '.wikipedia.org/wiki/' + t
 
 

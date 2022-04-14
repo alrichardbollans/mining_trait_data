@@ -1,5 +1,6 @@
 import os
 import time
+import urllib.parse
 
 import requests
 import pandas as pd
@@ -35,20 +36,19 @@ def get_request_url_for_taxon(taxon: str, lan: str) -> str:
     :return:
     """
 
-    # TODO: uri encode title
     if lan == 'zh':
         wiki_lan = wikipediaapi.Wikipedia('en')
         time.sleep(.01)
         page_py = wiki_lan.page(taxon)
         try:
-            formatted_title = page_py.langlinks['zh'].title.replace(' ', '_')
+            formatted_title = urllib.parse.quote(page_py.langlinks['zh'].title)
         except KeyError:
             return ''
     else:
         wiki_lan = wikipediaapi.Wikipedia(lan)
         time.sleep(.01)
         page_py = wiki_lan.page(taxon)
-        formatted_title = page_py.title.replace(' ', '_')
+        formatted_title = urllib.parse.quote(page_py.title)
     project = get_project_from_language(lan)
     req_url = 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/' + project + '/all-access/user/' + formatted_title + '/monthly/20170401/20220401'
     return req_url
