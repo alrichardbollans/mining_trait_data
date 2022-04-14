@@ -152,7 +152,7 @@ def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_sea
             os.mkdir(os.path.dirname(output_csv))
     name_col = 'Name'
     out_dict = {name_col: [], 'Language': []}
-    languages_to_check = ['es', 'en', 'fr', 'it', 'pt']
+    languages_to_check = ['es', 'en', 'fr', 'it', 'pt', 'zh']
     wikis_to_check = [wikipediaapi.Wikipedia(lan) for lan in languages_to_check]
     # Save previous searches using a hash of names to avoid repeating searches
     names = list(taxa_list)
@@ -200,4 +200,6 @@ def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_sea
 
 
 if __name__ == '__main__':
-    search_for_poisons('test.csv')
+    clan = wikipediaapi.Wikipedia('zh')
+    check_page_exists('Catharanthus roseus', clan)
+    # search_for_poisons('test.csv')
