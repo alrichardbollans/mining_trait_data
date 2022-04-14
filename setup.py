@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 # To install run pip install -e PATH_TO_PACKAGE
 
 setup(
-    name='miningtraitdata',
+    name='mining_trait_data',
     url='https://github.com/alrichardbollans/mining_trait_data',
     author='Adam Richard-Bollans',
     author_email='38588335+alrichardbollans@users.noreply.github.com',
