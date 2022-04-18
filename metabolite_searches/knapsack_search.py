@@ -1,6 +1,8 @@
 import hashlib
 import os
+import time
 
+import html5lib
 import pandas as pd
 import requests
 from typing import List
@@ -25,7 +27,7 @@ def get_metabolites_for_taxon(name: str):
 
     url = f'http://www.knapsackfamily.com/knapsack_core/result.php?sname=organism&word={url_name_format}'
     try:
-
+        time.sleep(.01)
         tables = pd.read_html(url, flavor='html5lib')
 
     except UnicodeEncodeError:
@@ -67,7 +69,8 @@ def get_metabolites_for_taxa(taxa_list: List[str], output_csv: str = None, force
                 for m in metas:
                     if m not in all_metabolites:
                         all_metabolites.append(m)
-            except:
+            except Exception as e:
+                print(e)
                 unchecked_taxa_due_to_timeout.append(sp)
 
         out_dict = {'taxa': []}
