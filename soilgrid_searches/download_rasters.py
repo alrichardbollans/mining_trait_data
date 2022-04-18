@@ -1,6 +1,7 @@
 import os
 
-import gdal
+# FOr installation see https://mothergeo-py.readthedocs.io/en/latest/development/how-to/gdal-ubuntu-pkg.html
+from osgeo import gdal
 import pandas as pd
 from pkg_resources import resource_filename
 
@@ -63,12 +64,17 @@ def convert_homolosine_to_latlong(homol_file: str, output_file: str):
 
 
 def main():
-    # download_soilgrid_global_homolosine('nitrogen/nitrogen_0-5cm_mean.vrt', '/home/atp/Downloads/rasters')
-    convert_homolosine_to_latlong('/home/atp/Downloads/rasters/nitrogen_0-5cm_mean(Homolosine).tif',
-                                  '/home/atp/Downloads/rasters/nitrogen_0-5cm_mean.tif')
-    print('done nitrogen')
-    convert_homolosine_to_latlong('/home/atp/Downloads/rasters/phh2o_0-5cm_mean(Homolosine).tif',
-                                  '/home/atp/Downloads/rasters/phh2o_0-5cm_mean.tif')
+    # download_soilgrid_global_homolosine('nitrogen/nitrogen_0-5cm_mean.vrt', '/home/atp/Downloads/rasters/nitrogen_0-5cm_mean(Homolosine).tif')
+    # convert_homolosine_to_latlong('/home/atp/Downloads/rasters/nitrogen_0-5cm_mean(Homolosine).tif',
+    #                               '/home/atp/Downloads/rasters/nitrogen_0-5cm_mean.tif')
+    # print('done nitrogen')
+    # convert_homolosine_to_latlong('/home/atp/Downloads/rasters/phh2o_0-5cm_mean(Homolosine).tif',
+    #                               '/home/atp/Downloads/rasters/phh2o_0-5cm_mean.tif')
+
+    download_soilgrid_global_homolosine('soc/soc_0-5cm_mean.vrt', '/home/atp/Downloads/rasters/soc_0-5cm_mean(Homolosine).tif')
+    print('Downloaded')
+    # convert_homolosine_to_latlong('/home/atp/Downloads/rasters/soc_0-5cm_mean(Homolosine).tif',
+    #                               '/home/atp/Downloads/rasters/soc_0-5cm_mean.tif')
 
 
 if __name__ == '__main__':
