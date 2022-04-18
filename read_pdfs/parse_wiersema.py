@@ -58,7 +58,7 @@ def common_names_from_wiersema(output_csv: str):
     scientific_names = []
 
     # Parse xml content to get distinct pages
-    xhtml_data = BeautifulSoup(all_text)
+    xhtml_data = BeautifulSoup(all_text, features="lxml")
     all_pages = xhtml_data.find_all('div', attrs={'class': 'page'})
     # right hand script common names appear on rhs of scientific names
     # This catches most of these cases but it is not critical if we miss some
