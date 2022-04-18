@@ -10,7 +10,7 @@ setup(
     # Needed to actually package something
     packages=find_packages(include=['cleaning',
                                     'conservation_priorities', 'metabolite_searches',
-                                    'poison_vars', 'read_pdfs', 'powo_searches', 'soilgrid_searches',
+                                    'read_pdfs', 'powo_searches', 'soilgrid_searches',
                                     'unit_test_methods',
                                     'wikipedia_searches']),
     # *strongly* suggested for sharing
