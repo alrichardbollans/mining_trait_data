@@ -21,30 +21,36 @@ def search_powo_for_distributions(ipni_list: List[str], out_pkl: str):
         try:
 
             res = powo.lookup(lookup_str, include=['distribution'])
+            try:
+                if res['synonym']:
+                    fq_id = res['accepted']['fqId']
 
-            if res['synonym']:
-                fq_id = res['accepted']['fqId']
-                ipni = clean_urn_ids(fq_id)
-                res = powo.lookup(fq_id, include=['distribution'])
+                    res = powo.lookup(fq_id, include=['distribution'])
+            except KeyError:
+                pass
+
             dist_codes = []
             try:
-                native_to = [d['tdwgCode'] for d in res['distribution']['natives']]
+                native_to = [d['tdwgCode'] for d in res['distribution']['natives'] if d['tdwgLevel'] == 3]
                 dist_codes += native_to
+
             except KeyError:
                 pass
 
             finally:
                 try:
-                    introduced_to = [d['tdwgCode'] for d in res['distribution']['introduced']]
+                    introduced_to = [d['tdwgCode'] for d in res['distribution']['introduced'] if d['tdwgLevel'] == 3]
                     dist_codes += introduced_to
+
                 except KeyError:
 
                     pass
 
                 finally:
                     try:
-                        extinct_to = [d['tdwgCode'] for d in res['distribution']['extinct']]
+                        extinct_to = [d['tdwgCode'] for d in res['distribution']['extinct'] if d['tdwgLevel'] == 3]
                         dist_codes += extinct_to
+
                     except KeyError:
 
                         pass
