@@ -29,10 +29,12 @@ def search_powo_for_distributions(ipni_list: List[str], out_pkl: str):
             except KeyError:
                 pass
 
-            dist_codes = []
+            native_codes = []
+            introduced_codes = []
+            extinct_codes = []
             try:
                 native_to = [d['tdwgCode'] for d in res['distribution']['natives'] if d['tdwgLevel'] == 3]
-                dist_codes += native_to
+                native_codes += native_to
 
             except KeyError:
                 pass
@@ -40,7 +42,7 @@ def search_powo_for_distributions(ipni_list: List[str], out_pkl: str):
             finally:
                 try:
                     introduced_to = [d['tdwgCode'] for d in res['distribution']['introduced'] if d['tdwgLevel'] == 3]
-                    dist_codes += introduced_to
+                    introduced_codes += introduced_to
 
                 except KeyError:
 
@@ -49,16 +51,16 @@ def search_powo_for_distributions(ipni_list: List[str], out_pkl: str):
                 finally:
                     try:
                         extinct_to = [d['tdwgCode'] for d in res['distribution']['extinct'] if d['tdwgLevel'] == 3]
-                        dist_codes += extinct_to
+                        extinct_codes += extinct_to
 
                     except KeyError:
 
                         pass
 
                     finally:
-                        if len(dist_codes) == 0:
+                        if (len(native_codes) + len(introduced_codes) + len(extinct_codes)) == 0:
                             print(f'No dist codes for {ipni}')
-                    out[ipni] = dist_codes
+                    out[ipni] = [native_codes, introduced_codes, extinct_codes]
                 with open(out_pkl, 'wb') as f:
                     pickle.dump(out, f)
         except JSONDecodeError:
@@ -69,10 +71,17 @@ def convert_pkl_to_df(in_pkl: str, out_csv: str):
     with open(in_pkl, 'rb') as f:
         dist_dict = pickle.load(f)
 
-    str_dict = {}
+    native_dict = {}
+    intro_dict = {}
+    ext_dict = {}
     for k in dist_dict.keys():
-        str_dict[k] = str(dist_dict[k])
-    value_dict = {'kew_id': list(str_dict.keys()), 'iso3_codes': list(str_dict.values())}
+        native_dict[k] = str(dist_dict[k][0])
+        intro_dict[k] = str(dist_dict[k][1])
+        ext_dict[k] = str(dist_dict[k][2])
+    value_dict = {'kew_id': list(dist_dict.keys()),
+                  'native_tdwg3_codes': list(native_dict.values()),
+                  'intro_tdwg3_codes': list(intro_dict.values()),
+                  'extinct_tdwg3_codes': list(ext_dict.values())}
     out_df = pd.DataFrame(value_dict)
     acc_out_df = get_accepted_info_from_ids_in_column(out_df, 'kew_id')
     acc_out_df.to_csv(out_csv)
