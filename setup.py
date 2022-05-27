@@ -12,6 +12,7 @@ setup(
                                     'conservation_priorities', 'metabolite_searches',
                                     'read_pdfs', 'powo_searches', 'soilgrid_searches',
                                     'unit_test_methods',
+                                    'wcsp_distribution_search',
                                     'wikipedia_searches']),
     # *strongly* suggested for sharing
     version='0.1',
