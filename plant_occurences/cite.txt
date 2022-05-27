@@ -1,3 +1,0 @@
-GBIF.org (08 March 2022) GBIF Occurrence Download  XXXXXXXX
-
-Requires TDWG cleaner. Contact Ian Ondo.

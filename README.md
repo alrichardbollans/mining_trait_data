@@ -1,11 +1,5 @@
 # Python packages for gathering trait data
 
-Still under construction. Some datasets are not yet included until publishing rights have been clarified.
-
-In general, useful methods which are frequently used have been split into separate packages (e.g. `powo_searches`) and
-found variables are stored in packages with the `_var` suffix. Currently the data is generally focussed on species in
-Apocynaceae and Rubiaceae though I plan to make the methods more general if it becomes useful for anyone.
-
 ## Disclaimer
 
 WARNING: The information contained herein is provided as a public service with the understanding that authors make no

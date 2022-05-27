@@ -5,11 +5,11 @@ from typing import List
 
 import pandas as pd
 import pykew.powo as powo
-from automatchnames import get_accepted_info_from_ids_in_column, clean_urn_ids
+from automatchnames import get_accepted_info_from_ids_in_column
 from tqdm import tqdm
 
 
-def search_powo_for_distributions(ipni_list: List[str], out_pkl: str):
+def search_powo_for_tdwg3_distributions(ipni_list: List[str], out_pkl: str):
     # Note distributions aren't given for synonyms, so this function looks up the accepted taxa in these cases.
 
     out = {}
