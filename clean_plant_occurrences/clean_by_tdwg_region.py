@@ -44,7 +44,7 @@ def get_tdwg_regions_for_occurrences(occ_df: pd.DataFrame) -> geopandas.GeoDataF
     :return:
     """
 
-    print('Getting tdwg regions for each occurrence')
+    print('Creating geometries from longitude and latitude')
     # changing to a GeoDataFrame to create geometry series
     occ_gp = geopandas.GeoDataFrame(occ_df,
                                     geometry=geopandas.points_from_xy(occ_df['decimalLongitude'],
@@ -55,8 +55,8 @@ def get_tdwg_regions_for_occurrences(occ_df: pd.DataFrame) -> geopandas.GeoDataF
     map_df = geopandas.read_file(tdwg3_shpfile)
 
     occ_gp['tdwg3_region'] = ''
-    for idx in range(map_df.shape[0]):
-        # For every address, find if they reside within a province
+    for idx in tqdm(range(map_df.shape[0]), desc="Getting tdwg regions for each occurrence…", ascii=False, ncols=72):
+        # For every location, find if they reside within a region
         pip = occ_gp.within(map_df.loc[idx, 'geometry'])
         if pip.sum() > 0:  # we found where some of the addresses reside at map_df.loc[idx]
             occ_gp.loc[pip, 'tdwg3_region'] = map_df.loc[idx, 'LEVEL3_COD']
