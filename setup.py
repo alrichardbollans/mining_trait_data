@@ -14,6 +14,14 @@ setup(
                                     'unit_test_methods',
                                     'wcsp_distribution_search',
                                     'wikipedia_searches']),
+
+    package_data={
+        # And include any *.dat files found in the "data" subdirectory
+        # of the "mypkg" package, also:
+        "clean_plant_occurrences": ["inputs/wgsrpd-master/level3/*.shp"],
+        "metabolite_searches": ["inputs/*"],
+
+    },
     # *strongly* suggested for sharing
     version='0.1',
     license='MIT',
