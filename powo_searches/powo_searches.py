@@ -1,13 +1,11 @@
 import os
 from typing import List, Tuple
-
 import numpy as np
 import pandas as pd
-import pykew.powo as powo
-from pykew import powo_terms
 
 from cleaning import COL_NAMES
 from automatchnames import clean_urn_ids, get_accepted_info_from_ids_in_column
+
 
 def search_powo(search_terms: List[str], accepted_output_file: str, filters: List[str] = None,
                 characteristics_to_search: List[str] = None, families_of_interest: List[str] = None):
@@ -37,7 +35,11 @@ def search_powo(search_terms: List[str], accepted_output_file: str, filters: Lis
     :param characteristics_to_search:
     :param families_of_interest:
     :return:
+
     """
+    import pykew.powo as powo
+    from pykew import powo_terms
+
     if accepted_output_file is not None:
         out_dir = os.path.dirname(accepted_output_file)
         if not os.path.isdir(out_dir):
