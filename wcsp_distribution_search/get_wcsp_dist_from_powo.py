@@ -1,15 +1,17 @@
-import pickle
-import time
-from json import JSONDecodeError
 from typing import List
 
 import pandas as pd
-import pykew.powo as powo
+
 from automatchnames import get_accepted_info_from_ids_in_column
 from tqdm import tqdm
 
 
 def search_powo_for_tdwg3_distributions(ipni_list: List[str], out_pkl: str):
+    import pykew.powo as powo
+    from json import JSONDecodeError
+    import time
+    import pickle
+
     # Note distributions aren't given for synonyms, so this function looks up the accepted taxa in these cases.
 
     out = {}
@@ -68,6 +70,7 @@ def search_powo_for_tdwg3_distributions(ipni_list: List[str], out_pkl: str):
 
 
 def convert_pkl_to_df(in_pkl: str, out_csv: str):
+    import pickle
     with open(in_pkl, 'rb') as f:
         dist_dict = pickle.load(f)
 

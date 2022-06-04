@@ -1,27 +1,6 @@
-import os
-import time
-import urllib.parse
-
-import requests
-import pandas as pd
-import wikipediaapi
-from pkg_resources import resource_filename
 from typing import List
-
+import pandas as pd
 from tqdm import tqdm
-
-_inputs_path = resource_filename(__name__, 'inputs')
-
-_temp_outputs_path = resource_filename(__name__, 'temp_outputs')
-
-_output_path = resource_filename(__name__, 'outputs')
-if not os.path.isdir(_inputs_path):
-    os.mkdir(_inputs_path)
-if not os.path.isdir(_temp_outputs_path):
-    os.mkdir(_temp_outputs_path)
-if not os.path.isdir(_output_path):
-    os.mkdir(_output_path)
-
 
 def get_project_from_language(lan: str):
     return lan + '.wikipedia.org'
@@ -35,6 +14,10 @@ def get_request_url_for_taxon(taxon: str, lan: str) -> str:
     :param lan:
     :return:
     """
+
+    import wikipediaapi
+    import time
+    import urllib.parse
 
     if lan == 'zh':
         wiki_lan = wikipediaapi.Wikipedia('en')
@@ -55,6 +38,9 @@ def get_request_url_for_taxon(taxon: str, lan: str) -> str:
 
 
 def get_page_views_for_taxon_in_lan(taxon: str, lan: str):
+    import time
+    import requests
+
     taxon_url = get_request_url_for_taxon(taxon, lan)
     if taxon_url == '':
         return 0, 0
@@ -86,7 +72,6 @@ def get_all_page_views_for_taxon(taxon: str):
         lan_count, num_months = get_page_views_for_taxon_in_lan(taxon, lan)
         count += lan_count
         total_num_months += num_months
-    avg_count = float(count) / len(languages_to_check)
     if total_num_months == 0:
         return 0
     else:

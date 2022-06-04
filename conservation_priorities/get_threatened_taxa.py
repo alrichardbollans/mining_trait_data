@@ -1,20 +1,8 @@
-import os
-
-import requests
 from typing import List
 import pandas as pd
-from pkg_resources import resource_filename
-
-from taxa_lists import get_all_taxa
 from automatchnames import get_accepted_info_from_names_in_column
+from taxa_lists import get_all_taxa
 from tqdm import tqdm
-
-_temp_outputs_path = resource_filename(__name__, 'temp_outputs')
-rub_apoc_threat_status_csv = os.path.join(_temp_outputs_path, 'rub_apoc_threat_status.csv')
-
-_outputs_path = resource_filename(__name__, 'outputs')
-
-rub_apoc_accepted_threat_status_csv = os.path.join(_outputs_path, 'rub_apoc_accepted_threat_status.csv')
 
 
 def get_threat_status_for_taxa_in_genus(genus, family: str = '') -> pd.DataFrame:

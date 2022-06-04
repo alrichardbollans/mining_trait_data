@@ -1,22 +1,15 @@
-import hashlib
 import os
-import time
-import urllib.parse
 import string
-import pandas as pd
-import requests
 from typing import List
 
-from pkg_resources import resource_filename
-from tqdm import tqdm
+import pandas as pd
 import wikipediaapi
-
 from automatchnames import get_accepted_info_from_names_in_column
-
-_temp_outputs_path = resource_filename(__name__, 'temp_outputs')
+from tqdm import tqdm
 
 
 def get_all_page_text(lang, pagename):
+    import requests
     response = requests.get('https://' + lang + '.wikipedia.org/w/api.php',
                             params={
                                 'action': 'parse',
@@ -33,11 +26,14 @@ def get_all_page_text(lang, pagename):
 
 
 def get_page_url_from_title(lang: str, title: str):
+    import urllib.parse
     t = urllib.parse.quote(title)
     return 'https://' + lang + '.wikipedia.org/wiki/' + t
 
 
 def search_for_poisons(output_csv: str) -> pd.DataFrame:
+    import requests
+
     # First get english data
     en_tables = pd.read_html('https://en.wikipedia.org/wiki/List_of_poisonous_plants')
     scientific_names = {'name': [], 'Source': []}
@@ -148,6 +144,9 @@ def check_page_exists(taxon: str, wiki_lan: wikipediaapi.Wikipedia) -> bool:
 
 
 def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_search=False) -> pd.DataFrame:
+    import hashlib
+    import time
+
     if output_csv is not None:
         if not os.path.isdir(os.path.dirname(output_csv)):
             os.mkdir(os.path.dirname(output_csv))
@@ -159,7 +158,7 @@ def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_sea
     names = list(taxa_list)
     str_to_hash = str(names).encode()
     temp_csv = "wiki_page_search_" + str(hashlib.md5(str_to_hash).hexdigest()) + ".csv"
-
+    _temp_outputs_path = ''
     temp_output_wiki_page_csv = os.path.join(_temp_outputs_path, temp_csv)
     unchecked_taxa_due_to_timeout = []
     if os.path.isfile(temp_output_wiki_page_csv) and not force_new_search:
@@ -188,7 +187,8 @@ def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_sea
     if len(unchecked_taxa_due_to_timeout) > 0:
         taxa_to_check_dict = {'taxa': unchecked_taxa_due_to_timeout}
         check_df = pd.DataFrame(taxa_to_check_dict)
-        check_csv = os.path.join(_temp_outputs_path, 'taxa_to_recheck.csv')
+        check_filename = 'taxa_to_recheck_' + temp_csv
+        check_csv = os.path.join(_temp_outputs_path, check_filename)
         check_df.to_csv(check_csv)
         print(
             f'Warning {str(len(unchecked_taxa_due_to_timeout))} taxa were unchecked due to server timeouts. Rerun search for taxa in {check_csv}')
@@ -202,6 +202,7 @@ def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_sea
 
 
 if __name__ == '__main__':
-    clan = wikipediaapi.Wikipedia('zh')
-    check_page_exists('Catharanthus roseus', clan)
+    # clan = wikipediaapi.Wikipedia('zh')
+    # check_page_exists('Catharanthus roseus', clan)
     # search_for_poisons('test.csv')
+    make_wiki_hit_df(['Catharanthus roseus'])
