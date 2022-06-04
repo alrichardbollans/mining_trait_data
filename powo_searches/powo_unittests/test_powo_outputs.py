@@ -51,6 +51,13 @@ class MyTestCase(unittest.TestCase):
 
         self.assertGreater(len(powo_output_df.index), 500)
 
+    def test_med_pagination(self):
+        powo_output = os.path.join(test_output_dir, 'powo_med_pages.csv')
+        search_powo(['medicinal'], powo_output)
+        powo_output_df = pd.read_csv(powo_output)
+
+        self.assertGreater(len(powo_output_df.index), 1100)
+
 
 if __name__ == '__main__':
     unittest.main()
