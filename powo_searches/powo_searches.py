@@ -39,6 +39,7 @@ def search_powo(search_terms: List[str], accepted_output_file: str, filters: Lis
     """
     import pykew.powo as powo
     from pykew import powo_terms
+    import time
 
     if accepted_output_file is not None:
         out_dir = os.path.dirname(accepted_output_file)
@@ -60,23 +61,45 @@ def search_powo(search_terms: List[str], accepted_output_file: str, filters: Lis
     all_results = []
 
     for st in search_terms:
+        time.sleep(1)
         for charac in powocharacteristics_to_search:
+            time.sleep(1)
             if families_of_interest is not None:
                 for fam in families_of_interest:
                     query = {charac: st, powo_terms.Name.family: fam}
-                    all_results += powo.search_all_pages(query, filters=powofilters)
+                    results = powo.search(query, filters=powofilters)
+                    try:
+                        # If results has multiple pages
+                        for r in results:
+                            try:
+                                all_results.append(r)
+                            except KeyError:
+                                pass
+                    except AttributeError:
+                        try:
+                            for result in results._response['results']:
+                                all_results.append(result)
+                        except KeyError:
+                            pass
+
             else:
                 query = {charac: st}
 
-                all_results += powo.search_all_pages(query, filters=powofilters)
-
-    list_of_all_individual_results = []
-    for rs in all_results:
-        try:
-            list_of_all_individual_results += rs._response['results']
-        except KeyError:
-            pass
-    df = pd.DataFrame(list_of_all_individual_results)
+                results = powo.search(query, filters=powofilters)
+                try:
+                    # If results has multiple pages
+                    for r in results:
+                        try:
+                            all_results.append(r)
+                        except KeyError:
+                            pass
+                except AttributeError:
+                    try:
+                        for result in results._response['results']:
+                            all_results.append(result)
+                    except KeyError:
+                        pass
+    df = pd.DataFrame(all_results)
     df.rename(
         columns={'snippet': 'powo_Snippet',
                  'url': COL_NAMES['single_source'], 'family': 'Family'},
