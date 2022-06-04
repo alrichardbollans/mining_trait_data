@@ -1,6 +1,4 @@
-import json
 import os
-
 import pandas as pd
 import requests
 from pkg_resources import resource_filename
@@ -13,9 +11,9 @@ _inputs_path = resource_filename(__name__, 'inputs')
 alkaloids_not_ending_in_ine = ['Kopsanone']
 known_non_alkaloids = []
 
-known_cardenolides_not_in_keggbrite = ['Acetyldigitoxin','Acetyldigoxin','Deslanoside','Digitoxigenin',
-                                       'Digoxigenin','Gitoformate','Lanatoside C','Metildigoxin','Neoconvalloside',
-                                       'k-Strophanthidin','Metildigoxin']
+known_cardenolides_not_in_keggbrite = ['Acetyldigitoxin', 'Acetyldigoxin', 'Deslanoside', 'Digitoxigenin',
+                                       'Digoxigenin', 'Gitoformate', 'Lanatoside C', 'Metildigoxin', 'Neoconvalloside',
+                                       'k-Strophanthidin', 'Metildigoxin']
 
 
 def get_antibacterial_metabolites():
@@ -53,14 +51,17 @@ def get_formulas_for_metabolite(metabolite: str):
         print(f'Warning: No info found for {metabolite}')
         return []
 
-def dig_into_kegg_dicts(compound_list,d):
 
+def dig_into_kegg_dicts(compound_list, d):
     if 'children' in d.keys():
         for child in d['children']:
-            dig_into_kegg_dicts(compound_list,child)
+            dig_into_kegg_dicts(compound_list, child)
     else:
         compound_list.append(d['name'])
+
+
 def get_alkaloids_from_kegg_brite():
+    import json
     # See e.g. https://www.genome.jp/brite/br08003
     input_json = os.path.join(_inputs_path, 'br08003.json')
     alks = []
@@ -70,11 +71,13 @@ def get_alkaloids_from_kegg_brite():
 
     alkaloids_dict = compounds["children"][0]
 
-    dig_into_kegg_dicts(alks,alkaloids_dict)
+    dig_into_kegg_dicts(alks, alkaloids_dict)
 
     return alks
 
+
 def get_steroids_from_kegg_brite():
+    import json
     # See e.g. https://www.genome.jp/brite/br08003
     input_json = os.path.join(_inputs_path, 'br08003.json')
     steroids = []
@@ -84,11 +87,13 @@ def get_steroids_from_kegg_brite():
 
     steroids_dict = compounds["children"][4]['children'][6]
 
-    dig_into_kegg_dicts(steroids,steroids_dict)
+    dig_into_kegg_dicts(steroids, steroids_dict)
 
     return steroids
 
+
 def get_cardenolides_from_kegg_brite():
+    import json
     # Note cardenolides are misspelt as Cardanolides in keggbrite
     # See e.g. https://www.genome.jp/brite/br08003
     input_json = os.path.join(_inputs_path, 'br08003.json')
@@ -99,9 +104,10 @@ def get_cardenolides_from_kegg_brite():
 
     card_dict = compounds["children"][4]['children'][6]['children'][3]
 
-    dig_into_kegg_dicts(cards,card_dict)
+    dig_into_kegg_dicts(cards, card_dict)
 
     return cards
+
 
 def get_alkaloids_from_metabolites(metabolites_to_check: List[str]) -> dict:
     """ Ends in 'ine' usually indicates alkaloid
@@ -110,7 +116,7 @@ def get_alkaloids_from_metabolites(metabolites_to_check: List[str]) -> dict:
 
     known_alkaloids = get_alkaloids_from_kegg_brite()
 
-    alkaloid_metabolites = {'alks':[],'Reason':[]}
+    alkaloid_metabolites = {'alks': [], 'Reason': []}
     suffixes = ["ine-", "ine ", "ine+", "ine("]
 
     for i in tqdm(range(len(metabolites_to_check)), desc="Searching for alks", ascii=False, ncols=72):
@@ -131,12 +137,11 @@ def get_alkaloids_from_metabolites(metabolites_to_check: List[str]) -> dict:
 
     return alkaloid_metabolites
 
+
 def get_steroids_from_metabolites(metabolites_to_check: List[str]) -> dict:
-
-
     known_steroids = get_steroids_from_kegg_brite() + known_cardenolides_not_in_keggbrite
 
-    steroid_metabolites = {'steroids':[],'Reason':[]}
+    steroid_metabolites = {'steroids': [], 'Reason': []}
 
     for i in tqdm(range(len(metabolites_to_check)), desc="Searching for steroids", ascii=False, ncols=72):
         m = metabolites_to_check[i]
@@ -144,14 +149,13 @@ def get_steroids_from_metabolites(metabolites_to_check: List[str]) -> dict:
             steroid_metabolites['steroids'].append(m)
             steroid_metabolites['Reason'].append('Kegg Brite')
 
-
     return steroid_metabolites
 
-def get_cardenolides_from_metabolites(metabolites_to_check: List[str]) -> dict:
 
+def get_cardenolides_from_metabolites(metabolites_to_check: List[str]) -> dict:
     known_cards = get_cardenolides_from_kegg_brite() + known_cardenolides_not_in_keggbrite
 
-    cardenolide_metabolites = {'cardenolides':[],'Reason':[]}
+    cardenolide_metabolites = {'cardenolides': [], 'Reason': []}
 
     for i in tqdm(range(len(metabolites_to_check)), desc="Searching for cardenolides", ascii=False, ncols=72):
         m = metabolites_to_check[i]
@@ -159,8 +163,8 @@ def get_cardenolides_from_metabolites(metabolites_to_check: List[str]) -> dict:
             cardenolide_metabolites['cardenolides'].append(m)
             cardenolide_metabolites['Reason'].append('Kegg Brite')
 
-
     return cardenolide_metabolites
+
 
 if __name__ == '__main__':
     get_alkaloids_from_kegg_brite()
