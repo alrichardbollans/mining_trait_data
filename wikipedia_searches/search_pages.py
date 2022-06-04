@@ -1,10 +1,6 @@
-import hashlib
 import os
-import time
-import urllib.parse
 import string
 import pandas as pd
-import requests
 from typing import List
 
 from pkg_resources import resource_filename
@@ -17,6 +13,7 @@ _temp_outputs_path = resource_filename(__name__, 'temp_outputs')
 
 
 def get_all_page_text(lang, pagename):
+    import requests
     response = requests.get('https://' + lang + '.wikipedia.org/w/api.php',
                             params={
                                 'action': 'parse',
@@ -33,11 +30,14 @@ def get_all_page_text(lang, pagename):
 
 
 def get_page_url_from_title(lang: str, title: str):
+    import urllib.parse
     t = urllib.parse.quote(title)
     return 'https://' + lang + '.wikipedia.org/wiki/' + t
 
 
 def search_for_poisons(output_csv: str) -> pd.DataFrame:
+    import requests
+
     # First get english data
     en_tables = pd.read_html('https://en.wikipedia.org/wiki/List_of_poisonous_plants')
     scientific_names = {'name': [], 'Source': []}
@@ -148,6 +148,9 @@ def check_page_exists(taxon: str, wiki_lan: wikipediaapi.Wikipedia) -> bool:
 
 
 def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_search=False) -> pd.DataFrame:
+    import hashlib
+    import time
+
     if output_csv is not None:
         if not os.path.isdir(os.path.dirname(output_csv)):
             os.mkdir(os.path.dirname(output_csv))
