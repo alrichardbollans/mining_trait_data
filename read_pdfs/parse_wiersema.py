@@ -1,18 +1,8 @@
-from io import StringIO
-
 import pandas as pd
 # import parser object from tike
-from bs4 import BeautifulSoup
-from tika import parser
-
-from pkg_resources import resource_filename
 from tqdm import tqdm
 
 from read_pdfs import wiersema_input
-
-# _inputs_path = resource_filename(__name__, 'inputs')
-# wagstaff_input = os.path.join(_inputs_path,
-#                               'Wagstaff DJ 2008 International poisonous plants checklist an evidence-based reference.pdf')
 
 categories = ['CN', 'ECON', 'DIST', 'SYN']
 parenthesised_words = ['fiber', 'wood', 'sugar', 'ornamental', 'shade/shelter', 'seed contam.', 'folklore', 'mammals',
@@ -50,6 +40,10 @@ def compress_lines_into_names(all_text_lines):
 
 
 def common_names_from_wiersema(output_csv: str):
+    from bs4 import BeautifulSoup
+    from tika import parser
+    from io import StringIO
+
     # opening pdf file with xml content
     parsed_pdf = parser.from_file(wiersema_input, xmlContent=True)
     all_text = parsed_pdf['content']
@@ -143,6 +137,7 @@ def compress_lines_into_categories(all_text_lines):
 
 
 def get_scientific_names_from_property(category, property):
+    from tika import parser
     parsed_pdf = parser.from_file(wiersema_input)
     all_text = parsed_pdf['content']
 
