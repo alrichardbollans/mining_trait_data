@@ -3,7 +3,7 @@ import string
 from typing import List
 
 import pandas as pd
-import wikipediaapi
+
 from automatchnames import get_accepted_info_from_names_in_column
 from tqdm import tqdm
 
@@ -33,6 +33,7 @@ def get_page_url_from_title(lang: str, title: str):
 
 def search_for_poisons(output_csv: str) -> pd.DataFrame:
     import requests
+    import wikipediaapi
 
     # First get english data
     en_tables = pd.read_html('https://en.wikipedia.org/wiki/List_of_poisonous_plants')
@@ -135,7 +136,7 @@ def search_for_common_names(taxa_list: List[str], output_csv: str) -> pd.DataFra
     return df
 
 
-def check_page_exists(taxon: str, wiki_lan: wikipediaapi.Wikipedia) -> bool:
+def check_page_exists(taxon: str, wiki_lan) -> bool:
     page_py = wiki_lan.page(taxon)
     if page_py.exists():
         return True
@@ -146,6 +147,7 @@ def check_page_exists(taxon: str, wiki_lan: wikipediaapi.Wikipedia) -> bool:
 def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_search=False) -> pd.DataFrame:
     import hashlib
     import time
+    import wikipediaapi
 
     if output_csv is not None:
         if not os.path.isdir(os.path.dirname(output_csv)):
