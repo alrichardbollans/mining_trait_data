@@ -1,7 +1,6 @@
 import os
 from typing import List
 
-import geopandas
 import pandas as pd
 # Add progress bar to apply method
 
@@ -37,12 +36,13 @@ def read_occurences_and_output_acc_names(occ_df: pd.DataFrame, out_csv: str = No
     return acc_df
 
 
-def get_tdwg_regions_for_occurrences(occ_df: pd.DataFrame) -> geopandas.GeoDataFrame:
+def get_tdwg_regions_for_occurrences(occ_df: pd.DataFrame) -> pd.DataFrame:
     """
     GET TDWG regions for occurrences
     :param occ_df:
     :return:
     """
+    import geopandas
 
     print('Creating geometries from longitude and latitude')
     # changing to a GeoDataFrame to create geometry series
