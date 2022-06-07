@@ -1,8 +1,8 @@
-import hashlib
+
 import os
 import time
 
-import html5lib
+
 import pandas as pd
 import requests
 from typing import List
@@ -23,6 +23,7 @@ _outputs_path = resource_filename(__name__, 'outputs')
 
 
 def get_metabolites_for_taxon(name: str):
+    import html5lib
     url_name_format = name.replace(' ', '%20')
 
     url = f'http://www.knapsackfamily.com/knapsack_core/result.php?sname=organism&word={url_name_format}'
@@ -41,6 +42,7 @@ def get_metabolites_for_taxon(name: str):
 
 
 def get_metabolites_for_taxa(taxa_list: List[str], output_csv: str = None, force_new_search=False) -> pd.DataFrame:
+    import hashlib
     if not os.path.isdir(_temp_outputs_path):
         os.mkdir(_temp_outputs_path)
     if output_csv is not None:
