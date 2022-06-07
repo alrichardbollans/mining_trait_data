@@ -66,7 +66,7 @@ def get_tdwg_regions_for_occurrences(occ_df: pd.DataFrame) -> pd.DataFrame:
 
 
 def find_whether_occurrences_in_native_or_introduced_regions(
-        occ_df_with_acc_info_and_tdwg_regions: geopandas.GeoDataFrame,
+        occ_df_with_acc_info_and_tdwg_regions: pd.DataFrame,
         distributions_csv: str,
         output_csv: str = None,
         tdwg3_region_col_name: str = 'tdwg3_region'):
