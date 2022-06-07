@@ -1,17 +1,12 @@
-
 import os
 import time
-
+from typing import List
 
 import pandas as pd
 import requests
-from typing import List
-
+from automatchnames import get_accepted_info_from_names_in_column
 from pkg_resources import resource_filename
 from tqdm import tqdm
-
-from automatchnames import get_accepted_info_from_names_in_column
-from taxa_lists import get_all_taxa
 
 from metabolite_searches import get_antibacterial_metabolites, get_alkaloids_from_metabolites, \
     get_steroids_from_metabolites, get_cardenolides_from_metabolites
@@ -23,7 +18,6 @@ _outputs_path = resource_filename(__name__, 'outputs')
 
 
 def get_metabolites_for_taxon(name: str):
-    import html5lib
     url_name_format = name.replace(' ', '%20')
 
     url = f'http://www.knapsackfamily.com/knapsack_core/result.php?sname=organism&word={url_name_format}'
