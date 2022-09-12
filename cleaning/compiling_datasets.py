@@ -40,12 +40,23 @@ def merge_columns(df: pd.DataFrame, new_col: str, old_columns: List[str]):
 def merge_on_accepted_id(x: pd.DataFrame, y: pd.DataFrame) -> pd.DataFrame:
     merged_dfs = pd.merge(x, y, on=COL_NAMES['acc_id'], how='outer')
 
-    new_sources_cols = [c for c in merged_dfs.columns.tolist() if (COL_NAMES['single_source'] in c)]
+    new_sources_cols = [c for c in merged_dfs.columns.tolist() if (COL_NAMES['single_source'].lower() in c.lower())]
     # # Merge Sources:
     for col in new_sources_cols:
         merged_dfs[col] = merged_dfs[col].astype('string')
         merged_dfs[col] = merged_dfs[col].fillna('')
-    merged_dfs[COL_NAMES['sources']] = merged_dfs[new_sources_cols].agg(':'.join, axis=1)
+    merged_dfs[COL_NAMES['sources']] = merged_dfs[new_sources_cols].values.tolist()
+
+    # Remove empty sources
+    def rmv_empty_sources(given_sources_str):
+        source_list = list(given_sources_str)
+        if '' in source_list:
+            source_list.remove('')
+
+        return str(source_list)
+
+    merged_dfs[COL_NAMES['sources']] = merged_dfs[COL_NAMES['sources']].apply(rmv_empty_sources)
+
     source_cols_to_drop = [c for c in new_sources_cols if c != COL_NAMES['sources']]
     merged_dfs.drop(columns=source_cols_to_drop, inplace=True)
 
@@ -106,6 +117,6 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str):
     out_dfs = out_dfs[[c for c in out_dfs if c != COL_NAMES['sources']]
                       + [COL_NAMES['sources']]]
 
-    out_dfs.drop_duplicates(inplace=True)
+    out_dfs.drop_duplicates(subset=[COL_NAMES['acc_id']],inplace=True)
 
     out_dfs.to_csv(output_csv)

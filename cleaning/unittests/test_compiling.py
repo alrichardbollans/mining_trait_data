@@ -32,6 +32,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_compile_hits(self):
         merged_df = pd.read_csv(os.path.join(_inputs_path, 'list_plants_with_alkaloids.csv'))
+
         one_df = pd.read_csv(os.path.join(_inputs_path, 'powo_alkaloids_accepted.csv'))
         two_df = pd.read_csv(os.path.join(_inputs_path, 'rub_apocs_alkaloid_hits.csv'))
         compile_hits([one_df, two_df], os.path.join(_inputs_path, 'output_compiled.csv'))
