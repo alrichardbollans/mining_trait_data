@@ -1,9 +1,16 @@
 import os
 
+import numpy as np
 import pandas as pd
 from typing import List
 
-from automatchnames import COL_NAMES
+COL_NAMES = {'acc_name': 'Accepted_Name',
+             'acc_species': 'Accepted_Species',
+             'acc_species_id': 'Accepted_Species_ID',
+             'acc_id': 'Accepted_ID',
+             'acc_rank': 'Accepted_Rank',
+             'single_source': 'Source',
+             'sources': 'Compiled_Sources'}
 
 
 def filter_out_ranks(df: pd.DataFrame) -> pd.DataFrame:
@@ -39,21 +46,27 @@ def merge_columns(df: pd.DataFrame, new_col: str, old_columns: List[str]):
 
 def merge_on_accepted_id(x: pd.DataFrame, y: pd.DataFrame) -> pd.DataFrame:
     merged_dfs = pd.merge(x, y, on=COL_NAMES['acc_id'], how='outer')
+    merged_dfs[COL_NAMES['sources']] = merged_dfs[COL_NAMES['sources']].apply(
+        lambda d: d if isinstance(d, list) else [])
 
-    new_sources_cols = [c for c in merged_dfs.columns.tolist() if (COL_NAMES['single_source'].lower() in c.lower())]
+    new_sources_cols = [c for c in merged_dfs.columns.tolist() if
+                        (COL_NAMES['single_source'].lower() in c.lower() and c != COL_NAMES[
+                            'sources'] and c != 'dummy_new_sources')]
     # # Merge Sources:
     for col in new_sources_cols:
-        merged_dfs[col] = merged_dfs[col].astype('string')
         merged_dfs[col] = merged_dfs[col].fillna('')
-    merged_dfs[COL_NAMES['sources']] = merged_dfs[new_sources_cols].values.tolist()
+    x = merged_dfs[COL_NAMES['sources']].values.tolist()
+    merged_dfs['dummy_new_sources'] = merged_dfs[new_sources_cols].values.tolist()
 
+    merged_dfs[COL_NAMES['sources']] = merged_dfs[COL_NAMES['sources']] + merged_dfs['dummy_new_sources']
+    merged_dfs.drop(columns=['dummy_new_sources'],inplace=True)
     # Remove empty sources
-    def rmv_empty_sources(given_sources_str):
+    def rmv_empty_sources(given_sources_str: List):
         source_list = list(given_sources_str)
         if '' in source_list:
             source_list.remove('')
 
-        return str(source_list)
+        return source_list
 
     merged_dfs[COL_NAMES['sources']] = merged_dfs[COL_NAMES['sources']].apply(rmv_empty_sources)
 
@@ -102,7 +115,9 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str):
 
     # Do merges
     merged_dfs = cleaned_dfs[0].copy()
-    merged_dfs[COL_NAMES['sources']] = merged_dfs[COL_NAMES['single_source']]
+
+    merged_dfs[COL_NAMES['sources']] = merged_dfs[[COL_NAMES['single_source']]].values.tolist()
+
     merged_dfs = merged_dfs.drop(columns=[COL_NAMES['single_source']])
 
     if len(cleaned_dfs) > 1:
@@ -117,6 +132,6 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str):
     out_dfs = out_dfs[[c for c in out_dfs if c != COL_NAMES['sources']]
                       + [COL_NAMES['sources']]]
 
-    out_dfs.drop_duplicates(subset=[COL_NAMES['acc_id']],inplace=True)
+    out_dfs.drop_duplicates(subset=[COL_NAMES['acc_id']] + snippet_cols, inplace=True)
 
     out_dfs.to_csv(output_csv)
