@@ -13,11 +13,6 @@ is on the list *DOES NOT* mean that it is not dangerous/poisonous/toxic.
 ## Installation
 
 Run:
-`cd 'DOWNLOAD_PATH'`
-`git clone https://github.com/alrichardbollans/mining_trait_data.git`
-`pip install mining_trait_data`
-
-Alternatively (though this may not preserve all input files):
 `pip install git+https://github.com/alrichardbollans/mining_trait_data.git#egg=miningtraitdata`
 
 ### Requirements
