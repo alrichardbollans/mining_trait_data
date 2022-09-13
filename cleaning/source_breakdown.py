@@ -1,12 +1,28 @@
 import ast
 import os
+from typing import List
 
 import pandas as pd
-from automatchnames import COL_NAMES
+from automatchnames import COL_NAMES, get_all_taxa
 
 
-def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, plot_threshold=100,
-                              plot_unique_threshold=50, check_duplicates=True):
+def filter_df_by_families(df: pd.DataFrame, families: List[str]) -> pd.DataFrame:
+    if 'Family' not in df.columns:
+        accepted_family_members = get_all_taxa(families_of_interest=families, accepted=True)
+        accepted_family_members.rename(columns={'accepted_name': COL_NAMES['acc_name'], 'family': 'Family'},
+                                       inplace=True)
+        df_with_families = pd.merge(df, accepted_family_members, on=COL_NAMES['acc_name'])
+        cols_to_drop = [c for c in accepted_family_members.columns if c not in df.columns and c != 'Family']
+        df_with_families.drop(columns=cols_to_drop, inplace=True)
+        return df_with_families
+
+    else:
+        raise ValueError('Family already contained in df')
+        # return df
+
+
+def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: List[str] = None,
+                              source_translations: dict = None, check_duplicates=True):
     from matplotlib import pyplot as plt
     out_df = pd.read_csv(input_csv)
 
@@ -17,16 +33,20 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, plot_thresho
             raise ValueError
 
     out_df.drop_duplicates(subset=['Accepted_ID'], inplace=True)
-    source_translations = {'Wiki': '_wiki', 'POWO': 'POWO pages'}
+
+    if families is not None:
+        out_df = filter_df_by_families(out_df, families)
+
     source_counts = dict()
     source_unique_counts = dict()
 
     source_counts['Total'] = len(out_df['Compiled_Sources'].values)
-    source_unique_counts['Total'] = len(out_df['Compiled_Sources'].values)
+    total = len(out_df['Compiled_Sources'].values)
+    source_unique_counts['Total'] = total
+    plot_threshold = total / 20
     for sources_str in out_df['Compiled_Sources'].values:
 
         split_sources = ast.literal_eval(sources_str)
-        # split_sources = [x for x in split_sources if x != '']
 
         for s in split_sources:
             if s not in source_counts.keys():
@@ -41,20 +61,31 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, plot_thresho
             else:
                 source_unique_counts[s] += 1
 
-    source_counts['POWO'] = 0
-    source_unique_counts['POWO'] = 0
-    source_counts['Wiki'] = 0
-    source_unique_counts['Wiki'] = 0
+    # Compress sources
+    for key in source_translations.keys():
+        source_counts[key] = 0
+        source_unique_counts[key] = 0
 
+    keys_to_remove = []
     for key in source_counts.keys():
         for source in source_translations.keys():
             if source_translations[source] in key:
                 source_counts[source] += (source_counts[key])
+                if key not in keys_to_remove:
+                    keys_to_remove.append(key)
 
     for key in source_unique_counts.keys():
         for source in source_translations.keys():
             if source_translations[source] in key:
                 source_unique_counts[source] += (source_unique_counts[key])
+                if key not in keys_to_remove:
+                    keys_to_remove.append(key)
+
+    for k in keys_to_remove:
+        if k in source_counts.keys():
+            del source_counts[k]
+        if k in source_unique_counts.keys():
+            del source_unique_counts[k]
 
     source_count_df = pd.DataFrame.from_dict(source_counts, orient='index', columns=['Count'])
     source_unique_counts_df = pd.DataFrame.from_dict(source_unique_counts, orient='index', columns=['Count'])
@@ -68,7 +99,6 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, plot_thresho
     plt.xlabel('Source')
     plt.ylabel('Count')
     plt.tight_layout()
-    # plt.show()
     plt.savefig(output_csv_stub + '_example.png')
     plt.close()
 
@@ -77,7 +107,6 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, plot_thresho
     plt.xlabel('Source')
     plt.ylabel('Count')
     plt.tight_layout()
-    # plt.show()
     plt.savefig(output_csv_stub + '.png')
     plt.close()
 
@@ -86,18 +115,16 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, plot_thresho
     plt.xlabel('Source')
     plt.ylabel('Count')
     plt.tight_layout()
-    # plt.show()
     plt.savefig(output_csv_stub + '_unique.png')
     plt.close()
 
-    plt.bar(source_unique_counts_df[source_unique_counts_df['Count'] > plot_unique_threshold].index,
-            source_unique_counts_df[source_unique_counts_df['Count'] > plot_unique_threshold]['Count'].values.tolist(),
+    plt.bar(source_unique_counts_df[source_unique_counts_df['Count'] > plot_threshold].index,
+            source_unique_counts_df[source_unique_counts_df['Count'] > plot_threshold]['Count'].values.tolist(),
             edgecolor='black')
     plt.xticks(rotation=65)
     plt.xlabel('Source')
     plt.ylabel('Count')
     plt.tight_layout()
-    # plt.show()
     plt.savefig(output_csv_stub + '_unique_example.png')
     plt.close()
 
@@ -110,11 +137,15 @@ def _main():
 
     _inputs_path = os.path.join(resource_filename(__name__, 'unittests'), 'test_inputs')
     _outputs_path = os.path.join(resource_filename(__name__, 'unittests'), 'test_outputs')
+    test_df = pd.read_csv(os.path.join(_inputs_path, 'list_of_poisonous_plants.csv'))
+    # filter_df_by_families(test_df, ['Apocynaceae'])
+
     summary_stub = os.path.join(_outputs_path, 'source_summary')
     source_counts, source_uniq_counts = output_summary_of_hit_csv(
         os.path.join(_inputs_path, 'list_of_poisonous_plants.csv'),
-        summary_stub)
-    pass
+        summary_stub, families=['Apocynaceae', 'Rubiaceae', 'Loganiaceae'],
+        source_translations={'Wiki': '_wiki', 'POWO': 'POWO pages'})
+    # pass
 
 
 if __name__ == '__main__':
