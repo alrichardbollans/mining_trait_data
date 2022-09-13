@@ -3,7 +3,7 @@ from typing import List, Tuple
 import numpy as np
 import pandas as pd
 
-from cleaning import COL_NAMES
+from cleaning import COL_NAMES, single_source_col
 from automatchnames import clean_urn_ids, get_accepted_info_from_ids_in_column
 
 
@@ -102,7 +102,7 @@ def search_powo(search_terms: List[str], accepted_output_file: str, filters: Lis
     df = pd.DataFrame(all_results)
     df.rename(
         columns={'snippet': 'powo_Snippet',
-                 'url': COL_NAMES['single_source'], 'family': 'Family'},
+                 'url': single_source_col, 'family': 'Family'},
         inplace=True)
     if len(df.index) > 0:
         df['Source'] = 'POWO pages(' + df['Source'].astype(str) + ')'
