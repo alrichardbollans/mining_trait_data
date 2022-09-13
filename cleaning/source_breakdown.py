@@ -23,6 +23,9 @@ def filter_df_by_families(df: pd.DataFrame, families: List[str]) -> pd.DataFrame
 
 def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: List[str] = None,
                               source_translations: dict = None, check_duplicates=True):
+    if not os.path.isdir(os.path.dirname(output_csv_stub)):
+        os.mkdir(os.path.dirname(output_csv_stub))
+
     from matplotlib import pyplot as plt
     out_df = pd.read_csv(input_csv)
 
@@ -43,7 +46,7 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: Li
     source_counts['Total'] = len(out_df['Compiled_Sources'].values)
     total = len(out_df['Compiled_Sources'].values)
     source_unique_counts['Total'] = total
-    plot_threshold = total / 20
+
     for sources_str in out_df['Compiled_Sources'].values:
 
         split_sources = ast.literal_eval(sources_str)
@@ -62,30 +65,31 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: Li
                 source_unique_counts[s] += 1
 
     # Compress sources
-    for key in source_translations.keys():
-        source_counts[key] = 0
-        source_unique_counts[key] = 0
+    if source_translations is not None:
+        for key in source_translations.keys():
+            source_counts[key] = 0
+            source_unique_counts[key] = 0
 
-    keys_to_remove = []
-    for key in source_counts.keys():
-        for source in source_translations.keys():
-            if source_translations[source] in key:
-                source_counts[source] += (source_counts[key])
-                if key not in keys_to_remove:
-                    keys_to_remove.append(key)
+        keys_to_remove = []
+        for key in source_counts.keys():
+            for source in source_translations.keys():
+                if source_translations[source] in key:
+                    source_counts[source] += (source_counts[key])
+                    if key not in keys_to_remove:
+                        keys_to_remove.append(key)
 
-    for key in source_unique_counts.keys():
-        for source in source_translations.keys():
-            if source_translations[source] in key:
-                source_unique_counts[source] += (source_unique_counts[key])
-                if key not in keys_to_remove:
-                    keys_to_remove.append(key)
+        for key in source_unique_counts.keys():
+            for source in source_translations.keys():
+                if source_translations[source] in key:
+                    source_unique_counts[source] += (source_unique_counts[key])
+                    if key not in keys_to_remove:
+                        keys_to_remove.append(key)
 
-    for k in keys_to_remove:
-        if k in source_counts.keys():
-            del source_counts[k]
-        if k in source_unique_counts.keys():
-            del source_unique_counts[k]
+        for k in keys_to_remove:
+            if k in source_counts.keys():
+                del source_counts[k]
+            if k in source_unique_counts.keys():
+                del source_unique_counts[k]
 
     source_count_df = pd.DataFrame.from_dict(source_counts, orient='index', columns=['Count'])
     source_unique_counts_df = pd.DataFrame.from_dict(source_unique_counts, orient='index', columns=['Count'])
@@ -93,16 +97,9 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: Li
     source_count_df.to_csv(output_csv_stub + '.csv')
     source_unique_counts_df.to_csv(output_csv_stub + '_unique.csv')
 
+    plot_threshold = 0
     plt.bar(source_count_df[source_count_df['Count'] > plot_threshold].index,
             source_count_df[source_count_df['Count'] > plot_threshold]['Count'].values.tolist(), edgecolor='black')
-    plt.xticks(rotation=65)
-    plt.xlabel('Source')
-    plt.ylabel('Count')
-    plt.tight_layout()
-    plt.savefig(output_csv_stub + '_example.png')
-    plt.close()
-
-    plt.bar(source_count_df.index, source_count_df['Count'].values.tolist(), edgecolor='black')
     plt.xticks(rotation=65)
     plt.xlabel('Source')
     plt.ylabel('Count')
@@ -110,22 +107,30 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: Li
     plt.savefig(output_csv_stub + '.png')
     plt.close()
 
-    plt.bar(source_unique_counts_df.index, source_unique_counts_df['Count'].values.tolist(), edgecolor='black')
-    plt.xticks(rotation=65)
-    plt.xlabel('Source')
-    plt.ylabel('Count')
-    plt.tight_layout()
-    plt.savefig(output_csv_stub + '_unique.png')
-    plt.close()
+    # plt.bar(source_count_df.index, source_count_df['Count'].values.tolist(), edgecolor='black')
+    # plt.xticks(rotation=65)
+    # plt.xlabel('Source')
+    # plt.ylabel('Count')
+    # plt.tight_layout()
+    # plt.savefig(output_csv_stub + '.png')
+    # plt.close()
+
+    # plt.bar(source_unique_counts_df.index, source_unique_counts_df['Count'].values.tolist(), edgecolor='black')
+    # plt.xticks(rotation=65)
+    # plt.xlabel('Unique Source')
+    # plt.ylabel('Count')
+    # plt.tight_layout()
+    # plt.savefig(output_csv_stub + '_unique.png')
+    # plt.close()
 
     plt.bar(source_unique_counts_df[source_unique_counts_df['Count'] > plot_threshold].index,
             source_unique_counts_df[source_unique_counts_df['Count'] > plot_threshold]['Count'].values.tolist(),
             edgecolor='black')
     plt.xticks(rotation=65)
-    plt.xlabel('Source')
+    plt.xlabel('Unique Source')
     plt.ylabel('Count')
     plt.tight_layout()
-    plt.savefig(output_csv_stub + '_unique_example.png')
+    plt.savefig(output_csv_stub + '_unique.png')
     plt.close()
 
     return source_counts, source_unique_counts
