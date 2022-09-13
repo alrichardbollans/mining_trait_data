@@ -5,7 +5,8 @@ import pandas as pd
 
 from pkg_resources import resource_filename
 
-from cleaning import filter_out_ranks, generate_temp_output_file_paths, compile_hits, COL_NAMES
+from cleaning import filter_out_ranks, generate_temp_output_file_paths, compile_hits, COL_NAMES, single_source_col, \
+    compiled_sources_col
 from cleaning.compiling_datasets import _merge_snippets_of_repeated_taxa, _merge_columns, _merge_on_accepted_id
 
 _inputs_path = resource_filename(__name__, 'test_inputs')
@@ -23,6 +24,25 @@ class MyTestCase(unittest.TestCase):
             [powo_hits, wiki_hits, cornell_hits],
             os.path.join(_outputs_path, 'output_poisons_compiled.csv'))
 
+        auto_compiled = pd.read_csv(os.path.join(_outputs_path, 'output_poisons_compiled.csv'))
+        compiled = pd.read_csv(os.path.join(_inputs_path, 'output_poisons_compiled.csv'))
+
+        pd.testing.assert_frame_equal(compiled, auto_compiled)
+
+    def test_repeated_sources(self):
+        cornell_hits = pd.read_csv(os.path.join(_inputs_path, 'cornell_accepted.csv'))
+        wiki_hits = pd.read_csv(os.path.join(_inputs_path, 'wiki_poisons_accepted.csv'))
+        powo_hits = pd.read_csv(os.path.join(_inputs_path, 'powo_poisons_accepted.csv'))
+
+        compile_hits(
+            [powo_hits, wiki_hits, cornell_hits, cornell_hits, wiki_hits],
+            os.path.join(_outputs_path, 'output_poisons_repeated_compiled.csv'))
+
+        auto_compiled = pd.read_csv(os.path.join(_outputs_path, 'output_poisons_repeated_compiled.csv'))
+        compiled = pd.read_csv(os.path.join(_inputs_path, 'output_poisons_compiled.csv'))
+
+        pd.testing.assert_frame_equal(compiled, auto_compiled)
+
     def test_filter_out_ranks(self):
         t_df = pd.read_csv(os.path.join(_inputs_path, 'unlabelled.csv'))
         filtered = filter_out_ranks(t_df)
@@ -38,9 +58,9 @@ class MyTestCase(unittest.TestCase):
         merged_df = pd.read_csv(os.path.join(_inputs_path, 'id_merged.csv'))
         one_df = pd.read_csv(os.path.join(_inputs_path, 'to_merge_id1.csv'))
         merged_dfs = one_df.copy()
-        merged_dfs[COL_NAMES['sources']] = merged_dfs[[COL_NAMES['single_source']]].values.tolist()
+        merged_dfs[compiled_sources_col] = merged_dfs[[single_source_col]].values.tolist()
 
-        merged_dfs = merged_dfs.drop(columns=[COL_NAMES['single_source']])
+        merged_dfs = merged_dfs.drop(columns=[single_source_col])
 
         two_df = pd.read_csv(os.path.join(_inputs_path, 'to_merge_id2.csv'))
         automerged = _merge_on_accepted_id(merged_dfs, two_df)
