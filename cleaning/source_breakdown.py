@@ -21,7 +21,7 @@ def filter_df_by_families(df: pd.DataFrame, families: List[str]) -> pd.DataFrame
         # return df
 
 
-def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: List[str] = None,
+def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: List[str] = None, ranks: List[str] = None,
                               source_translations: dict = None, check_duplicates=True):
     if not os.path.isdir(os.path.dirname(output_csv_stub)):
         os.mkdir(os.path.dirname(output_csv_stub))
@@ -36,6 +36,9 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: Li
             raise ValueError
 
     out_df.drop_duplicates(subset=['Accepted_ID'], inplace=True)
+
+    if ranks is not None:
+        out_df = out_df[out_df['Accepted_Rank'].isin(ranks)]
 
     if families is not None:
         out_df = filter_df_by_families(out_df, families)
