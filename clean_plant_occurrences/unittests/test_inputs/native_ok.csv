@@ -143,6 +143,7 @@ Adenium obesum,Adenium obesum,36.064735,0.343976,KEN,1430,2018,NA,2366010122,HUM
 Adenium obesum,Adenium obesum,39.602409,-4.245608,KEN,250,2017,NA,1676585288,HUMAN_OBSERVATION,naturgucker,NA,NA,GBIF
 Adenium obesum,Adenium obesum,40.016253,-3.310125,KEN,453,2018,NA,2366019637,HUMAN_OBSERVATION,iNaturalist,NA,NA,GBIF
 Adenium obesum,Adenium obesum,39.826947,-2.95228,KEN,5,2021,NA,3343853464,HUMAN_OBSERVATION,iNaturalist,NA,NA,GBIF
+Adenium obesum,Adenium obesum,39.826947,-2.95228,KEN,5,2021,NA,9991,HUMAN_OBSERVATION,iNaturalist,NA,NA,GBIF
 Palicourea andina,Palicourea andina subsp. panamensis,-82.233333,8.75,PAN,NA,1976,1,1259636036,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
 Palicourea andina,Palicourea andina subsp. panamensis,-82.251111,8.751111,PAN,NA,1987,1,1261221272,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
 Palicourea andina,Palicourea andina subsp. panamensis,-82.3,8.75,PAN,NA,1994,1,1261239329,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
@@ -156,4 +157,5 @@ Palicourea andina,Palicourea andina subsp. panamensis,-82.233333,8.75,PAN,NA,198
 Palicourea andina,Palicourea andina subsp. panamensis,-82.24,8.754444,PAN,NA,2013,1,1258191337,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
 Palicourea andina,Palicourea andina subsp. panamensis,-82.216667,8.733333,PAN,NA,1980,1,1258721061,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
 Palicourea andina,Palicourea andina subsp. panamensis,-82.3,8.76666,PAN,NA,1994,2,1261239602,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
-Palicourea andina,Palicourea andina subsp. panamensis,-82.213333,8.781667,PAN,NA,1982,1,1259751636,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
+Palicourea andina,Palicourea andina subsp. panamensis,-82.3,8.76666,PAN,NA,1994,2,9992,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
+Palicourea andina,Palicourea andina,-82.213333,8.781667,PAN,NA,1982,1,9993,PRESERVED_SPECIMEN,MO,NA,NA,GBIF

@@ -50,7 +50,9 @@ class MyTestCase(unittest.TestCase):
         native_cleaned = clean_occurrences_by_tdwg_regions(good_records_with_acc_info, distributions_csv,
                                                            priority='native',
                                                            output_csv=os.path.join(test_output_dir,
-                                                                                   'native_native.csv'))
+                                                                                   'native_native.csv'),
+                                                           remove_duplicate_records=False,
+                                                           remove_duplicated_lat_long_at_rank='none')
         diff = good_native_records[~good_native_records['gbifID'].isin(native_cleaned['gbifID'])]
         print(diff['gbifID'])
         self.assertEqual(len(diff.index), 0)
@@ -58,13 +60,17 @@ class MyTestCase(unittest.TestCase):
         native_cleaned = clean_occurrences_by_tdwg_regions(good_records_with_acc_info, distributions_csv,
                                                            priority='both',
                                                            output_csv=os.path.join(test_output_dir,
-                                                                                   'native_both.csv'))
+                                                                                   'native_both.csv'),
+                                                           remove_duplicate_records=False,
+                                                           remove_duplicated_lat_long_at_rank='none')
         self.assertEqual(len(native_cleaned.index), len(good_native_records.index))
 
         native_cleaned = clean_occurrences_by_tdwg_regions(good_records_with_acc_info, distributions_csv,
                                                            priority='native_then_introduced',
                                                            output_csv=os.path.join(test_output_dir,
-                                                                                   'native_native_then_introduced.csv'))
+                                                                                   'native_native_then_introduced.csv'),
+                                                           remove_duplicate_records=False,
+                                                           remove_duplicated_lat_long_at_rank='none')
         self.assertEqual(len(native_cleaned.index), len(good_native_records.index))
 
     def test_distributions_of_occs(self):
@@ -88,6 +94,19 @@ class MyTestCase(unittest.TestCase):
 
         self.assertListEqual(dist_records_with_native_intro_info['known_introd'].tolist(),
                              dist_records_with_native_intro_info['within_introduced'].tolist())
+
+    def test_no_duplicates(self):
+        good_native_records = pd.read_csv(os.path.join(input_test_dir, 'native_ok.csv'))
+        good_records_with_acc_info = read_occurences_and_output_acc_names(good_native_records)
+        native_cleaned = clean_occurrences_by_tdwg_regions(good_records_with_acc_info, distributions_csv,
+                                                           priority='native',
+                                                           output_csv=os.path.join(test_output_dir,
+                                                                                   'native_native.csv'))
+        bad_records_uncleaned = good_native_records[good_native_records['gbifID'].isin([9991, 9992, 9993])]
+        self.assertEqual(len(bad_records_uncleaned), 3)
+
+        bad_records = native_cleaned[native_cleaned['gbifID'].isin([9991, 9992])]
+        self.assertEqual(len(bad_records), 0)
 
 
 if __name__ == '__main__':
