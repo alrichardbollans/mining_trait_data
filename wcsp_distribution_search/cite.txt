@@ -1,2 +1,4 @@
-World Checklist of Selected Plant Families 2022
-Accessed XX/XX/XXXX
+WCVP (2022). World Checklist of Vascular Plants, version 2.0. Facilitated by the Royal Botanic Gardens, Kew. Published
+on the Internet
+http://wcvp.science.kew.org/
+Retrieved via POWO: XX/XX/XXXX
