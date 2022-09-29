@@ -1,7 +1,5 @@
-
 import os
 import time
-
 
 import pandas as pd
 import requests
@@ -14,7 +12,7 @@ from automatchnames import get_accepted_info_from_names_in_column
 from taxa_lists import get_all_taxa
 
 from metabolite_searches import get_antibacterial_metabolites, get_alkaloids_from_metabolites, \
-    get_steroids_from_metabolites, get_cardenolides_from_metabolites
+    get_steroids_from_metabolites, get_cardenolides_from_metabolites, get_antimalarial_metabolites
 
 _inputs_path = resource_filename(__name__, 'inputs')
 _temp_outputs_path = resource_filename(__name__, 'temp_outputs')
@@ -111,15 +109,15 @@ def recheck_taxa(check_output_csv: str):
     get_metabolites_for_taxa(taxa_list, output_csv=check_output_csv)
 
 
-def get_antibac_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, output_csv: str, fams: List[str] = None):
+def get_metabolite_hits_for_taxa(metabolite_list: List[str], taxa_metabolite_data: pd.DataFrame, output_csv: str,
+                                 fams: List[str] = None):
     """
 
-    :param taxa_metabolite_data: Dataframe with taxa in first column and metabolites in the rest of the columns
-    with 1's and 0's in cells indicating presence of metabolite
-    :param output_csv:
-    :return:
-    """
-    antibac_metabolites = get_antibacterial_metabolites()
+        :param taxa_metabolite_data: Dataframe with taxa in first column and metabolites in the rest of the columns
+        with 1's and 0's in cells indicating presence of metabolite
+        :param output_csv:
+        :return:
+        """
 
     out_dict = {'taxa': [], 'knapsack_snippet': []}
     for i in tqdm(range(len(taxa_metabolite_data['taxa'].values)), desc="Searching...", ascii=False, ncols=72):
@@ -129,21 +127,47 @@ def get_antibac_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, out
         # print(taxa_record.columns)
         metabolites_in_taxa = [x for x in taxa_record.columns if taxa_record[x].iloc[0] == 1]
 
-        antibac_metabolites_in_taxa = []
+        property_metabolites_in_taxa = []
         for metabolite in metabolites_in_taxa:
-            if metabolite in antibac_metabolites:
-                antibac_metabolites_in_taxa.append(metabolite)
+            if metabolite in metabolite_list:
+                property_metabolites_in_taxa.append(metabolite)
 
-        if len(antibac_metabolites_in_taxa) > 0:
+        if len(property_metabolites_in_taxa) > 0:
             out_dict['taxa'].append(taxa)
 
-            out_dict['knapsack_snippet'].append('"' + str(antibac_metabolites_in_taxa) + '"')
+            out_dict['knapsack_snippet'].append('"' + str(property_metabolites_in_taxa) + '"')
     out_df = pd.DataFrame(out_dict)
     out_df["Source"] = "KNApSAcK"
 
     acc_df = get_accepted_info_from_names_in_column(out_df, 'taxa', families_of_interest=fams)
 
     acc_df.to_csv(output_csv)
+
+
+def get_antibac_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, output_csv: str, fams: List[str] = None):
+    """
+
+    :param taxa_metabolite_data: Dataframe with taxa in first column and metabolites in the rest of the columns
+    with 1's and 0's in cells indicating presence of metabolite
+    :param output_csv:
+    :return:
+    """
+    antibac_metabolites = get_antibacterial_metabolites()
+    get_metabolite_hits_for_taxa(antibac_metabolites, taxa_metabolite_data, output_csv, fams=fams)
+
+
+def get_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, output_csv: str,
+                                              fams: List[str] = None):
+    """
+
+    :param taxa_metabolite_data: Dataframe with taxa in first column and metabolites in the rest of the columns
+    with 1's and 0's in cells indicating presence of metabolite
+    :param output_csv:
+    :return:
+    """
+    antimal_metabolites = get_antimalarial_metabolites()
+
+    get_metabolite_hits_for_taxa(antimal_metabolites, taxa_metabolite_data, output_csv, fams=fams)
 
 
 def output_alkaloids_from_metabolites(metabolites_to_check: List[str], output_csv: str):
@@ -160,8 +184,8 @@ def output_alkaloids_from_metabolites(metabolites_to_check: List[str], output_cs
 
     return out_df
 
-def output_steroids_from_metabolites(metabolites_to_check: List[str], output_csv: str):
 
+def output_steroids_from_metabolites(metabolites_to_check: List[str], output_csv: str):
     steroid_metabolites = get_steroids_from_metabolites(metabolites_to_check)
 
     out_df = pd.DataFrame(steroid_metabolites)
@@ -171,8 +195,8 @@ def output_steroids_from_metabolites(metabolites_to_check: List[str], output_csv
 
     return out_df
 
-def output_cardenolides_from_metabolites(metabolites_to_check: List[str], output_csv: str):
 
+def output_cardenolides_from_metabolites(metabolites_to_check: List[str], output_csv: str):
     cardenolides_metabolites = get_cardenolides_from_metabolites(metabolites_to_check)
 
     out_df = pd.DataFrame(cardenolides_metabolites)
@@ -182,7 +206,9 @@ def output_cardenolides_from_metabolites(metabolites_to_check: List[str], output
 
     return out_df
 
-def get_compound_hits_for_taxa(compound_abbv:str,taxa_metabolite_data: pd.DataFrame, compound_df: pd.DataFrame, output_csv: str,
+
+def get_compound_hits_for_taxa(compound_abbv: str, taxa_metabolite_data: pd.DataFrame, compound_df: pd.DataFrame,
+                               output_csv: str,
                                fams: List[str] = None):
     """
 
@@ -218,6 +244,7 @@ def get_compound_hits_for_taxa(compound_abbv:str,taxa_metabolite_data: pd.DataFr
 
     acc_df.to_csv(output_csv)
     return acc_df
+
 
 def main():
     pass
