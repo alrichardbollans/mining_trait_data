@@ -10,7 +10,7 @@ setup(
     # Needed to actually package something
     packages=find_packages(include=['clean_plant_occurrences', 'cleaning',
                                     'conservation_priorities', 'metabolite_searches',
-                                    'read_pdfs', 'powo_searches', 'soilgrid_searches',
+                                    'read_pdfs', 'powo_searches',
                                     'unit_test_methods',
                                     'wcsp_distribution_search',
                                     'wikipedia_searches']),
@@ -19,6 +19,19 @@ setup(
         "clean_plant_occurrences": ["inputs/wgsrpd-master/level3/*.shp"],
         "metabolite_searches": ["inputs/*"]
     },
+    install_requires=[
+        "automatchnames >= 0.0.1",
+        "pandas==1.4.1",
+        "numpy~=1.22.1",
+        "typing~=3.7.4.3",
+        "requests~=2.27.1",
+        "Wikipedia-API~=0.5.4",
+        "tqdm~=4.62.3",
+        "pykew~=0.1.3",
+        "beautifulsoup4~=4.10.0",
+        "tika~=1.24",
+        "html5lib~=1.1",
+    ],
     # *strongly* suggested for sharing
     version='0.1',
     license='MIT',
