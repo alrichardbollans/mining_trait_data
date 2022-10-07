@@ -173,7 +173,7 @@ def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_sea
             language_hits = []
             try:
                 for wiki in wikis_to_check:
-                    time.sleep(.01)
+                    time.sleep(.05)
                     if check_page_exists(sp, wiki):
                         language_hits.append(wiki.language)
 
