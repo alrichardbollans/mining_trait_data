@@ -1,6 +1,8 @@
 from typing import List
 import pandas as pd
+from automatchnames import get_accepted_info_from_names_in_column
 from tqdm import tqdm
+
 
 def get_project_from_language(lan: str):
     return lan + '.wikipedia.org'
@@ -81,13 +83,16 @@ def get_all_page_views_for_taxon(taxon: str):
 
 
 def make_pageview_df(taxa_list: List[str], output_csv: str):
-    out_dict = {'Accepted_Name': [], 'Wikipedia_PageViews': []}
+    out_dict = {'name': [], 'Wikipedia_PageViews': []}
 
     for i in tqdm(range(len(taxa_list)), desc="Getting pageviews", ascii=False, ncols=72):
         sp = taxa_list[i]
-        out_dict['Accepted_Name'].append(sp)
+        out_dict['name'].append(sp)
         x = get_all_page_views_for_taxon(sp)
         out_dict['Wikipedia_PageViews'].append(x)
 
-        df = pd.DataFrame(out_dict)
-        df.to_csv(output_csv)
+    df = pd.DataFrame(out_dict)
+    acc_df = get_accepted_info_from_names_in_column(df, 'name')
+
+    acc_df.to_csv(output_csv)
+
