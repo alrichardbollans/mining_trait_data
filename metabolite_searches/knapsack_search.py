@@ -119,12 +119,15 @@ def get_metabolite_hits_for_taxa(metabolite_list: List[str], taxa_metabolite_dat
         :param output_csv:
         :return:
         """
-
+    antimal_metabolite_cols = [c for c in taxa_metabolite_data.columns if c in metabolite_list]
+    antimal_metabolite_df = taxa_metabolite_data[['taxa'] + antimal_metabolite_cols]
+    antimal_hit_df = antimal_metabolite_df[antimal_metabolite_df[antimal_metabolite_cols].isin([1]).any(axis=1)]
     out_dict = {'taxa': [], 'knapsack_snippet': []}
-    for i in tqdm(range(len(taxa_metabolite_data['taxa'].values)), desc="Searching...", ascii=False, ncols=72):
-        taxa = taxa_metabolite_data['taxa'].values[i]
+    for i in tqdm(range(len(antimal_hit_df['taxa'].values)), desc="Searching antimalarial metabolites", ascii=False,
+                  ncols=72):
+        taxa = antimal_hit_df['taxa'].values[i]
 
-        taxa_record = taxa_metabolite_data[taxa_metabolite_data['taxa'] == taxa]
+        taxa_record = antimal_hit_df[antimal_hit_df['taxa'] == taxa]
         # print(taxa_record.columns)
         metabolites_in_taxa = [x for x in taxa_record.columns if taxa_record[x].iloc[0] == 1]
 
@@ -167,11 +170,11 @@ def get_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame
     :return:
     """
     antimal_metabolites = get_antimalarial_metabolites()
-
     get_metabolite_hits_for_taxa(antimal_metabolites, taxa_metabolite_data, output_csv, fams=fams)
 
+
 def get_inactive_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, output_csv: str,
-                                              fams: List[str] = None):
+                                                       fams: List[str] = None):
     """
 
     :param taxa_metabolite_data: Dataframe with taxa in first column and metabolites in the rest of the columns
