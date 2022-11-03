@@ -13,7 +13,7 @@ from taxa_lists import get_all_taxa
 
 from metabolite_searches import get_antibacterial_metabolites, get_alkaloids_from_metabolites, \
     get_steroids_from_metabolites, get_cardenolides_from_metabolites, get_antimalarial_metabolites, \
-    get_inactive_antimalarial_metabolites
+    get_inactive_antimalarial_metabolites, get_manual_antimalarial_metabolites
 
 _inputs_path = resource_filename(__name__, 'inputs')
 _temp_outputs_path = resource_filename(__name__, 'temp_outputs')
@@ -170,6 +170,19 @@ def get_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame
     :return:
     """
     antimal_metabolites = get_antimalarial_metabolites()
+    get_metabolite_hits_for_taxa(antimal_metabolites, taxa_metabolite_data, output_csv, fams=fams)
+
+
+def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, output_csv: str,
+                                                     fams: List[str] = None):
+    """
+
+    :param taxa_metabolite_data: Dataframe with taxa in first column and metabolites in the rest of the columns
+    with 1's and 0's in cells indicating presence of metabolite
+    :param output_csv:
+    :return:
+    """
+    antimal_metabolites = get_manual_antimalarial_metabolites()
     get_metabolite_hits_for_taxa(antimal_metabolites, taxa_metabolite_data, output_csv, fams=fams)
 
 

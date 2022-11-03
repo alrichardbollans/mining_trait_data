@@ -24,7 +24,7 @@ def get_antibacterial_metabolites():
     return antibac_table['Metabolite Name'].unique().tolist()
 
 
-def get_antimalarial_metabolites(manual_known_antimal_metabolites: List[str] = None):
+def get_antimalarial_metabolites():
     # From http://www.knapsackfamily.com/MetaboliteActivity/result.php 'malaria'
     antimal_table = pd.read_html(os.path.join(_inputs_path, 'antimalarialmetabolites.html'), flavor='html5lib')[0]
 
@@ -32,16 +32,19 @@ def get_antimalarial_metabolites(manual_known_antimal_metabolites: List[str] = N
     antimal_table = antimal_table.dropna(subset=['Metabolite Name'])
     kn_antimalarial_metabolites = antimal_table['Metabolite Name'].unique().tolist()
 
+    return kn_antimalarial_metabolites
+
+
+def get_manual_antimalarial_metabolites():
     # Metabolites from literature with activity <=1uM on any malaria strain
     # This is NOT EXHAUSTIVE
     # Contact package author for references
-    if manual_known_antimal_metabolites is None:
-        manual_known_antimal_metabolites = ['Tubulosine', 'Emetine', 'Cephaeline', 'Artemether', 'Quinine',
-                                            'Aspidocarpine', 'Cryptolepine', 'Bisnicalaterine C', 'Bisleucocurine',
-                                            'Voacamine', 'Ellipticine', 'Klugine', 'Longicaudatine Y',
-                                            '16-Methoxyisomatopensine', 'Strychnopentamine', 'Isostrychnopentamine',
-                                            'Longicaudatine', 'Ochrolifuanine A', 'Strychnogucine B']
-    return kn_antimalarial_metabolites + manual_known_antimal_metabolites
+    manual_known_antimal_metabolites = ['Tubulosine', 'Emetine', 'Cephaeline', 'Artemether', 'Quinine',
+                                        'Aspidocarpine', 'Cryptolepine', 'Bisnicalaterine C', 'Bisleucocurine',
+                                        'Voacamine', 'Ellipticine', 'Klugine', 'Longicaudatine Y',
+                                        '16-Methoxyisomatopensine', 'Strychnopentamine', 'Isostrychnopentamine',
+                                        'Longicaudatine', 'Ochrolifuanine A', 'Strychnogucine B']
+    return manual_known_antimal_metabolites
 
 
 def get_inactive_antimalarial_metabolites():
