@@ -20,7 +20,7 @@ setup(
         "metabolite_searches": ["inputs/*"]
     },
     install_requires=[
-        "automatchnames == 0.0.2",
+        "automatchnames == 0.2",
         "pandas==1.4.1",
         "numpy~=1.22.1",
         "typing~=3.7.4.3",
