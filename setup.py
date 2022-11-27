@@ -20,7 +20,7 @@ setup(
         "metabolite_searches": ["inputs/*"]
     },
     install_requires=[
-        "automatchnames == 0.2",
+        "automatchnames == 1.0",
         "pandas==1.4.1",
         "numpy~=1.22.1",
         "typing~=3.7.4.3",
@@ -33,7 +33,7 @@ setup(
         "html5lib~=1.1",
     ],
     # *strongly* suggested for sharing
-    version='0.2',
+    version='1.0',
     license='MIT',
     description='A set of python packages for mining plant trait data',
     long_description=open('README.md').read(),
