@@ -13,7 +13,7 @@ setup(
                                     'read_pdfs', 'powo_searches',
                                     'unit_test_methods',
                                     'wcsp_distribution_search',
-                                    'wikipedia_searches']),
+                                    'wikipedia_searches'], exclude=['unit_test_methods']),
 
     package_data={
         "clean_plant_occurrences": ["inputs/wgsrpd-master/level3/*.shp"],
