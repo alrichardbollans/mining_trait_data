@@ -12,7 +12,7 @@ setup(
                                     'conservation_priorities', 'metabolite_searches',
                                     'read_pdfs', 'powo_searches',
                                     'unit_test_methods',
-                                    'wcsp_distribution_search',
+                                    'wcvp_distributions',
                                     'wikipedia_searches'], exclude=['unit_test_methods']),
 
     package_data={
