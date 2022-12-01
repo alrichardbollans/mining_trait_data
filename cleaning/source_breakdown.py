@@ -3,25 +3,12 @@ import os
 from typing import List
 
 import pandas as pd
-from automatchnames import COL_NAMES, get_all_taxa
+
+from cleaning import COL_NAMES
 
 
-def filter_df_by_families(df: pd.DataFrame, families: List[str]) -> pd.DataFrame:
-    if 'Family' not in df.columns:
-        accepted_family_members = get_all_taxa(families_of_interest=families, accepted=True)
-        accepted_family_members.rename(columns={'accepted_name': COL_NAMES['acc_name'], 'family': 'Family'},
-                                       inplace=True)
-        df_with_families = pd.merge(df, accepted_family_members, on=COL_NAMES['acc_name'])
-        cols_to_drop = [c for c in accepted_family_members.columns if c not in df.columns and c != 'Family']
-        df_with_families.drop(columns=cols_to_drop, inplace=True)
-        return df_with_families
-
-    else:
-        raise ValueError('Family already contained in df')
-        # return df
-
-
-def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: List[str] = None, ranks: List[str] = None,
+def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: List[str] = None,
+                              ranks: List[str] = None,
                               source_translations: dict = None, check_duplicates=True):
     if not os.path.isdir(os.path.dirname(output_csv_stub)):
         os.mkdir(os.path.dirname(output_csv_stub))
@@ -35,13 +22,13 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: Li
         if check_duplicates:
             raise ValueError
 
-    out_df.drop_duplicates(subset=['Accepted_ID'], inplace=True)
+    out_df.drop_duplicates(subset=[COL_NAMES['acc_id']], inplace=True)
 
     if ranks is not None:
-        out_df = out_df[out_df['Accepted_Rank'].isin(ranks)]
+        out_df = out_df[out_df[COL_NAMES['acc_rank']].isin(ranks)]
 
     if families is not None:
-        out_df = filter_df_by_families(out_df, families)
+        out_df = out_df[out_df[COL_NAMES['acc_family'].isin(families)]]
 
     source_counts = dict()
     source_unique_counts = dict()
@@ -102,7 +89,8 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: Li
 
     plot_threshold = 0
     plt.bar(source_count_df[source_count_df['Count'] > plot_threshold].index,
-            source_count_df[source_count_df['Count'] > plot_threshold]['Count'].values.tolist(), edgecolor='black')
+            source_count_df[source_count_df['Count'] > plot_threshold]['Count'].values.tolist(),
+            edgecolor='black')
     plt.xticks(rotation=65)
     plt.xlabel('Source')
     plt.ylabel('Count')
@@ -127,7 +115,8 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: Li
     # plt.close()
 
     plt.bar(source_unique_counts_df[source_unique_counts_df['Count'] > plot_threshold].index,
-            source_unique_counts_df[source_unique_counts_df['Count'] > plot_threshold]['Count'].values.tolist(),
+            source_unique_counts_df[source_unique_counts_df['Count'] > plot_threshold][
+                'Count'].values.tolist(),
             edgecolor='black')
     plt.xticks(rotation=65)
     plt.xlabel('Unique Source')

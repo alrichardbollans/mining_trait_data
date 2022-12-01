@@ -72,8 +72,8 @@ class MyTestCase(unittest.TestCase):
 
         one_df = pd.read_csv(os.path.join(_inputs_path, 'powo_alkaloids_accepted.csv'))
         two_df = pd.read_csv(os.path.join(_inputs_path, 'rub_apocs_alkaloid_hits.csv'))
-        compile_hits([one_df, two_df], os.path.join(_inputs_path, 'output_compiled.csv'))
-        automerged = pd.read_csv(os.path.join(_inputs_path, 'output_compiled.csv'))
+        compile_hits([one_df, two_df], os.path.join(_outputs_path, 'output_compiled.csv'))
+        automerged = pd.read_csv(os.path.join(_outputs_path, 'output_compiled.csv'))
         pd.testing.assert_frame_equal(merged_df, automerged)
 
     def test_compile_snippets(self):

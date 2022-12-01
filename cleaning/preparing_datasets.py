@@ -2,7 +2,7 @@ import os
 
 import numpy as np
 import pandas as pd
-from automatchnames import get_accepted_info_from_names_in_column
+from wcvp_name_matching import get_accepted_info_from_names_in_column
 from typing import List
 
 from tqdm import tqdm
