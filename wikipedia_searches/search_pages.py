@@ -4,7 +4,7 @@ from typing import List
 
 import pandas as pd
 
-from automatchnames import get_accepted_info_from_names_in_column
+from wcvp_name_matching import get_accepted_info_from_names_in_column
 from tqdm import tqdm
 
 
@@ -88,7 +88,7 @@ def search_for_common_names(taxa_list: List[str], output_csv: str) -> pd.DataFra
         if not os.path.isdir(os.path.dirname(output_csv)):
             os.mkdir(os.path.dirname(output_csv))
     # Swedish list is split across the alphabet
-    swedish_root_page = 'Lista_över_växter'
+    swedish_root_page = 'Wikipedia:Lista_över_växter'
     swedish_alphabet = list(string.ascii_uppercase) + ['Å', 'Ä', 'Ö']
     swedish_titles = [swedish_root_page + '/' + a for a in swedish_alphabet]
 
