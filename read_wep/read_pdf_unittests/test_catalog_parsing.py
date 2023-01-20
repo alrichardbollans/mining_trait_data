@@ -3,7 +3,8 @@ import unittest
 import pandas as pd
 from pkg_resources import resource_filename
 
-from read_wep import get_commonnames_from_catalog
+from read_wep import get_commonnames_from_catalog, get_traditional_medicines_from_wiersema, \
+    poisons_from_wiersema
 
 input_test_dir = resource_filename(__name__, 'test_inputs')
 test_output_dir = resource_filename(__name__, 'test_outputs')
@@ -19,9 +20,9 @@ class MyTestCase(unittest.TestCase):
                          'Cucumis myriocarpus', 'Satranala decussilvae', 'Clinopodium grandiflorum',
                          'Breynia androgyna', 'Zoysia japonica']
 
-        # med_df = get_traditional_medicines_from_wiersema('wiersema_medic_folklore.csv')
+        med_df = get_traditional_medicines_from_wiersema('wiersema_medic_folklore.csv')
 
-        med_df = pd.read_csv('wiersema_medic_folklore.csv')
+        # med_df = pd.read_csv('wiersema_medic_folklore.csv')
         unresolved_df = med_df[med_df['matched_by'].isna()]
         self.assertEqual(len(unresolved_df.index), 0, msg=unresolved_df)
         for m in medicinal:
@@ -32,8 +33,8 @@ class MyTestCase(unittest.TestCase):
             for given_name in med_df['name'].values:
                 self.assertNotIn(nm, given_name)
 
-        # poison_df = poisons_from_wiersema('wiersema_poisonous_plants.csv')
-        poison_df = pd.read_csv('wiersema_poisonous_plants.csv')
+        poison_df = poisons_from_wiersema('wiersema_poisonous_plants.csv')
+        # poison_df = pd.read_csv('wiersema_poisonous_plants.csv')
         unresolved_df = poison_df[poison_df['matched_by'].isna()]
         self.assertEqual(len(unresolved_df.index), 0, msg=unresolved_df)
 
@@ -49,8 +50,8 @@ class MyTestCase(unittest.TestCase):
                 self.assertNotIn(np, given_name)
 
     def test_common_names(self):
-        # common_name_df = get_commonnames_from_catalog('catalog_common_names.csv')
-        common_name_df = pd.read_csv('catalog_common_names.csv')
+        common_name_df = get_commonnames_from_catalog('catalog_common_names.csv')
+        # common_name_df = pd.read_csv('catalog_common_names.csv')
 
         with_common_name = ['Ziziphus mauritiana',
                             'Zephyranthes rosea',
