@@ -4,7 +4,7 @@ from typing import List
 
 import pandas as pd
 
-from cleaning import COL_NAMES
+from data_compilation_methods import COL_NAMES
 
 
 def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: List[str] = None,
@@ -28,7 +28,7 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: Li
         out_df = out_df[out_df[COL_NAMES['acc_rank']].isin(ranks)]
 
     if families is not None:
-        out_df = out_df[out_df[COL_NAMES['acc_family'].isin(families)]]
+        out_df = out_df[out_df[COL_NAMES['acc_family']].isin(families)]
 
     source_counts = dict()
     source_unique_counts = dict()

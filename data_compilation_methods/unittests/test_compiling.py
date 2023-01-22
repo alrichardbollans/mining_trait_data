@@ -5,9 +5,9 @@ import pandas as pd
 
 from pkg_resources import resource_filename
 
-from cleaning import filter_out_ranks, generate_temp_output_file_paths, compile_hits, COL_NAMES, single_source_col, \
+from data_compilation_methods import filter_out_ranks, generate_temp_output_file_paths, compile_hits, COL_NAMES, single_source_col, \
     compiled_sources_col
-from cleaning.compiling_datasets import _merge_snippets_of_repeated_taxa, _merge_columns, _merge_on_accepted_id
+from data_compilation_methods.compiling_datasets import _merge_snippets_of_repeated_taxa, _merge_columns, _merge_on_accepted_id
 
 _inputs_path = resource_filename(__name__, 'test_inputs')
 _outputs_path = resource_filename(__name__, 'test_outputs')
