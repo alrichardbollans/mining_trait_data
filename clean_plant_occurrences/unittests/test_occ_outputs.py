@@ -6,8 +6,10 @@ from wcvp_name_matching import get_accepted_info_from_names_in_column
 from pkg_resources import resource_filename
 
 from clean_plant_occurrences import read_occurences_and_output_acc_names, \
-    _find_whether_occurrences_in_native_or_introduced_regions, get_tdwg_regions_for_occurrences, \
+    get_tdwg_regions_for_occurrences, \
     clean_occurrences_by_tdwg_regions
+from clean_plant_occurrences.clean_by_tdwg_region import \
+    _find_whether_occurrences_in_native_or_introduced_regions
 
 input_test_dir = resource_filename(__name__, 'test_inputs')
 test_output_dir = resource_filename(__name__, 'test_outputs')

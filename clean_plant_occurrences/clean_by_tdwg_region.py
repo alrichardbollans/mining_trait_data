@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 from wcvp_download import get_distributions_for_taxa, native_code_column, \
-    introduced_code_column, wcvp_accepted_columns
+    introduced_code_column, wcvp_accepted_columns, wcvp_columns
 
 # Add progress bar to apply method
 

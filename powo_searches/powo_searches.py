@@ -1,10 +1,12 @@
 import os
 from typing import List, Tuple
+
 import numpy as np
 import pandas as pd
+from wcvp_download import get_all_taxa, wcvp_accepted_columns
+from wcvp_name_matching import clean_urn_ids, get_accepted_wcvp_info_from_ids_in_column
 
-from cleaning import COL_NAMES, single_source_col
-from automatchnames import clean_urn_ids, get_accepted_info_from_ids_in_column
+from data_compilation_methods import single_source_col
 
 
 def search_powo(search_terms: List[str], accepted_output_file: str, filters: List[str] = None,
@@ -48,11 +50,13 @@ def search_powo(search_terms: List[str], accepted_output_file: str, filters: Lis
                 os.mkdir(os.path.dirname(accepted_output_file))
 
     if characteristics_to_search is None:
-        powocharacteristics_to_search = [powo_terms.Characteristic.characteristic, powo_terms.Characteristic.use,
+        powocharacteristics_to_search = [powo_terms.Characteristic.characteristic,
+                                         powo_terms.Characteristic.use,
                                          powo_terms.Characteristic.summary,
                                          powo_terms.Characteristic.leaf]
     else:
-        powocharacteristics_to_search = [getattr(powo_terms.Characteristic, x) for x in characteristics_to_search]
+        powocharacteristics_to_search = [getattr(powo_terms.Characteristic, x) for x in
+                                         characteristics_to_search]
 
     if filters is None:
         powofilters = None
@@ -105,12 +109,12 @@ def search_powo(search_terms: List[str], accepted_output_file: str, filters: Lis
                  'url': single_source_col, 'family': 'Family'},
         inplace=True)
     if len(df.index) > 0:
-        df['Source'] = 'POWO pages(' + df['Source'].astype(str) + ')'
+        df[single_source_col] = 'POWO pages(' + df[single_source_col].astype(str) + ')'
         df['fqId'] = df['fqId'].apply(clean_urn_ids)
     else:
-        df['Source'] = np.nan
-
-    acc_df = get_accepted_info_from_ids_in_column(df, 'fqId')
+        df[single_source_col] = np.nan
+    all_taxa = get_all_taxa()
+    acc_df = get_accepted_wcvp_info_from_ids_in_column(df, 'fqId', all_taxa)
     acc_df.to_csv(accepted_output_file)
 
 
@@ -121,15 +125,10 @@ def create_presence_absence_data(powo_hits: pd.DataFrame, terms_indicating_absen
         presence_data = powo_hits[~powo_hits['powo_Snippet'].str.contain('|'.join(terms_indicating_absence))]
 
     if accepted_ids_of_absence is not None:
-        absence_data = powo_hits[powo_hits['Accepted_ID'].isin(accepted_ids_of_absence)]
-        presence_data = powo_hits[~powo_hits['Accepted_ID'].isin(accepted_ids_of_absence)]
+        absence_data = powo_hits[powo_hits[wcvp_accepted_columns['id']].isin(accepted_ids_of_absence)]
+        presence_data = powo_hits[~powo_hits[wcvp_accepted_columns['id']].isin(accepted_ids_of_absence)]
 
     if len(absence_data.index) + len(presence_data.index) != len(powo_hits.index):
         raise ValueError('Some values have been lost')
 
     return presence_data, absence_data
-
-
-if __name__ == '__main__':
-    search_powo(['spine', 'thorn', 'spike'], 'acc_test.csv')
-    # search_powo(['hairy'], 'test.csv', 'acc_test.csv', families_of_interest=['Rubiaceae', 'Apocynaceae'])

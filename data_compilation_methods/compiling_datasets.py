@@ -97,7 +97,8 @@ def _merge_on_accepted_id(x: pd.DataFrame, y: pd.DataFrame) -> pd.DataFrame:
 
     return merged_dfs
 
-
+def join_snippets(given_snips):
+    return ':'.join(list(dict.fromkeys(given_snips)))
 def _merge_snippets_of_repeated_taxa(df: pd.DataFrame):
     '''
     Given a 'hit' dataframe, if taxa are repeated then rows are combined by merging the snippets
@@ -113,8 +114,8 @@ def _merge_snippets_of_repeated_taxa(df: pd.DataFrame):
         for snip_col in snippet_cols:
             print(f'Warning repeated taxa in data source. These will be resolved by merging snippets')
             print(df)
-
-            compiled = df.groupby([COL_NAMES['acc_id']])[snip_col].apply(','.join).reset_index()
+            df[snip_col] = df[snip_col].fillna('')
+            compiled = df.groupby([COL_NAMES['acc_id']])[snip_col].apply(join_snippets).reset_index()
             merged = pd.merge(compiled, df.drop(columns=snip_col), on=[COL_NAMES['acc_id']], )
             merged.drop_duplicates(subset=[COL_NAMES['acc_id']], inplace=True)
 
@@ -168,6 +169,8 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str) -> pd.DataFrame:
     # Do some cleaning
     cleaned_dfs = []
     for df in all_dfs:
+        if single_source_col not in df.columns:
+            raise ValueError(f'No source given in dataframe: {df}')
         cols_to_drop = [c for c in df.columns if
                         c not in cols_to_keep]
         df = df.drop(columns=cols_to_drop)
@@ -215,3 +218,19 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str) -> pd.DataFrame:
     out_dfs.to_csv(output_csv)
 
     return out_dfs
+
+
+def _unique_tuple(iterable):
+    return tuple(set(sorted(iterable)))
+
+
+def aggregate_data_on_accepted_ids(in_df: pd.DataFrame, column_to_aggregate: str) -> pd.DataFrame:
+    sources = in_df['Source'].unique()
+    if len(sources) > 1:
+        raise ValueError('This method should only be used for single sources')
+    grouped = in_df.groupby(wcvp_accepted_columns['id'])[column_to_aggregate].apply(
+        _unique_tuple).reset_index(
+        name=column_to_aggregate)
+    df = pd.merge(in_df.drop(columns=[column_to_aggregate]), grouped, how='left',
+                  on=wcvp_accepted_columns['id'])
+    return df

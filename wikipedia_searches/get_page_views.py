@@ -1,6 +1,6 @@
 from typing import List
 import pandas as pd
-from automatchnames import get_accepted_info_from_names_in_column
+from wcvp_name_matching import get_accepted_info_from_names_in_column
 from tqdm import tqdm
 
 

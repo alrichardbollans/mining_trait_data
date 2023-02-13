@@ -1,3 +1,5 @@
-Plants of the World Online (2022). Facilitated by the Royal Botanic Gardens, Kew. Published on the
+Plants of the World Online (2023). Facilitated by the Royal Botanic Gardens, Kew. Published on the
 Internet; http://www.plantsoftheworldonline.org/
 Accessed XX/XX/XXXX
+
+pykew: Python library for accessing Kew's data services

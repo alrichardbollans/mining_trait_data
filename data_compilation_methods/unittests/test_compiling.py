@@ -27,6 +27,8 @@ class MyTestCase(unittest.TestCase):
         auto_compiled = pd.read_csv(os.path.join(_outputs_path, 'output_poisons_compiled.csv'))
         compiled = pd.read_csv(os.path.join(_inputs_path, 'output_poisons_compiled.csv'))
 
+        diff = pd.concat([compiled,auto_compiled])[['powo_Snippet']].drop_duplicates(keep=False)
+        print(diff)
         pd.testing.assert_frame_equal(compiled, auto_compiled)
 
     def test_repeated_sources(self):
@@ -40,7 +42,8 @@ class MyTestCase(unittest.TestCase):
 
         auto_compiled = pd.read_csv(os.path.join(_outputs_path, 'output_poisons_repeated_compiled.csv'))
         compiled = pd.read_csv(os.path.join(_inputs_path, 'output_poisons_compiled.csv'))
-
+        diff = pd.concat([compiled,auto_compiled])[['powo_Snippet']].drop_duplicates(keep=False)
+        print(diff)
         pd.testing.assert_frame_equal(compiled, auto_compiled)
 
     def test_filter_out_ranks(self):

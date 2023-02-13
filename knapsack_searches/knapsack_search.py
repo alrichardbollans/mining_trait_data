@@ -18,11 +18,11 @@ _outputs_path = resource_filename(__name__, 'outputs')
 
 kn_metabolite_name_column = 'Metabolite'
 kn_formula_column = 'Molecular formula'
+kn_organism_column = 'Organism'
 
 
 def get_metabolites_for_taxon(name: str):
     # Note that this is greedy as name matches in Knapsack search include partial e.g. Cissus matches Narcissus
-    import html5lib
     url_name_format = name.replace(' ', '%20')
 
     url = f'http://www.knapsackfamily.com/knapsack_core/result.php?sname=organism&word={url_name_format}'
@@ -40,29 +40,38 @@ def get_metabolites_for_taxon(name: str):
     return metabolite_table
 
 
-def get_metabolites_in_family(families: List[str], temp_output_csv: str = None, output_csv: str = None):
+def get_metabolites_in_family(family: str, temp_output_csv: str = None, output_csv: str = None):
     # Note that this is greedy as name matches in Knapsack search include partial e.g. Cissus matches Narcissus
     # Account for this by removing results without name resolution
-    wcvp_data = get_all_taxa(families_of_interest=families)
+    wcvp_data = get_all_taxa(families_of_interest=[family])
     if output_csv is not None:
         if not os.path.isdir(os.path.dirname(output_csv)):
             os.mkdir(os.path.dirname(output_csv))
 
     # Search family by looking for all data from genera
     genera_list = wcvp_data[wcvp_columns['genus']].unique()
-
+    failed_genera = []
     all_genera_df = pd.DataFrame()
     for i in tqdm(range(len(genera_list)), desc="Searching genera in Knapsack…", ascii=False, ncols=80):
         genus = genera_list[i]
-        genus_table = get_metabolites_for_taxon(genus)
-        if len(genus_table.index) > 0:
-            all_genera_df = pd.concat([all_genera_df, genus_table])
+        try:
+            genus_table = get_metabolites_for_taxon(genus)
+            if len(genus_table.index) > 0:
+                all_genera_df = pd.concat([all_genera_df, genus_table])
+        except:
+            failed_genera.append(genus)
     if temp_output_csv is not None:
         all_genera_df.to_csv(temp_output_csv)
-    acc_df = get_accepted_info_from_names_in_column(all_genera_df, 'Organism', families_of_interest=families)
-    acc_df = acc_df.dropna(subset=[wcvp_accepted_columns['id']])
+
+    acc_df = get_accepted_info_from_names_in_column(all_genera_df, 'Organism')
+    acc_df = acc_df[acc_df[wcvp_accepted_columns['family']] == family]
     acc_df['Source'] = 'KNApSAcK'
+    acc_df['knapsack_snippet'] = acc_df[kn_metabolite_name_column]
     acc_df.to_csv(output_csv)
+    if len(failed_genera) > 0:
+        print('WARNING: Searching for the following genera raised an error and should be manually checked:')
+        print(failed_genera)
+        raise ValueError
     return acc_df
 
 
@@ -81,7 +90,8 @@ def get_formulas_for_metabolite(metabolite: str):
     meta_table = tables[0]
     try:
         formulas = meta_table['Molecular formula'].values.tolist()
-
+        if formulas == []:
+            print(f'Warning: No info found for {metabolite}')
         return formulas
     except (KeyError, IndexError):
         print(f'Warning: No info found for {metabolite}')

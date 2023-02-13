@@ -1,12 +1,12 @@
-from typing import Union
+import re
 
 import pandas as pd
 
-from knapsack_searches import kn_formula_column, kn_metabolite_name_column
 from knapsack_metabolite_properties import get_alkaloids_from_kegg_brite
+from knapsack_searches import kn_formula_column, kn_metabolite_name_column
 
 
-def is_alkaloid(name: str, formula: str) -> Union[list[Union[bool, str]], str]:
+def is_alkaloid(name: str, formula: str) -> str:
     '''
     Returns true if alkaloid
     :param name:
@@ -53,3 +53,21 @@ def get_alkaloids_from_metabolites(metabolites_table: pd.DataFrame, temp_output_
         df_copy.to_csv(output_csv)
 
     return df_copy
+
+
+
+def get_N_containing_from_metabolites(metabolites_table: pd.DataFrame, output_csv: str = None) -> pd.DataFrame:
+    '''
+
+    :param metabolites_table: from get_metabolites_in_family
+    :param output_csv:
+    :return:
+    '''
+
+    p = re.compile(r'n', flags=re.IGNORECASE)
+    n_containing_df = metabolites_table[metabolites_table[kn_formula_column].str.contains(p, na=False)]
+
+    if output_csv is not None:
+        n_containing_df.to_csv(output_csv)
+
+    return n_containing_df

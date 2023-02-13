@@ -6,35 +6,53 @@ from pkg_resources import resource_filename
 from knapsack_searches import kn_metabolite_name_column
 
 _inputs_path = resource_filename(__name__, 'inputs')
+alkaloid_class_output_column = 'alkaloid_classes'
 
 
-def alkaloid_class_from_metabolite(metabolite: str, translation_dict: dict):
-    out_tuple = []
-    for alk_class in translation_dict:
-        if metabolite in translation_dict[alk_class]:
-            out_tuple.append(alk_class)
+def alkaloid_class_from_metabolite(metabolite: str):
+    class_t_dict = get_class_information_dict()
 
-    return tuple(out_tuple)
+    return class_t_dict[clean_metabolite_col(metabolite)]
+
+
+def clean_metabolite_col(given_str: str):
+    out_str = given_str.lower()
+    out_str = out_str.strip()
+    out_str = out_str.replace('(-)-', '')
+    out_str = out_str.replace('(+)-', '')
+    out_str = out_str.replace('(+/-)-', '')
+    return out_str
 
 
 def get_class_information_dict() -> dict:
-    def _unique_tuple(iterable):
-        return tuple(set(sorted(iterable)))
+    def _unique_join(iterable):
+        return ';'.join(set(sorted(iterable)))
 
-    manual_class_information = pd.read_csv(
-        os.path.join(_inputs_path, 'manual_Alkaloid_Class_Classification.csv'))
+    manual_class_information = pd.read_excel(
+        os.path.join(_inputs_path, 'Metabolite Alkaloid Class Classification.xlsx'), sheet_name='Metabolites')
 
-    grouped = manual_class_information.groupby('Class')['Alkaloids'].apply(
-        _unique_tuple).reset_index(
-        name='grouped_Alkaloids')
-    df = pd.merge(manual_class_information, grouped, how='left',
-                  on='Class')
+    duplicates = manual_class_information[manual_class_information['Alkaloids'].duplicated(keep=False)]
+    if len(duplicates.index) > 0:
+        print(duplicates)
+        raise ValueError(
+            f'Repeated alkaloid class entries in file {os.path.join(_inputs_path, "Metabolite Alkaloid Class Classification.xlsx")}')
 
-    return pd.Series(df['grouped_Alkaloids'].values,
-                     index=df['Class']).to_dict()
+    # clean
+    manual_class_information['Alkaloids'] = manual_class_information['Alkaloids'].apply(
+        clean_metabolite_col)
+    manual_class_information['Class'] = manual_class_information['Class'].apply(
+        clean_metabolite_col)
+
+    grouped = manual_class_information.groupby('Alkaloids')['Class'].apply(
+        _unique_join).reset_index(
+        name='grouped_classes')
+
+    return pd.Series(grouped['grouped_classes'].values,
+                     index=grouped['Alkaloids']).to_dict()
 
 
 def get_alkaloid_classes_from_metabolites(metabolites_table: pd.DataFrame,
+                                          metabolite_name_col: str = None,
                                           output_csv: str = None) -> pd.DataFrame:
     '''
 
@@ -46,8 +64,12 @@ def get_alkaloid_classes_from_metabolites(metabolites_table: pd.DataFrame,
 
     class_t_dict = get_class_information_dict()
     df_copy = metabolites_table.copy(deep=True)
-    df_copy['alkaloid_class'] = df_copy[kn_metabolite_name_column].apply(
-        lambda x: alkaloid_class_from_metabolite(x, class_t_dict))
+
+    if metabolite_name_col is None:
+        metabolite_name_col = kn_metabolite_name_column
+    df_copy['cleaned_metabolite_col'] = df_copy[metabolite_name_col].apply(clean_metabolite_col)
+    df_copy[alkaloid_class_output_column] = df_copy['cleaned_metabolite_col'].apply(
+        lambda x: class_t_dict[x] if x in class_t_dict.keys() else '')
 
     if output_csv is not None:
         df_copy.to_csv(output_csv)
