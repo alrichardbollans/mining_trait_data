@@ -4,26 +4,22 @@ To do this, you will need to use the `automatchnames`
 library v1.0 (https://github.com/alrichardbollans/automatchnames) to
 match names from gbif to the WCVP backbone.
 
-Example for Apocynaceae, Rubiaceae records:
+Example:
 
 ```python
 import pandas as pd
 import clean_plant_occurrences as cpo
 
-# Names of families in your occurrence records
-families_in_occurrences = ['Apocynaceae', 'Rubiaceae']
-
 gbif_records = pd.read_csv('your_gbif_records.csv')
-occurrences_with_accepted_information = cpo.read_occurences_and_output_acc_names(gbif_records,
-                                                                                 'output_file_for_accepted_info.csv',
-                                                                                 families_in_occurrences=families_in_occurrences)
+# kwargs to pass to `get_accepted_info_from_names_in_column`
+name_matching_kwargs = {'family_column': 'Family'}
 # To clean with both native and introduced regions
-both = cpo.clean_occurrences_by_tdwg_regions(occurrences_with_accepted_information,
+both = cpo.clean_occurrences_by_tdwg_regions(gbif_records,name_column = 'scientificName',
                                              clean_by='both',
-                                             output_csv='final_occurrence_output.csv')
+                                             output_csv='final_occurrence_output.csv', **name_matching_kwargs)
 
 # To clean with just native regions
-native = cpo.clean_occurrences_by_tdwg_regions(occurrences_with_accepted_information,
+native = cpo.clean_occurrences_by_tdwg_regions(gbif_records,name_column = 'scientificName',
                                                clean_by='native',
-                                               output_csv='final_native_occurrence_output.csv')
+                                               output_csv='final_native_occurrence_output.csv',**name_matching_kwargs)
 ```

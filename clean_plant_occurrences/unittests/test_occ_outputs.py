@@ -5,11 +5,9 @@ import pandas as pd
 from wcvp_name_matching import get_accepted_info_from_names_in_column
 from pkg_resources import resource_filename
 
-from clean_plant_occurrences import read_occurences_and_output_acc_names, \
-    get_tdwg_regions_for_occurrences, \
-    clean_occurrences_by_tdwg_regions
+from clean_plant_occurrences import clean_occurrences_by_tdwg_regions
 from clean_plant_occurrences.clean_by_tdwg_region import \
-    _find_whether_occurrences_in_native_or_introduced_regions
+    _find_whether_occurrences_in_native_or_introduced_regions, get_tdwg_regions_for_occurrences
 
 input_test_dir = resource_filename(__name__, 'test_inputs')
 test_output_dir = resource_filename(__name__, 'test_outputs')
@@ -19,14 +17,13 @@ class MyTestCase(unittest.TestCase):
 
     def test_bad_records(self):
         bad_records = pd.read_csv(os.path.join(input_test_dir, 'occs_which_should_be_removed.csv'))
-        bad_records_with_acc_info = read_occurences_and_output_acc_names(bad_records)
-        native_cleaned = clean_occurrences_by_tdwg_regions(bad_records_with_acc_info,
+        native_cleaned = clean_occurrences_by_tdwg_regions(bad_records, name_column='fullname',
                                                            clean_by='native',
                                                            output_csv=os.path.join(test_output_dir,
                                                                                    'native_should_be_empty.csv'))
         self.assertEqual(len(native_cleaned.index), 0)
 
-        both_cleaned = clean_occurrences_by_tdwg_regions(bad_records_with_acc_info,
+        both_cleaned = clean_occurrences_by_tdwg_regions(bad_records, name_column='fullname',
                                                          clean_by='both',
                                                          output_csv=os.path.join(test_output_dir,
                                                                                  'both_should_be_empty.csv'))
@@ -34,10 +31,8 @@ class MyTestCase(unittest.TestCase):
 
     def test_good_native_records(self):
         good_native_records = pd.read_csv(os.path.join(input_test_dir, 'native_ok.csv'))
-        good_records_with_acc_info = read_occurences_and_output_acc_names(good_native_records)
 
-
-        native_cleaned = clean_occurrences_by_tdwg_regions(good_records_with_acc_info,
+        native_cleaned = clean_occurrences_by_tdwg_regions(good_native_records, name_column='fullname',
                                                            clean_by='native',
                                                            output_csv=os.path.join(test_output_dir,
                                                                                    'native_native.csv'),
@@ -47,7 +42,7 @@ class MyTestCase(unittest.TestCase):
         print(diff['gbifID'])
         self.assertEqual(len(diff.index), 0)
 
-        native_cleaned = clean_occurrences_by_tdwg_regions(good_records_with_acc_info,
+        native_cleaned = clean_occurrences_by_tdwg_regions(good_native_records, name_column='fullname',
                                                            clean_by='both',
                                                            output_csv=os.path.join(test_output_dir,
                                                                                    'native_both.csv'),
@@ -80,8 +75,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_no_duplicates(self):
         good_native_records = pd.read_csv(os.path.join(input_test_dir, 'native_ok.csv'))
-        good_records_with_acc_info = read_occurences_and_output_acc_names(good_native_records)
-        native_cleaned = clean_occurrences_by_tdwg_regions(good_records_with_acc_info,
+        native_cleaned = clean_occurrences_by_tdwg_regions(good_native_records, name_column='fullname',
                                                            clean_by='native',
                                                            output_csv=os.path.join(test_output_dir,
                                                                                    'native_native.csv'))
