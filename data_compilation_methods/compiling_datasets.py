@@ -2,8 +2,16 @@ import os
 from typing import List
 
 import pandas as pd
+from wcvp_download import wcvp_accepted_columns
 
-from automatchnames import COL_NAMES
+COL_NAMES = {'acc_name': wcvp_accepted_columns['name'],
+             'acc_species': wcvp_accepted_columns['species'],
+             'acc_species_id': wcvp_accepted_columns['species_id'],
+             'acc_id': wcvp_accepted_columns['id'],
+             'acc_rank': wcvp_accepted_columns['rank'],
+             'acc_family': wcvp_accepted_columns['family'],
+             'single_source': 'Source',
+             'sources': 'Sources'}
 
 single_source_col = 'Source'
 compiled_sources_col = 'Compiled_Sources'
@@ -34,8 +42,9 @@ def _merge_columns(df: pd.DataFrame, new_col: str, old_columns: List[str]):
     if len(old_columns) > 1:
         for col in old_columns:
             df[col] = df[col].astype(str)
-        df[new_col] = df[old_columns].agg(lambda x: next((y for y in x.values if (y != '' and y != 'nan')), 'nan'),
-                                          axis=1)
+        df[new_col] = df[old_columns].agg(
+            lambda x: next((y for y in x.values if (y != '' and y != 'nan')), 'nan'),
+            axis=1)
         df = df.drop(columns=old_columns)
     return df
 
@@ -75,7 +84,7 @@ def _merge_on_accepted_id(x: pd.DataFrame, y: pd.DataFrame) -> pd.DataFrame:
 
     acc_sp_id_cols = [c for c in merged_dfs.columns.tolist() if COL_NAMES['acc_species_id'] in c]
     acc_sp_cols = [c for c in merged_dfs.columns.tolist() if
-                   (COL_NAMES['acc_species'] in c and '_ID' not in c)]
+                   (COL_NAMES['acc_species'] in c and '_id' not in c)]
     merged_dfs = _merge_columns(merged_dfs, COL_NAMES['acc_species'], acc_sp_cols)
 
     merged_dfs = _merge_columns(merged_dfs, COL_NAMES['acc_species_id'], acc_sp_id_cols)
@@ -83,12 +92,16 @@ def _merge_on_accepted_id(x: pd.DataFrame, y: pd.DataFrame) -> pd.DataFrame:
     rank_cols = [c for c in merged_dfs.columns.tolist() if COL_NAMES['acc_rank'] in c]
     merged_dfs = _merge_columns(merged_dfs, COL_NAMES['acc_rank'], rank_cols)
 
+    fam_cols = [c for c in merged_dfs.columns.tolist() if COL_NAMES['acc_family'] in c]
+    merged_dfs = _merge_columns(merged_dfs, COL_NAMES['acc_family'], fam_cols)
+
     return merged_dfs
 
-
+def join_snippets(given_snips):
+    return ':'.join(list(dict.fromkeys(given_snips)))
 def _merge_snippets_of_repeated_taxa(df: pd.DataFrame):
     '''
-    Given a 'hit' dataframe, if taxa are repeated rows are combined by merging the snippets
+    Given a 'hit' dataframe, if taxa are repeated then rows are combined by merging the snippets
     :param df:
     :return:
     '''
@@ -101,8 +114,8 @@ def _merge_snippets_of_repeated_taxa(df: pd.DataFrame):
         for snip_col in snippet_cols:
             print(f'Warning repeated taxa in data source. These will be resolved by merging snippets')
             print(df)
-
-            compiled = df.groupby([COL_NAMES['acc_id']])[snip_col].apply(','.join).reset_index()
+            df[snip_col] = df[snip_col].fillna('')
+            compiled = df.groupby([COL_NAMES['acc_id']])[snip_col].apply(join_snippets).reset_index()
             merged = pd.merge(compiled, df.drop(columns=snip_col), on=[COL_NAMES['acc_id']], )
             merged.drop_duplicates(subset=[COL_NAMES['acc_id']], inplace=True)
 
@@ -134,6 +147,17 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str) -> pd.DataFrame:
     :param output_csv: Output file
     :return:
     '''
+    # Put name columns at begining
+    start_cols = [COL_NAMES['acc_name'], COL_NAMES['acc_id'], COL_NAMES['acc_rank'],
+                  COL_NAMES['acc_species'],
+                  COL_NAMES['acc_species_id'], COL_NAMES['acc_family']]
+
+    if len(all_dfs) == 0 or all(len(x.index) == 0 for x in all_dfs):
+        out_dfs = pd.DataFrame(columns=start_cols + [compiled_sources_col])
+        out_dfs.to_csv(output_csv)
+
+        return out_dfs
+
     # First remove extraneous columns
     sources_cols = []
     snippet_cols = []
@@ -145,6 +169,8 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str) -> pd.DataFrame:
     # Do some cleaning
     cleaned_dfs = []
     for df in all_dfs:
+        if single_source_col not in df.columns:
+            raise ValueError(f'No source given in dataframe: {df}')
         cols_to_drop = [c for c in df.columns if
                         c not in cols_to_keep]
         df = df.drop(columns=cols_to_drop)
@@ -157,17 +183,13 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str) -> pd.DataFrame:
             for s in clean_df[single_source_col].unique().tolist():
                 if s not in sources:
                     sources.append(s)
-            # mask = ~df[[COL_NAMES['acc_name'], single_source_col]].isin(clean_df[[COL_NAMES['acc_name'], single_source_col]])
-            # df = df[
-            #     ~df[[COL_NAMES['acc_name'], single_source_col]].isin(clean_df[[COL_NAMES['acc_name'], single_source_col]])]
-            df = pd.merge(df, clean_df[[COL_NAMES['acc_name'], single_source_col]],
-                          on=[COL_NAMES['acc_name'], single_source_col], how="outer", indicator=True)
+
+            df = pd.merge(df, clean_df[[COL_NAMES['acc_id'], single_source_col]],
+                          on=[COL_NAMES['acc_id'], single_source_col], how="outer", indicator=True)
             df = df.loc[df["_merge"] == "left_only"].drop("_merge", axis=1)
 
         if len(df) > 0:
             cleaned_dfs.append(df)
-
-    # TODO: Concatenate all dataframes, then separate by source
 
     # Do merges
     merged_dfs = cleaned_dfs[0].copy()
@@ -179,24 +201,36 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str) -> pd.DataFrame:
     if len(cleaned_dfs) > 1:
         for i in cleaned_dfs[1:]:
             merged_dfs = _merge_on_accepted_id(merged_dfs, i)
-    # Put name columns at begining
-    start_cols = [COL_NAMES['acc_name'], COL_NAMES['acc_id'], COL_NAMES['acc_rank'],
-                  COL_NAMES['acc_species'],
-                  COL_NAMES['acc_species_id']]
+
     out_dfs = merged_dfs[[c for c in merged_dfs if c in start_cols]
                          + [c for c in merged_dfs if c not in start_cols]]
     # And source column at the end
     out_dfs = out_dfs[[c for c in out_dfs if c != compiled_sources_col]
                       + [compiled_sources_col]]
 
-    out_dfs.drop_duplicates(subset=[COL_NAMES['acc_id']] + snippet_cols, inplace=True)
-
     duplicate_hits_output = os.path.join(os.path.dirname(output_csv), 'duplicate_hits.csv')
-    dup_hits_df = out_dfs[out_dfs.duplicated(subset=COL_NAMES['acc_id'])]
+    dup_hits_df = out_dfs[out_dfs.duplicated(subset=[COL_NAMES['acc_id']] + snippet_cols)]
     if len(dup_hits_df) > 0:
         dup_hits_df.to_csv(duplicate_hits_output)
-        print(f'Duplicate hits found. Output to {duplicate_hits_output}')
+        raise ValueError(
+            f'Duplicate hits found with same snippets. These should have been merged. Output to {duplicate_hits_output}')
 
     out_dfs.to_csv(output_csv)
 
     return out_dfs
+
+
+def _unique_tuple(iterable):
+    return tuple(set(sorted(iterable)))
+
+
+def aggregate_data_on_accepted_ids(in_df: pd.DataFrame, column_to_aggregate: str) -> pd.DataFrame:
+    sources = in_df['Source'].unique()
+    if len(sources) > 1:
+        raise ValueError('This method should only be used for single sources')
+    grouped = in_df.groupby(wcvp_accepted_columns['id'])[column_to_aggregate].apply(
+        _unique_tuple).reset_index(
+        name=column_to_aggregate)
+    df = pd.merge(in_df.drop(columns=[column_to_aggregate]), grouped, how='left',
+                  on=wcvp_accepted_columns['id'])
+    return df

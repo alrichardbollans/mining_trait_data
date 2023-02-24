@@ -1,17 +1,16 @@
-species,fullname,decimalLongitude,decimalLatitude,countryCode,coordinateUncertaintyInMeters,year,individualCount,gbifID,basisOfRecord,institutionCode,establishmentMeans,is_cultivated_observation,sourceID
-Cinchona officinalis,Cinchona officinalis,-67.75,-16.16666,BOL,NA,NA,1,1257652240,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
-Cinchona officinalis,Cinchona officinalis,-68.233333,-15.333333,BOL,NA,NA,1,1257640089,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
-Cinchona officinalis,Cinchona officinalis,-68.265833,-15.6225,BOL,NA,NA,1,1257653785,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
-Cinchona officinalis,Cinchona officinalis,-67.183333,-16.116667,BOL,NA,NA,1,1257660086,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
-Cinchona officinalis,Cinchona officinalis,-63.8,-18.666667,BOL,NA,1989,4,1261216397,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
-Cinchona officinalis,Cinchona officinalis var. josephiana,-64.435,-16.7261,BOL,NA,NA,NA,1228529238,PRESERVED_SPECIMEN,F,NA,NA,GBIF
-Cinchona officinalis,Cinchona officinalis,-68.183333,-15.4,BOL,NA,NA,1,1257639994,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
-Cinchona officinalis,Cinchona officinalis,-68.43333,-14.63333,BOL,NA,1993,NA,1259114892,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
-Cinchona officinalis,Cinchona officinalis,-67.8,-16.283333,BOL,NA,1986,NA,2515668780,PRESERVED_SPECIMEN,NA,NA,NA,GBIF
-Cinchona officinalis,Cinchona officinalis,-67.733333,-16.373333,BOL,NA,NA,1,1257638622,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
-Cinchona officinalis,Cinchona officinalis,-67.616667,-16.35,BOL,NA,NA,1,1257638703,PRESERVED_SPECIMEN,MO,NA,NA,GBIF
-Adenium obesum,Adenium obesum,146.668256,-19.229849,AUS,61,2018,NA,3465922019,HUMAN_OBSERVATION,iNaturalist,NA,NA,GBIF
-Adenium obesum,Adenium obesum,128.735528,-15.608966,AUS,7813,2020,NA,3355088452,HUMAN_OBSERVATION,iNaturalist,NA,NA,GBIF
-Adenium obesum,Adenium obesum,152.815545,-25.264289,AUS,61,2021,NA,3124547376,HUMAN_OBSERVATION,iNaturalist,NA,NA,GBIF
-Adenium obesum,Adenium obesum,151.945724,-27.599597,AUS,61,2020,NA,3333113340,HUMAN_OBSERVATION,iNaturalist,NA,NA,GBIF
-Adenium obesum,Adenium obesum,-55.533306,-11.841833,BRA,NA,2015,NA,1848113158,PRESERVED_SPECIMEN,Universidade Federal de Mato Grosso,NA,NA,GBIF
+"species","fullname","decimalLongitude","decimalLatitude","countryCode","coordinateUncertaintyInMeters","year","individualCount","gbifID","basisOfRecord","institutionCode","establishmentMeans","is_cultivated_observation","sourceID"
+"Cinchona officinalis","Cinchona officinalis",-67.75,-16.16666,"BOL","NA","NA",1,1257652240,"PRESERVED_SPECIMEN","MO","NA","NA","GBIF"
+"Cinchona officinalis","Cinchona officinalis",-68.233333,-15.333333,"BOL","NA","NA",1,1257640089,"PRESERVED_SPECIMEN","MO","NA","NA","GBIF"
+"Cinchona officinalis","Cinchona officinalis",-68.265833,-15.6225,"BOL","NA","NA",1,1257653785,"PRESERVED_SPECIMEN","MO","NA","NA","GBIF"
+"Cinchona officinalis","Cinchona officinalis",-67.183333,-16.116667,"BOL","NA","NA",1,1257660086,"PRESERVED_SPECIMEN","MO","NA","NA","GBIF"
+"Cinchona officinalis","Cinchona officinalis",-63.8,-18.666667,"BOL","NA",1989,4,1261216397,"PRESERVED_SPECIMEN","MO","NA","NA","GBIF"
+"Cinchona officinalis","Cinchona officinalis",-68.183333,-15.4,"BOL","NA","NA",1,1257639994,"PRESERVED_SPECIMEN","MO","NA","NA","GBIF"
+"Cinchona officinalis","Cinchona officinalis",-68.43333,-14.63333,"BOL","NA",1993,"NA",1259114892,"PRESERVED_SPECIMEN","MO","NA","NA","GBIF"
+"Cinchona officinalis","Cinchona officinalis",-67.8,-16.283333,"BOL","NA",1986,"NA",2515668780,"PRESERVED_SPECIMEN","NA","NA","NA","GBIF"
+"Cinchona officinalis","Cinchona officinalis",-67.733333,-16.373333,"BOL","NA","NA",1,1257638622,"PRESERVED_SPECIMEN","MO","NA","NA","GBIF"
+"Cinchona officinalis","Cinchona officinalis",-67.616667,-16.35,"BOL","NA","NA",1,1257638703,"PRESERVED_SPECIMEN","MO","NA","NA","GBIF"
+"Adenium obesum","Adenium obesum",146.668256,-19.229849,"AUS",61,2018,"NA",3465922019,"HUMAN_OBSERVATION","iNaturalist","NA","NA","GBIF"
+"Adenium obesum","Adenium obesum",128.735528,-15.608966,"AUS",7813,2020,"NA",3355088452,"HUMAN_OBSERVATION","iNaturalist","NA","NA","GBIF"
+"Adenium obesum","Adenium obesum",152.815545,-25.264289,"AUS",61,2021,"NA",3124547376,"HUMAN_OBSERVATION","iNaturalist","NA","NA","GBIF"
+"Adenium obesum","Adenium obesum",151.945724,-27.599597,"AUS",61,2020,"NA",3333113340,"HUMAN_OBSERVATION","iNaturalist","NA","NA","GBIF"
+"Adenium obesum","Adenium obesum",-55.533306,-11.841833,"BRA","NA",2015,"NA",1848113158,"PRESERVED_SPECIMEN","Universidade Federal de Mato Grosso","NA","NA","GBIF"

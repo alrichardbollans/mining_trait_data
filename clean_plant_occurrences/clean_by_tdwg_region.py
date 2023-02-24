@@ -1,10 +1,14 @@
 import os
-from typing import List
 
+import numpy as np
 import pandas as pd
-# Add progress bar to apply method
-
 from tqdm import tqdm
+from wcvp_download import get_distributions_for_taxa, native_code_column, \
+    introduced_code_column, wcvp_accepted_columns
+from wcvp_name_matching import get_accepted_info_from_names_in_column
+import geopandas
+
+# Add progress bar to apply method
 
 tqdm.pandas()
 
@@ -15,34 +19,12 @@ _inputs_path = resource_filename(__name__, 'inputs')
 tdwg3_shpfile = os.path.join(_inputs_path, 'wgsrpd-master', 'level3', 'level3.shp')
 
 
-def read_occurences_and_output_acc_names(occ_df: pd.DataFrame, out_csv: str = None,
-                                         families_in_occurrences: List[str] = None) -> pd.DataFrame:
-    """
-    Get accepted info for occurrences.
-    :return:
-    """
-    from automatchnames import get_accepted_info_from_names_in_column
-
-    print('Getting accepted info for occurrences:')
-    print(occ_df)
-    occ_df = occ_df.drop_duplicates(subset=['gbifID'], keep='first')
-
-    acc_df = get_accepted_info_from_names_in_column(occ_df, 'fullname',
-                                                    families_of_interest=families_in_occurrences)
-
-    if out_csv is not None:
-        acc_df.to_csv(out_csv)
-
-    return acc_df
-
-
 def get_tdwg_regions_for_occurrences(occ_df: pd.DataFrame) -> pd.DataFrame:
     """
     GET TDWG regions for occurrences
     :param occ_df:
     :return:
     """
-    import geopandas
 
     print('Creating geometries from longitude and latitude')
     # changing to a GeoDataFrame to create geometry series
@@ -55,7 +37,8 @@ def get_tdwg_regions_for_occurrences(occ_df: pd.DataFrame) -> pd.DataFrame:
     map_df = geopandas.read_file(tdwg3_shpfile)
 
     occ_gp['tdwg3_region'] = ''
-    for idx in tqdm(range(map_df.shape[0]), desc="Getting tdwg regions for each occurrence…", ascii=False, ncols=72):
+    for idx in tqdm(range(map_df.shape[0]), desc="Getting tdwg regions for each occurrence…", ascii=False,
+                    ncols=82):
         # For every location, find if they reside within a region
         pip = occ_gp.within(map_df.loc[idx, 'geometry'])
         if pip.sum() > 0:  # we found where some of the addresses reside at map_df.loc[idx]
@@ -65,11 +48,11 @@ def get_tdwg_regions_for_occurrences(occ_df: pd.DataFrame) -> pd.DataFrame:
     return occ_gp
 
 
-def find_whether_occurrences_in_native_or_introduced_regions(
+def _find_whether_occurrences_in_native_or_introduced_regions(
         occ_df_with_acc_info_and_tdwg_regions: pd.DataFrame,
-        distributions_csv: str,
         output_csv: str = None,
-        tdwg3_region_col_name: str = 'tdwg3_region'):
+        tdwg3_region_col_name: str = 'tdwg3_region', include_doubtful: bool = False,
+        include_extinct: bool = False):
     """
     Use occurrence data with tdwg regions to find whether each occurrence is from a native or introduced region.
     Adds 'within_native' and 'within_introduced' columns to dataframe which are binary variables.
@@ -79,37 +62,43 @@ def find_whether_occurrences_in_native_or_introduced_regions(
     :param tdwg3_region_col_name:
     :return:
     """
-    import ast
     print('Getting native/introduced data for taxa')
-    ### Match taxa to wcsp regions
-    distro_df = pd.read_csv(distributions_csv)[
-        ['native_tdwg3_codes', 'intro_tdwg3_codes', 'extinct_tdwg3_codes', 'Accepted_ID']]
-    merged = pd.merge(occ_df_with_acc_info_and_tdwg_regions, distro_df, on='Accepted_ID')
-
+    ### Match taxa to WCVP regions
+    merged = get_distributions_for_taxa(occ_df_with_acc_info_and_tdwg_regions, wcvp_accepted_columns['id'],
+                                        include_doubtful, include_extinct)
     merged['within_native'] = merged.progress_apply(
-        lambda x: 1 if x[tdwg3_region_col_name] in ast.literal_eval(x['native_tdwg3_codes']) else 0, axis=1)
+        lambda x: 0 if x[native_code_column] is np.nan else (
+            1 if x[tdwg3_region_col_name] in x[native_code_column] else 0), axis=1)
 
     merged['within_introduced'] = merged.progress_apply(
-        lambda x: 1 if x[tdwg3_region_col_name] in ast.literal_eval(x['intro_tdwg3_codes']) else 0, axis=1)
+        lambda x: 0 if x[introduced_code_column] is np.nan else (
+            1 if x[tdwg3_region_col_name] in x[introduced_code_column] else 0), axis=1)
 
     if output_csv is not None:
         merged.to_csv(output_csv)
     return merged
 
-def clean_occurrences_by_tdwg_regions(occ_with_acc_info: pd.DataFrame,
-                                      distributions_csv: str,
-                                      priority: str = 'native',
+
+def clean_occurrences_by_tdwg_regions(occ_df: pd.DataFrame, name_column:str = 'scientificName',
+                                      clean_by: str = 'native',
                                       output_csv: str = None, remove_duplicate_records: bool = True,
-                                      remove_duplicated_lat_long_at_rank: str = 'precise'):
+                                      remove_duplicated_lat_long_at_rank: str = None,
+                                      include_doubtful: bool = False,
+                                      include_extinct: bool = False, **kwargs):
     """
     Use distribution data to remove occurrences outside of native/introduced based on given priority.
-    Distritbution data must be supplied for your families, which can be generated by wcsp_distribution_search
-    :param occ_with_acc_info:
-    :param distributions_csv:
-    :param priority:
+    Distritbution data must be supplied for your families, which can be generated by wcvp_distributions
+    :param include_extinct: bool whether to include extinct regions in distributions
+    :param include_doubtful: bool whether to include doubtful regions in distributions
+    :param remove_duplicated_lat_long_at_rank: string specifying removal of duplicates for given rank
+    :param remove_duplicate_records: bool specifying whether to remove duplicate gbif records
+    :param occ_df: dataframe of gbif occurrences
+    :param clean_by: whether to include introduced regions in cleaning one of 'native' or 'both'
     :param output_csv:
     :return:
     """
+
+    occ_with_acc_info = get_accepted_info_from_names_in_column(occ_df, name_column, **kwargs)
 
     if remove_duplicate_records:
         print('Removing duplicate Gbif IDs')
@@ -117,36 +106,28 @@ def clean_occurrences_by_tdwg_regions(occ_with_acc_info: pd.DataFrame,
 
     if remove_duplicated_lat_long_at_rank == 'species':
         occ_with_acc_info = occ_with_acc_info.drop_duplicates(
-            subset=['Accepted_Species', 'decimalLatitude', 'decimalLongitude'], keep='first')
+            subset=[wcvp_accepted_columns['species'], 'decimalLatitude', 'decimalLongitude'], keep='first')
     elif remove_duplicated_lat_long_at_rank == 'precise':
         occ_with_acc_info = occ_with_acc_info.drop_duplicates(
-            subset=['Accepted_Name', 'decimalLatitude', 'decimalLongitude'], keep='first')
+            subset=[wcvp_accepted_columns['id'], 'decimalLatitude', 'decimalLongitude'], keep='first')
     else:
         print('remove_duplicated_lat_long_at_rank not specified')
 
     occ_with_tdwg = get_tdwg_regions_for_occurrences(occ_with_acc_info)
-    matched_tdwg_info = find_whether_occurrences_in_native_or_introduced_regions(occ_with_tdwg, distributions_csv)
+    matched_tdwg_info = _find_whether_occurrences_in_native_or_introduced_regions(occ_with_tdwg,
+                                                                                  include_doubtful=include_doubtful,
+                                                                                  include_extinct=include_extinct)
 
-    occ_in_native = matched_tdwg_info[(matched_tdwg_info['within_native'] == 1)]
-    occ_in_introduced = matched_tdwg_info[(matched_tdwg_info['within_introduced'] == 1)]
-
-    if priority == 'native_then_introduced':
-        print('Prioritising native, then introduced')
-
-        introd_occ_not_in_native = occ_in_introduced[
-            ~occ_in_introduced['Accepted_ID'].isin(occ_in_native['Accepted_ID'].values)]
-        out_occ_df = pd.concat([occ_in_native, introd_occ_not_in_native])
-
-    elif priority == 'both':
+    if clean_by == 'both':
         print('Allowing both native and introduced')
         out_occ_df = matched_tdwg_info[
             (matched_tdwg_info['within_native'] == 1) | (matched_tdwg_info['within_introduced'] == 1)]
-    elif priority == 'native':
+    elif clean_by == 'native':
         print('Allowing only native occurrences')
-        out_occ_df = occ_in_native
+        out_occ_df = matched_tdwg_info[(matched_tdwg_info['within_native'] == 1)]
 
     else:
-        raise ValueError("priority must be one of 'native', 'both' or 'native_then_introduced'")
+        raise ValueError("clean_by must be one of 'native', 'both'")
 
     if output_csv is not None:
         out_occ_df.to_csv(output_csv)

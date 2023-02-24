@@ -4,7 +4,7 @@ from typing import List
 
 import pandas as pd
 
-from automatchnames import get_accepted_info_from_names_in_column
+from wcvp_name_matching import get_accepted_info_from_names_in_column
 from tqdm import tqdm
 
 
@@ -88,7 +88,7 @@ def search_for_common_names(taxa_list: List[str], output_csv: str) -> pd.DataFra
         if not os.path.isdir(os.path.dirname(output_csv)):
             os.mkdir(os.path.dirname(output_csv))
     # Swedish list is split across the alphabet
-    swedish_root_page = 'Lista_över_växter'
+    swedish_root_page = 'Wikipedia:Lista_över_växter'
     swedish_alphabet = list(string.ascii_uppercase) + ['Å', 'Ä', 'Ö']
     swedish_titles = [swedish_root_page + '/' + a for a in swedish_alphabet]
 
@@ -160,7 +160,7 @@ def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_sea
     names = list(taxa_list)
     str_to_hash = str(names).encode()
     temp_csv = "wiki_page_search_" + str(hashlib.md5(str_to_hash).hexdigest()) + ".csv"
-    _temp_outputs_path = ''
+    _temp_outputs_path = os.path.dirname(output_csv)
     temp_output_wiki_page_csv = os.path.join(_temp_outputs_path, temp_csv)
     unchecked_taxa_due_to_timeout = []
     if os.path.isfile(temp_output_wiki_page_csv) and not force_new_search:
