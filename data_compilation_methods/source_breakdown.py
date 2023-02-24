@@ -81,6 +81,20 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: Li
             if k in source_unique_counts.keys():
                 del source_unique_counts[k]
 
+    new_keys_to_remove = []
+    for k in source_counts:
+        if source_counts[k] == 0:
+            new_keys_to_remove.append(k)
+    for k in new_keys_to_remove:
+        del source_counts[k]
+
+    new_keys_to_remove = []
+    for k in source_unique_counts:
+        if source_unique_counts[k] == 0:
+            new_keys_to_remove.append(k)
+    for k in new_keys_to_remove:
+        del source_unique_counts[k]
+
     source_count_df = pd.DataFrame.from_dict(source_counts, orient='index', columns=['Count'])
     source_unique_counts_df = pd.DataFrame.from_dict(source_unique_counts, orient='index', columns=['Count'])
 

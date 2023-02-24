@@ -29,14 +29,18 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(alkaloid_class_from_metabolite('O-(2-Pyrrolylcarbonyl)-virgiline'),'quinolizidine;pyrrolidine')
 
     def test_class_information(self):
-        # check hierarchies
+        # check hierarchies/interalations -- all MIAs should be indole and monoterpene
+        # all monoterpenes that are indoles should be MIA
         class_t_dict = get_class_information_dict()
         for metabolite in class_t_dict:
             classes = class_t_dict[metabolite].split(';')
-
-            if 'MIA' in classes:
+            low_classes = [c.lower() for c in classes]
+            if 'mia' in low_classes:
                 self.assertIn('indole', classes)
                 self.assertIn('monoterpene', classes)
+
+            if 'indole' and 'monoterpene' in low_classes:
+                self.assertIn('mia', low_classes)
 
 
     def test_class_data(self):

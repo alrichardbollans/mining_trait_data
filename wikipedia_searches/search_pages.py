@@ -160,7 +160,7 @@ def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_sea
     names = list(taxa_list)
     str_to_hash = str(names).encode()
     temp_csv = "wiki_page_search_" + str(hashlib.md5(str_to_hash).hexdigest()) + ".csv"
-    _temp_outputs_path = ''
+    _temp_outputs_path = os.path.dirname(output_csv)
     temp_output_wiki_page_csv = os.path.join(_temp_outputs_path, temp_csv)
     unchecked_taxa_due_to_timeout = []
     if os.path.isfile(temp_output_wiki_page_csv) and not force_new_search:

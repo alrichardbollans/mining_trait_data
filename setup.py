@@ -19,12 +19,7 @@ setup(
     },
     install_requires=[
         "automatchnames == 1.0",
-        "pandas==1.5.3",
-        "numpy~=1.22.1",
-        "typing~=3.7.4.3",
-        "requests~=2.27.1",
         "Wikipedia-API==0.5.8",
-        "tqdm~=4.62.3",
         "pykew==0.1.3",
         "beautifulsoup4~=4.10.0",
         "tika~=2.6.0",
