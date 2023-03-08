@@ -78,7 +78,8 @@ class MyTestCase(unittest.TestCase):
         native_cleaned = clean_occurrences_by_tdwg_regions(good_native_records, name_column='fullname',
                                                            clean_by='native',
                                                            output_csv=os.path.join(test_output_dir,
-                                                                                   'native_native.csv'))
+                                                                                   'native_native.csv'),
+                                                           remove_duplicated_lat_long_at_rank='species')
         bad_records_uncleaned = good_native_records[good_native_records['gbifID'].isin([9991, 9992, 9993])]
         self.assertEqual(len(bad_records_uncleaned), 3)
 

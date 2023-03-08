@@ -1,8 +1,8 @@
-species,fullname,decimalLongitude,decimalLatitude,countryCode,known_region,known_native,known_introd,gbifID,basisOfRecord,institutionCode,establishmentMeans,is_cultivated_observation,sourceID
-Rytigynia claessensii,Rytigynia claessensii,29.52832,1.805556,COD,ZAI,1,0,3478084629,PRESERVED_SPECIMEN,AMU,NA,NA,GBIF
-Asclepias cryptoceras,Asclepias cryptoceras subsp. davisii,-120.7028,44.1338,USA,ORE,1,0,1847480144,HUMAN_OBSERVATION,iNaturalist,NA,NA,GBIF
-Adenium obesum,Adenium obesum,1.574238,9.793101,BEN,BEN,1,0,,,,,,
-Acokanthera oppositifolia,Acokanthera oppositifolia,26.525295,-25.664478,ZAF,TVL,1,0,,,,,,
-Acokanthera oppositifolia,Acokanthera oppositifolia,31.96792,-26.342858,SWZ,SWZ,1,0,,,,,,
-Coffea arabica,Coffea arabica,-51.097965,-7.426213,,BZN,0,1,,,,,,
-Coffea arabica,Coffea arabica,-72.009281,0.442233,,CLM,0,1,,,,,,
+"species","fullname","decimalLongitude","decimalLatitude","countryCode","known_region","known_native","known_introd","gbifID","basisOfRecord","institutionCode","establishmentMeans","is_cultivated_observation","sourceID"
+"Rytigynia claessensii","Rytigynia claessensii",29.52832,1.805556,"COD","ZAI",1,,3478084629,"PRESERVED_SPECIMEN","AMU","NA","NA","GBIF"
+"Asclepias cryptoceras","Asclepias cryptoceras subsp. davisii",-120.7028,44.1338,"USA","ORE",1,,1847480144,"HUMAN_OBSERVATION","iNaturalist","NA","NA","GBIF"
+"Adenium obesum","Adenium obesum",1.574238,9.793101,"BEN","BEN",1,0,,,,,,
+"Acokanthera oppositifolia","Acokanthera oppositifolia",26.525295,-25.664478,"ZAF","TVL",1,,,,,,,
+"Acokanthera oppositifolia","Acokanthera oppositifolia",31.96792,-26.342858,"SWZ","SWZ",1,,,,,,,
+"Coffea arabica","Coffea arabica",-51.097965,-7.426213,,"BZN",0,1,,,,,,
+"Coffea arabica","Coffea arabica",-72.009281,0.442233,,"CLM",0,1,,,,,,

@@ -3,7 +3,7 @@ import os
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
-from wcvp_download import get_distributions_for_taxa, native_code_column, \
+from wcvp_download import get_distributions_for_accepted_taxa, native_code_column, \
     introduced_code_column, wcvp_accepted_columns
 from wcvp_name_matching import get_accepted_info_from_names_in_column
 import geopandas
@@ -64,14 +64,15 @@ def _find_whether_occurrences_in_native_or_introduced_regions(
     """
     print('Getting native/introduced data for taxa')
     ### Match taxa to WCVP regions
-    merged = get_distributions_for_taxa(occ_df_with_acc_info_and_tdwg_regions, wcvp_accepted_columns['id'],
-                                        include_doubtful, include_extinct)
+    merged = get_distributions_for_accepted_taxa(occ_df_with_acc_info_and_tdwg_regions,
+                                                 wcvp_accepted_columns['name'],
+                                                 include_doubtful, include_extinct)
     merged['within_native'] = merged.progress_apply(
-        lambda x: 0 if x[native_code_column] is np.nan else (
+        lambda x: np.nan if x[native_code_column] is np.nan else (
             1 if x[tdwg3_region_col_name] in x[native_code_column] else 0), axis=1)
 
     merged['within_introduced'] = merged.progress_apply(
-        lambda x: 0 if x[introduced_code_column] is np.nan else (
+        lambda x: np.nan if x[introduced_code_column] is np.nan else (
             1 if x[tdwg3_region_col_name] in x[introduced_code_column] else 0), axis=1)
 
     if output_csv is not None:
@@ -79,7 +80,7 @@ def _find_whether_occurrences_in_native_or_introduced_regions(
     return merged
 
 
-def clean_occurrences_by_tdwg_regions(occ_df: pd.DataFrame, name_column:str = 'scientificName',
+def clean_occurrences_by_tdwg_regions(occ_df: pd.DataFrame, name_column: str = 'scientificName',
                                       clean_by: str = 'native',
                                       output_csv: str = None, remove_duplicate_records: bool = True,
                                       remove_duplicated_lat_long_at_rank: str = None,
@@ -104,14 +105,17 @@ def clean_occurrences_by_tdwg_regions(occ_df: pd.DataFrame, name_column:str = 's
         print('Removing duplicate Gbif IDs')
         occ_with_acc_info = occ_with_acc_info.drop_duplicates(subset=['gbifID'], keep='first')
 
-    if remove_duplicated_lat_long_at_rank == 'species':
-        occ_with_acc_info = occ_with_acc_info.drop_duplicates(
-            subset=[wcvp_accepted_columns['species'], 'decimalLatitude', 'decimalLongitude'], keep='first')
-    elif remove_duplicated_lat_long_at_rank == 'precise':
-        occ_with_acc_info = occ_with_acc_info.drop_duplicates(
-            subset=[wcvp_accepted_columns['id'], 'decimalLatitude', 'decimalLongitude'], keep='first')
-    else:
+    if remove_duplicated_lat_long_at_rank is None:
         print('remove_duplicated_lat_long_at_rank not specified')
+
+    else:
+        if remove_duplicated_lat_long_at_rank.lower() == 'species':
+            occ_with_acc_info = occ_with_acc_info.drop_duplicates(
+                subset=[wcvp_accepted_columns['species'], 'decimalLatitude', 'decimalLongitude'],
+                keep='first')
+        elif remove_duplicated_lat_long_at_rank.lower() == 'precise':
+            occ_with_acc_info = occ_with_acc_info.drop_duplicates(
+                subset=[wcvp_accepted_columns['name'], 'decimalLatitude', 'decimalLongitude'], keep='first')
 
     occ_with_tdwg = get_tdwg_regions_for_occurrences(occ_with_acc_info)
     matched_tdwg_info = _find_whether_occurrences_in_native_or_introduced_regions(occ_with_tdwg,
@@ -121,10 +125,13 @@ def clean_occurrences_by_tdwg_regions(occ_df: pd.DataFrame, name_column:str = 's
     if clean_by == 'both':
         print('Allowing both native and introduced')
         out_occ_df = matched_tdwg_info[
-            (matched_tdwg_info['within_native'] == 1) | (matched_tdwg_info['within_introduced'] == 1)]
+            (matched_tdwg_info['within_native'] == 1) | (matched_tdwg_info['within_introduced'] == 1) | (
+                    (matched_tdwg_info['within_native'].isna()) & (
+                matched_tdwg_info['within_introduced'].isna()))]
     elif clean_by == 'native':
         print('Allowing only native occurrences')
-        out_occ_df = matched_tdwg_info[(matched_tdwg_info['within_native'] == 1)]
+        out_occ_df = matched_tdwg_info[
+            (matched_tdwg_info['within_native'] == 1) | (matched_tdwg_info['within_native'].isna())]
 
     else:
         raise ValueError("clean_by must be one of 'native', 'both'")

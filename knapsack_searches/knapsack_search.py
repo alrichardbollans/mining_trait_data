@@ -3,13 +3,10 @@ import time
 
 import pandas as pd
 import requests
-from typing import List
-
 from pkg_resources import resource_filename
 from tqdm import tqdm
-
-from wcvp_name_matching import get_accepted_info_from_names_in_column
 from wcvp_download import get_all_taxa, wcvp_columns, wcvp_accepted_columns
+from wcvp_name_matching import get_accepted_info_from_names_in_column
 
 _inputs_path = resource_filename(__name__, 'inputs')
 _temp_outputs_path = resource_filename(__name__, 'temp_outputs')

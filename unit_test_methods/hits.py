@@ -3,7 +3,7 @@ import unittest
 import pandas as pd
 from wcvp_download import wcvp_accepted_columns
 
-from data_compilation_methods import compiled_sources_col, COL_NAMES
+from data_compilation_methods import compiled_sources_col, OUTPUT_COL_NAMES
 
 
 class confirming_hits(unittest.TestCase):
@@ -11,7 +11,7 @@ class confirming_hits(unittest.TestCase):
 
         self.assertIn(taxa, output_hits[wcvp_accepted_columns['name']].values.tolist())
 
-        dup_hits_df = output_hits[output_hits.duplicated(subset=[COL_NAMES['acc_id']], keep=False)]
+        dup_hits_df = output_hits[output_hits.duplicated(subset=[wcvp_accepted_columns['name']], keep=False)]
         if len(dup_hits_df) > 0:
             raise ValueError(
                 f'Duplicate hits found these should have been merged')

@@ -4,7 +4,7 @@ from typing import List, Tuple
 import numpy as np
 import pandas as pd
 from wcvp_download import get_all_taxa, wcvp_accepted_columns
-from wcvp_name_matching import clean_urn_ids, get_accepted_wcvp_info_from_ids_in_column
+from wcvp_name_matching import clean_urn_ids, get_accepted_wcvp_info_from_ipni_ids_in_column
 
 from data_compilation_methods import single_source_col
 
@@ -114,19 +114,19 @@ def search_powo(search_terms: List[str], accepted_output_file: str, filters: Lis
     else:
         df[single_source_col] = np.nan
     all_taxa = get_all_taxa()
-    acc_df = get_accepted_wcvp_info_from_ids_in_column(df, 'fqId', all_taxa)
+    acc_df = get_accepted_wcvp_info_from_ipni_ids_in_column(df, 'fqId', all_taxa)
     acc_df.to_csv(accepted_output_file)
 
 
 def create_presence_absence_data(powo_hits: pd.DataFrame, terms_indicating_absence: List[str] = None,
-                                 accepted_ids_of_absence: List[str] = None) -> Tuple[pd.DataFrame]:
+                                 accepted_ipni_ids_of_absence: List[str] = None) -> Tuple[pd.DataFrame]:
     if terms_indicating_absence is not None:
         absence_data = powo_hits[powo_hits['powo_Snippet'].str.contain('|'.join(terms_indicating_absence))]
         presence_data = powo_hits[~powo_hits['powo_Snippet'].str.contain('|'.join(terms_indicating_absence))]
 
-    if accepted_ids_of_absence is not None:
-        absence_data = powo_hits[powo_hits[wcvp_accepted_columns['id']].isin(accepted_ids_of_absence)]
-        presence_data = powo_hits[~powo_hits[wcvp_accepted_columns['id']].isin(accepted_ids_of_absence)]
+    if accepted_ipni_ids_of_absence is not None:
+        absence_data = powo_hits[powo_hits[wcvp_accepted_columns['ipni_id']].isin(accepted_ipni_ids_of_absence)]
+        presence_data = powo_hits[~powo_hits[wcvp_accepted_columns['ipni_id']].isin(accepted_ipni_ids_of_absence)]
 
     if len(absence_data.index) + len(presence_data.index) != len(powo_hits.index):
         raise ValueError('Some values have been lost')

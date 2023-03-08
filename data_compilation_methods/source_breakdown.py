@@ -3,8 +3,7 @@ import os
 from typing import List
 
 import pandas as pd
-
-from data_compilation_methods import COL_NAMES
+from wcvp_download import wcvp_accepted_columns
 
 
 def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: List[str] = None,
@@ -16,19 +15,19 @@ def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: Li
     from matplotlib import pyplot as plt
     out_df = pd.read_csv(input_csv)
 
-    dup_hits_df = out_df[out_df.duplicated(subset=COL_NAMES['acc_id'])]
+    dup_hits_df = out_df[out_df.duplicated(subset=wcvp_accepted_columns['name'])]
     if len(dup_hits_df) > 0:
         print(f'Duplicate hits found')
         if check_duplicates:
             raise ValueError
 
-    out_df.drop_duplicates(subset=[COL_NAMES['acc_id']], inplace=True)
+    out_df.drop_duplicates(subset=[wcvp_accepted_columns['name']], inplace=True)
 
     if ranks is not None:
-        out_df = out_df[out_df[COL_NAMES['acc_rank']].isin(ranks)]
+        out_df = out_df[out_df[wcvp_accepted_columns['rank']].isin(ranks)]
 
     if families is not None:
-        out_df = out_df[out_df[COL_NAMES['acc_family']].isin(families)]
+        out_df = out_df[out_df[wcvp_accepted_columns['family']].isin(families)]
 
     source_counts = dict()
     source_unique_counts = dict()

@@ -1,7 +1,5 @@
 from setuptools import setup, find_packages
 
-# To install run pip install PATH_TO_PACKAGE
-
 setup(
     name='miningtraitdata',
     url='https://github.com/alrichardbollans/mining_trait_data',
@@ -18,7 +16,7 @@ setup(
         "knapsack_metabolite_properties": ["inputs/*"]
     },
     install_requires=[
-        "automatchnames == 1.0",
+        "automatchnames == 1.1",
         "Wikipedia-API==0.5.8",
         "pykew==0.1.3",
         "beautifulsoup4~=4.10.0",
