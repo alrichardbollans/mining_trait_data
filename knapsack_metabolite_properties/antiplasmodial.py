@@ -112,7 +112,7 @@ def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.Da
                                         'Bisleucocurine',
                                         'Voacamine', 'Ellipticine', 'Klugine', 'Longicaudatine Y',
                                         '16-Methoxyisomatopensine', 'Strychnopentamine',
-                                        'Isostrychnopentamine',
+                                        'Isostrychnopentamine', 'Alstonine', 'Himbeline'
                                         'Longicaudatine', 'Ochrolifuanine A', 'Strychnogucine B']
 
     if metabolite_col is None:
