@@ -107,18 +107,28 @@ def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.Da
     # Metabolites from literature with activity <=1uM on any malaria strain
     # This is NOT EXHAUSTIVE
     # Contact package author for references
-    manual_known_antimal_metabolites = ['Tubulosine', 'Emetine', 'Cephaeline', 'Artemether', 'Quinine',
-                                        'Aspidocarpine', 'Cryptolepine', 'Bisnicalaterine C',
-                                        'Bisleucocurine',
-                                        'Voacamine', 'Ellipticine', 'Klugine', 'Longicaudatine Y',
-                                        '16-Methoxyisomatopensine', 'Strychnopentamine',
-                                        'Isostrychnopentamine', 'Alstonine', 'Himbeline'
-                                        'Longicaudatine', 'Ochrolifuanine A', 'Strychnogucine B']
+    # TODO: Make a file documenting these
+    manual_known_antimal_metabolites = [x.lower() for x in
+                                        ['Tubulosine', 'Emetine', 'Cephaeline', 'Artemether', 'Quinine',
+                                         'Aspidocarpine', 'Cryptolepine', 'cryptoheptine',
+                                         'Bisnicalaterine C', '10-hydroxy-ellipticin', 'tchibangensin',
+                                         'ellipticin hydrochloride', 'usambarensin',
+                                         '7S, 3S ochropposinine oxindole',
+                                         'tetrahydro-4′,5′,6′,17-usambarensin 17S', '3,14-dihydro-ellipticin',
+                                         '10-hydroxy-ellipticine', 'aplysinopsin',
+                                         'Bisleucocurine', 'bisleucocurine A', 'anhydropereirine',
+                                         'melohenine A', 'Artemisinin', 'Gedunin', 'Ulein', 'geissolosimine',
+                                         'Voacamine', 'Ellipticine', 'Klugine', 'Longicaudatine Y',
+                                         '16-Methoxyisomatopensine', 'Strychnopentamine',
+                                         'Isostrychnopentamine', 'Alstonine', 'Himbeline',
+                                         'Longicaudatine', 'Nicalaterine A', 'bisnicalaterine C',
+                                         'Neosergeolide', '4-Nerolidylcatechol', 'Chloroquine',
+                                         'Ochrolifuanine A', 'Strychnogucine B', 'leucoridine A N-oxide']]
 
     if metabolite_col is None:
         metabolite_col = kn_metabolite_name_column
     anti_mal_taxa = taxa_metabolite_data[
-        taxa_metabolite_data[metabolite_col].isin(manual_known_antimal_metabolites)]
+        taxa_metabolite_data[metabolite_col].str.lower().isin(manual_known_antimal_metabolites)]
 
     if output_csv is not None:
         anti_mal_taxa.to_csv(output_csv)
