@@ -8,12 +8,13 @@ setup(
     # Needed to actually package something
     packages=find_packages(include=['clean_plant_occurrences', 'data_compilation_methods',
                                     'conservation_priorities', 'knapsack_searches',
-                                    'powo_searches',
+                                    'powo_searches', 'NPASS_metabolites',
                                     'wikipedia_searches'], exclude=['unit_test_methods']),
 
     package_data={
         "clean_plant_occurrences": ["inputs/wgsrpd-master/level3/*.shp"],
-        "knapsack_metabolite_properties": ["inputs/*"]
+        "metabolite_properties": ["inputs/*"],
+        "NPASS_metabolites": ["inputs/*"]
     },
     install_requires=[
         "automatchnames == 1.1",
@@ -29,7 +30,6 @@ setup(
     ],
     # *strongly* suggested for sharing
     version='1.0',
-    license='MIT',
     description='A set of python packages for mining plant trait data',
     long_description=open('README.md').read(),
 )
