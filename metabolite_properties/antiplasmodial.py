@@ -8,7 +8,7 @@ from knapsack_searches import kn_metabolite_name_column
 _inputs_path = resource_filename(__name__, 'inputs')
 
 
-def get_antimalarial_metabolites():
+def get_knapsack_antimalarial_metabolites():
     # From http://www.knapsackfamily.com/MetaboliteActivity/result.php 'malaria'
 
     with open(os.path.join(_inputs_path, 'antimalarialmetabolites.html'), "r") as f:
@@ -33,15 +33,16 @@ def get_antimalarial_metabolites():
     return out_list
 
 
-def get_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame, metabolite_col: str = None,
-                                              output_csv: str = None) -> pd.DataFrame:
+def get_knapsack_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame,
+                                                       metabolite_col: str = None,
+                                                       output_csv: str = None) -> pd.DataFrame:
     """
 
     :param taxa_metabolite_data: from get_metabolites_in_family
     :param output_csv:
     :return:
     """
-    antimal_metabolites = get_antimalarial_metabolites()
+    antimal_metabolites = get_knapsack_antimalarial_metabolites()
     if metabolite_col is None:
         metabolite_col = kn_metabolite_name_column
     anti_mal_taxa = taxa_metabolite_data[
@@ -51,7 +52,7 @@ def get_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame
     return anti_mal_taxa
 
 
-def get_inactive_antimalarial_metabolites():
+def get_knapsack_inactive_antimalarial_metabolites():
     # From http://www.knapsackfamily.com/MetaboliteActivity/result.php 'malaria'
     with open(os.path.join(_inputs_path, 'antimalarialmetabolites.html'), "r") as f:
         page = f.read()
@@ -75,16 +76,16 @@ def get_inactive_antimalarial_metabolites():
     return out_list
 
 
-def get_inactive_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame,
-                                                       metabolite_col: str = None,
-                                                       output_csv: str = None) -> pd.DataFrame:
+def get_knapsack_inactive_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame,
+                                                                metabolite_col: str = None,
+                                                                output_csv: str = None) -> pd.DataFrame:
     """
 
     :param taxa_metabolite_data: from get_metabolites_in_family
     :param output_csv:
     :return:
     """
-    inactive_antimal_metabolites = get_inactive_antimalarial_metabolites()
+    inactive_antimal_metabolites = get_knapsack_inactive_antimalarial_metabolites()
     if metabolite_col is None:
         metabolite_col = kn_metabolite_name_column
     inactive_taxa = taxa_metabolite_data[
@@ -107,28 +108,18 @@ def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.Da
     # Metabolites from literature with activity <=1uM on any malaria strain
     # This is NOT EXHAUSTIVE
     # Contact package author for references
-    # TODO: Make a file documenting these
-    manual_known_antimal_metabolites = [x.lower() for x in
-                                        ['Tubulosine', 'Emetine', 'Cephaeline', 'Artemether', 'Quinine',
-                                         'Aspidocarpine', 'Cryptolepine', 'cryptoheptine',
-                                         'Bisnicalaterine C', '10-hydroxy-ellipticin', 'tchibangensin',
-                                         'ellipticin hydrochloride', 'usambarensin',
-                                         '7S, 3S ochropposinine oxindole',
-                                         'tetrahydro-4′,5′,6′,17-usambarensin 17S', '3,14-dihydro-ellipticin',
-                                         '10-hydroxy-ellipticine', 'aplysinopsin',
-                                         'Bisleucocurine', 'bisleucocurine A', 'anhydropereirine',
-                                         'melohenine A', 'Artemisinin', 'Gedunin', 'Ulein', 'geissolosimine',
-                                         'Voacamine', 'Ellipticine', 'Klugine', 'Longicaudatine Y',
-                                         '16-Methoxyisomatopensine', 'Strychnopentamine',
-                                         'Isostrychnopentamine', 'Alstonine', 'Himbeline',
-                                         'Longicaudatine', 'Nicalaterine A', 'bisnicalaterine C',
-                                         'Neosergeolide', '4-Nerolidylcatechol', 'Chloroquine',
-                                         'Ochrolifuanine A', 'Strychnogucine B', 'leucoridine A N-oxide']]
-
+    manual_apm_compounds_df = pd.read_excel(os.path.join(_inputs_path, 'APM Compounds.xlsx'))
+    manual_apm_compound_names = [x.strip().lower() for x in manual_apm_compounds_df['Compound Name'].values]
+    manual_apm_compound_casids = manual_apm_compounds_df['CAS_ID'].dropna().values
     if metabolite_col is None:
         metabolite_col = kn_metabolite_name_column
     anti_mal_taxa = taxa_metabolite_data[
-        taxa_metabolite_data[metabolite_col].str.lower().isin(manual_known_antimal_metabolites)]
+        (taxa_metabolite_data[metabolite_col].str.lower().isin(manual_apm_compound_names)) |
+        (taxa_metabolite_data['CAS ID'].isin(manual_apm_compound_casids))]
+
+    missing_ids = taxa_metabolite_data[taxa_metabolite_data['CAS ID'].isna()]
+    print('WARNING: Missing CAS IDs for metabolites:')
+    print(missing_ids[metabolite_col])
 
     if output_csv is not None:
         anti_mal_taxa.to_csv(output_csv)

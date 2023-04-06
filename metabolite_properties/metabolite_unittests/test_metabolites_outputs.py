@@ -5,9 +5,9 @@ import pandas as pd
 from pkg_resources import resource_filename
 from wcvp_download import wcvp_accepted_columns
 
-from knapsack_metabolite_properties import is_alkaloid, get_alkaloids_from_metabolites, \
-    get_antimalarial_metabolite_hits_for_taxa, get_antimalarial_metabolites, \
-    get_inactive_antimalarial_metabolites, get_inactive_antimalarial_metabolite_hits_for_taxa, \
+from metabolite_properties import is_alkaloid, get_alkaloids_from_metabolites, \
+    get_knapsack_antimalarial_metabolite_hits_for_taxa, get_knapsack_antimalarial_metabolites, \
+    get_knapsack_inactive_antimalarial_metabolites, get_knapsack_inactive_antimalarial_metabolite_hits_for_taxa, \
     get_N_containing_from_metabolites
 from knapsack_searches import kn_metabolite_name_column
 
@@ -63,7 +63,7 @@ class MyTestCase(unittest.TestCase):
         self.assertGreater(len(all_formulae), len(n_formulae))
 
     def test_antimal_metas(self):
-        metabs = get_antimalarial_metabolites()
+        metabs = get_knapsack_antimalarial_metabolites()
         should_be_antimal = ['Emodin', '(-)-Lycorine', 'Canthin-6-one', 'Afrormosin', 'Afromosin',
                              "Castanin",
                              "7-Hydroxy-6,4'-dimethoxyisoflavone"]
@@ -74,7 +74,7 @@ class MyTestCase(unittest.TestCase):
             self.assertNotIn(m, metabs)
 
     def test_inactiveantimal_metas(self):
-        metabs = get_inactive_antimalarial_metabolites()
+        metabs = get_knapsack_inactive_antimalarial_metabolites()
         should_be_antimal = ['3-O-Caffeoylquinic acid', 'Heriguard']
         for m in should_be_antimal:
             self.assertIn(m, metabs)
@@ -83,7 +83,7 @@ class MyTestCase(unittest.TestCase):
         # logan = get_metabolites_in_family('Loganiaceae',outputcsv = os.path.join(test_output_dir, 'loganiaceae_metabolites.csv'))
         logan = pd.read_csv(os.path.join(test_output_dir, 'loganiaceae_metabolites.csv'))
 
-        logan_antiplasm_df = get_antimalarial_metabolite_hits_for_taxa(logan, output_csv=os.path.join(test_output_dir,
+        logan_antiplasm_df = get_knapsack_antimalarial_metabolite_hits_for_taxa(logan, output_csv=os.path.join(test_output_dir,
                                                                                            'logan_antimal.csv'))
 
         lucida = \
@@ -102,8 +102,8 @@ class MyTestCase(unittest.TestCase):
         # logan = get_metabolites_in_family('Loganiaceae',outputcsv = os.path.join(test_output_dir, 'loganiaceae_metabolites.csv'))
         logan = pd.read_csv(os.path.join(test_output_dir, 'loganiaceae_metabolites.csv'))
 
-        logan_antiplasm_df = get_inactive_antimalarial_metabolite_hits_for_taxa(logan,
-                                                                                output_csv=os.path.join(test_output_dir,
+        logan_antiplasm_df = get_knapsack_inactive_antimalarial_metabolite_hits_for_taxa(logan,
+                                                                                         output_csv=os.path.join(test_output_dir,
                                                                                              'logan_inacgtiveantimal.csv'))
 
         lucida = \

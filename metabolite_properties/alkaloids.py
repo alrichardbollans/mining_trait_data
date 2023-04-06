@@ -2,7 +2,7 @@ import re
 
 import pandas as pd
 
-from knapsack_metabolite_properties import get_alkaloids_from_kegg_brite
+from metabolite_properties import get_alkaloids_from_kegg_brite
 from knapsack_searches import kn_formula_column, kn_metabolite_name_column
 
 

@@ -4,7 +4,7 @@ import unittest
 import pandas as pd
 from pkg_resources import resource_filename
 
-from knapsack_metabolite_properties.alkaloid_classes import get_class_information_dict, \
+from metabolite_properties.alkaloid_classes import get_class_information_dict, \
     get_alkaloid_classes_from_metabolites, alkaloid_class_from_metabolite
 
 input_test_dir = resource_filename(__name__, 'test_inputs')
