@@ -1,0 +1,7 @@
+NPASS-2023 v2.0
+https://bidd.group/NPASS/downloadnpass.html
+Accessed: XX/XX/XXX
+Source abv.:NPASS
+
+Note some interesting cases where 0 should be replaced by 'No'
+eg. https://bidd.group/NPASS/organism.php?org_id=NPO17300
