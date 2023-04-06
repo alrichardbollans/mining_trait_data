@@ -8,13 +8,12 @@ setup(
     # Needed to actually package something
     packages=find_packages(include=['clean_plant_occurrences', 'data_compilation_methods',
                                     'conservation_priorities', 'knapsack_searches',
-                                    'powo_searches', 'NPASS_metabolites',
+                                    'powo_searches',
                                     'wikipedia_searches'], exclude=['unit_test_methods']),
 
     package_data={
         "clean_plant_occurrences": ["inputs/wgsrpd-master/level3/*.shp"],
-        "metabolite_properties": ["inputs/*"],
-        "NPASS_metabolites": ["inputs/*"]
+        "metabolite_properties": ["inputs/*"]
     },
     install_requires=[
         "automatchnames == 1.1",
