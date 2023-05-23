@@ -13,10 +13,11 @@ setup(
 
     package_data={
         "clean_plant_occurrences": ["inputs/wgsrpd-master/level3/*.shp"],
-        "metabolite_properties": ["inputs/*"]
+        "metabolite_properties": ["inputs/*"],
+        "knapsack_searches": ["inputs/*"]
     },
     install_requires=[
-        "automatchnames == 1.1",
+        "automatchnames == 1.1.1",
         "Wikipedia-API==0.5.8",
         "pykew==0.1.3",
         "beautifulsoup4~=4.10.0",

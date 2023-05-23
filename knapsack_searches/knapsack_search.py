@@ -60,7 +60,9 @@ def get_metabolites_in_family(family: str, temp_output_csv: str = None, output_c
     if temp_output_csv is not None:
         all_genera_df.to_csv(temp_output_csv)
 
-    acc_df = get_accepted_info_from_names_in_column(all_genera_df, 'Organism')
+    acc_df = get_accepted_info_from_names_in_column(all_genera_df, 'Organism',
+                                                    manual_resolution_csv=os.path.join(_inputs_path,
+                                                                                       'manual_match_data.csv'), )
     acc_df = acc_df[acc_df[wcvp_accepted_columns['family']] == family]
     acc_df['Source'] = 'KNApSAcK'
     acc_df['knapsack_snippet'] = acc_df[kn_metabolite_name_column]
