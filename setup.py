@@ -17,7 +17,7 @@ setup(
         "knapsack_searches": ["inputs/*"]
     },
     install_requires=[
-        "automatchnames == 1.1.1",
+        "automatchnames == 1.2.0",
         "Wikipedia-API==0.5.8",
         "pykew==0.1.3",
         "beautifulsoup4~=4.10.0",

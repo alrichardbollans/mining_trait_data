@@ -6,10 +6,11 @@ from wcvp_download import wcvp_accepted_columns
 
 single_source_col = 'Source'
 compiled_sources_col = 'Compiled_Sources'
-OUTPUT_COL_NAMES = [wcvp_accepted_columns['name'],
+OUTPUT_COL_NAMES = [wcvp_accepted_columns['name'], wcvp_accepted_columns['name_w_author'],
                     wcvp_accepted_columns['ipni_id'],
                     wcvp_accepted_columns['rank'],
                     wcvp_accepted_columns['species'],
+                    wcvp_accepted_columns['species_w_author'],
                     wcvp_accepted_columns['species_ipni_id'],
 
                     wcvp_accepted_columns['family'],
@@ -22,14 +23,14 @@ def _aggregate_data_on_accepted_names(in_df: pd.DataFrame) -> pd.DataFrame:
         out.sort()
         return out
 
-    grouped = in_df.groupby(wcvp_accepted_columns['name'])[single_source_col].apply(
+    grouped = in_df.groupby(wcvp_accepted_columns['name_w_author'])[single_source_col].apply(
         _unique_sources).reset_index(
         name=single_source_col)
     df = pd.merge(in_df.drop(columns=[single_source_col]), grouped, how='left',
-                  on=wcvp_accepted_columns['name'])
+                  on=wcvp_accepted_columns['name_w_author'])
     df = df.rename(columns={single_source_col: compiled_sources_col})
 
-    df = df.drop_duplicates(subset=[wcvp_accepted_columns['name']])
+    df = df.drop_duplicates(subset=[wcvp_accepted_columns['name_w_author']])
 
     return df
 
@@ -68,7 +69,7 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str) -> pd.DataFrame:
         cols_to_drop = [c for c in df.columns if
                         c not in cols_to_keep]
         df = df.drop(columns=cols_to_drop)
-        df = df.dropna(subset=[wcvp_accepted_columns['name']])
+        df = df.dropna(subset=[wcvp_accepted_columns['name_w_author']])
 
         # Remove repeated entries across dataframes
         sources = []
@@ -77,8 +78,8 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str) -> pd.DataFrame:
                 if s not in sources:
                     sources.append(s)
 
-            df = pd.merge(df, clean_df[[wcvp_accepted_columns['name'], single_source_col]],
-                          on=[wcvp_accepted_columns['name'], single_source_col], how="outer",
+            df = pd.merge(df, clean_df[[wcvp_accepted_columns['name_w_author'], single_source_col]],
+                          on=[wcvp_accepted_columns['name_w_author'], single_source_col], how="outer",
                           indicator=True)
             df = df.loc[df["_merge"] == "left_only"].drop("_merge", axis=1)
 
@@ -97,7 +98,7 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str) -> pd.DataFrame:
     out_dfs = out_dfs.sort_values(by=wcvp_accepted_columns['name']).reset_index(drop=True)
 
     duplicate_hits_output = os.path.join(os.path.dirname(output_csv), 'duplicate_hits.csv')
-    dup_hits_df = out_dfs[out_dfs.duplicated(subset=[wcvp_accepted_columns['name']], keep=False)]
+    dup_hits_df = out_dfs[out_dfs.duplicated(subset=[wcvp_accepted_columns['name_w_author']], keep=False)]
     if len(dup_hits_df) > 0:
         dup_hits_df.to_csv(duplicate_hits_output)
         raise ValueError(
