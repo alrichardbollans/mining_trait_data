@@ -1,12 +1,13 @@
 import unittest
 
 import pandas as pd
-from wcvp_download import wcvp_accepted_columns
+from wcvp_download import wcvp_accepted_columns, get_all_taxa,wcvp_columns
 
 from data_compilation_methods import compiled_sources_col, OUTPUT_COL_NAMES
 
 
 class confirming_hits(unittest.TestCase):
+    
     def confirm_hit(self, taxa: str, output_hits: pd.DataFrame):
 
         self.assertIn(taxa, output_hits[wcvp_accepted_columns['name']].values.tolist())

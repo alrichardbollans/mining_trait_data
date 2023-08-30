@@ -1,14 +1,16 @@
 import os.path
 import unittest
 
+import numpy as np
 import pandas as pd
 from pkg_resources import resource_filename
 from wcvp_download import wcvp_accepted_columns
 
-from metabolite_properties import is_alkaloid, get_alkaloids_from_metabolites, \
+from metabolite_properties import is_alkaloid_from_name_and_formulae, get_alkaloids_from_metabolites, \
     get_knapsack_antimalarial_metabolite_hits_for_taxa, get_knapsack_antimalarial_metabolites, \
-    get_knapsack_inactive_antimalarial_metabolites, get_knapsack_inactive_antimalarial_metabolite_hits_for_taxa, \
-    get_N_containing_from_metabolites
+    get_knapsack_inactive_antimalarial_metabolites, \
+    get_knapsack_inactive_antimalarial_metabolite_hits_for_taxa, \
+    get_N_containing_from_metabolites, chembl_apm_compounds_csv
 from knapsack_searches import kn_metabolite_name_column
 
 input_test_dir = resource_filename(__name__, 'test_inputs')
@@ -22,17 +24,18 @@ class MyTestCase(unittest.TestCase):
                           [' Hygrine', 'VVVV'], [' Cuscohygrine', '111'], ['7-O-Acetylsalutaridinol', 'XXXX'],
                           ['madeupalkine', 'N'], ['madeup1alkine', 'n']]
         for a in should_be_alks:
-            self.assertNotEqual(is_alkaloid(a[0], a[1]), 'False', msg=a)
+            self.assertNotEqual(is_alkaloid_from_name_and_formulae(a[0], [a[1]]), 'False', msg=a)
 
         shouldntbealks = [['madeupalkine', 'CH3'], ['quinone', 'N']]
 
         for a in shouldntbealks:
-            self.assertEqual(is_alkaloid(a[0], a[1]), 'False', msg=a)
+            self.assertEqual(is_alkaloid_from_name_and_formulae(a[0], [a[1]]), 'False', msg=a)
 
     def test_alk_output(self):
         # logan = get_metabolites_in_family('Loganiaceae',os.path.join(test_output_dir, 'loganiaceae_metabolites.csv'))
         logan = pd.read_csv(os.path.join(test_output_dir, 'loganiaceae_metabolites.csv'))
-        logan_alk_df = get_alkaloids_from_metabolites(logan, temp_output_csv=os.path.join(test_output_dir,
+        logan['SMILES'] = ''
+        logan_alk_df = get_alkaloids_from_metabolites(logan,'Metabolite', temp_output_csv=os.path.join(test_output_dir,
                                                                                           'logan_metabolites_w_alks.csv'),
                                                       output_csv=os.path.join(test_output_dir,
                                                                               'logan_metabolites_w_alks_final.csv'))
@@ -67,24 +70,35 @@ class MyTestCase(unittest.TestCase):
         should_be_antimal = ['Emodin', '(-)-Lycorine', 'Canthin-6-one', 'Afrormosin', 'Afromosin',
                              "Castanin",
                              "7-Hydroxy-6,4'-dimethoxyisoflavone"]
+
+        chembl_apm_compounds_df = pd.read_csv(chembl_apm_compounds_csv)
+        metabs += chembl_apm_compounds_df['Compound Name'].values.tolist()
+
         for m in should_be_antimal:
             self.assertIn(m, metabs)
 
-        for m in ['Heriguard']:
+        for m in ['Heriguard', '3-O-Caffeoylquinic acid', 'Heriguard']:
             self.assertNotIn(m, metabs)
 
     def test_inactiveantimal_metas(self):
         metabs = get_knapsack_inactive_antimalarial_metabolites()
+        chembl_apm_compounds_df = pd.read_csv(chembl_apm_compounds_csv)
+
         should_be_antimal = ['3-O-Caffeoylquinic acid', 'Heriguard']
         for m in should_be_antimal:
             self.assertIn(m, metabs)
+        for m in should_be_antimal:
+            self.assertNotIn(m, chembl_apm_compounds_df['Compound Name'].values)
 
     def test_antimal_output(self):
         # logan = get_metabolites_in_family('Loganiaceae',outputcsv = os.path.join(test_output_dir, 'loganiaceae_metabolites.csv'))
         logan = pd.read_csv(os.path.join(test_output_dir, 'loganiaceae_metabolites.csv'))
 
-        logan_antiplasm_df = get_knapsack_antimalarial_metabolite_hits_for_taxa(logan, output_csv=os.path.join(test_output_dir,
-                                                                                           'logan_antimal.csv'))
+        logan_antiplasm_df = get_knapsack_antimalarial_metabolite_hits_for_taxa(logan,
+                                                                                metabolite_col='Metabolite',
+                                                                                output_csv=os.path.join(
+                                                                                    test_output_dir,
+                                                                                    'logan_antimal.csv'))
 
         lucida = \
             logan_antiplasm_df[logan_antiplasm_df[wcvp_accepted_columns['name']] == 'Strychnos usambarensis'][
@@ -103,7 +117,9 @@ class MyTestCase(unittest.TestCase):
         logan = pd.read_csv(os.path.join(test_output_dir, 'loganiaceae_metabolites.csv'))
 
         logan_antiplasm_df = get_knapsack_inactive_antimalarial_metabolite_hits_for_taxa(logan,
-                                                                                         output_csv=os.path.join(test_output_dir,
+                                                                                         metabolite_col='Metabolite',
+                                                                                         output_csv=os.path.join(
+                                                                                             test_output_dir,
                                                                                              'logan_inacgtiveantimal.csv'))
 
         lucida = \

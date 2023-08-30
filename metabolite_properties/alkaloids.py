@@ -1,14 +1,15 @@
 import re
+from typing import List
 
 import pandas as pd
 
+from knapsack_searches import kn_formula_column
 from metabolite_properties import get_alkaloids_from_kegg_brite
-from knapsack_searches import kn_formula_column, kn_metabolite_name_column
 
 
-def is_alkaloid(name: str, formula: str) -> str:
+def is_alkaloid_from_name_and_formulae(name: str, formulae: List[str]) -> str:
     '''
-    Returns true if alkaloid
+    Returns true if known alkaloid or if name ends in 'ine' and formula contains 'N'
     :param name:
     :param formula:
     :return:
@@ -26,13 +27,15 @@ def is_alkaloid(name: str, formula: str) -> str:
         return 'in_known_alkaloids'
     elif stripped_name not in known_non_alkaloids:
         if any(s.lower() in stripped_name for s in suffixes) or stripped_name.endswith('ine'):
-            if "n" in formula.lower():
-                return 'N_and_ends_in_ine'
+            for formula in formulae:
+                if formula == formula:
+                    if "n" in formula.lower():
+                        return 'N_and_ends_in_ine'
 
     return 'False'
 
 
-def get_alkaloids_from_metabolites(metabolites_table: pd.DataFrame, temp_output_csv: str = None,
+def get_alkaloids_from_metabolites(metabolites_table: pd.DataFrame, metabolite_name_col: str, temp_output_csv: str = None,
                                    output_csv: str = None) -> pd.DataFrame:
     '''
 
@@ -42,18 +45,17 @@ def get_alkaloids_from_metabolites(metabolites_table: pd.DataFrame, temp_output_
     :return:
     '''
     df_copy = metabolites_table.copy(deep=True)
-    df_copy['is_alkaloid'] = df_copy.apply(
-        lambda x: is_alkaloid(x[kn_metabolite_name_column], x[kn_formula_column]), axis=1)
+    df_copy['is_alkaloid_from_name_and_formula'] = df_copy.apply(
+        lambda x: is_alkaloid_from_name_and_formulae(x[metabolite_name_col], [x[kn_formula_column], x['SMILES']]), axis=1)
 
     if temp_output_csv is not None:
         df_copy.to_csv(temp_output_csv)
 
-    df_copy = df_copy[df_copy['is_alkaloid'] != 'False']
+    df_copy = df_copy[df_copy['is_alkaloid_from_name_and_formula'] != 'False']
     if output_csv is not None:
         df_copy.to_csv(output_csv)
 
     return df_copy
-
 
 
 def get_N_containing_from_metabolites(metabolites_table: pd.DataFrame, output_csv: str = None) -> pd.DataFrame:
@@ -65,7 +67,8 @@ def get_N_containing_from_metabolites(metabolites_table: pd.DataFrame, output_cs
     '''
 
     p = re.compile(r'n', flags=re.IGNORECASE)
-    n_containing_df = metabolites_table[metabolites_table[kn_formula_column].str.contains(p, na=False)]
+    n_containing_df = metabolites_table[
+        metabolites_table[kn_formula_column].str.contains(p, na=False) | metabolites_table['SMILES'].str.contains(p, na=False)]
 
     if output_csv is not None:
         n_containing_df.to_csv(output_csv)
