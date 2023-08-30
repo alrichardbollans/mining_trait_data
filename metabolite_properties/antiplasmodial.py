@@ -102,7 +102,6 @@ def get_knapsack_inactive_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_
 def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.DataFrame,
                                                      CAS_ID_COL: str = None,
                                                      INCHIKEY_COL: str = None,
-                                                     SMILES_COL: str = None,
                                                      output_csv: str = None) -> pd.DataFrame:
     """
 
@@ -113,8 +112,8 @@ def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.Da
     # Metabolites from literature with activity <=1uM on any malaria strain
     # This is NOT EXHAUSTIVE
     # Contact package author for references
-    if CAS_ID_COL is None and INCHIKEY_COL is None and SMILES_COL is None:
-        raise ValueError('Must specify one of CAS_ID_COL, INCHIKEY_COL, SMILES_COL')
+    if CAS_ID_COL is None and INCHIKEY_COL is None:
+        raise ValueError('Must specify one of CAS_ID_COL, INCHIKEY_COL')
     manual_apm_compounds_df = pd.read_excel(os.path.join(_inputs_path, 'APM Compounds.xlsx'))
 
     # Clean columns
@@ -124,7 +123,6 @@ def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.Da
 
     clean_col(manual_apm_compounds_df, 'CAS_ID')
     clean_col(manual_apm_compounds_df, 'InChIKey')
-    clean_col(manual_apm_compounds_df, 'Smiles')
     if CAS_ID_COL is not None:
         clean_col(taxa_metabolite_data, CAS_ID_COL)
         manual_apm_compound_casids = manual_apm_compounds_df['CAS_ID'].dropna().values
@@ -139,14 +137,7 @@ def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.Da
         inchi_antimal_taxa = inchi_antimal_taxa[
             (inchi_antimal_taxa[INCHIKEY_COL].isin(manual_apm_compounds_df['InChIKey'].dropna().values))]
 
-    if SMILES_COL is not None:
-        # SMiles from chembl and lotus seem to differ
-        clean_col(taxa_metabolite_data, SMILES_COL)
-        smiles_antimal_taxa = taxa_metabolite_data[~taxa_metabolite_data[SMILES_COL].isna()]
-        smiles_antimal_taxa = smiles_antimal_taxa[
-            (smiles_antimal_taxa[SMILES_COL].isin(manual_apm_compounds_df['Smiles'].dropna().values))]
-
-    anti_mal_taxa = pd.concat([cas_id_antimal_taxa, inchi_antimal_taxa, smiles_antimal_taxa])
+    anti_mal_taxa = pd.concat([cas_id_antimal_taxa, inchi_antimal_taxa])
     anti_mal_taxa = anti_mal_taxa.drop_duplicates(subset=[wcvp_accepted_columns['name_w_author']])
     if output_csv is not None:
         anti_mal_taxa.to_csv(output_csv)
@@ -155,12 +146,14 @@ def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.Da
 
 
 def get_chembl_apm_compounds():
-    # THis needs manually reviewing e.g. https://www.ebi.ac.uk/chembl/g/#browse/activities/full_state/eyJsaXN0Ijp7InNldHRpbmdzX3BhdGgiOiJFU19JTkRFWEVTX05PX01BSU5fU0VBUkNILkFDVElWSVRZIiwiY3VzdG9tX3F1ZXJ5IjoiYXNzYXlfY2hlbWJsX2lkOkNIRU1CTDc2Mjk5MCIsInVzZV9jdXN0b21fcXVlcnkiOnRydWUsInNlYXJjaF90ZXJtIjoiIiwidGV4dF9maWx0ZXIiOiJDSEVNQkwxMTEwNzYifX0%3D
+    # THis needs manually reviewing e.g.
+    # https://www.ebi.ac.uk/chembl/g/#browse/activities/full_state/eyJsaXN0Ijp7InNldHRpbmdzX3BhdGgiOiJFU19JTkRFWEVTX05PX01BSU5fU0VBUkNILkFDVElWSVRZIiwiY3VzdG9tX3F1ZXJ5IjoiYXNzYXlfY2hlbWJsX2lkOkNIRU1CTDc2Mjk5MCIsInVzZV9jdXN0b21fcXVlcnkiOnRydWUsInNlYXJjaF90ZXJtIjoiIiwidGV4dF9maWx0ZXIiOiJDSEVNQkwxMTEwNzYifX0%3D
     # Is counted as active, but the ic50 value is Concentration required to reduce chloroquine IC50 by 50%
 
     from chembl_webresource_client.new_client import new_client
     target = new_client.target
     activity = new_client.activity
+    # TODO: Change to all  P. vivax, P. falciparum, P. malariae, P. ovale, and P. knowlesi.
     pf = target.filter(pref_name__iexact='Plasmodium falciparum').only('target_chembl_id')[0]
     pf_activities = activity.filter(target_chembl_id=pf['target_chembl_id'],
                                     pchembl_value__isnull=False,
