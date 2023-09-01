@@ -19,3 +19,6 @@ Mendez D, Gaulton A, Bento AP, Chambers J, De Veij M, Félix E, Magariños MP, M
 
 ChEMBL Web Services:
 Davies M, Nowotka M, Papadatos G, Dedman N, Gaulton A, Atkinson F, Bellis L, Overington JP. (2015) 'ChEMBL web services: streamlining access to drug discovery data and utilities.' Nucleic Acids Res., 43(W1) W612-W620.
+
+ClassyFire
+Yannick Djoumbou Feunang et al., ‘ClassyFire: Automated Chemical Classification with a Comprehensive, Computable Taxonomy’, Journal of Cheminformatics 8, no. 1 (December 2016): 61, https://doi.org/10.1186/s13321-016-0174-y.
