@@ -9,7 +9,7 @@ import pandas as pd
 import requests
 
 _classyfire_url = "http://classyfire.wishartlab.com"
-_chunk_size = 1000
+_chunk_size = 100  # Unsure how to access all pages, so limit to number of results per page
 _post_sleep_interval = float(60 / 12)  # Post requests should be limited to 12 per minute
 _get_sleep_interval = 60
 
@@ -36,7 +36,7 @@ def get_classyfire_classes_from_query(query_id):
 
 
 def get_classyfire_classes_from_smiles(smiles: List[str], tempout_dir: str = None):
-    unique_smiles = sorted(list(set(smiles)))
+    unique_smiles = list(set(smiles))
 
     # First save time by reading previous temp outputs
     existing_df = None
@@ -59,6 +59,7 @@ def get_classyfire_classes_from_smiles(smiles: List[str], tempout_dir: str = Non
     out_df = pd.DataFrame()
     query_ids = []
     comps = []
+    print('Getting query ids')
     for sm in unique_smiles:
         comps.append(sm)
         if not len(comps) % _chunk_size:
@@ -68,6 +69,7 @@ def get_classyfire_classes_from_smiles(smiles: List[str], tempout_dir: str = Non
         query_ids.append(get_classyfire_queries_from_smiles(comps))
     query_count = 0
     while query_count < len(query_ids):
+        print(f'Getting {query_count} out of {len(query_ids)} queries.')
         # need to work out how to preserve original smiles....
         query_id = query_ids[query_count]
         result = get_classyfire_classes_from_query(query_id)
@@ -109,6 +111,8 @@ def get_classyfire_classes_from_smiles(smiles: List[str], tempout_dir: str = Non
         if existing_df is not None:
             out_df = pd.concat([out_df, existing_df])
 
+    out_df = out_df.sort_values(by='original_SMILES')
+    out_df = out_df.reset_index(drop=True)
     return out_df
 
 

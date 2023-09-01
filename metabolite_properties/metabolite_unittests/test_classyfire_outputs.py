@@ -18,7 +18,7 @@ class MyTestCase(unittest.TestCase):
         smiles = example_metabolites['SMILES'].dropna()
         out_df = get_classyfire_classes_from_smiles(smiles, 'temp_outputs')
         out_df.to_csv(os.path.join(test_output_dir, 'classyfire_example.csv'))
-
+        self.assertEqual(len(out_df.index), len(smiles.unique().tolist()))
         known_correct = pd.read_csv(os.path.join(input_test_dir, 'correct_classyfire_example.csv'), index_col=0)
 
         pd.testing.assert_frame_equal(out_df, known_correct)
@@ -29,6 +29,8 @@ class MyTestCase(unittest.TestCase):
         out_df.to_csv(os.path.join(test_output_dir, 'classyfire_df_example.csv'))
 
         known_correct = pd.read_csv(os.path.join(input_test_dir, 'correct_classyfire_df_example.csv'), index_col=0)
+
+        self.assertEqual(len(example_metabolites.index), len(out_df.index))
 
         pd.testing.assert_frame_equal(out_df.fillna(''), known_correct.fillna(''))
 
