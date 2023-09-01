@@ -55,7 +55,7 @@ def get_classyfire_classes_from_smiles(smiles: List[str], tempout_dir: str = Non
                 for i in range(c):
                     unique_smiles.remove(alread_known)
 
-    fields_to_collect = ['kingdom', 'superclass', 'class', 'subclass', 'intermediate_nodes', 'direct_parent']
+    fields_to_collect = ['kingdom', 'superclass', 'class', 'subclass', 'direct_parent']
     out_df = pd.DataFrame()
     query_ids = []
     comps = []
@@ -69,7 +69,7 @@ def get_classyfire_classes_from_smiles(smiles: List[str], tempout_dir: str = Non
         query_ids.append(get_classyfire_queries_from_smiles(comps))
     query_count = 0
     while query_count < len(query_ids):
-        print(f'Getting {query_count} out of {len(query_ids)} queries.')
+        print(f'Getting classes for {query_count + 1} out of {len(query_ids)} queries.')
         # need to work out how to preserve original smiles....
         query_id = query_ids[query_count]
         result = get_classyfire_classes_from_query(query_id)
@@ -81,18 +81,26 @@ def get_classyfire_classes_from_smiles(smiles: List[str], tempout_dir: str = Non
             for ent in result['entities']:
                 ent_dict = {'classyfire_SMILES': ent['smiles']}
                 if ent['identifier'] is not None:
+
                     for t in fields_to_collect:
 
-                        if t == 'intermediate_nodes':
-                            i_nodes = []
-                            for i_node in ent[t]:
-                                i_nodes.append(i_node['name'])
-                            ent_dict['classyfire_' + t] = ':'.join(i_nodes)
+                        if ent[t] is not None:
+                            ent_dict['classyfire_' + t] = ent[t]['name']
+
                         else:
-                            if ent[t] is not None:
-                                ent_dict['classyfire_' + t] = ent[t]['name']
-                            else:
-                                ent_dict['classyfire_' + t] = np.nan
+                            ent_dict['classyfire_' + t] = np.nan
+
+                    i_nodes = []
+                    for i_node in ent['intermediate_nodes']:
+                        i_nodes.append(i_node['name'])
+                    ent_dict['classyfire_intermediate_nodes'] = ':'.join(i_nodes)
+
+                    alt_parents = []
+                    for alt_p in ent['alternative_parents']:
+                        alt_parents.append(alt_p['name'])
+                    ent_dict['classyfire_alternative_parents'] = str(alt_parents)
+
+                    ent_dict['substituents'] = str(ent['substituents'])
 
                 ent_df = pd.DataFrame(ent_dict, index=[result['entities'].index(ent) + (query_count * _chunk_size)])
                 out_df = pd.concat([out_df, ent_df])

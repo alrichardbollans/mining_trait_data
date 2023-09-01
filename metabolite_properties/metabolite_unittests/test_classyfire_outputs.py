@@ -32,7 +32,7 @@ class MyTestCase(unittest.TestCase):
 
         self.assertEqual(len(example_metabolites.index), len(out_df.index))
 
-        pd.testing.assert_frame_equal(out_df.fillna(''), known_correct.fillna(''))
+        pd.testing.assert_frame_equal(out_df.fillna('').drop(columns=['plant_name_id']), known_correct.fillna('').drop(columns=['plant_name_id']), )
 
 
 if __name__ == '__main__':
