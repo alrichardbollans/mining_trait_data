@@ -55,8 +55,6 @@ def get_classyfire_classes_from_smiles(smiles: List[str], tempout_dir: str = Non
                 for i in range(c):
                     unique_smiles.remove(alread_known)
 
-
-
     fields_to_collect = ['kingdom', 'superclass', 'class', 'subclass', 'intermediate_nodes', 'direct_parent']
     out_df = pd.DataFrame()
     query_ids = []
@@ -106,7 +104,7 @@ def get_classyfire_classes_from_smiles(smiles: List[str], tempout_dir: str = Non
         out_df = out_df[['original_SMILES', 'classyfire_SMILES'] + [c for c in out_df.columns if c not in ['original_SMILES', 'classyfire_SMILES']]]
 
     if tempout_dir is not None:
-        if len(out_df.index)>0:
+        if len(out_df.index) > 0:
             out_df.to_csv(os.path.join(tempout_dir, 'classyfireinfo_' + str(uuid.uuid4()) + '.csv'))
         if existing_df is not None:
             out_df = pd.concat([out_df, existing_df])
@@ -116,20 +114,7 @@ def get_classyfire_classes_from_smiles(smiles: List[str], tempout_dir: str = Non
 
 def get_classyfire_classes_from_df(df: pd.DataFrame, smiles_col: str, tempout_dir: str = None) -> pd.DataFrame:
     classyfire_info = get_classyfire_classes_from_smiles(df[smiles_col].dropna(), tempout_dir)
-    classyfire_info = classyfire_info.rename(columns={'original_SMILES':'SMILES'})
+    classyfire_info = classyfire_info.rename(columns={'original_SMILES': 'SMILES'})
     all_metabolites_with_class_info = pd.merge(df, classyfire_info, how='left', on='SMILES')
 
     return all_metabolites_with_class_info
-
-
-if __name__ == '__main__':
-    sm = ['CC1C(C(C(C(O1)OC2CC3CCC4C(C3(C(C2)O)C)CCC5(C4(CCC5C6=CC(=O)OC6)O)C)O)OC)O', 'C', 'Fe', 'C', 'Fe', '',
-          'C1CN2CC=C([C@@H]2[C@@H]1O)CO',
-          'C[C@@H]1[C@](C(=O)OCC2=CCN3[C@H]2[C@@H](CC3)OC(=O)[C@](CC(=O)O1)(C(C)C)O)(C(C)C)O',
-          'C/C=C(/C)\C(=O)O[C@@H]1CCN2[C@@H]1C(=CC2)COC(=O)[C@@]3([C@@H](C(=O)O[C@@H]3C)C)O', 'CC=C(C)C(=O)OC1CC[N+]2([O-])CCC(COC(=O)C(CO)=CC)C12',
-          'C1(=O)NC(=O)NC(=O)N1']
-    # q = get_classyfire_queries_from_smiles(sm)
-    #
-    # get_classyfire_classes_from_query(q)
-
-    get_classyfire_classes_from_smiles(sm)
