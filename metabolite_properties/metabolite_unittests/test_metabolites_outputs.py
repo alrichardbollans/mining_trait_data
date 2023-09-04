@@ -6,7 +6,7 @@ import pandas as pd
 from pkg_resources import resource_filename
 from wcvp_download import wcvp_accepted_columns
 
-from metabolite_properties import is_alkaloid_from_name_and_formulae, get_alkaloids_from_metabolites, \
+from metabolite_properties import is_alkaloid_from_name_formulae_or_class, get_alkaloids_from_metabolites, \
     get_knapsack_antimalarial_metabolite_hits_for_taxa, get_knapsack_antimalarial_metabolites, \
     get_knapsack_inactive_antimalarial_metabolites, \
     get_knapsack_inactive_antimalarial_metabolite_hits_for_taxa, \
@@ -24,12 +24,12 @@ class MyTestCase(unittest.TestCase):
                           [' Hygrine', 'VVVV'], [' Cuscohygrine', '111'], ['7-O-Acetylsalutaridinol', 'XXXX'],
                           ['madeupalkine', 'N'], ['madeup1alkine', 'n']]
         for a in should_be_alks:
-            self.assertNotEqual(is_alkaloid_from_name_and_formulae(a[0], [a[1]]), 'False', msg=a)
+            self.assertNotEqual(is_alkaloid_from_name_formulae_or_class(a[0], [a[1]]), 'False', msg=a)
 
         shouldntbealks = [['madeupalkine', 'CH3'], ['quinone', 'N']]
 
         for a in shouldntbealks:
-            self.assertEqual(is_alkaloid_from_name_and_formulae(a[0], [a[1]]), 'False', msg=a)
+            self.assertEqual(is_alkaloid_from_name_formulae_or_class(a[0], [a[1]]), 'False', msg=a)
 
     def test_alk_output(self):
         # logan = get_metabolites_in_family('Loganiaceae',os.path.join(test_output_dir, 'loganiaceae_metabolites.csv'))

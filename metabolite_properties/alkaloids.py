@@ -7,13 +7,18 @@ from knapsack_searches import kn_formula_column
 from metabolite_properties import get_alkaloids_from_kegg_brite
 
 
-def is_alkaloid_from_name_and_formulae(name: str, formulae: List[str]) -> str:
+def is_alkaloid_from_name_formulae_or_class(name: str, formulae: List[str], metabolite_classes: List[str] = None) -> str:
     '''
     Returns true if known alkaloid or if name ends in 'ine' and formula contains 'N'
     :param name:
     :param formula:
     :return:
     '''
+
+    for x in metabolite_classes:
+        if x ==x:
+            if 'alkaloid' in x.lower():
+                return x
     lower_name = name.lower()
     stripped_name = lower_name.strip()
     alkaloids_not_ending_in_ine = ['Kopsanone', 'Palicoside', 'Strictosidinic acid']
@@ -35,7 +40,8 @@ def is_alkaloid_from_name_and_formulae(name: str, formulae: List[str]) -> str:
     return 'False'
 
 
-def get_alkaloids_from_metabolites(metabolites_table: pd.DataFrame, metabolite_name_col: str, temp_output_csv: str = None,
+def get_alkaloids_from_metabolites(metabolites_table: pd.DataFrame, metabolite_name_col: str, metabolite_class_columns: List[str] = None,
+                                   temp_output_csv: str = None,
                                    output_csv: str = None) -> pd.DataFrame:
     '''
 
@@ -46,7 +52,9 @@ def get_alkaloids_from_metabolites(metabolites_table: pd.DataFrame, metabolite_n
     '''
     df_copy = metabolites_table.copy(deep=True)
     df_copy['is_alkaloid_from_name_and_formula'] = df_copy.apply(
-        lambda x: is_alkaloid_from_name_and_formulae(x[metabolite_name_col], [x[kn_formula_column], x['SMILES']]), axis=1)
+        lambda x: is_alkaloid_from_name_formulae_or_class(x[metabolite_name_col], [x[kn_formula_column], x['SMILES']],
+                                                          [x[c] for c in metabolite_class_columns]),
+        axis=1)
 
     if temp_output_csv is not None:
         df_copy.to_csv(temp_output_csv)
