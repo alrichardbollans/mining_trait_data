@@ -119,10 +119,18 @@ def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.Da
     # Clean columns
     def clean_col(df, col):
         df[col] = df[col].str.strip()
-        df[col] = df[col].str.lower()
 
     clean_col(manual_apm_compounds_df, 'CAS_ID')
     clean_col(manual_apm_compounds_df, 'InChIKey')
+
+    def simplify_inchi_key(inch: str):
+        if inch == inch:
+            return inch[:14]
+        else:
+            return inch
+
+    manual_apm_compounds_df['simple_inchi'] = manual_apm_compounds_df['InChIKey'].apply(simplify_inchi_key)
+
     if CAS_ID_COL is not None:
         clean_col(taxa_metabolite_data, CAS_ID_COL)
         manual_apm_compound_casids = manual_apm_compounds_df['CAS_ID'].dropna().values
@@ -132,10 +140,13 @@ def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.Da
 
     if INCHIKEY_COL is not None:
         clean_col(taxa_metabolite_data, INCHIKEY_COL)
+        taxa_metabolite_data['simple_inchi_for_matching_apm'] = taxa_metabolite_data[INCHIKEY_COL].apply(simplify_inchi_key)
 
-        inchi_antimal_taxa = taxa_metabolite_data[~taxa_metabolite_data[INCHIKEY_COL].isna()]
+        inchi_antimal_taxa = taxa_metabolite_data[~taxa_metabolite_data['simple_inchi_for_matching_apm'].isna()]
         inchi_antimal_taxa = inchi_antimal_taxa[
-            (inchi_antimal_taxa[INCHIKEY_COL].isin(manual_apm_compounds_df['InChIKey'].dropna().values))]
+            (inchi_antimal_taxa['simple_inchi_for_matching_apm'].isin(manual_apm_compounds_df['simple_inchi'].dropna().values))]
+
+        taxa_metabolite_data = taxa_metabolite_data.drop(columns=['simple_inchi_for_matching_apm'])
 
     anti_mal_taxa = pd.concat([cas_id_antimal_taxa, inchi_antimal_taxa])
     anti_mal_taxa = anti_mal_taxa.drop_duplicates(subset=[wcvp_accepted_columns['name_w_author']])
@@ -143,55 +154,3 @@ def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.Da
         anti_mal_taxa.to_csv(output_csv)
 
     return anti_mal_taxa
-
-
-def get_chembl_apm_compounds():
-    # THis needs manually reviewing e.g.
-    # https://www.ebi.ac.uk/chembl/g/#browse/activities/full_state/eyJsaXN0Ijp7InNldHRpbmdzX3BhdGgiOiJFU19JTkRFWEVTX05PX01BSU5fU0VBUkNILkFDVElWSVRZIiwiY3VzdG9tX3F1ZXJ5IjoiYXNzYXlfY2hlbWJsX2lkOkNIRU1CTDc2Mjk5MCIsInVzZV9jdXN0b21fcXVlcnkiOnRydWUsInNlYXJjaF90ZXJtIjoiIiwidGV4dF9maWx0ZXIiOiJDSEVNQkwxMTEwNzYifX0%3D
-    # Is counted as active, but the ic50 value is Concentration required to reduce chloroquine IC50 by 50%
-
-    from chembl_webresource_client.new_client import new_client
-    target = new_client.target
-    activity = new_client.activity
-    # TODO: Change to all  P. vivax, P. falciparum, P. malariae, P. ovale, and P. knowlesi.
-    pf = target.filter(pref_name__iexact='Plasmodium falciparum').only('target_chembl_id')[0]
-    pf_activities = activity.filter(target_chembl_id=pf['target_chembl_id'],
-                                    pchembl_value__isnull=False,
-                                    pchembl_value__lte=6  # pIC50 value for IC50 < 1μM is 6
-                                    ).filter(
-        standard_type="IC50").only(
-        ['target_chembl_id', 'target_pref_name', 'standard_inchi_key', 'molecule_chembl_id',
-         'molecule_pref_name', 'pchembl_value'])
-
-    # hembl_value__lte=6. This condition ensures that only compounds with a pIC50 value (the negative logarithm of IC50) less than or equal to 6 (corresponding to IC50 < 1μM) are retrieved.
-    # The 6 value is derived from the conversion formula pIC50 = -log10(IC50)
-    compounds = pf_activities.only(['molecule_chembl_id'])
-
-    compound_data = []
-    # Download the compounds and collect data
-    from tqdm import tqdm
-    for i in tqdm(range(len(compounds)), desc="Getting compounds", ascii=False, ncols=72):
-
-        compound = compounds[i]
-        molecule_id = compound['molecule_chembl_id']
-
-        # Get compound details
-        compound_details = new_client.molecule.get(molecule_id)
-        inchikey = None
-        smiles = None
-        if compound_details['molecule_structures'] is not None:
-            inchikey = compound_details['molecule_structures']['standard_inchi_key']
-            smiles = compound_details['molecule_structures']['canonical_smiles']
-        name = compound_details['pref_name']
-        molecule_chembl_id = compound_details['molecule_chembl_id']
-        compound_data.append(
-            {'Compound Name': name, 'InChIKey': inchikey, 'Smiles': smiles,
-             'molecule_chembl_id': molecule_chembl_id})
-
-    # Create a DataFrame from the compound data
-    df = pd.DataFrame(compound_data)
-    df.to_csv(chembl_apm_compounds_csv)
-
-
-if __name__ == '__main__':
-    get_chembl_apm_compounds()
