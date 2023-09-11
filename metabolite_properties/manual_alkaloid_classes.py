@@ -75,3 +75,8 @@ def get_alkaloid_classes_from_metabolites(metabolites_table: pd.DataFrame,
         df_copy.to_csv(output_csv)
 
     return df_copy
+
+if __name__ == '__main__':
+    manual_class_information = pd.read_excel(
+        os.path.join(_inputs_path, 'Metabolite Alkaloid Class Classification.xlsx'), sheet_name='Metabolites')
+    print([x.lower() for x in manual_class_information['Class'].unique()])
