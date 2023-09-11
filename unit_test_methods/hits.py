@@ -32,8 +32,9 @@ class confirming_hits(unittest.TestCase):
             compiled_sources_col].values[0])
 
     def confirm_knapsack_metas_hit(self, taxa: str, temp_output_hits: pd.DataFrame, metas):
+        temp_output_hits_kn = temp_output_hits[temp_output_hits['Source']=='KNApSAcK']
         if metas is not None:
             for alk in metas:
                 vals = temp_output_hits[temp_output_hits[wcvp_accepted_columns['name']] == taxa][
-                    'knapsack_metabolite_snippet'].values
+                    'Metabolite'].values
                 self.assertIn(alk, vals)

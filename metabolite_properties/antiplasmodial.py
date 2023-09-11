@@ -9,10 +9,17 @@ from knapsack_searches import kn_metabolite_name_column
 _inputs_path = resource_filename(__name__, 'inputs')
 
 
+def simplify_inchi_key(inch: str):
+    if inch == inch:
+        return inch[:14]
+    else:
+        return inch
+
+
 def get_knapsack_antimalarial_metabolites():
     # From http://www.knapsackfamily.com/MetaboliteActivity/result.php 'malaria'
 
-    with open(os.path.join(_inputs_path, 'antimalarialmetabolites.html'), "r") as f:
+    with open(os.path.join(_inputs_path, 'knapsackantimalarialmetabolites.html'), "r") as f:
         page = f.read()
 
     replaced = page.replace('<br>', 'break_this_unq')
@@ -55,7 +62,7 @@ def get_knapsack_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.
 
 def get_knapsack_inactive_antimalarial_metabolites():
     # From http://www.knapsackfamily.com/MetaboliteActivity/result.php 'malaria'
-    with open(os.path.join(_inputs_path, 'antimalarialmetabolites.html'), "r") as f:
+    with open(os.path.join(_inputs_path, 'knapsackantimalarialmetabolites.html'), "r") as f:
         page = f.read()
 
     replaced = page.replace('<br>', 'break_this_unq')
@@ -120,12 +127,6 @@ def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.Da
 
     clean_col(manual_apm_compounds_df, 'CAS_ID')
     clean_col(manual_apm_compounds_df, 'InChIKey')
-
-    def simplify_inchi_key(inch: str):
-        if inch == inch:
-            return inch[:14]
-        else:
-            return inch
 
     manual_apm_compounds_df['simple_inchi'] = manual_apm_compounds_df['InChIKey'].apply(simplify_inchi_key)
 

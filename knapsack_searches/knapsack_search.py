@@ -58,6 +58,8 @@ def get_metabolites_in_family(family: str, temp_output_csv: str = None, output_c
         except:
             failed_genera.append(genus)
     if temp_output_csv is not None:
+        if not os.path.isdir(os.path.dirname(temp_output_csv)):
+            os.mkdir(os.path.dirname(temp_output_csv))
         all_genera_df.to_csv(temp_output_csv)
 
     acc_df = get_accepted_info_from_names_in_column(all_genera_df, 'Organism',

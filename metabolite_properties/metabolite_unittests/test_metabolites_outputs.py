@@ -10,7 +10,7 @@ from metabolite_properties import is_alkaloid_from_name_formulae_or_class, get_a
     get_knapsack_antimalarial_metabolite_hits_for_taxa, get_knapsack_antimalarial_metabolites, \
     get_knapsack_inactive_antimalarial_metabolites, \
     get_knapsack_inactive_antimalarial_metabolite_hits_for_taxa, \
-    get_N_containing_from_metabolites, chembl_apm_compounds_csv
+    get_N_containing_from_metabolites
 from knapsack_searches import kn_metabolite_name_column
 
 input_test_dir = resource_filename(__name__, 'test_inputs')
@@ -71,9 +71,6 @@ class MyTestCase(unittest.TestCase):
                              "Castanin",
                              "7-Hydroxy-6,4'-dimethoxyisoflavone"]
 
-        chembl_apm_compounds_df = pd.read_csv(chembl_apm_compounds_csv)
-        metabs += chembl_apm_compounds_df['Compound Name'].values.tolist()
-
         for m in should_be_antimal:
             self.assertIn(m, metabs)
 
@@ -82,13 +79,10 @@ class MyTestCase(unittest.TestCase):
 
     def test_inactiveantimal_metas(self):
         metabs = get_knapsack_inactive_antimalarial_metabolites()
-        chembl_apm_compounds_df = pd.read_csv(chembl_apm_compounds_csv)
 
         should_be_antimal = ['3-O-Caffeoylquinic acid', 'Heriguard']
         for m in should_be_antimal:
             self.assertIn(m, metabs)
-        for m in should_be_antimal:
-            self.assertNotIn(m, chembl_apm_compounds_df['Compound Name'].values)
 
     def test_antimal_output(self):
         # logan = get_metabolites_in_family('Loganiaceae',outputcsv = os.path.join(test_output_dir, 'loganiaceae_metabolites.csv'))

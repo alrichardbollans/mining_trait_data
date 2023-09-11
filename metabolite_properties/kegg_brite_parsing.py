@@ -16,7 +16,7 @@ def dig_into_kegg_dicts(compound_list, d):
 def get_alkaloids_from_kegg_brite():
     import json
     # See e.g. https://www.genome.jp/kegg-bin/get_htext?br08003.keg
-    input_json = os.path.join(_inputs_path, 'br08003.json')
+    input_json = os.path.join(_inputs_path, 'keggbr08003.json')
     alks = []
     # JSON file
     f = open(input_json, "r")
@@ -35,7 +35,7 @@ def get_alkaloids_from_kegg_brite():
 def get_steroids_from_kegg_brite():
     import json
     # See e.g. https://www.genome.jp/brite/br08003
-    input_json = os.path.join(_inputs_path, 'br08003.json')
+    input_json = os.path.join(_inputs_path, 'keggbr08003.json')
     steroids = []
     # JSON file
     f = open(input_json, "r")
@@ -54,7 +54,7 @@ def get_cardenolides_from_kegg_brite():
     import json
     # Note cardenolides are misspelt as Cardanolides in keggbrite
     # See e.g. https://www.genome.jp/brite/br08003
-    input_json = os.path.join(_inputs_path, 'br08003.json')
+    input_json = os.path.join(_inputs_path, 'keggbr08003.json')
     cards = []
     # JSON file
     f = open(input_json, "r")
