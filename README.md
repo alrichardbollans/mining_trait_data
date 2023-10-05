@@ -13,7 +13,7 @@ is on the list *DOES NOT* mean that it is not dangerous/poisonous/toxic.
 ## Installation
 
 Run:
-`pip install git+https://github.com/alrichardbollans/mining_trait_data.git@1.0`
+`pip install git+https://github.com/alrichardbollans/mining_trait_data.git@XX`
 
 ### Requirements
 

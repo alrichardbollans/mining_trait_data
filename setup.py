@@ -7,7 +7,7 @@ setup(
     author_email='38588335+alrichardbollans@users.noreply.github.com',
     # Needed to actually package something
     packages=find_packages(include=['clean_plant_occurrences', 'data_compilation_methods',
-                                    'knapsack_searches',
+                                    'knapsack_searches', 'metabolite_properties',
                                     'powo_searches',
                                     'wikipedia_searches'], exclude=['unit_test_methods']),
 
@@ -18,16 +18,13 @@ setup(
     },
     install_requires=[
         "automatchnames == 1.2.1",
-        "Wikipedia-API==0.5.8",
-        "pykew==0.1.3",
-        "beautifulsoup4~=4.10.0",
-        "tika~=2.6.0",
-        "html5lib~=1.1",
-        "lxml",
-        "sre_yield",
-        "html5lib",
         'openpyxl'
     ],
+    extras_require={
+        'powo': ["pykew"],
+        'wiki': ["Wikipedia-API"],
+        'knapsack': ["html5lib"]
+    },
     # *strongly* suggested for sharing
     version='1.0',
     description='A set of python packages for mining plant trait data',
