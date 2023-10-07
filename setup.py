@@ -17,7 +17,7 @@ setup(
         "knapsack_searches": ["inputs/*"]
     },
     install_requires=[
-        "automatchnames == 1.2.1",
+        "automatchnames >= 1.2.1",
         'openpyxl'
     ],
     extras_require={
