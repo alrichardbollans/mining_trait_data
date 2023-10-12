@@ -10,6 +10,8 @@ _inputs_path = resource_filename(__name__, 'inputs')
 
 
 def simplify_inchi_key(inch: str):
+    # Using the connectivity layer of the InChIKey, i.e. the first 14 characters, to simplify.
+    # As in e.g. https://www.sciencedirect.com/science/article/abs/pii/S2352007822002372 https://pubs.acs.org/doi/abs/10.1007/s13361-016-1589-4
     if inch == inch:
         return inch[:14]
     else:
@@ -208,4 +210,4 @@ def get_compound_info_from_chembl_apm_assays(out_path: str):
         # Create a DataFrame from the compound data
         df = pd.DataFrame(compound_data).drop_duplicates(keep='first').reset_index(drop=True)
         df.to_csv(out_path)
-        return df
+    return df
