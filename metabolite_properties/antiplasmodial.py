@@ -18,6 +18,10 @@ def simplify_inchi_key(inch: str):
         return inch
 
 
+def convert_chembl_assay_value_to_ic50(given_val: float):
+    return (10 ** -given_val) * (10 ** 6)
+
+
 def get_knapsack_antimalarial_metabolites():
     # From http://www.knapsackfamily.com/MetaboliteActivity/result.php 'malaria'
 
@@ -157,7 +161,7 @@ def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.Da
     return anti_mal_taxa
 
 
-def get_compound_info_from_chembl_apm_assays(out_path: str):
+def get_compound_info_from_chembl_apm_assays(out_path: str, pchembl_active_threshold: float = 6, compound_id_col: str = 'InChIKey_simp'):
     # THis needs manually reviewing e.g.
     # https://www.ebi.ac.uk/chembl/g/#browse/activities/full_state/eyJsaXN0Ijp7InNldHRpbmdzX3BhdGgiOiJFU19JTkRFWEVTX05PX01BSU5fU0VBUkNILkFDVElWSVRZIiwiY3VzdG9tX3F1ZXJ5IjoiYXNzYXlfY2hlbWJsX2lkOkNIRU1CTDc2Mjk5MCIsInVzZV9jdXN0b21fcXVlcnkiOnRydWUsInNlYXJjaF90ZXJtIjoiIiwidGV4dF9maWx0ZXIiOiJDSEVNQkwxMTEwNzYifX0%3D
     # Is counted as active, but the ic50 value is Concentration required to reduce chloroquine IC50 by 50%
@@ -207,7 +211,24 @@ def get_compound_info_from_chembl_apm_assays(out_path: str):
                  'InChIKey': inchikey, 'Smiles': smiles,
                  'molecule_chembl_id': molecule_id, 'natural_product': compound_details['natural_product']})
 
-        # Create a DataFrame from the compound data
+        # Save the df in case of breaking
         df = pd.DataFrame(compound_data).drop_duplicates(keep='first').reset_index(drop=True)
         df.to_csv(out_path)
+
+    # Create a DataFrame from the compound data
+    df = pd.DataFrame(compound_data).drop_duplicates(keep='first').reset_index(drop=True)
+
+    # Add some more info
+    df['InChIKey_simp'] = df['InChIKey'].apply(simplify_inchi_key)
+    df['assay_ic50_from_pchembl'] = df['assay_pchembl_value'].apply(convert_chembl_assay_value_to_ic50)
+    df['mean_ic50'] = df.groupby(['InChIKey_simp'])[
+        'assay_ic50_from_pchembl'].transform('mean')
+
+    active_chembl_compounds_assays = df[df['assay_pchembl_value'] > pchembl_active_threshold]
+    df['active_compound_in_any_assay'] = df[compound_id_col].apply(
+        lambda x: 1 if x in active_chembl_compounds_assays[compound_id_col].values else 0)
+
+    df = df.sort_values(by='InChIKey_simp')
+
+    df.to_csv(out_path)
     return df
