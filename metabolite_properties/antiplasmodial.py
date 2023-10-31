@@ -162,6 +162,7 @@ def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.Da
 
 
 def get_compound_info_from_chembl_apm_assays(out_path: str, pchembl_active_threshold: float = 6, compound_id_col: str = 'InChIKey_simp'):
+    import numpy as np
     # THis needs manually reviewing e.g.
     # https://www.ebi.ac.uk/chembl/g/#browse/activities/full_state/eyJsaXN0Ijp7InNldHRpbmdzX3BhdGgiOiJFU19JTkRFWEVTX05PX01BSU5fU0VBUkNILkFDVElWSVRZIiwiY3VzdG9tX3F1ZXJ5IjoiYXNzYXlfY2hlbWJsX2lkOkNIRU1CTDc2Mjk5MCIsInVzZV9jdXN0b21fcXVlcnkiOnRydWUsInNlYXJjaF90ZXJtIjoiIiwidGV4dF9maWx0ZXIiOiJDSEVNQkwxMTEwNzYifX0%3D
     # Is counted as active, but the ic50 value is Concentration required to reduce chloroquine IC50 by 50%
@@ -225,8 +226,13 @@ def get_compound_info_from_chembl_apm_assays(out_path: str, pchembl_active_thres
         'assay_ic50_from_pchembl'].transform('mean')
 
     active_chembl_compounds_assays = df[df['assay_pchembl_value'] > pchembl_active_threshold]
-    df['active_compound_in_any_assay'] = df[compound_id_col].apply(
-        lambda x: 1 if x in active_chembl_compounds_assays[compound_id_col].values else 0)
+    inactive_chembl_compounds_assays = df[df['assay_pchembl_value'] <= pchembl_active_threshold]
+
+    # Compound is active if found in chembl actives, else it is nan unless found in inactives in which case it is inactive.
+    df['active_chembl_compound'] = df[compound_id_col].apply(
+        lambda x: 1 if x in active_chembl_compounds_assays[compound_id_col].dropna().values else 0 if x in
+                                                                                                      inactive_chembl_compounds_assays[
+                                                                                                          compound_id_col].dropna().values else np.nan)
 
     df = df.sort_values(by='InChIKey_simp')
 
