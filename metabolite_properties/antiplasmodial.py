@@ -5,21 +5,16 @@ from pkg_resources import resource_filename
 from wcvp_download import wcvp_accepted_columns
 
 from knapsack_searches import kn_metabolite_name_column
+from metabolite_properties import simplify_inchi_key
 
 _inputs_path = resource_filename(__name__, 'inputs')
 
 
-def simplify_inchi_key(inch: str):
-    # Using the connectivity layer of the InChIKey, i.e. the first 14 characters, to simplify.
-    # As in e.g. https://www.sciencedirect.com/science/article/abs/pii/S2352007822002372 https://pubs.acs.org/doi/abs/10.1007/s13361-016-1589-4
-    if inch == inch:
-        return inch[:14]
-    else:
-        return inch
-
-
 def convert_chembl_assay_value_to_ic50(given_val: float):
-    return (10 ** -given_val) * (10 ** 6)
+    if given_val is not None:
+        return (10 ** -given_val) * (10 ** 6)
+    else:
+        return given_val
 
 
 def get_knapsack_antimalarial_metabolites():
