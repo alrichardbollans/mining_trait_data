@@ -38,6 +38,7 @@ def get_metabolites_for_taxon(name: str):
 
 
 def get_metabolites_in_family(family: str, temp_output_csv: str = None, output_csv: str = None):
+    import html5lib
     # Note that this is greedy as name matches in Knapsack search include partial e.g. Cissus matches Narcissus
     # Account for this by removing results without name resolution
     wcvp_data = get_all_taxa(families_of_interest=[family])
