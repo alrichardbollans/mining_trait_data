@@ -17,16 +17,18 @@ setup(
         "knapsack_searches": ["inputs/*"]
     },
     install_requires=[
-        "automatchnames >= 1.2.1",
+        "automatchnames >= 1.3",
         'openpyxl'
     ],
     extras_require={
         'powo': ["pykew"],
         'wiki': ["Wikipedia-API"],
-        'knapsack': ["html5lib"]
+        'knapsack': ["html5lib", 'beautifulsoup4'],
+        'metabolites': ['rdkit','chembl_webresource_client'],
+        'occurrences': ['geopandas']
     },
     # *strongly* suggested for sharing
-    version='1.0',
+    version='1.12',
     description='A set of python packages for mining plant trait data',
     long_description=open('README.md').read(),
 )

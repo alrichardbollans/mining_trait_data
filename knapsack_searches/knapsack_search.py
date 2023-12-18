@@ -5,8 +5,6 @@ import pandas as pd
 import requests
 from pkg_resources import resource_filename
 from tqdm import tqdm
-from wcvp_download import get_all_taxa, wcvp_columns, wcvp_accepted_columns
-from wcvp_name_matching import get_accepted_info_from_names_in_column
 
 _inputs_path = resource_filename(__name__, 'inputs')
 _temp_outputs_path = resource_filename(__name__, 'temp_outputs')
@@ -39,6 +37,8 @@ def get_metabolites_for_taxon(name: str):
 
 def get_metabolites_in_family(family: str, temp_output_csv: str = None, output_csv: str = None):
     import html5lib
+    from wcvp_download import get_all_taxa, wcvp_columns, wcvp_accepted_columns
+    from wcvp_name_matching import get_accepted_info_from_names_in_column
     # Note that this is greedy as name matches in Knapsack search include partial e.g. Cissus matches Narcissus
     # Account for this by removing results without name resolution
     wcvp_data = get_all_taxa(families_of_interest=[family])

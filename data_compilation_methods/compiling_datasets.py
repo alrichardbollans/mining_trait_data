@@ -2,22 +2,14 @@ import os
 from typing import List
 
 import pandas as pd
-from wcvp_download import wcvp_accepted_columns
 
 single_source_col = 'Source'
 compiled_sources_col = 'Compiled_Sources'
-OUTPUT_COL_NAMES = [wcvp_accepted_columns['name'], wcvp_accepted_columns['name_w_author'],
-                    wcvp_accepted_columns['ipni_id'],
-                    wcvp_accepted_columns['rank'],
-                    wcvp_accepted_columns['species'],
-                    wcvp_accepted_columns['species_w_author'],
-                    wcvp_accepted_columns['species_ipni_id'],
-
-                    wcvp_accepted_columns['family'],
-                    compiled_sources_col]
 
 
 def _aggregate_data_on_accepted_names(in_df: pd.DataFrame) -> pd.DataFrame:
+    from wcvp_download import wcvp_accepted_columns
+
     def _unique_sources(iterable):
         out = list(set(iterable))
         out.sort()
@@ -43,6 +35,16 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str) -> pd.DataFrame:
     :param output_csv: Output file
     :return:
     '''
+    from wcvp_download import wcvp_accepted_columns
+
+    OUTPUT_COL_NAMES = [wcvp_accepted_columns['name'], wcvp_accepted_columns['name_w_author'],
+                        wcvp_accepted_columns['ipni_id'],
+                        wcvp_accepted_columns['rank'],
+                        wcvp_accepted_columns['species'],
+                        wcvp_accepted_columns['species_w_author'],
+                        wcvp_accepted_columns['species_ipni_id'],
+                        wcvp_accepted_columns['family'],
+                        compiled_sources_col]
     # Put name columns at begining
     start_cols = OUTPUT_COL_NAMES[:]
     start_cols.remove(compiled_sources_col)

@@ -1,7 +1,7 @@
 The methods in `clean_by_tdwg_region.py` will remove gbif occurrence records based on WCVP distribution data.
 
 To do this, you will need to use the `automatchnames`
-library v1.0 (https://github.com/alrichardbollans/automatchnames) to
+library v1.3 (https://github.com/alrichardbollans/automatchnames) to
 match names from gbif to the WCVP backbone.
 
 Example:

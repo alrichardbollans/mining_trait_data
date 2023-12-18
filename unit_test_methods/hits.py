@@ -1,9 +1,9 @@
 import unittest
 
 import pandas as pd
-from wcvp_download import wcvp_accepted_columns, get_all_taxa,wcvp_columns
+from wcvp_download import wcvp_accepted_columns
 
-from data_compilation_methods import compiled_sources_col, OUTPUT_COL_NAMES
+from data_compilation_methods import compiled_sources_col
 
 
 class confirming_hits(unittest.TestCase):

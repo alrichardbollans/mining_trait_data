@@ -3,14 +3,12 @@ from typing import List, Tuple
 
 import numpy as np
 import pandas as pd
-from wcvp_download import get_all_taxa, wcvp_accepted_columns
-from wcvp_name_matching import clean_urn_ids, get_accepted_wcvp_info_from_ipni_ids_in_column
 
 from data_compilation_methods import single_source_col
 
 
 def search_powo(search_terms: List[str], accepted_output_file: str, filters: List[str] = None,
-                characteristics_to_search: List[str] = None, families_of_interest: List[str] = None):
+                characteristics_to_search: List[str] = None, families_of_interest: List[str] = None, wcvp_version: str = None):
     """
     Possible characteristics
     summary
@@ -30,6 +28,7 @@ def search_powo(search_terms: List[str], accepted_output_file: str, filters: Lis
                                         powo_terms.Characteristic.use,
                                         powo_terms.Characteristic.summary,
                                         powo_terms.Characteristic.leaf] which is default
+    Note since POWO update, the 'General' caterogy needs updating in pykew but I don't think this has been done.
     :param search_terms:
     :param temp_output_file:
     :param accepted_output_file:
@@ -39,6 +38,8 @@ def search_powo(search_terms: List[str], accepted_output_file: str, filters: Lis
     :return:
 
     """
+    from wcvp_download import get_all_taxa, wcvp_accepted_columns
+    from wcvp_name_matching import clean_urn_ids, get_accepted_wcvp_info_from_ipni_ids_in_column
     import pykew.powo as powo
     from pykew import powo_terms
     import time
@@ -113,13 +114,14 @@ def search_powo(search_terms: List[str], accepted_output_file: str, filters: Lis
         df['fqId'] = df['fqId'].apply(clean_urn_ids)
     else:
         df[single_source_col] = np.nan
-    all_taxa = get_all_taxa()
+    all_taxa = get_all_taxa(version=wcvp_version)
     acc_df = get_accepted_wcvp_info_from_ipni_ids_in_column(df, 'fqId', all_taxa)
-    acc_df.to_csv(accepted_output_file)
+    acc_df.sort_values(by=wcvp_accepted_columns['name']).to_csv(accepted_output_file)
 
 
 def create_presence_absence_data(powo_hits: pd.DataFrame, terms_indicating_absence: List[str] = None,
                                  accepted_ipni_ids_of_absence: List[str] = None) -> Tuple[pd.DataFrame]:
+    from wcvp_download import wcvp_accepted_columns
     if terms_indicating_absence is not None:
         absence_data = powo_hits[powo_hits['powo_Snippet'].str.contain('|'.join(terms_indicating_absence))]
         presence_data = powo_hits[~powo_hits['powo_Snippet'].str.contain('|'.join(terms_indicating_absence))]

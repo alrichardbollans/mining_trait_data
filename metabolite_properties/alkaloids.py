@@ -14,11 +14,11 @@ def is_alkaloid_from_name_formulae_or_class(name: str, formulae: List[str], meta
     :param formula:
     :return:
     '''
-
-    for x in metabolite_classes:
-        if x ==x:
-            if 'alkaloid' in x.lower():
-                return x
+    if metabolite_classes is not None:
+        for x in metabolite_classes:
+            if x ==x:
+                if 'alkaloid' in x.lower():
+                    return x
     lower_name = name.lower()
     stripped_name = lower_name.strip()
     alkaloids_not_ending_in_ine = ['Kopsanone', 'Palicoside', 'Strictosidinic acid']

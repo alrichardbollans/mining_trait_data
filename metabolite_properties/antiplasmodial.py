@@ -2,7 +2,6 @@ import os
 
 import pandas as pd
 from pkg_resources import resource_filename
-from wcvp_download import wcvp_accepted_columns
 
 from knapsack_searches import kn_metabolite_name_column
 from metabolite_properties import simplify_inchi_key
@@ -115,6 +114,8 @@ def get_manual_antimalarial_metabolite_hits_for_taxa(taxa_metabolite_data: pd.Da
     :param output_csv:
     :return:
     """
+    from wcvp_download import wcvp_accepted_columns
+
     # Metabolites from literature with activity <=1uM on any malaria strain
     # This is NOT EXHAUSTIVE
     # Contact package author for references
