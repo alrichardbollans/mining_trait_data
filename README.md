@@ -19,7 +19,7 @@ is on the list *DOES NOT* mean that it is not dangerous/poisonous/toxic.
 
 See `cite.txt` file in each package for lists of sources.
 
-## Naming
+## Name resolution
 
 Names from different datasets are matched using the automatchnames
 package (https://github.com/alrichardbollans/automatchnames)
