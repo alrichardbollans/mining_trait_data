@@ -28,7 +28,7 @@ setup(
         'occurrences': ['geopandas']
     },
     # *strongly* suggested for sharing
-    version='1.12',
+    version='1.1',
     description='A set of python packages for mining plant trait data',
     long_description=open('README.md').read(),
 )
