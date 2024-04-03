@@ -14,7 +14,6 @@ is on the list *DOES NOT* mean that it is not dangerous/poisonous/toxic.
 
 `pip install git+https://github.com/alrichardbollans/mining_trait_data.git@XX`
 
-
 ## Sources
 
 See `cite.txt` file in each package for lists of sources.
@@ -23,3 +22,7 @@ See `cite.txt` file in each package for lists of sources.
 
 Names from different datasets are matched using the automatchnames
 package (https://github.com/alrichardbollans/automatchnames)
+
+## Metabolite Methods
+
+Note that methods related to metabolite data have been moved to: https://github.com/alrichardbollans/PhytoChemicalDiversity
