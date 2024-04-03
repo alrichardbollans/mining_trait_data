@@ -13,8 +13,6 @@ setup(
 
     package_data={
         "clean_plant_occurrences": ["inputs/wgsrpd-master/level3/*.shp"],
-        "metabolite_properties": ["inputs/*"],
-        "knapsack_searches": ["inputs/*"]
     },
     install_requires=[
         "automatchnames >= 1.3",
@@ -23,8 +21,6 @@ setup(
     extras_require={
         'powo': ["pykew"],
         'wiki': ["Wikipedia-API"],
-        'knapsack': ["html5lib", 'beautifulsoup4'],
-        'metabolites': ['rdkit','chembl_webresource_client'],
         'occurrences': ['geopandas']
     },
     # *strongly* suggested for sharing
