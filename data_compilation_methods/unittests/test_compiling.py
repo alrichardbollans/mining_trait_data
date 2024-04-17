@@ -3,7 +3,7 @@ import unittest
 
 import pandas as pd
 from pkg_resources import resource_filename
-from wcvp_download import wcvp_accepted_columns
+from wcvpy.wcvp_download import wcvp_accepted_columns
 
 from data_compilation_methods import compile_hits, compiled_sources_col
 

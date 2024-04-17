@@ -38,8 +38,8 @@ def search_powo(search_terms: List[str], accepted_output_file: str, filters: Lis
     :return:
 
     """
-    from wcvp_download import get_all_taxa, wcvp_accepted_columns
-    from wcvp_name_matching import clean_urn_ids, get_accepted_wcvp_info_from_ipni_ids_in_column
+    from wcvpy.wcvp_download import get_all_taxa, wcvp_accepted_columns
+    from wcvpy.wcvp_name_matching import clean_urn_ids, get_accepted_wcvp_info_from_ipni_ids_in_column
     import pykew.powo as powo
     from pykew import powo_terms
     import time
@@ -121,7 +121,7 @@ def search_powo(search_terms: List[str], accepted_output_file: str, filters: Lis
 
 def create_presence_absence_data(powo_hits: pd.DataFrame, terms_indicating_absence: List[str] = None,
                                  accepted_ipni_ids_of_absence: List[str] = None) -> Tuple[pd.DataFrame]:
-    from wcvp_download import wcvp_accepted_columns
+    from wcvpy.wcvp_download import wcvp_accepted_columns
     if terms_indicating_absence is not None:
         absence_data = powo_hits[powo_hits['powo_Snippet'].str.contain('|'.join(terms_indicating_absence))]
         presence_data = powo_hits[~powo_hits['powo_Snippet'].str.contain('|'.join(terms_indicating_absence))]

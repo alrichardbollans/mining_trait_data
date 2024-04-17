@@ -1,7 +1,7 @@
 import unittest
 
 import pandas as pd
-from wcvp_download import wcvp_accepted_columns
+from wcvpy.wcvp_download import wcvp_accepted_columns
 
 from data_compilation_methods import compiled_sources_col
 

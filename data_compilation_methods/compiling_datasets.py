@@ -8,7 +8,7 @@ compiled_sources_col = 'Compiled_Sources'
 
 
 def _aggregate_data_on_accepted_names(in_df: pd.DataFrame) -> pd.DataFrame:
-    from wcvp_download import wcvp_accepted_columns
+    from wcvpy.wcvp_download import wcvp_accepted_columns
 
     def _unique_sources(iterable):
         out = list(set(iterable))
@@ -35,7 +35,7 @@ def compile_hits(all_dfs: List[pd.DataFrame], output_csv: str) -> pd.DataFrame:
     :param output_csv: Output file
     :return:
     '''
-    from wcvp_download import wcvp_accepted_columns
+    from wcvpy.wcvp_download import wcvp_accepted_columns
 
     OUTPUT_COL_NAMES = [wcvp_accepted_columns['name'], wcvp_accepted_columns['name_w_author'],
                         wcvp_accepted_columns['ipni_id'],

@@ -144,7 +144,7 @@ def check_page_exists(taxon: str, wiki_lan) -> bool:
 
 
 def make_wiki_hit_df(taxa_list: List[str], output_csv: str = None, force_new_search=False) -> pd.DataFrame:
-    from wcvp_name_matching import get_accepted_info_from_names_in_column
+    from wcvpy.wcvp_name_matching import get_accepted_info_from_names_in_column
 
     import hashlib
     import time

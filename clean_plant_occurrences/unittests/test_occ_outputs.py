@@ -2,7 +2,7 @@ import os
 import unittest
 
 import pandas as pd
-from wcvp_name_matching import get_accepted_info_from_names_in_column
+from wcvpy.wcvp_name_matching import get_accepted_info_from_names_in_column
 from pkg_resources import resource_filename
 
 from clean_plant_occurrences import clean_occurrences_by_tdwg_regions

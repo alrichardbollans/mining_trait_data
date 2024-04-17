@@ -82,7 +82,7 @@ def get_all_page_views_for_taxon(taxon: str):
 
 
 def make_pageview_df(taxa_list: List[str], output_csv: str):
-    from wcvp_name_matching import get_accepted_info_from_names_in_column
+    from wcvpy.wcvp_name_matching import get_accepted_info_from_names_in_column
 
     out_dict = {'name': [], 'Wikipedia_PageViews': []}
 

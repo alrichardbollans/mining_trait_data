@@ -15,7 +15,7 @@ def generic_prepare_data(dataset_name: str, output_csv: str, df: pd.DataFrame, n
                          snippet_column: str,
                          dropifna: List[str] = None, families_of_interest: List[str] = None,
                          batch: bool = False, family_column: str = None):
-    from wcvp_name_matching import get_accepted_info_from_names_in_column
+    from wcvpy.wcvp_name_matching import get_accepted_info_from_names_in_column
 
     if dropifna is not None:
         df = df.dropna(subset=dropifna, how='all')

@@ -12,7 +12,7 @@ is on the list *DOES NOT* mean that it is not dangerous/poisonous/toxic.
 
 ## Installation
 
-`pip install git+https://github.com/alrichardbollans/mining_trait_data.git@XX`
+`pip install git+https://github.com/alrichardbollans/mining_trait_data.git@1.1`
 
 ## Sources
 
@@ -20,9 +20,9 @@ See `cite.txt` file in each package for lists of sources.
 
 ## Name resolution
 
-Names from different datasets are matched using the automatchnames
-package (https://github.com/alrichardbollans/automatchnames)
+Names from different datasets are matched using the wcvpy
+package (https://github.com/alrichardbollans/wcvpy)
 
 ## Metabolite Methods
 
-Note that methods related to metabolite data have been moved to: https://github.com/alrichardbollans/PhytoChemicalDiversity
+Note that methods related to metabolite data have been moved to: https://github.com/alrichardbollans/phytochempy

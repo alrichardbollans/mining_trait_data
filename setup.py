@@ -15,7 +15,7 @@ setup(
         "clean_plant_occurrences": ["inputs/wgsrpd-master/level3/*.shp"],
     },
     install_requires=[
-        "automatchnames >= 1.3",
+        "wcvpy >= 1.3.2",
         'openpyxl'
     ],
     extras_require={

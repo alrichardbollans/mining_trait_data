@@ -19,7 +19,7 @@ class MyTestCase(unittest.TestCase):
         search_powo(['alkaloid'], powo_output, families_of_interest=['Rubiaceae', 'Apocynaceae'],
                     filters=['species', 'infraspecies'])
 
-        powo_output_df = pd.read_csv(powo_output)
+        powo_output_df = pd.read_csv(powo_output)[known_df.columns]
 
         pd.testing.assert_frame_equal(powo_output_df, known_df)
 

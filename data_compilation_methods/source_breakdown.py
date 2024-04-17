@@ -8,7 +8,7 @@ import pandas as pd
 def output_summary_of_hit_csv(input_csv: str, output_csv_stub: str, families: List[str] = None,
                               ranks: List[str] = None,
                               source_translations: dict = None, check_duplicates=True):
-    from wcvp_download import wcvp_accepted_columns
+    from wcvpy.wcvp_download import wcvp_accepted_columns
 
     if not os.path.isdir(os.path.dirname(output_csv_stub)):
         os.mkdir(os.path.dirname(output_csv_stub))

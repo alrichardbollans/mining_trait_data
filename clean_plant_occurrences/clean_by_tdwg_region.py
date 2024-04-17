@@ -58,7 +58,7 @@ def _find_whether_occurrences_in_native_or_introduced_regions(
     :param tdwg3_region_col_name:
     :return:
     """
-    from wcvp_download import get_distributions_for_accepted_taxa, native_code_column, \
+    from wcvpy.wcvp_download import get_distributions_for_accepted_taxa, native_code_column, \
         introduced_code_column, wcvp_accepted_columns
     print('Getting native/introduced data for taxa')
     ### Match taxa to WCVP regions
@@ -96,8 +96,8 @@ def clean_occurrences_by_tdwg_regions(occ_df: pd.DataFrame, name_column: str = '
     :param output_csv:
     :return:
     """
-    from wcvp_download import wcvp_accepted_columns
-    from wcvp_name_matching import get_accepted_info_from_names_in_column
+    from wcvpy.wcvp_download import wcvp_accepted_columns
+    from wcvpy.wcvp_name_matching import get_accepted_info_from_names_in_column
 
     occ_with_acc_info = get_accepted_info_from_names_in_column(occ_df, name_column, **kwargs)
     occ_with_acc_info = occ_with_acc_info.dropna(subset=wcvp_accepted_columns['name'])
