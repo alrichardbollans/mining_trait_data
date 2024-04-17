@@ -11,7 +11,7 @@ setup(
                                     'wikipedia_searches'], exclude=['unit_test_methods']),
 
     package_data={
-        "clean_plant_occurrences": ["inputs/wgsrpd-master/level3/*.shp"],
+        "clean_plant_occurrences": ["inputs/wgsrpd-master/level3/*"],
     },
     install_requires=[
         "wcvpy >= 1.3.2",
