@@ -14,7 +14,7 @@ def get_tempout_csv(dataset_name: str, temp_output_path: str):
 def generic_prepare_data(dataset_name: str, output_csv: str, df: pd.DataFrame, name_col: str,
                          snippet_column: str,
                          dropifna: List[str] = None, families_of_interest: List[str] = None,
-                         batch: bool = False, family_column: str = None):
+                         batch: bool = False, family_column: str = None, wcvp_version: str = None):
     from wcvpy.wcvp_name_matching import get_accepted_info_from_names_in_column
 
     if dropifna is not None:
@@ -34,10 +34,10 @@ def generic_prepare_data(dataset_name: str, output_csv: str, df: pd.DataFrame, n
             acc_dfs.append(
                 get_accepted_info_from_names_in_column(split_df, name_col,
                                                        families_of_interest=families_of_interest,
-                                                       family_column=family_column))
+                                                       family_column=family_column, wcvp_version=wcvp_version))
         db_acc = pd.concat(acc_dfs)
     else:
         db_acc = get_accepted_info_from_names_in_column(df, name_col,
                                                         families_of_interest=families_of_interest,
-                                                        family_column=family_column)
+                                                        family_column=family_column, wcvp_version=wcvp_version)
     db_acc.to_csv(output_csv)
